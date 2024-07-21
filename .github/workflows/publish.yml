@@ -26,6 +26,7 @@ jobs:
 
       - name: build
         run: podman build --file adguardhome.containerfile --tag ghcr.io/ngarside/adguardhome:latest .
+        working-directory: adguardhome
 
       - name: push
         run: podman push ghcr.io/ngarside/adguardhome:latest

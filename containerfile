@@ -2,8 +2,8 @@
 
 FROM quay.io/fedora/fedora-coreos:stable
 
-# COPY ./adguardconf.yaml /etc/adguardhome/conf/AdGuardHome.yaml
-COPY ./adguardhome.service /usr/lib/systemd/system/adguardhome.service
+# COPY ./adguardhome/adguardconf.yaml /etc/adguardhome/conf/AdGuardHome.yaml
+COPY ./adguardhome/adguardhome.service /usr/lib/systemd/system/adguardhome.service
 
 COPY ./setup.sh /tmp/setup
 
