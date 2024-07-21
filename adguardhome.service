@@ -1,0 +1,13 @@
+[Unit]
+After=network-online.target
+Description=AdguardHome
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/podman load --input /etc/images/adguardhome
+ExecStart=/usr/bin/podman run --name adguardhome --publish 53:53/tcp --publish 53:53/udp --publish 80:80/tcp --read-only --replace --volume /etc/adguardhome/work:/opt/adguardhome/work:Z --volume /etc/adguardhome/conf:/opt/adguardhome/conf:Z ghcr.io/ngarside/adguardhome:latest
+ExecStop=/usr/bin/podman stop --ignore adguardhome
+Restart=always
+
+[Install]
+WantedBy=default.target
