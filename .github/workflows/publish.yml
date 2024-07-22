@@ -47,6 +47,7 @@ jobs:
 
       - name: build
         run: podman build --file containerfile --tag ghcr.io/ngarside/server:latest .
+        working-directory: ostree
 
       - name: push
         run: podman push ghcr.io/ngarside/server:latest
