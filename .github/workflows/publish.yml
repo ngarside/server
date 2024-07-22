@@ -46,8 +46,7 @@ jobs:
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: build
-        run: podman build --file containerfile --tag ghcr.io/ngarside/server:latest .
-        working-directory: ostree
+        run: podman build --file ostree/containerfile --tag ghcr.io/ngarside/server:latest .
 
       - name: push
         run: podman push ghcr.io/ngarside/server:latest
