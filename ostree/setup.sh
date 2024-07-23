@@ -18,16 +18,24 @@ rpm-ostree override remove \
 	nano-default-editor \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
+	console-login-helper-messages-motdgen \
+	console-login-helper-messages-issuegen \
 	# curl \
-	# git-core \
+	git-core \
 	# ignition \
 	# jq \
-	# moby-engine \
+	moby-engine \
 	# nvidia-gpu-firmware \
-	# rsync \
-	# samba-client-libs \
-	# samba-common \
-	# samba-common-libs \
+	rsync \
+	samba-client-libs \
+	samba-common \
+	samba-common-libs \
+	sssd-ipa \
+	sssd-common-pac \
+	sssd-ad \
+	cifs-utils \
+	libsmbclient \
+	libwbclient \
 	# which \
 	nano
 
