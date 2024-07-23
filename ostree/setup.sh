@@ -12,7 +12,6 @@ systemctl enable adguardhome
 
 systemctl disable systemd-resolved
 
-# useradd containers --shell /usr/bin/false
 echo containers:2147483647:2147483648 >> /etc/subuid
 echo containers:2147483647:2147483648 >> /etc/subgid
 
