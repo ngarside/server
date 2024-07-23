@@ -15,7 +15,7 @@ systemctl disable systemd-resolved
 rpm-ostree override remove \
 	coreos-installer \
 	coreos-installer-bootinfra \
-	nano
+	nano \
 	nano-default-editor
 	# console-login-helper-messages \
 	# console-login-helper-messages-profile \
