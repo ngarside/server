@@ -25,16 +25,15 @@ rpm-ostree override remove \
 	console-login-helper-messages-issuegen \
 	moby-engine \
 	rsync \
-	nvidia-gpu-firmware
-	# samba-client-libs \
-	# samba-common \
-	# samba-common-libs \
-	# sssd-ipa \
-	# sssd-common-pac \
-	# sssd-ad \
-	# cifs-utils \
-	# libsmbclient \
-	# libwbclient \
+	samba-client-libs \
+	samba-common \
+	samba-common-libs \
+	sssd-ipa \
+	sssd-common-pac \
+	sssd-ad \
+	cifs-utils \
+	libsmbclient \
+	libwbclient
 
 # must be last so pulling images still works
 # doesn't work, don't know why
