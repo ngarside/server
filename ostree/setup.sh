@@ -17,6 +17,7 @@ rpm-ostree override remove \
 	coreos-installer-bootinfra \
 	nano-default-editor \
 	console-login-helper-messages \
+	console-login-helper-messages-profile \
 	# curl \
 	# git-core \
 	# ignition \
