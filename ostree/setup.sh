@@ -16,12 +16,12 @@ rpm-ostree override remove \
 	coreos-installer \
 	coreos-installer-bootinfra \
 	nano \
-	nano-default-editor
+	nano-default-editor \
+	git-core
 	# console-login-helper-messages \
 	# console-login-helper-messages-profile \
 	# console-login-helper-messages-motdgen \
 	# console-login-helper-messages-issuegen \
-	# git-core \
 	# moby-engine \
 	# rsync \
 	# samba-client-libs \
