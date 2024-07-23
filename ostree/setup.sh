@@ -32,12 +32,9 @@ rpm-ostree override remove \
 	cifs-utils \
 	libsmbclient \
 	libwbclient \
+	ignition \
+	nvidia-gpu-firmware \
 	nano
-	# curl \
-	# ignition \
-	# jq \
-	# nvidia-gpu-firmware \
-	# which \
 
 # must be last so pulling images still works
 # doesn't work, don't know why
