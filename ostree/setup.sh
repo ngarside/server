@@ -17,7 +17,8 @@ rpm-ostree override remove \
 	coreos-installer-bootinfra \
 	nano \
 	nano-default-editor \
-	git-core
+	git-core \
+	ignition
 	# console-login-helper-messages \
 	# console-login-helper-messages-profile \
 	# console-login-helper-messages-motdgen \
@@ -33,7 +34,6 @@ rpm-ostree override remove \
 	# cifs-utils \
 	# libsmbclient \
 	# libwbclient \
-	# ignition \
 	# nvidia-gpu-firmware
 
 # must be last so pulling images still works
