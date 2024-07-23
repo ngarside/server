@@ -20,12 +20,8 @@ rpm-ostree override remove \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-motdgen \
 	console-login-helper-messages-issuegen \
-	# curl \
 	git-core \
-	# ignition \
-	# jq \
 	moby-engine \
-	# nvidia-gpu-firmware \
 	rsync \
 	samba-client-libs \
 	samba-common \
@@ -36,8 +32,12 @@ rpm-ostree override remove \
 	cifs-utils \
 	libsmbclient \
 	libwbclient \
-	# which \
 	nano
+	# curl \
+	# ignition \
+	# jq \
+	# nvidia-gpu-firmware \
+	# which \
 
 # must be last so pulling images still works
 # doesn't work, don't know why
