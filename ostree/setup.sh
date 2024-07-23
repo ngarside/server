@@ -15,20 +15,20 @@ systemctl disable systemd-resolved
 rpm-ostree override remove \
 	coreos-installer \
 	coreos-installer-bootinfra \
-	nano \
 	nano-default-editor \
 	console-login-helper-messages \
-	curl \
-	git-core \
-	ignition \
-	jq \
-	moby-engine \
-	nvidia-gpu-firmware \
-	rsync \
-	samba-client-libs \
-	samba-common \
-	samba-common-libs \
-	which
+	# curl \
+	# git-core \
+	# ignition \
+	# jq \
+	# moby-engine \
+	# nvidia-gpu-firmware \
+	# rsync \
+	# samba-client-libs \
+	# samba-common \
+	# samba-common-libs \
+	# which \
+	nano
 
 # must be last so pulling images still works
 # doesn't work, don't know why
