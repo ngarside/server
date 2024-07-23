@@ -12,12 +12,6 @@ systemctl enable adguardhome
 
 systemctl disable systemd-resolved
 
-# useradd --system containers
-# useradd --shell /usr/bin/false containers
-# useradd --no-create-home --shell /usr/bin/false containers
-# echo containers:2147483647:2147483648 >> /etc/subuid
-# echo containers:2147483647:2147483648 >> /etc/subgid
-
 rpm-ostree override remove coreos-installer coreos-installer-bootinfra nano nano-default-editor
 
 # must be last so pulling images still works
