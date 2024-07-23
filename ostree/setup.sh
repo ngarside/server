@@ -26,6 +26,8 @@ rpm-ostree override remove \
 	moby-engine \
 	rsync \
 	nvidia-gpu-firmware
+
+	# doesn't work, don't know why
 	# samba-client-libs \
 	# samba-common \
 	# samba-common-libs \
