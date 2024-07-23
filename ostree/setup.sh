@@ -23,8 +23,8 @@ rpm-ostree override remove \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-motdgen \
 	console-login-helper-messages-issuegen \
-	moby-engine
-	# rsync \
+	moby-engine \
+	rsync
 	# samba-client-libs \
 	# samba-common \
 	# samba-common-libs \
