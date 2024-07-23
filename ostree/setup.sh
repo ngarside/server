@@ -12,7 +12,7 @@ systemctl enable adguardhome
 
 systemctl disable systemd-resolved
 
-useradd --system containers
+# useradd --system containers
 # useradd --shell /usr/bin/false containers
 # useradd --no-create-home --shell /usr/bin/false containers
 # echo containers:2147483647:2147483648 >> /etc/subuid
