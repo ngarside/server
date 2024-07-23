@@ -18,11 +18,11 @@ rpm-ostree override remove \
 	nano \
 	nano-default-editor \
 	git-core \
-	ignition
-	# console-login-helper-messages \
-	# console-login-helper-messages-profile \
-	# console-login-helper-messages-motdgen \
-	# console-login-helper-messages-issuegen \
+	ignition \
+	console-login-helper-messages \
+	console-login-helper-messages-profile \
+	console-login-helper-messages-motdgen \
+	console-login-helper-messages-issuegen
 	# moby-engine \
 	# rsync \
 	# samba-client-libs \
