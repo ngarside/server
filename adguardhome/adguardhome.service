@@ -4,9 +4,10 @@ Description=AdguardHome
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/podman load --input /etc/images/adguardhome
-ExecStart=/usr/bin/podman run --name adguardhome --publish 53:53/tcp --publish 53:53/udp --publish 80:80/tcp --read-only --replace --volume /etc/adguardhome/work:/opt/adguardhome/work:Z --volume /etc/adguardhome/conf:/opt/adguardhome/conf:Z ghcr.io/ngarside/adguardhome:latest
-ExecStop=/usr/bin/podman stop --ignore adguardhome
+ExecStartPre=-useradd --no-create-home --shell /usr/bin/false containers
+ExecStartPre=podman load --input /etc/images/adguardhome
+ExecStart=podman run --name adguardhome --publish 53:53/tcp --publish 53:53/udp --publish 80:80/tcp --read-only --replace --userns=auto --volume /etc/adguardhome/work:/opt/adguardhome/work:U,Z --volume /etc/adguardhome/conf:/opt/adguardhome/conf:U,Z ghcr.io/ngarside/adguardhome:latest
+ExecStop=podman stop --ignore adguardhome
 Restart=always
 
 [Install]
