@@ -2,6 +2,8 @@
 
 FROM docker.io/adguard/adguardhome as build
 
+RUN chmod ugo=rx /opt/adguardhome/AdGuardHome
+
 FROM scratch
 
 COPY --from=build /opt/adguardhome/AdGuardHome /usr/bin/adguardhome
