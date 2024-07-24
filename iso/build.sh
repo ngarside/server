@@ -6,7 +6,7 @@ mkdir --parents bin
 
 # Compile ignition file
 
-docker run \
+podman run \
 	--interactive \
 	--rm \
 	quay.io/coreos/butane:release \
@@ -14,7 +14,7 @@ docker run \
 
 # Download latest ISO
 
-docker run \
+podman run \
 	--interactive \
 	--rm \
 	--volume ./bin:/opt \
@@ -26,7 +26,7 @@ mv bin/*.iso.sig bin/original.iso.sig
 
 # Customise ISO
 
-docker run \
+podman run \
 	--interactive \
 	--rm \
 	--volume ./bin:/opt quay.io/coreos/coreos-installer:release iso customize --dest-device /dev/sda --dest-ignition /opt/ignition.json --output /opt/server.iso /opt/original.iso
