@@ -15,8 +15,8 @@ WORKDIR /opt/adguardhome/work
 ENTRYPOINT ["/usr/bin/adguardhome"]
 
 CMD [ \
+	"--config", "/opt/adguardhome/conf/adguardhome.yml", \
 	"--no-check-update", \
-	"-c", "/opt/adguardhome/conf/adguardhome.yml", \
-	"-w", "/opt/adguardhome/work", \
-	"--web-addr", "0.0.0.0:80" \
+	"--web-addr", "0.0.0.0:80", \
+	"--work-dir", "/opt/adguardhome/work" \
 ]
