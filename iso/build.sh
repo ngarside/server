@@ -9,8 +9,9 @@ mkdir --parents bin
 podman run \
 	--interactive \
 	--rm \
+	--volume .:/opt \
 	quay.io/coreos/butane:release \
-	--pretty --strict < butane.yml > bin/ignition.json
+	--files-dir /opt --pretty --strict < butane.yml > bin/ignition.json
 
 # Download latest ISO
 
