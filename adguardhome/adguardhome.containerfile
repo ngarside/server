@@ -17,6 +17,6 @@ ENTRYPOINT ["/usr/bin/adguardhome"]
 CMD [ \
 	"--config", "/opt/adguardhome/conf/adguardhome.yml", \
 	"--no-check-update", \
-	"--web-addr", "0.0.0.0:80" \
-	"--work-dir", "/opt/adguardhome/work", \
+	"--web-addr", "0.0.0.0:80", \
+	"--work-dir", "/opt/adguardhome/work" \
 ]
