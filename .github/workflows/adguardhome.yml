@@ -1,13 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
-name: publish
+name: adguardhome
 
 on:
   push:
     branches:
       - master
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 0 * * 1
   workflow_dispatch:
 
 jobs:
@@ -30,23 +30,3 @@ jobs:
 
       - name: push
         run: podman push ghcr.io/ngarside/adguardhome:latest
-
-  ostree:
-    needs: adguardhome
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: login
-        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-
-      - name: build
-        run: podman build --file ostree/containerfile --tag ghcr.io/ngarside/server:latest .
-
-      - name: push
-        run: podman push ghcr.io/ngarside/server:latest
