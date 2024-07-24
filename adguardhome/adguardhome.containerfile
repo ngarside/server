@@ -6,8 +6,6 @@ FROM scratch
 
 COPY --from=build /opt/adguardhome/AdGuardHome /usr/bin/adguardhome
 
-RUN chmod ugo=rx /usr/bin/adguardhome
-
 EXPOSE 53/tcp 53/udp 80/tcp
 
 WORKDIR /opt/adguardhome/work
