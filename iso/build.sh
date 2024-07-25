@@ -34,7 +34,7 @@ mv bin/*.iso.sig bin/original.iso.sig
 
 # Customise ISO ----------------------------------------------------------------
 
-cp wipe.sh bin
+cp wipe.sh bin/wipe.sh
 
 podman run \
 	--interactive \
