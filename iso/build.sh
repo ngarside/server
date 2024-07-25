@@ -34,6 +34,8 @@ mv bin/*.iso.sig bin/original.iso.sig
 
 # Customise ISO ----------------------------------------------------------------
 
+cp wipe.sh bin
+
 podman run \
 	--interactive \
 	--rm \
@@ -42,4 +44,5 @@ podman run \
 		--dest-device /dev/sda \
 		--dest-ignition /opt/ignition.json \
 		--output /opt/server.iso \
+		--pre-install opt/wipe.sh \
 		/opt/original.iso
