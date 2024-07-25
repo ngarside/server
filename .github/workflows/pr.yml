@@ -1,0 +1,18 @@
+# This is free and unencumbered software released into the public domain.
+
+name: iso
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  iso:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: shellcheck
+        run: shellcheck **/*.sh
