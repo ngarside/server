@@ -2,6 +2,8 @@
 
 FROM quay.io/fedora/fedora-coreos:stable
 
+COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
+
 COPY ./adguardhome/adguardhome.service /usr/lib/systemd/system/adguardhome.service
 
 COPY ./ostree/setup.sh /tmp/setup
