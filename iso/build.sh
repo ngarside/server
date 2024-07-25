@@ -44,5 +44,5 @@ podman run \
 		--dest-device /dev/sda \
 		--dest-ignition /opt/ignition.json \
 		--output /opt/server.iso \
-		--pre-install opt/wipe.sh \
+		--pre-install /opt/wipe.sh \
 		/opt/original.iso
