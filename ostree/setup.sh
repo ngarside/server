@@ -15,6 +15,8 @@ systemctl enable adguardhome
 
 systemctl disable systemd-resolved
 
+echo server > /usr/etc/hostname
+
 rpm-ostree override remove \
 	coreos-installer \
 	coreos-installer-bootinfra \
