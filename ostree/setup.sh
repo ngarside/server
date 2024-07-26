@@ -3,6 +3,9 @@
 
 set -euo pipefail
 
+chown core:core /usr/etc/ssh/authorized_keys/core
+chmod ug=r,o= /usr/etc/ssh/authorized_keys/core
+
 mkdir --parents /etc/images
 
 podman pull ghcr.io/ngarside/adguardhome:latest

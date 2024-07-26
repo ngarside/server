@@ -2,10 +2,9 @@
 
 FROM quay.io/fedora/fedora-coreos:stable
 
-COPY ./ostree/authorizedkeys.txt /var/home/core/.ssh/authorized_keys.d/ostree
-
 COPY ./sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
 COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
+COPY ./sshd/authorizedkeys.txt /usr/etc/ssh/authorized_keys/core
 
 COPY ./adguardhome/adguardhome.service /usr/lib/systemd/system/adguardhome.service
 
