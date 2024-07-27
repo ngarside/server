@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  adguardhome:
+  caddy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
