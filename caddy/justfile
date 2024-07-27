@@ -1,0 +1,8 @@
+_default:
+	just --list
+
+build:
+	docker build --file containerfile --tag ghcr.io/ngarside/caddy:latest .
+
+run:
+	docker run --name caddy --publish 8080:80 --rm --volume {{ canonicalize('.') }}:/etc/caddy ghcr.io/ngarside/caddy:latest
