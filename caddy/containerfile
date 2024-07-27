@@ -1,3 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:latest
+FROM docker.io/caddy:latest AS build
+
+FROM scratch
+
+COPY --from=build /usr/bin/caddy /usr/bin/caddy
+
+EXPOSE 80
+
+WORKDIR /srv
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
