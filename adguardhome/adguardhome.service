@@ -2,7 +2,6 @@
 
 [Unit]
 After=network-online.target
-Description=AdguardHome
 
 [Service]
 Type=simple

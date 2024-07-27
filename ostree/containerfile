@@ -10,4 +10,6 @@ COPY ./adguardhome/adguardhome.service /usr/lib/systemd/system/adguardhome.servi
 
 COPY ./ostree/setup.sh /tmp/setup
 
+COPY ./ostree/vconsole.conf /usr/etc/vconsole.conf
+
 RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
