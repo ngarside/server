@@ -2,6 +2,8 @@
 
 FROM docker.io/caddy:latest AS build
 
+RUN chmod ugo=rx /usr/bin/caddy
+
 FROM scratch
 
 COPY --from=build /usr/bin/caddy /usr/bin/caddy
