@@ -1,10 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 :80 {
-	handle /adguard/* {
-		uri strip_prefix /adguard
-		reverse_proxy 172.20.113.51
-	}
+	reverse_proxy 172.20.113.51
 }
 
 # :80 {
