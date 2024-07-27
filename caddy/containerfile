@@ -10,7 +10,7 @@ COPY --from=build /usr/bin/caddy /usr/bin/caddy
 
 EXPOSE 80
 
-WORKDIR /srv
+WORKDIR /opt/caddy
 
 ENTRYPOINT ["/usr/bin/caddy"]
 
