@@ -25,7 +25,7 @@ jobs:
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: build
-        run: podman build --file caddy.containerfile --tag ghcr.io/ngarside/caddy:latest .
+        run: podman build --file containerfile --tag ghcr.io/ngarside/caddy:latest .
         working-directory: caddy
 
       - name: push
