@@ -1,0 +1,13 @@
+# This is free and unencumbered software released into the public domain.
+
+_default:
+	just --list
+
+build:
+	docker build --file containerfile --tag ghcr.io/ngarside/caddy:latest .
+
+run: stop
+	docker run --detach --name caddy --publish 8080:80 --read-only --rm --volume {{ replace(justfile_directory(), '\', '/') }}:/etc/caddy ghcr.io/ngarside/caddy:latest
+
+stop:
+	docker stop caddy || true
