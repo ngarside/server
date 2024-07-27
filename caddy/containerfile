@@ -12,4 +12,10 @@ EXPOSE 80
 
 WORKDIR /srv
 
-CMD ["caddy", "run", "--config", "/etc/caddy/caddyfile", "--adapter", "caddyfile"]
+ENTRYPOINT ["/usr/bin/caddy"]
+
+CMD [ \
+	"run", \
+	"--adapter", "caddyfile", \
+	"--config", "/etc/caddy/caddyfile" \
+]
