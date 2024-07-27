@@ -3,9 +3,3 @@
 :80 {
 	reverse_proxy 172.20.113.51
 }
-
-# :80 {
-# 	handle_path /adguard/* {
-# 		reverse_proxy 172.20.113.51
-# 	}
-# }
