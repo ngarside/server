@@ -2,6 +2,19 @@
 
 variant: fcos
 version: 1.5.0
+storage:
+  disks:
+    - device: /dev/sdb
+      wipe_table: false
+      partitions:
+        - size_mib: 0
+          start_mib: 0
+          label: data
+  filesystems:
+    - path: /var/data
+      device: /dev/disk/by-partlabel/data
+      format: btrfs
+      with_mount_unit: true
 systemd:
   units:
     - name: rebase.service
