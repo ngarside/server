@@ -49,9 +49,6 @@ jobs:
         with:
           name: adguardhome
 
-      - name: tree
-        run: tree
-
       - name: load
         run: podman load --input adguardhome.tar
 
