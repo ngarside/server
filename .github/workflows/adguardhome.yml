@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  adguardhome:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,12 +21,40 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: login
-        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-
       - name: build
         run: podman build --file adguardhome.containerfile --tag ghcr.io/ngarside/adguardhome:latest .
         working-directory: adguardhome
+
+      - name: save
+        run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:latest
+        working-directory: adguardhome
+
+      - name: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: container
+          path: adguardhome.tar
+          retention-days: 1
+
+  publish:
+    if: github.ref_name == 'master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: download
+        uses: actions/download-artifact@v4
+        with:
+          name: container
+          path: adguardhome.tar
+
+      - name: load
+        run: podman load --input adguardhome.tar
+
+      - name: login
+        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: push
         run: podman push ghcr.io/ngarside/adguardhome:latest
