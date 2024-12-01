@@ -37,6 +37,7 @@ jobs:
           retention-days: 1
 
   publish:
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
