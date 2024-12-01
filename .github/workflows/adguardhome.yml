@@ -31,6 +31,7 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v4
         with:
+          compression-level: 9
           name: adguardhome
           path: adguardhome.tar
           retention-days: 1
