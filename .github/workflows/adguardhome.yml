@@ -31,7 +31,7 @@ jobs:
         working-directory: adguardhome
 
       - name: pipenv
-        run: pip install pipenv
+        run: pip install pipenv && pipenv install
 
       - name: test
         run: pipenv run pytest --rootdir adguardhome
