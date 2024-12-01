@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+
+FROM docker.io/gitea/gitea:latest AS build
+
+FROM docker.io/alpine:latest
+
+RUN apk add gitea
+
+ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
+
+ENTRYPOINT ["/usr/bin/gitea"]
+
+EXPOSE 3000
+
+CMD [ \
+	"--config", "/opt/gitea/app.ini" \
+]
