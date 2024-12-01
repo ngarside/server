@@ -37,6 +37,7 @@ jobs:
           retention-days: 1
 
   publish:
+    if: github.ref_name == 'master'
     needs: build
     runs-on: ubuntu-latest
     permissions:
