@@ -48,7 +48,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: adguardhome
-          path: adguardhome.tar
 
       - name: tree
         run: tree
