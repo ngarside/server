@@ -10,7 +10,7 @@ COPY --from=build /opt/adguardhome/AdGuardHome /usr/bin/adguardhome
 
 EXPOSE 53/tcp 53/udp 80/tcp
 
-WORKDIR /opt/adguardhome/work
+WORKDIR /opt/adguardhome
 
 ENTRYPOINT ["/usr/bin/adguardhome"]
 
@@ -18,5 +18,5 @@ CMD [ \
 	"--config", "/etc/adguardhome/config.yml", \
 	"--no-check-update", \
 	"--web-addr", "0.0.0.0:80", \
-	"--work-dir", "/opt/adguardhome/work" \
+	"--work-dir", "/opt/adguardhome" \
 ]
