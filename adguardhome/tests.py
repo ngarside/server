@@ -4,7 +4,7 @@
 
 import random, requests, string, subprocess
 
-def test_admin_home():
+def admin_home():
 	try:
 		name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 		print()
