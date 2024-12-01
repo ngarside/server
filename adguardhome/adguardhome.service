@@ -7,7 +7,7 @@ After=network-online.target
 Type=simple
 ExecStartPre=-useradd --no-create-home --shell /usr/bin/false containers
 ExecStartPre=podman load --input /etc/images/adguardhome
-ExecStart=podman run --name adguardhome --publish 53:53/tcp --publish 53:53/udp --publish 80:80/tcp --read-only --replace --userns=auto --volume /var/data/adguardhome/work:/opt/adguardhome/work:U,Z --volume /var/data/adguardhome/conf:/opt/adguardhome/conf:U,Z ghcr.io/ngarside/adguardhome:latest
+ExecStart=podman run --name adguardhome --publish 53:53/tcp --publish 53:53/udp --publish 80:80/tcp --read-only --replace --userns=auto --volume /var/data/adguardhome/work:/opt/adguardhome/work:U,Z --volume /var/data/adguardhome/conf:/etc/adguardhome:U,Z ghcr.io/ngarside/adguardhome:latest
 ExecStop=podman stop --ignore adguardhome
 Restart=always
 
