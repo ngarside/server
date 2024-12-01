@@ -6,7 +6,17 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStartPre=podman load --input /etc/images/adguardhome
-ExecStart=podman run --name adguardhome --publish 53:53/tcp --publish 53:53/udp --publish 80:80/tcp --read-only --replace --userns=auto --volume /var/data/adguardhome/work:/opt/adguardhome:U,Z --volume /var/data/adguardhome/conf:/etc/adguardhome:U,Z ghcr.io/ngarside/adguardhome:latest
+ExecStart=podman run \
+	--name adguardhome \
+	--publish 53:53/tcp \
+	--publish 53:53/udp \
+	--publish 80:80/tcp \
+	--read-only \
+	--replace \
+	--userns=auto \
+	--volume /var/data/adguardhome/work:/opt/adguardhome:U,Z \
+	--volume /var/data/adguardhome/conf:/etc/adguardhome:U,Z \
+	ghcr.io/ngarside/adguardhome:latest
 ExecStop=podman stop --ignore adguardhome
 Restart=always
 
