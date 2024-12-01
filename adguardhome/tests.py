@@ -4,7 +4,7 @@
 
 import random, requests, subprocess
 
-def test_home():
+def test_admin_home():
 	try:
 		port = random.randrange(1000, 64000)
 		subprocess.run([
