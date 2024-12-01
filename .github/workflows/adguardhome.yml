@@ -3,9 +3,14 @@
 name: adguardhome
 
 on:
+  pull_request:
+    paths:
+      adguardhome
   push:
     branches:
       - master
+    paths:
+      adguardhome
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
