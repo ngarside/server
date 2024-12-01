@@ -31,7 +31,7 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v4
         with:
-          name: container
+          name: adguardhome
           path: adguardhome.tar
           retention-days: 1
 
@@ -45,7 +45,7 @@ jobs:
       - name: download
         uses: actions/download-artifact@v4
         with:
-          name: container
+          name: adguardhome
           path: adguardhome.tar
 
       - name: load
