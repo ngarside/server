@@ -30,6 +30,9 @@ jobs:
         run: podman build --file adguardhome.containerfile --tag ghcr.io/ngarside/adguardhome:latest .
         working-directory: adguardhome
 
+      - name: test
+        run: pipenv run pytest --rootdir adguardhome
+
       - name: save
         run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:latest
 
