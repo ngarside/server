@@ -3,9 +3,14 @@
 name: caddy
 
 on:
+  pull_request:
+    paths:
+      caddy
   push:
     branches:
       - master
+    paths:
+      caddy
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
