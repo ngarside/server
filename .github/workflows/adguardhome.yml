@@ -27,7 +27,6 @@ jobs:
 
       - name: save
         run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:latest
-        working-directory: adguardhome
 
       - name: upload
         uses: actions/upload-artifact@v4
