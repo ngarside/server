@@ -9,8 +9,6 @@ podman pull ghcr.io/ngarside/adguardhome:latest
 podman save --output /etc/images/adguardhome ghcr.io/ngarside/adguardhome:latest
 chmod ug=r,o= /etc/images/adguardhome
 
-mkdir --parents /etc/adguardhome/{conf,work}
-chmod --recursive u=rwx,g=rx,o= /etc/adguardhome
 systemctl enable adguardhome
 
 systemctl disable systemd-resolved
