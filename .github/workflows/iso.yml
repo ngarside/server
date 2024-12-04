@@ -24,3 +24,4 @@ jobs:
         with:
           name: server.iso
           path: iso/bin/server.iso
+          retention-days: 7
