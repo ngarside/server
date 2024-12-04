@@ -5,11 +5,13 @@ name: iso
 on:
   pull_request:
     paths:
+      .github/workflows/iso.yml
       iso
   push:
     branches:
       - master
     paths:
+      .github/workflows/iso.yml
       iso
   schedule:
     - cron: 0 0 * * 1
