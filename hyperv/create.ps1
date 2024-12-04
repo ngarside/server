@@ -6,9 +6,9 @@ New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\System.vhdx" -SizeBytes 250
 
 New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\Data.vhdx" -SizeBytes 1TB
 
-Add-VMDvdDrive -VMName Server
+$DiskDrive = Add-VMDvdDrive -VMName Server -PassThru
 
-Add-VMHardDiskDrive -VMName Server -Path "F:\Server\Virtual Hard Disks\System.vhdx"
+$SystemDrive = Add-VMHardDiskDrive -VMName Server -PassThru -Path "F:\Server\Virtual Hard Disks\System.vhdx"
 
 Add-VMHardDiskDrive -VMName Server -Path "F:\Server\Virtual Hard Disks\Data.vhdx"
 
@@ -21,3 +21,5 @@ Set-VMFirmware -VMName Server -EnableSecureBoot Off
 Set-VM -VMName Server -AutomaticStartAction Nothing
 
 Set-VM -VMName Server -AutomaticStopAction TurnOff
+
+Set-VMFirmware Server -BootOrder $SystemDrive,$DiskDrive
