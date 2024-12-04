@@ -4,6 +4,8 @@
 After=network-online.target
 
 [Service]
+User=containers
+Group=containers
 Type=simple
 ExecStartPre=podman load --input /etc/images/adguardhome
 ExecStart=podman run \
