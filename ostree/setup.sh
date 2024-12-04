@@ -7,7 +7,9 @@ mkdir --parents /etc/images
 
 podman pull ghcr.io/ngarside/adguardhome:latest
 podman save --output /etc/images/adguardhome ghcr.io/ngarside/adguardhome:latest
-chmod ug=r,o= /etc/images/adguardhome
+
+chown --recursive containers:containers /etc/images
+chmod --recursive ug=r,o= /etc/images
 
 podman image prune --all --force
 
