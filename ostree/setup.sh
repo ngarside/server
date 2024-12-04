@@ -9,6 +9,8 @@ podman pull ghcr.io/ngarside/adguardhome:latest
 podman save --output /etc/images/adguardhome ghcr.io/ngarside/adguardhome:latest
 chmod ug=r,o= /etc/images/adguardhome
 
+podman image prune --all --force
+
 systemctl enable adguardhome
 
 systemctl disable systemd-resolved
