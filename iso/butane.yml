@@ -18,6 +18,9 @@ storage:
       device: /dev/disk/by-partlabel/data
       format: btrfs
       with_mount_unit: true
+  files:
+    - path: /var/lib/systemd/linger/containers
+      mode: 0644
 systemd:
   units:
     - name: rebase.service
