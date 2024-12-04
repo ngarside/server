@@ -10,7 +10,7 @@ podman save --output /etc/images/adguardhome ghcr.io/ngarside/adguardhome:latest
 
 # The owner can't be changed to the 'containers' user as they don't exist when
 #   the OSTree image is created, so instead allow all users to read the images.
-chmod --recursive ugo=r /etc/images
+chmod ugo=r /etc/images/adguardhome
 
 podman image prune --all --force
 
