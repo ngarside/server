@@ -29,7 +29,6 @@ rpm-ostree override remove \
 	afterburn-dracut \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
-	# bash-color-prompt \ Unnecessary, but useful for debugging
 	coreos-installer \
 	coreos-installer-bootinfra \
 	docker-cli \
