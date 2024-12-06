@@ -25,7 +25,7 @@ echo server > /usr/etc/hostname
 rpm-ostree install hyperv-daemons
 
 rpm-ostree override remove \
-	afterburn \
+	afterburn-dracut \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
 	bash-color-prompt \
