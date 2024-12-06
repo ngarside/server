@@ -8,10 +8,7 @@ User=containers
 Group=containers
 Type=simple
 ExecStartPre=podman load --input /etc/images/adguardhome
-ExecStartPre=mkdir --parents /var/data/adguardhome/etc
-ExecStartPre=mkdir --parents /var/data/adguardhome/opt
-ExecStartPre=chmod u=rw,g=r,o= /var/data/adguardhome/etc
-ExecStartPre=chmod u=rw,g=r,o= /var/data/adguardhome/opt
+ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
 ExecStart=podman run \
 	--name adguardhome \
 	--publish 53:53/tcp \
