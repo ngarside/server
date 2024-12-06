@@ -25,17 +25,26 @@ echo server > /usr/etc/hostname
 rpm-ostree install hyperv-daemons
 
 rpm-ostree override remove \
+	afterburn \
+	amd-gpu-firmware \
+	amd-ucode-firmware \
+	bash-color-prompt \
 	coreos-installer \
 	coreos-installer-bootinfra \
+	docker-cli \
 	nano \
 	nano-default-editor \
+	flatpak-session-helper \
 	git-core \
 	ignition \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-motdgen \
 	console-login-helper-messages-issuegen \
+	google-compute-engine-guest-configs-udev \
 	moby-engine \
+	moby-filesystem \
+	NetworkManager-cloud-setup \
 	rsync \
 	nvidia-gpu-firmware
 
