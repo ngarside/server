@@ -1,16 +1,47 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/gitea/gitea:latest AS build
+# FROM docker.io/gitea/gitea:latest AS build
 
-FROM docker.io/alpine:latest
+FROM docker.io/alpine:latest AS build
 
 RUN apk add gitea
 
+RUN wget -O gitea https://dl.gitea.com/gitea/1.22.4/gitea-1.22.4-linux-amd64
+RUN chmod +x gitea
+
+# ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
+
+# ENTRYPOINT ["/usr/bin/gitea"]
+
+# EXPOSE 3000
+
+# CMD [ \
+# 	"--config", "/opt/gitea/app.ini" \
+# ]
+
+FROM scratch
+
+# COPY --from=build /usr/bin/gitea /usr/bin/gitea
+
+COPY --from=build /usr/bin/git /usr/bin/git
+
+COPY --from=build /gitea /usr/bin/gitea
+
+COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
+
+COPY --from=build /usr/lib/libpcre2-8.so.0 /usr/lib/libpcre2-8.so.0
+
+COPY --from=build /usr/lib/libz.so.1 /usr/lib/libz.so.1
+
+COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
+
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 
-ENTRYPOINT ["/usr/bin/gitea"]
-
 EXPOSE 3000
+
+# WORKDIR /opt/caddy
+
+ENTRYPOINT ["/usr/bin/gitea"]
 
 CMD [ \
 	"--config", "/opt/gitea/app.ini" \
