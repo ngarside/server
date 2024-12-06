@@ -12,4 +12,6 @@ COPY ./ostree/setup.sh /tmp/setup
 
 COPY ./ostree/vconsole.conf /usr/etc/vconsole.conf
 
+COPY ./ostree/sysctl.conf /usr/etc/sysctl.d/0-server.conf
+
 RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
