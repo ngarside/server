@@ -24,10 +24,8 @@ COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
 
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 
-EXPOSE 3000
+EXPOSE 80
 
 ENTRYPOINT ["/usr/bin/gitea"]
 
-CMD [ \
-	"--config", "/opt/gitea/app.ini" \
-]
+CMD ["web", "--config", "/opt/gitea/app.ini", "--port", "80"]
