@@ -6,4 +6,6 @@ gunzip 3.1.2.tar.gz
 
 tar -xvf 3.1.2.tar
 
-cd lynis-3.1.2
+cd lynis-3.1.2 || exit
+
+./lynis audit system
