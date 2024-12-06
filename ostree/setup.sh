@@ -46,6 +46,7 @@ rpm-ostree override remove \
 	moby-filesystem \
 	NetworkManager-cloud-setup \
 	rsync \
+	toolbox \
 	nvidia-gpu-firmware
 
 	# doesn't work, don't know why
