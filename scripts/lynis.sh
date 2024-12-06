@@ -1,4 +1,7 @@
+#!/usr/bin/env bash
 # This is free and unencumbered software released into the public domain.
+
+set -euo pipefail
 
 curl https://github.com/CISOfy/lynis/archive/refs/tags/3.1.2.tar.gz -LO
 
