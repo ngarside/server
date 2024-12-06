@@ -8,9 +8,8 @@ User=containers
 Group=containers
 Type=simple
 ExecStartPre=podman load --input /etc/images/adguardhome
-ExecStartPre=mkdir /var/data/adguardhome
-ExecStartPre=mkdir /var/data/adguardhome/etc
-ExecStartPre=mkdir /var/data/adguardhome/opt
+ExecStartPre=mkdir --parents /var/data/adguardhome/etc
+ExecStartPre=mkdir --parents /var/data/adguardhome/opt
 ExecStartPre=chmod u=rw,g=r,o= /var/data/adguardhome/etc
 ExecStartPre=chmod u=rw,g=r,o= /var/data/adguardhome/opt
 ExecStart=podman run \
