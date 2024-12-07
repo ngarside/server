@@ -13,7 +13,7 @@ ExecStart=podman run \
 	--name adguardhome \
 	--publish 53:53/tcp \
 	--publish 53:53/udp \
-	--publish 80:80/tcp \
+	--publish 10000:80/tcp \
 	--read-only \
 	--replace \
 	--userns=auto \
