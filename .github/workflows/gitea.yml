@@ -1,0 +1,39 @@
+# This is free and unencumbered software released into the public domain.
+
+name: gitea
+
+on:
+  pull_request:
+    paths:
+      .github/workflows/gitea.yml
+      gitea
+  push:
+    branches:
+      - master
+    paths:
+      .github/workflows/gitea.yml
+      gitea
+  schedule:
+    - cron: 0 0 * * 1
+  workflow_dispatch:
+
+jobs:
+  gitea:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: login
+        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build
+        run: podman build --file containerfile --tag ghcr.io/ngarside/gitea:latest .
+        working-directory: gitea
+
+      - name: push
+        run: podman push ghcr.io/ngarside/gitea:latest
