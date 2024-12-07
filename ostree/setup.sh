@@ -24,6 +24,7 @@ chmod ugo=r /etc/images/gitea
 podman image prune --all --force
 
 systemctl enable adguardhome
+systemctl enable caddy
 
 systemctl disable systemd-resolved
 
