@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  caddy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,12 +28,46 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: login
-        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-
       - name: build
         run: podman build --file containerfile --tag ghcr.io/ngarside/caddy:latest .
         working-directory: caddy
+
+      - name: pipenv
+        run: pip install pipenv && pipenv install
+
+      - name: test
+        run: pipenv run pytest --rootdir caddy
+
+      - name: save
+        run: podman save --output caddy.tar ghcr.io/ngarside/caddy:latest
+
+      - name: upload
+        uses: actions/upload-artifact@v4
+        with:
+          compression-level: 9
+          name: caddy
+          path: caddy.tar
+          retention-days: 1
+
+  publish:
+    if: github.ref_name == 'master'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: download
+        uses: actions/download-artifact@v4
+        with:
+          name: caddy
+
+      - name: load
+        run: podman load --input caddy.tar
+
+      - name: login
+        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: push
         run: podman push ghcr.io/ngarside/caddy:latest
