@@ -16,7 +16,7 @@ ExecStart=podman run \
 	--read-only \
 	--replace \
 	--userns=auto \
-	--volume /var/data/caddy/etc:/etc/caddy:U,Z \
+	--volume /etc/caddy:/etc/caddy:ro \
 	ghcr.io/ngarside/caddy:latest
 ExecStop=podman stop --ignore caddy
 Restart=always
