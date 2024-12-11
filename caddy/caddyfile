@@ -1,5 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
 :80 {
-	reverse_proxy 127.0.0.1:10000
+	reverse_proxy :10000
 }
