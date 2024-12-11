@@ -16,7 +16,7 @@ ExecStart=podman run \
 	--publish 10000:80/tcp \
 	--read-only \
 	--replace \
-	--userns=auto \
+	--userns=auto:size=8 \
 	--volume /var/data/adguardhome/etc:/etc/adguardhome:U,Z \
 	--volume /var/data/adguardhome/opt:/opt/adguardhome:U,Z \
 	ghcr.io/ngarside/adguardhome:latest

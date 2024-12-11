@@ -15,7 +15,7 @@ ExecStart=podman run \
 	--publish 80:80/tcp \
 	--read-only \
 	--replace \
-	--userns=auto \
+	--userns=auto:size=8 \
 	--volume /etc/caddy:/etc/caddy:ro \
 	ghcr.io/ngarside/caddy:latest
 ExecStop=podman stop --ignore caddy
