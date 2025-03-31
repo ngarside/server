@@ -1,11 +1,16 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-# Server
+# <p align=center>Server
 
-> **Do not use this image! This is built only for my own use, I don't recommend anyone using artifacts from this repo directly, rather use it as a base to fork and create your own.**
+The GitOps codebase for my home server.
 
-A minimal base image for Fedora Silverblue. This strips out most unnecessary packages (Firefox, desktop backgrounds, etc) while leaving a useable but very minimal desktop base which can be built upon.
+# <p align=center>Security
 
-# License
+The various containers are reasonably well hardened, however this hardening is
+split between the container files and the systemd services. Therefore, it is not
+recommended to run the containers in other environments, as they will only be
+partially hardened.
+
+# <p align=center>License
 
 This is free and unencumbered software released into the public domain.
