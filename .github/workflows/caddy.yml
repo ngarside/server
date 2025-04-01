@@ -36,7 +36,8 @@ jobs:
         run: pip install pipenv && pipenv install
 
       - name: test
-        run: pipenv run pytest --rootdir caddy
+        run: pipenv run pytest
+        working-directory: caddy
 
       - name: save
         run: podman save --output caddy.tar ghcr.io/ngarside/caddy:latest
