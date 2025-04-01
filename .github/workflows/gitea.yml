@@ -5,14 +5,14 @@ name: gitea
 on:
   pull_request:
     paths:
-      .github/workflows/gitea.yml
-      gitea
+      - .github/workflows/gitea.yml
+      - gitea
   push:
     branches:
       - master
     paths:
-      .github/workflows/gitea.yml
-      gitea
+      - .github/workflows/gitea.yml
+      - gitea
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
