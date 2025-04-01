@@ -8,13 +8,14 @@ name, port_admin, port_dns = random.sample(range(1000, 64000), 3)
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
-	subprocess.run((
-		f'docker run --detach --name {name} --publish {port_admin}:80 '
-		f'--publish {port_dns}:53 --publish {port_dns}:53/udp '
-		f'--volume {dir}:/etc/adguardhome ghcr.io/ngarside/adguardhome'
-	))
+	subprocess.run([
+		'docker', 'run', '--detach', '--name', f'{name}', '--publish',
+		f'{port_admin}:80', '--publish', f'{port_dns}:53',
+		'--publish', f'{port_dns}:53/udp', '--volume',
+		f'{dir}:/etc/adguardhome', 'ghcr.io/ngarside/adguardhome',
+	])
 	yield
-	subprocess.run(f'docker rm --force {name}')
+	subprocess.run(['docker', 'rm', f'--force {name}'])
 
 def test_admin_home():
 	response = requests.get(f'http://localhost:{port_admin}', timeout=10)
