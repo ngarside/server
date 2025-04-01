@@ -36,7 +36,8 @@ jobs:
         run: pip install pipenv && pipenv install
 
       - name: test
-        run: pipenv run pytest --rootdir adguardhome
+        run: pipenv run pytest
+        working-directory: adguardhome
 
       - name: save
         run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:latest
