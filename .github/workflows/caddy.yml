@@ -72,3 +72,10 @@ jobs:
 
       - name: push
         run: podman push ghcr.io/ngarside/caddy:latest
+
+      - name: purge
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: caddy
+          package-type: container
+          delete-only-untagged-versions: true
