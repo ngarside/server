@@ -29,3 +29,10 @@ jobs:
 
       - name: push
         run: podman push ghcr.io/ngarside/server:latest
+
+      - name: purge
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: server
+          package-type: container
+          delete-only-untagged-versions: true

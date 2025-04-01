@@ -37,3 +37,10 @@ jobs:
 
       - name: push
         run: podman push ghcr.io/ngarside/gitea:latest
+
+      - name: purge
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: gitea
+          package-type: container
+          delete-only-untagged-versions: true
