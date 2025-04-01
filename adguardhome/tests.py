@@ -15,7 +15,7 @@ def fixture():
 		f'{dir}:/etc/adguardhome', 'ghcr.io/ngarside/adguardhome',
 	])
 	yield
-	subprocess.run(['docker', 'rm', f'--force {name}'])
+	subprocess.run(['docker', 'rm', '--force', f'{name}'])
 
 def test_admin_home():
 	response = requests.get(f'http://localhost:{port_admin}', timeout=10)
