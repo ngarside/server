@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:latest AS build
+FROM docker.io/caddy:latest@sha256:0cfc2817cd8612ae9a6740b3278832ff16864f6e5ec34c9e73009c155de01f57 AS build
 
 RUN chmod ugo=rx /usr/bin/caddy
 
