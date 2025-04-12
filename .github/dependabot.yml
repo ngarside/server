@@ -4,9 +4,9 @@ version: 2
 updates:
   - package-ecosystem: docker
     directories:
-      - adguardhome
-      - caddy
-      - gitea
-      - ostree
+      - adguardhome/**
+      - caddy/**
+      - gitea/**
+      - ostree/**
     schedule:
       interval: daily
