@@ -3,9 +3,16 @@
 name: ostree
 
 on:
+  pull_request:
+    paths:
+      - .github/workflows/ostree.yml
+      - ostree/**
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/ostree.yml
+      - ostree/**
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
