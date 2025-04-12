@@ -12,7 +12,7 @@ def fixture():
 	dir = os.path.dirname(os.path.realpath(__file__))
 	subprocess.run([
 		'docker', 'run', '--detach', '--name', name, '--publish', f'{port}:80',
-		'--volume', f'{dir}/etc:/etc/caddy:ro', 'ghcr.io/ngarside/caddy'
+		'--volume', f'{dir}:/etc/caddy:ro', 'ghcr.io/ngarside/caddy'
 	])
 	time.sleep(0.1)
 	yield
