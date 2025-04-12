@@ -6,13 +6,13 @@ on:
   pull_request:
     paths:
       - .github/workflows/caddy.yml
-      - caddy
+      - caddy/**
   push:
     branches:
       - master
     paths:
       - .github/workflows/caddy.yml
-      - caddy
+      - caddy/**
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
