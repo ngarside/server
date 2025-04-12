@@ -8,8 +8,8 @@ COPY ./sshd/authorizedkeys.txt /usr/etc/ssh/authorized_keys/core
 
 COPY ./adguardhome/ops/system.service /usr/lib/systemd/system/adguardhome.service
 
-COPY ./caddy/caddyfile /etc/caddy/caddyfile
-COPY ./caddy/caddy.service /usr/lib/systemd/system/caddy.service
+COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
+COPY ./caddy/ops/caddy.service /usr/lib/systemd/system/caddy.service
 
 COPY ./ostree/setup.sh /tmp/setup
 
