@@ -1,4 +1,6 @@
-﻿# <p align=center>AdGuard Home
+﻿<!-- This is free and unencumbered software released into the public domain -->
+
+# <p align=center>AdGuard Home
 
 A hardened container image and associated scripts for running AdGuard Home via
 Podman and Systemd.
