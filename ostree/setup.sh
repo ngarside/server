@@ -47,8 +47,4 @@ rpm-ostree override remove \
 	# libsmbclient \
 	# libwbclient \
 
-# must be last so pulling images still works
-# doesn't work, don't know why
-# rpm-ostree override remove systemd-resolved
-
 ostree container commit
