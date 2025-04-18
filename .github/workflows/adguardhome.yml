@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: build
-        run: podman build --file src/adguardhome.containerfile --tag ghcr.io/ngarside/adguardhome:latest .
+        run: podman build --file src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:latest .
         working-directory: adguardhome
 
       - name: pipenv
