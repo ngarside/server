@@ -7,7 +7,6 @@ After=network-online.target
 User=containers
 Group=containers
 Type=simple
-ExecStartPre=podman load --input /etc/images/caddy
 ExecStartPre=mkdir --parents /var/data/caddy/etc
 ExecStart=podman run \
 	--name caddy \

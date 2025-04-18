@@ -7,7 +7,8 @@ After=network-online.target
 User=containers
 Group=containers
 Type=simple
-ExecStartPre=podman load --input /etc/images/adguardhome
+ExecStartPre=podman pull ghcr.io/ngarside/adguardhome:latest
+ExecStartPre=systemctl disable systemd-resolved
 ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
 ExecStart=podman run \
 	--name adguardhome \
