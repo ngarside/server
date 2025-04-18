@@ -1,0 +1,13 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=network-online.target
+
+[Service]
+User=containers
+Group=containers
+Type=simple
+ExecStartPre=podman pull ghcr.io/ngarside/adguardhome:latest
+
+[Install]
+WantedBy=default.target

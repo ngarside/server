@@ -1,0 +1,11 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=adguardhome-pull.target
+
+[Service]
+Type=simple
+ExecStartPre=systemctl disable systemd-resolved
+
+[Install]
+WantedBy=default.target

@@ -1,14 +1,12 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
-After=network-online.target
+After=adguardhome-resolved.target
 
 [Service]
 User=containers
 Group=containers
 Type=simple
-ExecStartPre=podman pull ghcr.io/ngarside/adguardhome:latest
-ExecStartPre=systemctl disable systemd-resolved
 ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
 ExecStart=podman run \
 	--name adguardhome \
