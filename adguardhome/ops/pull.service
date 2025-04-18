@@ -6,8 +6,8 @@ After=network-online.target
 [Service]
 User=containers
 Group=containers
-Type=simple
 ExecStartPre=podman pull ghcr.io/ngarside/adguardhome:latest
+Type=oneshot
 
 [Install]
 WantedBy=default.target
