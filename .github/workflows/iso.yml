@@ -29,6 +29,13 @@ jobs:
         run: bash build.sh
         working-directory: iso
 
+      # https://stackoverflow.com/a/69977763
+      - name: change ownership
+        run: |
+          USER=$(whoami)
+          sudo chown $USER:$USER
+        working-directory: iso
+
       - name: package
         if: github.ref_name == 'master'
         uses: actions/upload-artifact@v4
