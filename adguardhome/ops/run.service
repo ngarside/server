@@ -7,7 +7,6 @@ After=adguardhome-resolved.target
 User=containers
 Group=containers
 Type=simple
-ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
 ExecStart=podman run \
 	--name adguardhome \
 	--publish 53:53/tcp \
