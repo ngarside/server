@@ -4,7 +4,7 @@ _default:
 	just --list
 
 build:
-	docker build --file containerfile --tag ghcr.io/ngarside/gitea:latest .
+	docker build --file dockerfile --tag ghcr.io/ngarside/gitea:latest .
 
 run: stop
 	docker run --detach --name gitea --publish 8080:80 --read-only --rm --volume {{ replace(justfile_directory(), '\', '/') }}/bin/opt:/opt/gitea --volume {{ replace(justfile_directory(), '\', '/') }}/bin/root:/root --volume {{ replace(justfile_directory(), '\', '/') }}/bin/tmp:/tmp ghcr.io/ngarside/gitea:latest

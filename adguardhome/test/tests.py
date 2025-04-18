@@ -4,6 +4,7 @@
 import dns.resolver, os, pytest, random, requests, subprocess, tempfile
 
 etc = tempfile.TemporaryDirectory()
+opt = tempfile.TemporaryDirectory()
 name, port_admin, port_dns = random.sample(range(1000, 64000), 3)
 
 @pytest.fixture(autouse=True, scope='session')
@@ -11,9 +12,10 @@ def fixture():
 	open(os.path.join(etc.name, 'config.yml'), 'w').close()
 	subprocess.run([
 		'docker', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port_admin}:80', '--publish', f'{port_dns}:53',
-		'--publish', f'{port_dns}:53/udp', '--volume',
-		f'{etc.name}:/etc/adguardhome', 'ghcr.io/ngarside/adguardhome',
+		f'{port_admin}:80', '--publish', f'{port_dns}:53', '--publish',
+		f'{port_dns}:53/udp', '--read-only', '--volume',
+		f'{etc.name}:/etc/adguardhome', '--volume',
+		f'{opt.name}:/opt/adguardhome', 'ghcr.io/ngarside/adguardhome',
 	])
 	yield
 	subprocess.run(['docker', 'rm', '--force', f'{name}'])
