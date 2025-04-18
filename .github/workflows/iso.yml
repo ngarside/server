@@ -34,7 +34,6 @@ jobs:
         run: |
           USER=$(whoami)
           sudo chown $USER:$USER iso/bin/server.iso
-        working-directory: iso
 
       - name: package
         if: github.ref_name == 'master'
