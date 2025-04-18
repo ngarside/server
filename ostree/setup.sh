@@ -3,6 +3,7 @@
 
 set -euo pipefail
 
+systemctl enable adguardhome-filesystem
 systemctl enable adguardhome-pull
 systemctl enable adguardhome-resolved
 systemctl enable adguardhome-run
