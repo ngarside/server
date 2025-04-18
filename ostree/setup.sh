@@ -6,8 +6,6 @@ set -euo pipefail
 systemctl enable adguardhome
 systemctl enable caddy
 
-systemctl disable systemd-resolved
-
 echo server > /usr/etc/hostname
 
 rpm-ostree install hyperv-daemons
