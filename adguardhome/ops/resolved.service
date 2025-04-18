@@ -4,8 +4,8 @@
 After=adguardhome-pull.target
 
 [Service]
-ExecStartPre=systemctl disable systemd-resolved
 Type=oneshot
+ExecStart=systemctl disable systemd-resolved
 
 [Install]
 WantedBy=default.target
