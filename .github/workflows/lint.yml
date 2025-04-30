@@ -29,3 +29,13 @@ jobs:
 
       - name: check
         run: shellcheck **/*.sh
+
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: check
+        run: yamllint .
