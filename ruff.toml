@@ -1,6 +1,4 @@
 # This is free and unencumbered software released into the public domain.
 
-dnspython == 2.7.0
-pytest == 7.4.2
-requests == 2.32.3
-ruff == 0.11.7
+[lint]
+ignore = ['E401']

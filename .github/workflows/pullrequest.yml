@@ -16,3 +16,16 @@ jobs:
 
       - name: shellcheck
         run: shellcheck **/*.sh
+
+  ruff:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: install
+        run: pip install pipenv && pipenv install
+
+      - name: check
+        run: pipenv run ruff check
