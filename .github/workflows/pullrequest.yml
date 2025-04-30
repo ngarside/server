@@ -28,4 +28,4 @@ jobs:
         run: pip install pipenv && pipenv install
 
       - name: check
-        run: pipenv run ruff
+        run: pipenv run ruff check
