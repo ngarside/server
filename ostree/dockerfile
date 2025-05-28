@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora-coreos:stable@sha256:42b639953c23a464fe113d642696cf12a7ae56ab86bca45ed96163bd593a48ed
+FROM quay.io/fedora/fedora-coreos:stable@sha256:fa1ac89b43faef0bf83efa14a77e91a5418f329e0e42c32a6b2b4f69e59a230c
 
 COPY ./sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
 COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
