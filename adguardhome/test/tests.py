@@ -16,7 +16,7 @@ def fixture():
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port_admin}:80', '--publish', f'{port_dns}:53', '--publish',
-		f'{port_dns}:53/udp', '--read-only', '--volume',
+		f'{port_dns}:53/udp', '--pull', 'never', '--read-only', '--volume',
 		f'{etc.name}:/etc/adguardhome', '--volume',
 		f'{opt.name}:/opt/adguardhome', 'ghcr.io/ngarside/adguardhome',
 	])
