@@ -28,8 +28,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: tag
+        run: echo "TAG=$(python3 scripts/tag-branch.py)" >> $GITHUB_ENV
+
       - name: build
-        run: podman build --file src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:latest .
+        run: podman build --file src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
         working-directory: adguardhome
 
       - name: pipenv
@@ -40,7 +43,7 @@ jobs:
         working-directory: adguardhome
 
       - name: save
-        run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:latest
+        run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:$TAG
 
       - name: upload
         uses: actions/upload-artifact@v4
@@ -51,7 +54,7 @@ jobs:
           retention-days: 1
 
   publish:
-    if: github.ref_name == 'master'
+    # if: github.ref_name == 'master'
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -71,7 +74,7 @@ jobs:
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: push
-        run: podman push ghcr.io/ngarside/adguardhome:latest
+        run: podman push ghcr.io/ngarside/adguardhome
 
       - name: purge
         uses: actions/delete-package-versions@v5
