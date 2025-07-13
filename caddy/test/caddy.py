@@ -4,6 +4,9 @@
 
 import os, pytest, random, requests, string, subprocess, time
 
+session = requests.Session()
+session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
+
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	global port
@@ -19,5 +22,5 @@ def fixture():
 	subprocess.run(['docker', 'rm', '--force', name])
 
 def test_respond():
-	res = requests.get(f'http://localhost:{port}')
+	res = session.get(f'http://localhost:{port}')
 	assert res.status_code == 200
