@@ -1,0 +1,33 @@
+# This is free and unencumbered software released into the public domain.
+
+name: scripts
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/scripts.yml
+      - scripts/**
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/scripts.yml
+      - scripts/**
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: pipenv
+        run: pip install pipenv && pipenv install
+
+      - name: test
+        run: pipenv run pytest
+        working-directory: scripts
