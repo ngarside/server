@@ -32,7 +32,10 @@ if __name__ == "__main__":
 	print(sanitize(sys.argv[1]))
 	sys.exit(0)
 
-import pytest
+try:
+	import pytest
+except ModuleNotFoundError:
+	exit(0)
 
 @pytest.mark.parametrize("input, expected", [
 	('master', 'master'), # Normal branch name.
