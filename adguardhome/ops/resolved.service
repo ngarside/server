@@ -1,0 +1,12 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=adguardhome-filesystem.target
+
+[Service]
+Type=oneshot
+ExecStart=systemctl disable systemd-resolved
+ExecStart=systemctl stop systemd-resolved
+
+[Install]
+WantedBy=default.target
