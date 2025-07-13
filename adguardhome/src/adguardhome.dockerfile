@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/adguard/adguardhome:latest@sha256:f793df60142d249f2b869e95da4516acb96104aaa799bc3efb090622964242bd AS build
+FROM docker.io/adguard/adguardhome:latest@sha256:320ab49bd5f55091c7da7d1232ed3875f687769d6bb5e55eb891471528e2e18f AS build
 
 RUN chmod ugo=rx /opt/adguardhome/AdGuardHome
 

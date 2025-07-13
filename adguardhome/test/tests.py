@@ -7,6 +7,9 @@ etc = tempfile.TemporaryDirectory()
 opt = tempfile.TemporaryDirectory()
 name, port_admin, port_dns = random.sample(range(1000, 64000), 3)
 
+session = requests.Session()
+session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
+
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	open(os.path.join(etc.name, 'config.yml'), 'w').close()
@@ -21,7 +24,7 @@ def fixture():
 	subprocess.run(['docker', 'rm', '--force', f'{name}'])
 
 def test_admin_home():
-	response = requests.get(f'http://localhost:{port_admin}', timeout=10)
+	response = session.get(f'http://localhost:{port_admin}', timeout=10)
 	assert response.status_code == 200
 
 def test_dns_tcp():
