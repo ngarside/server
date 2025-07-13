@@ -17,6 +17,7 @@ rpm-ostree override remove \
 	afterburn-dracut \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
+	cifs-utils \
 	coreos-installer \
 	coreos-installer-bootinfra \
 	docker-cli \
@@ -44,7 +45,6 @@ rpm-ostree override remove \
 	# sssd-ipa \
 	# sssd-common-pac \
 	# sssd-ad \
-	# cifs-utils \
 	# libsmbclient \
 	# libwbclient \
 
