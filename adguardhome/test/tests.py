@@ -14,14 +14,14 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 def fixture():
 	open(os.path.join(etc.name, 'config.yml'), 'w').close()
 	subprocess.run([
-		'docker', 'run', '--detach', '--name', f'{name}', '--publish',
+		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port_admin}:80', '--publish', f'{port_dns}:53', '--publish',
 		f'{port_dns}:53/udp', '--read-only', '--volume',
 		f'{etc.name}:/etc/adguardhome', '--volume',
 		f'{opt.name}:/opt/adguardhome', 'ghcr.io/ngarside/adguardhome',
 	])
 	yield
-	subprocess.run(['docker', 'rm', '--force', f'{name}'])
+	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
 def test_admin_home():
 	response = session.get(f'http://localhost:{port_admin}', timeout=10)
