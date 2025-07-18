@@ -13,12 +13,13 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	open(os.path.join(etc.name, 'config.yml'), 'w').close()
+	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port_admin}:80', '--publish', f'{port_dns}:53', '--publish',
 		f'{port_dns}:53/udp', '--pull', 'never', '--read-only', '--volume',
 		f'{etc.name}:/etc/adguardhome', '--volume',
-		f'{opt.name}:/opt/adguardhome', 'ghcr.io/ngarside/adguardhome',
+		f'{opt.name}:/opt/adguardhome', f'ghcr.io/ngarside/adguardhome:{tag}',
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
