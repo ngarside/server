@@ -10,10 +10,10 @@
 
 import importlib.util, os, sys
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	# Assert CLI argument usage.
 	if len(sys.argv) != 1:
-		print("Usage: python tag-branch.py")
+		print('Usage: python tag-branch.py')
 		sys.exit(2)
 
 	# Find the sanitizer module.
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 		pass
 
 	# Find and transform the branch name.
-	refHead = os.getenv("GITHUB_HEAD_REF")
-	refName = os.getenv("GITHUB_REF_NAME")
+	refHead = os.getenv('GITHUB_HEAD_REF')
+	refName = os.getenv('GITHUB_REF_NAME')
 	tag = module.sanitize(refHead or refName)
 	print('latest' if tag == 'master' else tag)

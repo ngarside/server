@@ -25,9 +25,9 @@ def sanitize(tag):
 	# Ensure the result is not empty.
 	return tag if tag else '_'
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print("Usage: python tag-sanitize.py <tag>")
+		print('Usage: python tag-sanitize.py <tag>')
 		sys.exit(2)
 	print(sanitize(sys.argv[1]))
 	sys.exit(0)
@@ -37,7 +37,7 @@ try:
 except ModuleNotFoundError:
 	exit(0)
 
-@pytest.mark.parametrize("input, expected", [
+@pytest.mark.parametrize('input, expected', [
 	('master', 'master'), # Normal branch name.
 	('feature/new-branch:dev', 'feature_new-branch_dev'), # Special characters.
 	('  my-branch   ', 'my-branch'), # Leading/trailing whitespace.
