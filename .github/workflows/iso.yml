@@ -7,12 +7,14 @@ on:
     paths:
       - .github/workflows/iso.yml
       - iso/**
+      - scripts/**
   push:
     branches:
       - master
     paths:
       - .github/workflows/iso.yml
       - iso/**
+      - scripts/**
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:

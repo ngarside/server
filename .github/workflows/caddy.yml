@@ -7,12 +7,14 @@ on:
     paths:
       - .github/workflows/caddy.yml
       - caddy/**
+      - scripts/**
   push:
     branches:
       - master
     paths:
       - .github/workflows/caddy.yml
       - caddy/**
+      - scripts/**
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
