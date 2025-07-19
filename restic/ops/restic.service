@@ -4,7 +4,7 @@
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bash /root/restic/backup.sh
+ExecStart=/usr/bin/bash /etc/restic/restic.sh
 
 [Install]
 WantedBy=default.target
