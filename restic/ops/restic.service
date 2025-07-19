@@ -1,0 +1,8 @@
+# This is free and unencumbered software released into the public domain.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /root/restic/backup.sh
+
+[Install]
+WantedBy=default.target
