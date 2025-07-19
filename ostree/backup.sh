@@ -12,7 +12,7 @@ btrfs subvolume delete /var/data/@backup || true
 btrfs subvolume snapshot -r /var/data /var/data/@backup
 
 # Backup using restic
-restic --insecure-no-password --repo /tmp/restic-repo backup /var/data/@backup
+restic backup /var/data/@backup
 
 # Delete snapshot once backup has completed
 btrfs subvolume delete /var/data/@backup
