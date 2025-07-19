@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Load environment variables
+source backup.env
+
 # Delete dangling snapshot if it wasn't cleaned up correctly
 btrfs subvolume delete /var/data/@backup || true
 
