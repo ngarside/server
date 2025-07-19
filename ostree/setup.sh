@@ -11,7 +11,7 @@ systemctl enable caddy
 
 echo server > /usr/etc/hostname
 
-rpm-ostree install hyperv-daemons
+rpm-ostree install hyperv-daemons restic
 
 rpm-ostree override remove \
 	afterburn-dracut \
