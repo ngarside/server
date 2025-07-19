@@ -8,6 +8,9 @@ systemctl enable adguardhome-pull
 systemctl enable adguardhome-resolved
 systemctl enable adguardhome-run
 systemctl enable caddy
+systemctl enable restic.timer
+
+chmod ug=r,o= /usr/etc/restic/restic.{env,sh}
 
 echo server > /usr/etc/hostname
 

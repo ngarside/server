@@ -1,0 +1,11 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Timer]
+OnCalendar=02:00
+Persistent=true
+Unit=restic.service
+
+[Install]
+WantedBy=timers.target
