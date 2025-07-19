@@ -24,7 +24,7 @@ COPY ./ostree/subuid.txt /usr/etc/subuid
 
 COPY ./restic/src/restic.env /usr/etc/restic/restic.env
 COPY ./restic/src/restic.sh /usr/etc/restic/restic.sh
-COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
+COPY ./restic/ops/restic.service /usr/lib/systemd/system/restic.service
 COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
 RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
