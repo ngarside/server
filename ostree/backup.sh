@@ -11,9 +11,6 @@ btrfs subvolume delete /var/data/@backup || true
 # Create a new snapshot
 btrfs subvolume snapshot -r /var/data /var/data/@backup
 
-# Initialize restic repository if it doesn't already exist
-restic --insecure-no-password --repo /tmp/restic-repo init || true
-
 # Backup using restic
 restic --insecure-no-password --repo /tmp/restic-repo backup /var/data/@backup
 
