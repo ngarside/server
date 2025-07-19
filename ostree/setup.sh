@@ -10,6 +10,8 @@ systemctl enable adguardhome-run
 systemctl enable caddy
 systemctl enable restic.timer
 
+chmod ug=r,o= /usr/etc/restic/backup.{env,sh}
+
 echo server > /usr/etc/hostname
 
 rpm-ostree install hyperv-daemons restic
