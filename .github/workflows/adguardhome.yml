@@ -30,15 +30,15 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: pipenv
+        run: pip install pipenv && pipenv install
+
       - name: tag
-        run: echo "TAG=$(python3 scripts/tag_branch.py)" >> $GITHUB_ENV
+        run: echo "TAG=$(pipenv run python3 scripts/tag_branch.py)" >> $GITHUB_ENV
 
       - name: build
         run: podman build --file src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
         working-directory: adguardhome
-
-      - name: pipenv
-        run: pip install pipenv && pipenv install
 
       - name: test
         run: pipenv run pytest

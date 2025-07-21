@@ -9,7 +9,7 @@
 
 # Run with 'python tag_sanitize.py <tag>'
 
-import re, sys
+import pytest, re, sys
 
 def sanitize(tag):
 	# Replace invalid characters with underscores.
@@ -31,11 +31,6 @@ if __name__ == '__main__':
 		sys.exit(2)
 	print(sanitize(sys.argv[1]))
 	sys.exit(0)
-
-try:
-	import pytest
-except ModuleNotFoundError:
-	exit(0)
 
 @pytest.mark.parametrize('input, expected', [
 	('master', 'master'), # Normal branch name.
