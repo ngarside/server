@@ -1,0 +1,8 @@
+{
+	"default": [{ "type": "reject" }],
+	"transports": {
+		"docker": {
+			"ghcr.io/ngarside": [{ "type": "insecureAcceptAnything" }]
+		}
+	}
+}

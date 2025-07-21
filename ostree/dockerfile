@@ -22,6 +22,8 @@ COPY ./ostree/sysctl.conf /usr/etc/sysctl.d/0-server.conf
 
 COPY ./ostree/subuid.txt /usr/etc/subuid
 
+COPY ./ostree/policy.json /usr/etc/containers/policy.json
+
 COPY ./restic/src/restic.env /usr/etc/restic/restic.env
 COPY ./restic/src/restic.sh /usr/etc/restic/restic.sh
 COPY ./restic/ops/restic.service /usr/lib/systemd/system/restic.service
