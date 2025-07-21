@@ -6,7 +6,7 @@ ConditionFirstBoot=true
 
 [Service]
 Type=oneshot
-ExecStart=rpm-ostree rebase --bypass-driver --reboot ostree-unverified-registry:ghcr.io/ngarside/server:latest
+ExecStart=bootc switch --apply ghcr.io/ngarside/server:latest
 RemainAfterExit=yes
 
 [Install]
