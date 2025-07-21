@@ -7,7 +7,7 @@
 # - Merges consecutive underscores
 # - Defaults to a single underscore if the tag contains no valid characters
 
-# Run with 'python tag-sanitize.py <tag>'
+# Run with 'python tag_sanitize.py <tag>'
 
 import re, sys
 
@@ -27,7 +27,7 @@ def sanitize(tag):
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print('Usage: python tag-sanitize.py <tag>')
+		print('Usage: python tag_sanitize.py <tag>')
 		sys.exit(2)
 	print(sanitize(sys.argv[1]))
 	sys.exit(0)

@@ -4,21 +4,21 @@
 # Converts the git branch name, as provided by the GitHub Actions runtime, to a
 # container tag using the rules:
 # - If the branch name is 'master', then the tag will be 'latest'
-# - Otherwise the tag will be the branch name, sanitized using 'tag-sanitize.py'
+# - Otherwise the tag will be the branch name, sanitized using 'tag_sanitize.py'
 
-# Run with 'python tag-branch.py'
+# Run with 'python tag_branch.py'
 
 import importlib.util, os, sys
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
 	if len(sys.argv) != 1:
-		print('Usage: python tag-branch.py')
+		print('Usage: python tag_branch.py')
 		sys.exit(2)
 
 	# Find the sanitizer module.
 	parent = os.path.dirname(os.path.realpath(__file__))
-	path = os.path.join(parent, 'tag-sanitize.py')
+	path = os.path.join(parent, 'tag_sanitize.py')
 	spec = importlib.util.spec_from_file_location('sanitize', path)
 	module = importlib.util.module_from_spec(spec)
 
