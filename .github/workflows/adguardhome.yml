@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: tag
-        run: echo "TAG=$(python3 scripts/tag-branch.py)" >> $GITHUB_ENV
+        run: echo "TAG=$(python3 scripts/tag_branch.py)" >> $GITHUB_ENV
 
       - name: build
         run: podman build --file src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
