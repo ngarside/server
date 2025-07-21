@@ -8,7 +8,7 @@
 
 # Run with 'python tag_branch.py'
 
-import os, sys, tag_branch
+import os, sys, tag_sanitize
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
@@ -19,5 +19,5 @@ if __name__ == '__main__':
 	# Find and transform the branch name.
 	refHead = os.getenv('GITHUB_HEAD_REF')
 	refName = os.getenv('GITHUB_REF_NAME')
-	tag = tag_branch.sanitize(refHead or refName)
+	tag = tag_sanitize.sanitize(refHead or refName)
 	print('latest' if tag == 'master' else tag)
