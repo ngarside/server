@@ -1,3 +1,3 @@
 # This is free and unencumbered software released into the public domain.
 
-(Get-VM -Name Server).NetworkAdapters.IPAddresses[0]
+sudo run powershell "(Get-VM -Name Server).NetworkAdapters.IPAddresses[0]"
