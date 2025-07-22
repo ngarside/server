@@ -1,5 +1,11 @@
 # This is free and unencumbered software released into the public domain.
 
 :80 {
-	reverse_proxy :10000
+	# Expose AdGuardHome under the '/adguardhome' subfolder
+	redir /adguardhome /adguardhome/
+	handle_path /adguardhome/* {
+		reverse_proxy :10000 {
+			header_down location /login.html /adguardhome/login.html
+		}
+	}
 }
