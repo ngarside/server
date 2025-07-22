@@ -1,23 +1,27 @@
 # This is free and unencumbered software released into the public domain.
 
-New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Default Switch"
+# Creates a new VM. For this to work the VM must not already exist.
 
-New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\System.vhdx" -SizeBytes 250GB
+sudo powershell @"
+	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Default Switch"
 
-New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\Data.vhdx" -SizeBytes 1TB
+	New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\System.vhdx" -SizeBytes 250GB
 
-$DiskDrive = Add-VMDvdDrive -VMName Server -PassThru
+	New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\Data.vhdx" -SizeBytes 1TB
 
-$SystemDrive = Add-VMHardDiskDrive -VMName Server -PassThru -Path "F:\Server\Virtual Hard Disks\System.vhdx"
+	$DiskDrive = Add-VMDvdDrive -VMName Server -PassThru
 
-Add-VMHardDiskDrive -VMName Server -Path "F:\Server\Virtual Hard Disks\Data.vhdx"
+	$SystemDrive = Add-VMHardDiskDrive -VMName Server -PassThru -Path "F:\Server\Virtual Hard Disks\System.vhdx"
 
-Set-VMProcessor -VMName Server -Count 32
+	Add-VMHardDiskDrive -VMName Server -Path "F:\Server\Virtual Hard Disks\Data.vhdx"
 
-Set-VMFirmware -VMName Server -SecureBootTemplate "MicrosoftUEFICertificateAuthority"
+	Set-VMProcessor -VMName Server -Count 32
 
-Set-VM -VMName Server -AutomaticStartAction Nothing
+	Set-VMFirmware -VMName Server -SecureBootTemplate "MicrosoftUEFICertificateAuthority"
 
-Set-VM -VMName Server -AutomaticStopAction TurnOff
+	Set-VM -VMName Server -AutomaticStartAction Nothing
 
-Set-VMFirmware Server -BootOrder $SystemDrive,$DiskDrive
+	Set-VM -VMName Server -AutomaticStopAction TurnOff
+
+	Set-VMFirmware Server -BootOrder $SystemDrive,$DiskDrive
+"@
