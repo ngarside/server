@@ -1,5 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
+# Creates a new VM. For this to work the VM must not already exist.
+
 sudo powershell @"
 	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Default Switch"
 
