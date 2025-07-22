@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-sudo run powershell @"
+sudo powershell @"
 	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Default Switch"
 
 	New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\System.vhdx" -SizeBytes 250GB
