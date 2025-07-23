@@ -10,6 +10,13 @@ RUN chmod +x gitea
 
 RUN echo "gitea:x:100:101::/usr/bin/data/home:/sbin/nologin" >> /tmp/passwd
 
+# Pattern is required to copy symbolic links to the new image
+# https://stackoverflow.com/a/66823636
+RUN mkdir /tmp/cp
+RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-receive-pack
+RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-archive
+RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-pack
+
 FROM scratch
 
 COPY --from=build /gitea /usr/bin/gitea
@@ -25,6 +32,8 @@ COPY --from=build /usr/lib/libz.so.1 /usr/lib/libz.so.1
 COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
 
 COPY --from=build /tmp/passwd /etc/passwd
+
+COPY --from=build /tmp/cp/ /usr/bin/
 
 USER gitea
 
