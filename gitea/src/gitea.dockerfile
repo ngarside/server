@@ -19,6 +19,8 @@ RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-pack
 
 FROM scratch
 
+COPY --from=build /usr/share/git-core/templates/ /usr/share/git-core/templates/
+
 COPY --from=build /gitea /usr/bin/gitea
 
 COPY --from=build /usr/bin/git /usr/bin/git
