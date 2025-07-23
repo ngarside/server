@@ -26,12 +26,6 @@ COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
 
 COPY --from=build /tmp/passwd /etc/passwd
 
-ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
-
-ENV APP_DATA_PATH=/opt/gitea
-
-# RUN gitea:x:100:101::/home/gitea:/sbin/nologin
-
 USER gitea
 
 EXPOSE 80
