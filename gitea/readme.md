@@ -9,12 +9,12 @@ Podman and Systemd.
 
 When configuring Gitea for the first time, the paths should be set as follows:
 
-| Setting      | Path                   |
-|--------------|------------------------|
-| Database     | /opt/gitea/db/gitea.db |
-| LFS          | /opt/gitea/lfs         |
-| Logs         | /var/log               |
-| Repositories | /opt/gitea/git         |
+| Setting      | Path                       |
+|--------------|----------------------------|
+| Database     | /usr/bin/data/db/gitea     |
+| LFS          | /usr/bin/data/lfs          |
+| Logs         | /var/log                   |
+| Repositories | /usr/bin/data/git          |
 
 # <p align=center>References
 

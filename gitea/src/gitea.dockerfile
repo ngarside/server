@@ -8,6 +8,8 @@ RUN apk add git
 RUN wget -O gitea https://dl.gitea.com/gitea/1.24.3/gitea-1.24.3-linux-amd64
 RUN chmod +x gitea
 
+RUN echo "gitea:x:100:101::/home/gitea:/sbin/nologin" >> /tmp/passwd
+
 FROM scratch
 
 COPY --from=build /gitea /usr/bin/gitea
@@ -22,10 +24,18 @@ COPY --from=build /usr/lib/libz.so.1 /usr/lib/libz.so.1
 
 COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
 
+COPY --from=build /tmp/passwd /etc/passwd
+
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
+
+ENV APP_DATA_PATH=/opt/gitea
+
+# RUN gitea:x:100:101::/home/gitea:/sbin/nologin
+
+USER gitea
 
 EXPOSE 80
 
 ENTRYPOINT ["/usr/bin/gitea"]
 
-CMD ["web", "--config", "/etc/gitea/gitea.ini", "--port", "80"]
+CMD ["web", "--config", "/usr/bin/etc/gitea.ini", "--port", "80"]
