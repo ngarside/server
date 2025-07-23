@@ -8,7 +8,7 @@ RUN apk add git
 RUN wget -O gitea https://dl.gitea.com/gitea/1.24.3/gitea-1.24.3-linux-amd64
 RUN chmod +x gitea
 
-RUN echo "gitea:x:100:101::/home/gitea:/sbin/nologin" >> /tmp/passwd
+RUN echo "gitea:x:100:101::/usr/bin/data/home:/sbin/nologin" >> /tmp/passwd
 
 FROM scratch
 
