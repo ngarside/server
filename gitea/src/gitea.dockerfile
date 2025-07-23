@@ -38,4 +38,4 @@ EXPOSE 80
 
 ENTRYPOINT ["/usr/bin/gitea"]
 
-CMD ["web", "--config", "/usr/bin/etc/gitea.ini", "--port", "80"]
+CMD ["web", "--config", "/usr/bin/data/etc/gitea.ini", "--port", "80"]

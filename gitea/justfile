@@ -8,9 +8,7 @@ build:
 
 run: stop
 	docker run --detach --name gitea --publish 8080:80 --read-only \
-		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/etc:/usr/bin/etc \
-		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/log:/var/log \
-		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/data:/usr/bin/data \
+		--volume {{ replace(justfile_directory(), '\', '/') }}/bin:/usr/bin/data \
 		ghcr.io/ngarside/gitea:latest
 
 stop:
