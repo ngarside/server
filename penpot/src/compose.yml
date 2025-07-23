@@ -44,33 +44,8 @@ networks:
 volumes:
   penpot_postgres_v15:
   penpot_assets:
-  # penpot_traefik:
-  # penpot_minio:
 
 services:
-  ## Traefik service declaration example. Consider using it if you are going to expose
-  ## penpot to the internet, or a different host than `localhost`.
-
-  # traefik:
-  #   image: traefik:v3.3
-  #   networks:
-  #     - penpot
-  #   command:
-  #     - "--api.insecure=true"
-  #     - "--entryPoints.web.address=:80"
-  #     - "--providers.docker=true"
-  #     - "--providers.docker.exposedbydefault=false"
-  #     - "--entryPoints.websecure.address=:443"
-  #     - "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
-  #     - "--certificatesresolvers.letsencrypt.acme.email=<EMAIL_ADDRESS>"
-  #     - "--certificatesresolvers.letsencrypt.acme.storage=/traefik/acme.json"
-  #   volumes:
-  #     - "penpot_traefik:/traefik"
-  #     - "/var/run/docker.sock:/var/run/docker.sock"
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-
   penpot-frontend:
     image: "penpotapp/frontend:${PENPOT_VERSION:-latest}"
     restart: always
