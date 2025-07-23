@@ -7,7 +7,7 @@ build:
 	docker build --file src/gitea.dockerfile --tag ghcr.io/ngarside/gitea:latest .
 
 run: stop
-	docker run --detach --name gitea --publish 8080:80 --read-only \
+	docker run --detach --name gitea --publish 8080:80 --read-only --rm \
 		--volume {{ replace(justfile_directory(), '\', '/') }}/bin:/usr/bin/data \
 		ghcr.io/ngarside/gitea:latest
 
