@@ -4,10 +4,16 @@ _default:
 	just --list
 
 build:
-	docker build --file dockerfile --tag ghcr.io/ngarside/gitea:latest .
+	docker build --file src/gitea.dockerfile --tag ghcr.io/ngarside/gitea:latest .
 
 run: stop
-	docker run --detach --name gitea --publish 8080:80 --read-only --rm --volume {{ replace(justfile_directory(), '\', '/') }}/bin/opt:/opt/gitea --volume {{ replace(justfile_directory(), '\', '/') }}/bin/root:/root --volume {{ replace(justfile_directory(), '\', '/') }}/bin/tmp:/tmp ghcr.io/ngarside/gitea:latest
+	docker run --detach --name gitea --publish 8080:80 --read-only --rm \
+		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/db:/opt/gitea/db \
+		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/etc:/etc/gitea \
+		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/git:/opt/gitea/git \
+		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/lfs:/opt/gitea/lfs \
+		--volume {{ replace(justfile_directory(), '\', '/') }}/bin/log:/var/log \
+		ghcr.io/ngarside/gitea:latest
 
 stop:
 	docker stop gitea || true

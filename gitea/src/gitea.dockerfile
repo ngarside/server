@@ -5,7 +5,7 @@ FROM docker.io/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9be
 RUN apk add git
 
 # gitea --version | grep -oE [0-9]+.[0-9]+.[0-9]+
-RUN wget -O gitea https://dl.gitea.com/gitea/1.22.4/gitea-1.22.4-linux-amd64
+RUN wget -O gitea https://dl.gitea.com/gitea/1.24.3/gitea-1.24.3-linux-amd64
 RUN chmod +x gitea
 
 FROM scratch
@@ -28,4 +28,4 @@ EXPOSE 80
 
 ENTRYPOINT ["/usr/bin/gitea"]
 
-CMD ["web", "--config", "/opt/gitea/app.ini", "--port", "80"]
+CMD ["web", "--config", "/etc/gitea/gitea.ini", "--port", "80"]

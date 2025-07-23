@@ -5,6 +5,17 @@
 A hardened container image and associated scripts for running Gitea via
 Podman and Systemd.
 
+# <p align=center>Initial Setup
+
+When configuring Gitea for the first time, the paths should be set as follows:
+
+| Setting      | Path                   |
+|--------------|------------------------|
+| Database     | /opt/gitea/db/gitea.db |
+| LFS          | /opt/gitea/lfs         |
+| Logs         | /var/log               |
+| Repositories | /opt/gitea/git         |
+
 # <p align=center>References
 
 - [gitea.com](https://gitea.com)
