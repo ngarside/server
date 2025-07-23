@@ -62,17 +62,6 @@ services:
     networks:
       - penpot
 
-    # labels:
-      # - "traefik.enable=true"
-
-      # ## HTTPS: example of labels for the case where penpot will be exposed to the
-      # ## internet with HTTPS using traefik.
-
-      # - "traefik.http.routers.penpot-https.rule=Host(`<DOMAIN_NAME>`)"
-      # - "traefik.http.routers.penpot-https.entrypoints=websecure"
-      # - "traefik.http.routers.penpot-https.tls.certresolver=letsencrypt"
-      # - "traefik.http.routers.penpot-https.tls=true"
-
     environment:
       << : [*penpot-flags, *penpot-http-body-size]
 
