@@ -34,7 +34,7 @@ jobs:
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: build
-        run: podman build --file dockerfile --tag ghcr.io/ngarside/gitea:latest .
+        run: podman build --file src/gitea.dockerfile --tag ghcr.io/ngarside/gitea:latest .
         working-directory: gitea
 
       - name: push

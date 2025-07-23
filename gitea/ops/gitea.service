@@ -1,0 +1,24 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=network-online.target
+
+[Service]
+User=containers
+Group=containers
+Type=simple
+ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/gitea/{db,etc,git,lfs}'
+ExecStart=podman run \
+	--name gitea \
+	--network host \
+	--publish 80:80/tcp \
+	--read-only \
+	--replace \
+	--userns=auto:size=8 \
+	--volume /var/data/gitea:/usr/bin/data:U,Z \
+	ghcr.io/ngarside/gitea:latest
+ExecStop=podman stop --ignore gitea
+Restart=always
+
+[Install]
+WantedBy=default.target
