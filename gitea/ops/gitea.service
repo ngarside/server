@@ -15,11 +15,7 @@ ExecStart=podman run \
 	--read-only \
 	--replace \
 	--userns=auto:size=8 \
-	--volume /var/data/gitea/db:/opt/gitea/db:U,Z \
-	--volume /var/data/gitea/etc:/etc/gitea:U,Z \
-	--volume /var/data/gitea/git:/opt/gitea/git:U,Z \
-	--volume /var/data/gitea/lfs:/opt/gitea/lfs:U,Z \
-	--volume /var/data/gitea/log:/var/log:U,Z \
+	--volume /var/data/gitea:/usr/bin/data:U,Z \
 	ghcr.io/ngarside/gitea:latest
 ExecStop=podman stop --ignore gitea
 Restart=always
