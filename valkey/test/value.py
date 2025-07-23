@@ -10,15 +10,15 @@ def fixture():
 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1000, 64000)
 	subprocess.run([
-		'docker', 'run', '--detach', '--name', name, '--publish',
+		'podman', 'run', '--detach', '--name', name, '--publish',
 		f'{port}:6379', '--pull', 'never', 'ghcr.io/ngarside/valkey',
 	])
-	time.sleep(3)
+	time.sleep(0.1)
 	yield
-	# subprocess.run(['docker', 'rm', '--force', name])
+	subprocess.run(['podman', 'rm', '--force', name])
 
-def test_respond():
-	r = valkey.Valkey(host='localhost', port=port, db=0)
-	r.set('foo', 'bar')
-	b = r.get('foo')
-	assert b == b'bar'
+def test_bytes():
+	session = valkey.Valkey(port=port)
+	session.set('foo', 'bar')
+	actual = session.get('foo')
+	assert actual == b'bar'
