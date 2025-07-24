@@ -8,7 +8,7 @@ FROM docker.io/node:alpine@sha256:820e86612c21d0636580206d802a726f2595366e1b867e
 
 RUN apk add git
 
-RUN git clone --depth 1 https://github.com/stan-smith/FossFLOW fossflow
+RUN git clone --depth 1 https://github.com/stan-smith/fossflow fossflow
 
 WORKDIR /fossflow
 
