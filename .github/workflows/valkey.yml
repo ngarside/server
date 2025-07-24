@@ -31,11 +31,8 @@ jobs:
       - name: pipenv
         run: pip install pipenv && pipenv install
 
-      - name: tag
-        run: echo "TAG=$(pipenv run python3 scripts/tag_branch.py)" >> $GITHUB_ENV
-
       - name: build
-        run: podman build --file src/valkey.dockerfile --tag ghcr.io/ngarside/valkey:$TAG .
+        run: podman build --file src/valkey.dockerfile --tag ghcr.io/ngarside/valkey:latest .
         working-directory: valkey
 
       - name: test
@@ -43,7 +40,7 @@ jobs:
         working-directory: valkey
 
       - name: save
-        run: podman save --output valkey.tar ghcr.io/ngarside/valkey:$TAG
+        run: podman save --output valkey.tar ghcr.io/ngarside/valkey:latest
 
       - name: upload
         uses: actions/upload-artifact@v4

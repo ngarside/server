@@ -31,11 +31,8 @@ jobs:
       - name: pipenv
         run: pip install pipenv && pipenv install
 
-      - name: tag
-        run: echo "TAG=$(pipenv run python3 scripts/tag_branch.py)" >> $GITHUB_ENV
-
       - name: build
-        run: podman build --file src/postgres.dockerfile --tag ghcr.io/ngarside/postgres:$TAG .
+        run: podman build --file src/postgres.dockerfile --tag ghcr.io/ngarside/postgres:latest .
         working-directory: postgres
 
       - name: test
@@ -43,7 +40,7 @@ jobs:
         working-directory: postgres
 
       - name: save
-        run: podman save --output postgres.tar ghcr.io/ngarside/postgres:$TAG
+        run: podman save --output postgres.tar ghcr.io/ngarside/postgres:latest
 
       - name: upload
         uses: actions/upload-artifact@v4
