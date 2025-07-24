@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=caddy
+Image=ghcr.io/ngarside/caddy:latest
+Network=host
+PublishPort=80:80/tcp
+ReadOnly=true
+UserNS=auto:size=8
+Volume=/etc/caddy:/etc/caddy:ro
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
