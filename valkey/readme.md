@@ -2,7 +2,7 @@
 
 # <p align=center>Valkey
 
-A mirror of the official Valkey container image.
+A hardened Valkey container image.
 
 # <p align=center>References
 
