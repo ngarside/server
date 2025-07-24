@@ -1,0 +1,18 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=fossflow
+Image=ghcr.io/ngarside/fossflow:latest
+Network=host
+PublishPort=11000:80/tcp
+ReadOnly=true
+UserNS=auto:size=8
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
