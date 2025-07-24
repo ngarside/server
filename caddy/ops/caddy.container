@@ -9,7 +9,7 @@ Image=ghcr.io/ngarside/caddy:latest
 Network=host
 PublishPort=80:80/tcp
 ReadOnly=true
-UserNS=auto:size=8 \
+UserNS=auto:size=8
 Volume /etc/caddy:/etc/caddy:ro
 
 [Service]
