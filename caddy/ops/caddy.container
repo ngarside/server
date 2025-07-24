@@ -13,7 +13,6 @@ UserNS=auto:size=8
 Volume /etc/caddy:/etc/caddy:ro
 
 [Service]
-ExecStartPre=mkdir --parents /var/data/caddy/etc
 Restart=always
 
 [Install]
