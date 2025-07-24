@@ -13,8 +13,6 @@ UserNS=auto:size=8
 Volume /etc/caddy:/etc/caddy:ro
 
 [Service]
-User=containers
-Group=containers
 ExecStartPre=mkdir --parents /var/data/caddy/etc
 Restart=always
 
