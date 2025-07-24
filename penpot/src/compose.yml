@@ -175,7 +175,7 @@ services:
       - POSTGRES_PASSWORD=penpot
 
   penpot-valkey:
-    image: valkey/valkey:8.1
+    image: ghcr.io/ngarside/valkey:latest
     restart: always
 
     healthcheck:
