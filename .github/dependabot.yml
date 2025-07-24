@@ -8,5 +8,8 @@ updates:
       - caddy/**
       - gitea/**
       - ostree/**
+      - postgres/**
+      - penpot/**
+      - valkey/**
     schedule:
       interval: daily
