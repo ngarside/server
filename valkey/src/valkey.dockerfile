@@ -16,6 +16,8 @@ RUN git checkout $(git tag | tail -1)
 
 RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no BUILD_TLS=no
 
+RUN chmod ugo=rx /valkey/src/valkey-server
+
 FROM scratch
 
 COPY --from=build /valkey/src/valkey-server /usr/bin/valkey-server
