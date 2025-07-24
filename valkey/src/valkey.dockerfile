@@ -16,7 +16,6 @@ RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no B
 
 FROM scratch
 
-COPY --from=build /valkey/src/valkey-cli /usr/bin/valkey-cli
 COPY --from=build /valkey/src/valkey-server /usr/bin/valkey-server
 
 EXPOSE 6379
