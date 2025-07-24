@@ -14,8 +14,6 @@ WORKDIR /valkey
 
 RUN git checkout $(git tag | tail -1)
 
-RUN sed -i "s|\(protected_mode.*\)1|\10|g" /valkey/src/config.c
-
 RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no BUILD_TLS=no
 
 FROM scratch
@@ -25,3 +23,5 @@ COPY --from=build /valkey/src/valkey-server /usr/bin/valkey-server
 EXPOSE 6379
 
 ENTRYPOINT ["/usr/bin/valkey-server"]
+
+CMD ["--protected-mode", "no"]
