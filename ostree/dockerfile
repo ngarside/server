@@ -12,7 +12,6 @@ COPY ./adguardhome/ops/resolved.service /usr/lib/systemd/system/adguardhome-reso
 COPY ./adguardhome/ops/run.service /usr/lib/systemd/system/adguardhome-run.service
 
 COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
-COPY ./caddy/ops/caddy.service /usr/lib/systemd/system/caddy.service
 
 COPY ./ostree/setup.sh /tmp/setup
 
