@@ -73,10 +73,8 @@ services:
       - penpot_assets:/opt/data/assets
 
     depends_on:
-      penpot-postgres:
-        condition: service_healthy
-      penpot-valkey:
-        condition: service_healthy
+      - penpot-postgres
+      - penpot-valkey
 
     networks:
       - penpot
@@ -123,8 +121,7 @@ services:
     restart: always
 
     depends_on:
-      penpot-valkey:
-        condition: service_healthy
+      - penpot-valkey
 
     networks:
       - penpot
@@ -142,13 +139,6 @@ services:
     restart: always
     stop_signal: SIGINT
 
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U penpot"]
-      interval: 2s
-      timeout: 10s
-      retries: 5
-      start_period: 2s
-
     volumes:
       - penpot_postgres_v15:/var/lib/postgresql/data
 
@@ -164,13 +154,6 @@ services:
   penpot-valkey:
     image: ghcr.io/ngarside/valkey:latest
     restart: always
-
-    healthcheck:
-      test: ["CMD-SHELL", "valkey-cli ping | grep PONG"]
-      interval: 1s
-      timeout: 3s
-      retries: 5
-      start_period: 3s
 
     networks:
       - penpot
