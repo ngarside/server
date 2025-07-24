@@ -1,7 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
-After=network-online.target
 
 [Container]
 ContainerName=caddy
@@ -17,4 +16,4 @@ Restart=always
 TimeoutStartSec=300
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
