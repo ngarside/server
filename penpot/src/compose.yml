@@ -151,7 +151,7 @@ services:
       PENPOT_REDIS_URI: redis://penpot-valkey/0
 
   penpot-postgres:
-    image: "postgres:15"
+    image: ghcr.io/ngarside/postgres:latest
     restart: always
     stop_signal: SIGINT
 
