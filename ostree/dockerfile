@@ -29,5 +29,6 @@ COPY ./restic/ops/restic.service /usr/lib/systemd/system/restic.service
 COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
 COPY ./caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
+COPY ./caddy/ops/internal.network /usr/etc/containers/systemd/users/1001/internal.network
 
 RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
