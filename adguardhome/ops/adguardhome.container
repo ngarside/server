@@ -18,8 +18,6 @@ Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
 Restart=always
 TimeoutStartSec=300
 ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
-ExecStartPre=/bin/bash -c 'chown containers:containers /var/data/adguardhome'
-ExecStartPre=/bin/bash -c 'chown containers:containers /var/data /var/data/adguardhome/{etc,opt}'
 
 [Install]
 WantedBy=default.target
