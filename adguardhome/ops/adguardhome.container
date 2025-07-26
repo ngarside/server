@@ -1,10 +1,22 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
-After=adguardhome-pull.target
+
+[Container]
+ContainerName=caddy
+Image=ghcr.io/ngarside/adguardhome:latest
+Network=internal.network
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
+PublishPort=10000:80/tcp
+ReadOnly=true
+UserNS=auto:size=8
+Volume=/var/data/adguardhome/etc:/etc/adguardhome:U,Z
+Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
 
 [Service]
-Type=oneshot
+Restart=always
+TimeoutStartSec=300
 ExecStart=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
 ExecStart=/bin/bash -c 'chown containers:containers /var/data/adguardhome'
 ExecStart=/bin/bash -c 'chown containers:containers /var/data /var/data/adguardhome/{etc,opt}'

@@ -6,10 +6,8 @@ COPY ./sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.con
 COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
 COPY ./sshd/authorizedkeys.txt /usr/etc/ssh/authorized_keys/core
 
+COPY ./adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/users/1001/adguardhome.container
 COPY ./adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
-COPY ./adguardhome/ops/filesystem.service /usr/lib/systemd/system/adguardhome-filesystem.service
-COPY ./adguardhome/ops/pull.service /usr/lib/systemd/system/adguardhome-pull.service
-COPY ./adguardhome/ops/run.service /usr/lib/systemd/system/adguardhome-run.service
 
 COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
 
