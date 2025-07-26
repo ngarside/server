@@ -6,10 +6,8 @@ COPY ./sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.con
 COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
 COPY ./sshd/authorizedkeys.txt /usr/etc/ssh/authorized_keys/core
 
-COPY ./adguardhome/ops/filesystem.service /usr/lib/systemd/system/adguardhome-filesystem.service
-COPY ./adguardhome/ops/pull.service /usr/lib/systemd/system/adguardhome-pull.service
-COPY ./adguardhome/ops/resolved.service /usr/lib/systemd/system/adguardhome-resolved.service
-COPY ./adguardhome/ops/run.service /usr/lib/systemd/system/adguardhome-run.service
+COPY ./adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/users/1001/adguardhome.container
+COPY ./adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
 
 COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
 
@@ -29,5 +27,6 @@ COPY ./restic/ops/restic.service /usr/lib/systemd/system/restic.service
 COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
 COPY ./caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
+COPY ./caddy/ops/internal.network /usr/etc/containers/systemd/users/1001/internal.network
 
 RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
