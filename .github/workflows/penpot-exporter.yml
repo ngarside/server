@@ -1,0 +1,76 @@
+# This is free and unencumbered software released into the public domain.
+
+name: penpot-exporter
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/penpot-exporter.yml
+      - penpot/**
+      - scripts/**
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/penpot-exporter.yml
+      - penpot/**
+      - scripts/**
+  schedule:
+    - cron: 0 0 * * 1
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: build
+        run: podman build --file src/exporter.dockerfile --tag ghcr.io/ngarside/penpot-exporter:latest .
+        working-directory: penpot
+
+      - name: save
+        run: podman save --output penpot-exporter.tar ghcr.io/ngarside/penpot-exporter:latest
+
+      - name: upload
+        uses: actions/upload-artifact@v4
+        with:
+          compression-level: 9
+          name: penpot-exporter
+          path: penpot-exporter.tar
+          retention-days: 1
+
+  publish:
+    if: github.ref_name == 'master'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: download
+        uses: actions/download-artifact@v4
+        with:
+          name: penpot-exporter
+
+      - name: load
+        run: podman load --input penpot-exporter.tar
+
+      - name: login
+        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
+
+      - name: push
+        run: podman push ghcr.io/ngarside/penpot-exporter:latest
+
+      - name: purge
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: penpot-exporter
+          package-type: container
+          delete-only-untagged-versions: true

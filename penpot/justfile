@@ -1,0 +1,10 @@
+# This is free and unencumbered software released into the public domain.
+
+_default:
+	just --list
+
+down:
+	docker compose --project-name penpot down
+
+up:
+	docker compose --project-name penpot --file src/compose.yml up --detach
