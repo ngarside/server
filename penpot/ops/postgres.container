@@ -1,0 +1,25 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=penpot_postgres
+Environment=POSTGRES_DB=penpot
+Environment=POSTGRES_INITDB_ARGS=--data-checksums
+Environment=POSTGRES_PASSWORD=penpot
+Environment=POSTGRES_USER=penpot
+Image=ghcr.io/ngarside/postgres:latest
+IP=10.10.0.6
+Network=internal
+ReadOnly=true
+StopSignal=SIGINT
+UserNS=auto:size=256
+Volume=/var/data/penpot/postgres:/var/lib/postgresql/data:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/penpot/postgres'
+
+[Install]
+WantedBy=default.target
