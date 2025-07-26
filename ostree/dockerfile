@@ -29,4 +29,6 @@ COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 COPY ./caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 COPY ./caddy/ops/internal.network /usr/etc/containers/systemd/users/1001/internal.network
 
+COPY ./penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/penpot_valkey.container
+
 RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
