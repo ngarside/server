@@ -1,9 +1,15 @@
 # This is free and unencumbered software released into the public domain.
 
+# Runs 'restic.service' at boot and again every hour thereafter. Initial run is delayed
+# by 5 minutes as systemd may not correctly execute timers with 'OnBootSec=0s'.
+# - https://forums.fedoraforum.org/showthread.php?331787
+# - https://github.com/systemd/systemd/issues/37390
+
 [Unit]
 
 [Timer]
-OnCalendar=02:00
+OnBootSec=5m
+OnUnitActiveSec=1h
 Persistent=true
 Unit=restic.service
 
