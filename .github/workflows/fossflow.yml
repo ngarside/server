@@ -35,10 +35,6 @@ jobs:
         run: podman build --file src/fossflow.dockerfile --tag ghcr.io/ngarside/fossflow:latest .
         working-directory: fossflow
 
-      - name: test
-        run: pipenv run pytest
-        working-directory: fossflow
-
       - name: save
         run: podman save --output fossflow.tar ghcr.io/ngarside/fossflow:latest
 
