@@ -5,7 +5,7 @@
 [Container]
 ContainerName=caddy
 Image=ghcr.io/ngarside/caddy:latest
-IP=10.10.0.1
+IP=10.10.0.2
 Network=internal.network
 PublishPort=80:80/tcp
 ReadOnly=true
