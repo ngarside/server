@@ -13,7 +13,7 @@ IP=10.10.0.6
 Network=internal
 ReadOnly=true
 StopSignal=SIGINT
-UserNS=auto:size=8
+UserNS=auto:size=256
 Volume=/var/data/penpot/postgres:/var/lib/postgresql/data:U,Z
 
 [Service]
