@@ -1,6 +1,6 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-# <p align=center>Fossflow
+# <p align=center>FossFLOW
 
 A container image and associated scripts for running FossFLOW via
 Podman and Systemd.
