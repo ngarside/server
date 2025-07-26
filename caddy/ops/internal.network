@@ -2,3 +2,4 @@
 
 [Network]
 NetworkName=internal
+Subnet=10.10.0.0/24
