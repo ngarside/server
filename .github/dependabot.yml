@@ -6,6 +6,7 @@ updates:
     directories:
       - adguardhome/**
       - caddy/**
+      - fossflow/**
       - gitea/**
       - ostree/**
       - postgres/**
