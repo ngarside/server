@@ -5,6 +5,7 @@
 [Container]
 ContainerName=adguardhome
 Image=ghcr.io/ngarside/adguardhome:latest
+IP=10.10.0.1
 Network=internal.network
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
