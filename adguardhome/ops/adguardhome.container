@@ -3,7 +3,7 @@
 [Unit]
 
 [Container]
-ContainerName=caddy
+ContainerName=adguardhome
 Image=ghcr.io/ngarside/adguardhome:latest
 Network=internal.network
 PublishPort=53:53/tcp
