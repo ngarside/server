@@ -10,6 +10,7 @@ COPY ./adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/users/1
 COPY ./adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
 
 COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
+COPY ./caddy/ops/index.htm /etc/caddy/index.htm
 
 COPY ./ostree/setup.sh /tmp/setup
 

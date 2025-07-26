@@ -4,4 +4,4 @@
 
 $IP = sudo powershell "(Get-VM -Name Server).NetworkAdapters.IPAddresses[0]"
 
-Start-Process "http://$IP/adguardhome"
+Start-Process "http://$IP"

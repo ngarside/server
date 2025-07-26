@@ -1,6 +1,12 @@
 # This is free and unencumbered software released into the public domain.
 
 :80 {
+	# Expose the home page under the root folder
+	file_server / {
+		index index.htm
+		root /etc/caddy
+	}
+
 	# Expose AdGuardHome under the '/adguardhome' subfolder
 	redir /adguardhome /adguardhome/
 	handle_path /adguardhome/* {
