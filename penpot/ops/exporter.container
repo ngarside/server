@@ -11,7 +11,6 @@ Environment=PENPOT_REDIS_URI=redis://10.10.0.5/0
 Image=ghcr.io/ngarside/penpot-exporter:latest
 IP=10.10.0.7
 Network=internal
-ReadOnly=true
 
 [Service]
 Restart=always

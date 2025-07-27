@@ -20,7 +20,6 @@ Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
 Image=ghcr.io/ngarside/penpot-backend:latest
 IP=10.10.0.8
 Network=internal
-ReadOnly=true
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]

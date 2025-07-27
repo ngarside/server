@@ -14,7 +14,6 @@ Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
 Image=ghcr.io/ngarside/penpot-frontend:latest
 IP=10.10.0.9
 Network=internal
-ReadOnly=true
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
