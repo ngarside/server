@@ -3,7 +3,7 @@
 [Unit]
 
 [Container]
-ContainerName=penpot_exporter
+ContainerName=penpot_backend
 Image=ghcr.io/ngarside/penpot-backend:latest
 IP=10.10.0.8
 Network=internal
