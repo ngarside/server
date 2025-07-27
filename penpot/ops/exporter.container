@@ -10,7 +10,6 @@ Image=ghcr.io/ngarside/penpot-exporter:latest
 IP=10.10.0.7
 Network=internal
 ReadOnly=true
-UserNS=auto:size=256
 
 [Service]
 Restart=always

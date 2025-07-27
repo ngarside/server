@@ -11,7 +11,6 @@ Image=ghcr.io/ngarside/penpot-frontend:latest
 IP=10.10.0.9
 Network=internal
 ReadOnly=true
-UserNS=auto:size=256
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
