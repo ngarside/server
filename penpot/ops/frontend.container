@@ -1,0 +1,27 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=penpot_backend.container
+After=penpot_exporter.container
+Requires=penpot_backend.container
+Requires=penpot_exporter.container
+
+[Container]
+ContainerName=penpot_frontend
+Environment=PENPOT_BACKEND_URI=http://10.10.0.8:6060
+Environment=PENPOT_EXPORTER_URI=http://10.10.0.7:6061
+Environment="PENPOT_FLAGS=disable-email-verification disable-secure-session-cookies enable-air-gapped-conf"
+Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
+Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
+Image=ghcr.io/ngarside/penpot-frontend:latest
+IP=10.10.0.9
+Network=internal
+Volume=/var/data/penpot/assets:/opt/data/assets:z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/penpot/assets'
+
+[Install]
+WantedBy=default.target

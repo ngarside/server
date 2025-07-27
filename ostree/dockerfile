@@ -30,6 +30,9 @@ COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 COPY ./caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 COPY ./caddy/ops/internal.network /usr/etc/containers/systemd/users/1001/internal.network
 
+COPY ./penpot/ops/backend.container /usr/etc/containers/systemd/users/1001/penpot_backend.container
+COPY ./penpot/ops/exporter.container /usr/etc/containers/systemd/users/1001/penpot_exporter.container
+COPY ./penpot/ops/frontend.container /usr/etc/containers/systemd/users/1001/penpot_frontend.container
 COPY ./penpot/ops/postgres.container /usr/etc/containers/systemd/users/1001/penpot_postgres.container
 COPY ./penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/penpot_valkey.container
 

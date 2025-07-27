@@ -1,0 +1,20 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=penpot_valkey.container
+Requires=penpot_valkey.container
+
+[Container]
+ContainerName=penpot_exporter
+Environment=PENPOT_PUBLIC_URI=http://10.10.0.9:8080
+Environment=PENPOT_REDIS_URI=redis://10.10.0.5/0
+Image=ghcr.io/ngarside/penpot-exporter:latest
+IP=10.10.0.7
+Network=internal
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
