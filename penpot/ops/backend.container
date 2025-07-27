@@ -1,6 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
+After=penpot_postgres.container
+After=penpot_valkey.container
+Requires=penpot_postgres.container
+Requires=penpot_valkey.container
 
 [Container]
 ContainerName=penpot_backend

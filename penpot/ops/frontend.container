@@ -1,6 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
+After=penpot_backend.container
+After=penpot_exporter.container
+Requires=penpot_backend.container
+Requires=penpot_exporter.container
 
 [Container]
 ContainerName=penpot_frontend
