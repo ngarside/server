@@ -59,14 +59,6 @@ services:
       PENPOT_ASSETS_STORAGE_BACKEND: assets-fs
       PENPOT_STORAGE_ASSETS_FS_DIRECTORY: /opt/data/assets
 
-      ## Telemetry. When enabled, a periodical process will send anonymous data about this
-      ## instance. Telemetry data will enable us to learn how the application is used,
-      ## based on real scenarios. If you want to help us, please leave it enabled. You can
-      ## audit what data we send with the code available on github.
-
-      PENPOT_TELEMETRY_ENABLED: true
-      PENPOT_TELEMETRY_REFERER: compose
-
   penpot-exporter:
     image: ghcr.io/ngarside/penpot-exporter:latest
     restart: always
