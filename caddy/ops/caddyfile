@@ -14,4 +14,10 @@
 			header_down location /login.html /adguardhome/login.html
 		}
 	}
+
+	# Expose Penpot under the '/penpot' subfolder
+	redir /penpot /penpot/
+	handle_path /penpot/* {
+		reverse_proxy 10.10.0.9
+	}
 }
