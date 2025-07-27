@@ -3,7 +3,9 @@
 # Creates a new VM. For this to work the VM must not already exist.
 
 sudo powershell @"
-	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Default Switch"
+	New-VMSwitch -Name "Server Switch" -NetAdapterName Ethernet
+
+	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Server Switch"
 
 	New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\System.vhdx" -SizeBytes 250GB
 
