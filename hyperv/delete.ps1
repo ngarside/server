@@ -5,5 +5,7 @@
 sudo powershell @"
 	Remove-VM -Name Server -Force
 
+	Remove-VMSwitch "Server Switch"
+
 	Remove-Item -Force -Path F:\Server -Recurse
 "@
