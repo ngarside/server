@@ -48,7 +48,7 @@ volumes:
 
 services:
   penpot-frontend:
-    image: "penpotapp/frontend:${PENPOT_VERSION:-latest}"
+    image: ghcr.io/ngarside/penpot-frontend:latest
     restart: always
     ports:
       - 9001:8080
@@ -67,7 +67,7 @@ services:
       << : [*penpot-flags, *penpot-http-body-size]
 
   penpot-backend:
-    image: "penpotapp/backend:${PENPOT_VERSION:-latest}"
+    image: ghcr.io/ngarside/penpot-backend:latest
     restart: always
 
     volumes:
@@ -118,7 +118,7 @@ services:
       PENPOT_TELEMETRY_REFERER: compose
 
   penpot-exporter:
-    image: "penpotapp/exporter:${PENPOT_VERSION:-latest}"
+    image: ghcr.io/ngarside/penpot-exporter:latest
     restart: always
 
     depends_on:
