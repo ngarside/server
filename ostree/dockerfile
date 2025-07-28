@@ -19,6 +19,7 @@ COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
 COPY ./sshd/authorizedkeys.txt /usr/etc/ssh/authorized_keys/core
 
 COPY ./adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/users/1001/adguardhome.container
+COPY ./adguardhome/ops/adguardhome.network /usr/etc/containers/systemd/users/1001/adguardhome.network
 COPY ./adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
 
 COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
