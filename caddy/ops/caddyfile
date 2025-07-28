@@ -8,7 +8,7 @@ usani.uk:80 {
 }
 
 adguardhome.usani.uk:80 {
-	reverse_proxy 10.10.0.3
+	reverse_proxy 10.2.0.2
 }
 
 fossflow.usani.uk:80 {
