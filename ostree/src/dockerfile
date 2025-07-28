@@ -12,42 +12,6 @@ RUN find /tmp/git -type f -print0 | xargs -0 dos2unix
 
 FROM quay.io/fedora/fedora-coreos:stable@sha256:46020671ef1b209fc18d90e2151f7004022f3d3c1a4528eab69b36fe9f101fdf
 
-COPY ./sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
-COPY ./sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
-COPY ./sshd/authorizedkeys.txt /usr/etc/ssh/authorized_keys/core
-
-COPY ./adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/users/1001/adguardhome.container
-COPY ./adguardhome/ops/adguardhome.network /usr/etc/containers/systemd/users/1001/adguardhome.network
-COPY ./adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
-
-COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
-COPY ./caddy/ops/index.htm /etc/caddy/index.htm
-
-COPY ./ostree/ops/vconsole.conf /usr/etc/vconsole.conf
-
-COPY ./ostree/ops/sysctl.conf /usr/etc/sysctl.d/0-server.conf
-
-COPY ./ostree/ops/subuid.txt /usr/etc/subuid
-
-COPY ./podman/ops/policy.json /usr/etc/containers/policy.json
-
-COPY ./restic/src/restic.env /usr/etc/restic/restic.env
-COPY ./restic/src/restic.sh /usr/etc/restic/restic.sh
-COPY ./restic/ops/restic.service /usr/lib/systemd/system/restic.service
-COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
-
-COPY ./fossflow/ops/fossflow.container /usr/etc/containers/systemd/users/1001/fossflow.container
-COPY ./fossflow/ops/fossflow.network /usr/etc/containers/systemd/users/1001/fossflow.network
-
-COPY ./caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
-
-COPY ./penpot/ops/backend.container /usr/etc/containers/systemd/users/1001/penpot_backend.container
-COPY ./penpot/ops/exporter.container /usr/etc/containers/systemd/users/1001/penpot_exporter.container
-COPY ./penpot/ops/frontend.container /usr/etc/containers/systemd/users/1001/penpot_frontend.container
-COPY ./penpot/ops/postgres.container /usr/etc/containers/systemd/users/1001/penpot_postgres.container
-COPY ./penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/penpot_valkey.container
-COPY ./penpot/ops/penpot_frontend.network /usr/etc/containers/systemd/users/1001/penpot_frontend.network
-
 # Copy entire repository into the '/tmp/git' folder.
 COPY --from=root /tmp/git/ /tmp/git/
 
