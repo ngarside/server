@@ -8,8 +8,6 @@ COPY ./ /tmp/git/
 
 RUN rm -r /tmp/git/.git
 
-# RUN dos2unix --help
-
 RUN find /tmp/git -type f -print0 | xargs -0 dos2unix
 
 FROM quay.io/fedora/fedora-coreos:stable@sha256:46020671ef1b209fc18d90e2151f7004022f3d3c1a4528eab69b36fe9f101fdf

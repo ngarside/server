@@ -36,14 +36,4 @@ rpm-ostree override remove \
 	toolbox \
 	nvidia-gpu-firmware
 
-	# doesn't work, don't know why
-	# samba-client-libs \
-	# samba-common \
-	# samba-common-libs \
-	# sssd-ipa \
-	# sssd-common-pac \
-	# sssd-ad \
-	# libsmbclient \
-	# libwbclient \
-
 ostree container commit
