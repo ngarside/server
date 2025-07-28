@@ -43,4 +43,7 @@ COPY ./penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/penpot
 COPY ./ /tmp/git/
 
 # Run the setup scripts.
-RUN chmod +x /tmp/git/ostree/setup.sh && /tmp/git/ostree/setup.sh && rm --recursive /tmp/git
+RUN bash /tmp/git/ostree/setup.sh
+
+# Delete the copied repository.
+RUN rm --recursive /tmp/git
