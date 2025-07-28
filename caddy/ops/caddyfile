@@ -1,23 +1,16 @@
 # This is free and unencumbered software released into the public domain.
 
-:80 {
-	# Expose the home page under the root folder
+usani.uk:80 {
 	file_server / {
 		index index.htm
 		root /etc/caddy
 	}
+}
 
-	# Expose AdGuardHome under the '/adguardhome' subfolder
-	redir /adguardhome /adguardhome/
-	handle_path /adguardhome/* {
-		reverse_proxy 10.10.0.3 {
-			header_down location /login.html /adguardhome/login.html
-		}
-	}
+adguardhome.usani.uk:80 {
+	reverse_proxy 10.10.0.3
+}
 
-	# Expose Penpot under the '/penpot' subfolder
-	redir /penpot /penpot/
-	handle_path /penpot/* {
-		reverse_proxy 10.10.0.9:8080
-	}
+penpot.usani.uk:80 {
+	reverse_proxy 10.10.0.9:8080
 }
