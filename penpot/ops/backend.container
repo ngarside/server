@@ -11,15 +11,15 @@ ContainerName=penpot_backend
 Environment="PENPOT_FLAGS=disable-email-verification disable-secure-session-cookies"
 Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
 Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
-Environment=PENPOT_DATABASE_URI=postgresql://10.3.0.6/penpot
+Environment=PENPOT_DATABASE_URI=postgresql://10.4.0.3/penpot
 Environment=PENPOT_DATABASE_USERNAME=penpot
 Environment=PENPOT_DATABASE_PASSWORD=penpot
-Environment=PENPOT_REDIS_URI=redis://10.3.0.5/0
+Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Environment=PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
 Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
 Image=ghcr.io/ngarside/penpot-backend:latest
-IP=10.3.0.8
-Network=penpot_frontend.network
+Network=penpot_backend.network:ip=10.4.0.5
+Network=penpot_frontend.network:ip=10.3.0.8
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]

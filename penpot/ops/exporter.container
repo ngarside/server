@@ -7,10 +7,10 @@ Requires=penpot_valkey.container
 [Container]
 ContainerName=penpot_exporter
 Environment=PENPOT_PUBLIC_URI=http://10.3.0.9:8080
-Environment=PENPOT_REDIS_URI=redis://10.3.0.5/0
+Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Image=ghcr.io/ngarside/penpot-exporter:latest
-IP=10.3.0.7
-Network=penpot_frontend.network
+Network=penpot_backend.network:ip=10.4.0.4
+Network=penpot_frontend.network:ip=10.3.0.7
 
 [Service]
 Restart=always
