@@ -6,7 +6,7 @@
 ContainerName=caddy
 Image=ghcr.io/ngarside/caddy:latest
 Network=internal.network:ip=10.10.0.2
-Network=systemd-fossflow.network:ip=10.1.0.3
+Network=systemd-fossflow:ip=10.1.0.3
 PublishPort=80:80/tcp
 ReadOnly=true
 UserNS=auto:size=8
