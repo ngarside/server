@@ -25,4 +25,4 @@ systemd:
   units:
     - name: rebase.service
       enabled: true
-      contents_local: rebase.service
+      contents_local: ../ops/rebase.service

@@ -12,12 +12,12 @@ mkdir --parents bin
 docker run \
 	--interactive \
 	--rm \
-	--volume .:/opt \
+	--volume ..:/opt \
 	quay.io/coreos/butane:release \
 		--files-dir /opt \
 		--pretty \
 		--strict \
-		< butane.yml \
+		< src/butane.yml \
 		> bin/ignition.json
 
 # Download latest ISO ----------------------------------------------------------
@@ -34,7 +34,7 @@ mv bin/*.iso.sig bin/original.iso.sig
 
 # Customise ISO ----------------------------------------------------------------
 
-cp wipe.sh bin/wipe.sh
+cp ../ops/wipe.sh bin/wipe.sh
 
 docker run \
 	--interactive \
