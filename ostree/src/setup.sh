@@ -11,9 +11,9 @@ mkdir --parents /usr/etc/ssh/sshd_config.d
 mkdir --parents /usr/etc/sysctl.d
 mkdir --parents /usr/etc/systemd/resolved.conf.d
 
-cp /tmp/git/sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
-cp /tmp/git/sshd/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
-cp /tmp/git/sshd/authorizedkeys.pub /usr/etc/ssh/authorized_keys/core
+cp /tmp/git/sshd/ops/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
+cp /tmp/git/sshd/ops/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
+cp /tmp/git/sshd/ops/authorizedkeys.pub /usr/etc/ssh/authorized_keys/core
 
 cp /tmp/git/adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/users/1001/adguardhome.container
 cp /tmp/git/adguardhome/ops/adguardhome.network /usr/etc/containers/systemd/users/1001/adguardhome.network
