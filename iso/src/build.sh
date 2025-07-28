@@ -34,7 +34,7 @@ mv bin/*.iso.sig bin/original.iso.sig
 
 # Customise ISO ----------------------------------------------------------------
 
-cp ../ops/wipe.sh bin/wipe.sh
+cp ops/wipe.sh bin/wipe.sh
 
 docker run \
 	--interactive \
