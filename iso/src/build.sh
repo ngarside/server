@@ -12,7 +12,7 @@ mkdir --parents bin
 docker run \
 	--interactive \
 	--rm \
-	--volume ..:/opt \
+	--volume .:/opt \
 	quay.io/coreos/butane:release \
 		--files-dir /opt \
 		--pretty \
