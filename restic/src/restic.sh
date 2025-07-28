@@ -4,6 +4,7 @@
 set -euo pipefail
 
 # Load environment variables
+# shellcheck source=restic/src/restic.env
 source /etc/restic/restic.env
 
 # Delete dangling snapshot if it wasn't cleaned up correctly
