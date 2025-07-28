@@ -1,5 +1,17 @@
 # This is free and unencumbered software released into the public domain.
 
+FROM docker.io/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1 AS root
+
+RUN apk add dos2unix
+
+COPY ./ /tmp/git/
+
+RUN rm -r /tmp/git/.git
+
+# RUN dos2unix --help
+
+RUN find /tmp/git -type f -print0 | xargs -0 dos2unix
+
 FROM quay.io/fedora/fedora-coreos:stable@sha256:46020671ef1b209fc18d90e2151f7004022f3d3c1a4528eab69b36fe9f101fdf
 
 COPY ./sshd/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
@@ -11,8 +23,6 @@ COPY ./adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
 
 COPY ./caddy/ops/caddyfile /etc/caddy/caddyfile
 COPY ./caddy/ops/index.htm /etc/caddy/index.htm
-
-COPY ./ostree/setup.sh /tmp/setup
 
 COPY ./ostree/vconsole.conf /usr/etc/vconsole.conf
 
@@ -39,4 +49,8 @@ COPY ./penpot/ops/frontend.container /usr/etc/containers/systemd/users/1001/penp
 COPY ./penpot/ops/postgres.container /usr/etc/containers/systemd/users/1001/penpot_postgres.container
 COPY ./penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/penpot_valkey.container
 
-RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
+# Copy entire repository into the '/tmp/git' folder.
+COPY --from=root /tmp/git/ /tmp/git/
+
+# Run the setup scripts.
+RUN bash /tmp/git/ostree/setup.sh
