@@ -52,4 +52,4 @@ COPY ./penpot/ops/penpot_frontend.network /usr/etc/containers/systemd/users/1001
 COPY --from=root /tmp/git/ /tmp/git/
 
 # Run the setup scripts.
-RUN bash /tmp/git/ostree/setup.sh
+RUN bash /tmp/git/ostree/src/setup.sh
