@@ -5,9 +5,9 @@
 [Container]
 ContainerName=caddy
 Image=ghcr.io/ngarside/caddy:latest
-Network=internal.network:ip=10.10.0.2
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
+Network=penpot_frontend.network:ip=10.10.0.2
 PublishPort=80:80/tcp
 ReadOnly=true
 UserNS=auto:size=8
