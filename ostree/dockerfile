@@ -39,4 +39,8 @@ COPY ./penpot/ops/frontend.container /usr/etc/containers/systemd/users/1001/penp
 COPY ./penpot/ops/postgres.container /usr/etc/containers/systemd/users/1001/penpot_postgres.container
 COPY ./penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/penpot_valkey.container
 
-RUN chmod +x /tmp/setup && /tmp/setup && rm --force /tmp/setup
+# Copy entire repository into the '/tmp/git' folder.
+COPY ./ /tmp/git/
+
+# Run the setup scripts.
+RUN chmod +x /tmp/git/ostree/setup.sh && /tmp/git/ostree/setup.sh && rm --recursive /tmp/git
