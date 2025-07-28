@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: check
-        run: shellcheck **/*.sh
+        run: git ls-files | grep '\.sh$' | xargs shellcheck
 
   yamllint:
     runs-on: ubuntu-latest
