@@ -28,6 +28,7 @@ COPY ./restic/ops/restic.service /usr/lib/systemd/system/restic.service
 COPY ./restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
 COPY ./fossflow/ops/fossflow.container /usr/etc/containers/systemd/users/1001/fossflow.container
+COPY ./fossflow/ops/fossflow.network /usr/etc/containers/systemd/users/1001/fossflow.network
 
 COPY ./caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 COPY ./caddy/ops/internal.network /usr/etc/containers/systemd/users/1001/internal.network
