@@ -2,7 +2,7 @@
 
 usani.uk {
 	tls internal
-	reverse_proxy 10.5.0.2
+	reverse_proxy 10.5.0.2:4173
 }
 
 adguardhome.usani.uk {
