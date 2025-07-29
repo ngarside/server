@@ -10,7 +10,6 @@ Environment=TITLE=Usani
 Image=ghcr.io/ngarside/starbase:latest
 IP=10.5.0.2
 Network=starbase.network
-UserNS=auto:size=8
 Volume=/etc/starbase/starbase.json:/app/src/config/config.json:ro
 
 [Service]
