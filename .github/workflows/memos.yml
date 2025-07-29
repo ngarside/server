@@ -35,6 +35,10 @@ jobs:
         run: podman build --file src/memos.dockerfile --tag ghcr.io/ngarside/memos:latest .
         working-directory: memos
 
+      - name: test
+        run: pipenv run pytest
+        working-directory: memos
+
       - name: save
         run: podman save --output memos.tar ghcr.io/ngarside/memos:latest
 
