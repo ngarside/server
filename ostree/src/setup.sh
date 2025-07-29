@@ -42,6 +42,9 @@ cp /tmp/git/starbase/ops/starbase.json /usr/etc/starbase/starbase.json
 cp /tmp/git/starbase/ops/starbase.container /usr/etc/containers/systemd/users/1001/starbase.container
 cp /tmp/git/starbase/ops/starbase.network /usr/etc/containers/systemd/users/1001/starbase.network
 
+cp /tmp/git/starbase/ops/memos.container /usr/etc/containers/systemd/users/1001/memos.container
+cp /tmp/git/starbase/ops/memos.network /usr/etc/containers/systemd/users/1001/memos.network
+
 cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 
 cp /tmp/git/penpot/ops/backend.container /usr/etc/containers/systemd/users/1001/penpot_backend.container

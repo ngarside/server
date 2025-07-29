@@ -1,0 +1,8 @@
+_default:
+	just --list
+
+build:
+	docker build --file src/memos.dockerfile --tag ghcr.io/ngarside/memos .
+
+run:
+	docker run --publish 7643:80 --read-only --rm --volume {{ replace(justfile_dir(), '\', '/') }}/bin:/opt/memos ghcr.io/ngarside/memos

@@ -13,14 +13,11 @@ import pytest, re, sys
 
 def sanitize(tag):
 	# Replace invalid characters with underscores.
-	tag = re.sub(r'[^a-zA-Z0-9_.-]', '_', tag)
+	tag = re.sub(r'[^a-zA-Z0-9_.-]+', '_', tag)
 
 	# Trim boundary underscores.
 	tag = re.sub(r'^[_]+(?=[^_])', '', tag)
 	tag = re.sub(r'(?<=[^_])[_]+$', '', tag)
-
-	# Merge consecutive underscores.
-	tag = re.sub(r'_+', '_', tag)
 
 	# Ensure the result is not empty.
 	return tag if tag else '_'
