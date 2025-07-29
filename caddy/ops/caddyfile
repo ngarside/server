@@ -2,10 +2,7 @@
 
 usani.uk {
 	tls internal
-	file_server / {
-		index index.htm
-		root /etc/caddy
-	}
+	reverse_proxy 10.5.0.2
 }
 
 adguardhome.usani.uk {
