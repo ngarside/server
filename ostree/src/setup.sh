@@ -37,7 +37,8 @@ cp /tmp/git/restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 cp /tmp/git/fossflow/ops/fossflow.container /usr/etc/containers/systemd/users/1001/fossflow.container
 cp /tmp/git/fossflow/ops/fossflow.network /usr/etc/containers/systemd/users/1001/fossflow.network
 
-cp /tmp/git/starbase/ops/starbase.json /etc/starbase/starbase.json
+mkdir /usr/etc/starbase
+cp /tmp/git/starbase/ops/starbase.json /usr/etc/starbase/starbase.json
 cp /tmp/git/starbase/ops/starbase.container /usr/etc/containers/systemd/users/1001/starbase.container
 cp /tmp/git/starbase/ops/starbase.network /usr/etc/containers/systemd/users/1001/starbase.network
 
