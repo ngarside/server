@@ -5,8 +5,7 @@
 [Container]
 ContainerName=penpot_valkey
 Image=ghcr.io/ngarside/valkey:latest
-IP=10.4.0.2
-Network=penpot_backend.network
+Network=penpot_backend.network:ip=10.4.0.2
 ReadOnly=true
 UserNS=auto:size=8
 
