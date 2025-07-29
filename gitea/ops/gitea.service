@@ -7,7 +7,10 @@ After=network-online.target
 User=containers
 Group=containers
 Type=simple
-ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/gitea/{db,etc,git,lfs}'
+ExecStartPre=mkdir --parents /var/data/gitea/db
+ExecStartPre=mkdir --parents /var/data/gitea/etc
+ExecStartPre=mkdir --parents /var/data/gitea/git
+ExecStartPre=mkdir --parents /var/data/gitea/lfs
 ExecStart=podman run \
 	--name gitea \
 	--network host \

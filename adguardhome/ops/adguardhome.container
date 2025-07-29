@@ -17,7 +17,8 @@ Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/adguardhome/{etc,opt}'
+ExecStartPre=mkdir --parents /var/data/adguardhome/etc
+ExecStartPre=mkdir --parents /var/data/adguardhome/opt
 
 [Install]
 WantedBy=default.target
