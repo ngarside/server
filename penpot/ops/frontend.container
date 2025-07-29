@@ -22,6 +22,7 @@ Volume=/var/data/penpot/assets:/opt/data/assets:z
 Restart=always
 TimeoutStartSec=300
 ExecStartPre=mkdir --parents /var/data/penpot/assets
+ExecStartPre=podman unshare chown 1001:1001 /var/data/penpot/assets
 
 [Install]
 WantedBy=default.target
