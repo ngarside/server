@@ -1,20 +1,24 @@
 # This is free and unencumbered software released into the public domain.
 
-usani.uk:80 {
+usani.uk {
+	tls internal
 	file_server / {
 		index index.htm
 		root /etc/caddy
 	}
 }
 
-adguardhome.usani.uk:80 {
+adguardhome.usani.uk {
+	tls internal
 	reverse_proxy 10.2.0.2
 }
 
-fossflow.usani.uk:80 {
+fossflow.usani.uk {
+	tls internal
 	reverse_proxy 10.1.0.2
 }
 
-penpot.usani.uk:80 {
+penpot.usani.uk {
+	tls internal
 	reverse_proxy 10.3.0.9:8080
 }
