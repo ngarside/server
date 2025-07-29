@@ -9,8 +9,7 @@ Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD=penpot
 Environment=POSTGRES_USER=penpot
 Image=ghcr.io/ngarside/postgres:latest
-IP=10.4.0.3
-Network=penpot_backend.network
+Network=penpot_backend.network:ip=10.4.0.3
 ReadOnly=true
 StopSignal=SIGINT
 UserNS=auto:size=256

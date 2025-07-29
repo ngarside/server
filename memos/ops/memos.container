@@ -5,8 +5,7 @@
 [Container]
 ContainerName=memos
 Image=ghcr.io/ngarside/memos:latest
-IP=10.6.0.2
-Network=memos.network
+Network=memos.network:ip=10.6.0.2
 Volume=/var/data/memos/opt:/opt/memos:U,Z
 
 [Service]

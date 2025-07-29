@@ -8,8 +8,7 @@ Environment=CATEGORIES=small
 Environment=NEWWINDOW=false
 Environment=TITLE=Usani
 Image=ghcr.io/ngarside/starbase:latest
-IP=10.5.0.2
-Network=starbase.network
+Network=starbase.network:ip=10.5.0.2
 Volume=/etc/starbase/starbase.json:/app/src/config/config.json:ro
 
 [Service]

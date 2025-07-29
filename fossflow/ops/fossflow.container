@@ -5,8 +5,7 @@
 [Container]
 ContainerName=fossflow
 Image=ghcr.io/ngarside/fossflow:latest
-IP=10.1.0.2
-Network=fossflow.network
+Network=fossflow.network:ip=10.1.0.2
 ReadOnly=true
 UserNS=auto:size=8
 
