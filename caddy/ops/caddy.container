@@ -6,11 +6,11 @@
 ContainerName=caddy
 Environment=XDG_CONFIG_HOME=/opt
 Image=ghcr.io/ngarside/caddy:latest
-Network=adguardhome.network:ip=10.2.0.3
-Network=fossflow.network:ip=10.1.0.3
-Network=memos.network:ip=10.6.0.3
-Network=penpot_frontend.network:ip=10.3.0.2
-Network=starbase.network:ip=10.5.0.3
+Network=adguardhome.network
+Network=fossflow.network
+Network=memos.network
+Network=penpot_frontend.network
+Network=starbase.network
 PublishPort=80:80/tcp
 PublishPort=443:443/tcp
 ReadOnly=true
