@@ -15,6 +15,12 @@
 				"icon": "flowise"
 			},
 			{
+				"name": "Memos",
+				"uri": "https://memos.usani.uk",
+				"description": "Simple note taking",
+				"icon": "memos"
+			},
+			{
 				"name": "Penpot",
 				"uri": "https://penpot.usani.uk",
 				"description": "Collaborative UX design",
