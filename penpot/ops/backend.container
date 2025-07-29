@@ -25,7 +25,7 @@ Volume=/var/data/penpot/assets:/opt/data/assets:z
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/penpot/assets'
+ExecStartPre=mkdir --parents /var/data/penpot/assets
 
 [Install]
 WantedBy=default.target

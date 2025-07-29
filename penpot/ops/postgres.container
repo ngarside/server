@@ -19,7 +19,7 @@ Volume=/var/data/penpot/postgres:/var/lib/postgresql/data:U,Z
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/penpot/postgres'
+ExecStartPre=mkdir --parents /var/data/penpot/postgres
 
 [Install]
 WantedBy=default.target

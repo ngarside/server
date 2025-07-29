@@ -21,7 +21,7 @@ Volume=/var/data/caddy/opt:/opt/caddy:U,Z
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/caddy/opt'
+ExecStartPre=mkdir --parents /var/data/caddy/opt
 
 [Install]
 WantedBy=default.target
