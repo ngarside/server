@@ -4,6 +4,7 @@
 
 [Container]
 ContainerName=caddy
+Environment=XDG_CONFIG_HOME=/opt
 Image=ghcr.io/ngarside/caddy:latest
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
@@ -13,10 +14,12 @@ PublishPort=443:443/tcp
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/caddy:/etc/caddy:ro
+Volume=/var/data/caddy/opt:/opt/caddy:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
+ExecStartPre=/bin/bash -c 'mkdir --parents /var/data/caddy/opt'
 
 [Install]
 WantedBy=default.target
