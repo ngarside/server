@@ -15,6 +15,11 @@ fossflow.usani.uk {
 	reverse_proxy 10.1.0.2
 }
 
+memos.usani.uk {
+	tls internal
+	reverse_proxy 10.6.0.2
+}
+
 penpot.usani.uk {
 	tls internal
 	reverse_proxy 10.3.0.9:8080
