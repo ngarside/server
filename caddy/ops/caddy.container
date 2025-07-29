@@ -9,7 +9,7 @@ Image=ghcr.io/ngarside/caddy:latest
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
 Network=penpot_frontend.network:ip=10.3.0.2
-Network=starbase_frontend.network:ip=10.5.0.3
+Network=starbase.network:ip=10.5.0.3
 PublishPort=80:80/tcp
 PublishPort=443:443/tcp
 ReadOnly=true
