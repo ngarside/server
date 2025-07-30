@@ -28,7 +28,7 @@ branch_full = github_get('https://api.github.com/repos/ngarside/server/branches'
 branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
 containers = github_get('https://api.github.com/user/packages?package_type=container')
 
-print(f'\nDetected branches:')
+print('\nDetected branches:')
 for branch in branch_tags:
 	print(f'\t{branch}')
 
