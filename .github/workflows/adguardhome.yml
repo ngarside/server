@@ -4,15 +4,13 @@ name: adguardhome
 on:
   pull_request:
     paths:
-      - .github/workflows/adguardhome.yml
-      - adguardhome/**
+      - '**/adguardhome/**'
       - scripts/**
   push:
     branches:
       - master
     paths:
-      - .github/workflows/adguardhome.yml
-      - adguardhome/**
+      - '**/adguardhome/**'
       - scripts/**
   schedule:
     - cron: 0 0 * * 1
