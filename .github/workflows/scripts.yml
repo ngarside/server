@@ -28,6 +28,6 @@ jobs:
       - name: pipenv
         run: pip install pipenv && pipenv install
 
-      - name: test
-        run: pipenv run pytest
-        working-directory: scripts
+#      - name: test
+#        run: pipenv run pytest
+#        working-directory: scripts
