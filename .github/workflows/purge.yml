@@ -1,0 +1,26 @@
+# This is free and unencumbered software released into the public domain.
+
+name: adguardhome
+on:
+  pull_request:
+    paths:
+      - scripts/src/purge.py
+  schedule:
+    - cron: 0 0 * * 1
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: pipenv
+        run: pip install pipenv && pipenv install
+
+      - name: tag
+        run: pipenv run python3 scripts/src/purge.py
