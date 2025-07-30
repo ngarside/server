@@ -76,10 +76,3 @@ jobs:
 
       - name: push
         run: podman push ghcr.io/ngarside/adguardhome
-
-      - name: purge
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: adguardhome
-          package-type: container
-          delete-only-untagged-versions: true
