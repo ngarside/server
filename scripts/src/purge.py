@@ -26,7 +26,7 @@ token = os.getenv('GITHUB_TOKEN')
 print('\tRetrieving data from GitHub')
 branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
 branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
-containers = github_get('https://api.github.com/user/packages?package_type=container')
+containers = github_get('https://api.github.com/users/ngarside/packages?package_type=container')
 
 print('\nDetected branches:')
 for branch in branch_tags:
@@ -46,11 +46,11 @@ for container in containers:
 			print('keep | active branch')
 		elif len(tags) > 0:
 			print('del  | missing branch')
-			github_delete(f'https://api.github.com/user/packages/container/{container['name']}/versions/{version['id']}')
+			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
 		elif updated > cutoff:
 			print('keep | untagged (after cutoff)')
 		else:
 			print('del  | untagged (before cutoff)')
-			github_delete(f'https://api.github.com/user/packages/container/{container['name']}/versions/{version['id']}')
+			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
 
 print('\nPurging completed')
