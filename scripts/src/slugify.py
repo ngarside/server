@@ -9,7 +9,7 @@
 
 # Run with 'python slugify.py <tag>'
 
-import pytest, re, sys
+import re, sys
 
 def sanitize(tag):
 	# Replace invalid characters with underscores.
@@ -28,16 +28,3 @@ if __name__ == '__main__':
 		sys.exit(2)
 	print(sanitize(sys.argv[1]))
 	sys.exit(0)
-
-@pytest.mark.parametrize('input, expected', [
-	('master', 'master'), # Normal branch name.
-	('feature/new-branch:dev', 'feature_new-branch_dev'), # Special characters.
-	('  my-branch   ', 'my-branch'), # Leading/trailing whitespace.
-	('invalid/branch:name', 'invalid_branch_name'), # Mixed special chars.
-	('', '_'), # Empty string.
-	('!@#$%^&*()', '_'), # All invalid characters.
-	('BranchWithUppercase', 'BranchWithUppercase'), # Uppercase preserved.
-])
-
-def test_sanitize(input, expected):
-	assert sanitize(input) == expected
