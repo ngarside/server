@@ -9,7 +9,7 @@ import datetime, os, requests, slugify
 def ensure_sucecss(response):
 	if response.status_code < 300:
 		return
-	print(f'\nExiting due to response error:')
+	print('\nExiting due to response error:')
 	print(f'\tAddress: {response.url}')
 	print(f'\tMethod: {response.request.method}')
 	print(f'\tResponse: {response.text}')
