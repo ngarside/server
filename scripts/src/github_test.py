@@ -39,6 +39,5 @@ for container in containers:
 			print('del  | missing branch')
 		else:
 			print('del  | untagged')
-	break
 
 print('\nPurging completed')
