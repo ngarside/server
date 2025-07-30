@@ -22,7 +22,7 @@ jobs:
       - name: pipenv
         run: pip install pipenv && pipenv install
 
-      - name: tag
+      - name: run
         run: pipenv run python3 scripts/src/purge.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
