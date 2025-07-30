@@ -3,10 +3,10 @@
 name: postgres
 on:
   pull_request:
-    paths: ['**/postgres/**', 'scripts/**']
+    paths: ['**postgres**', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/postgres/**', 'scripts/**']
+    paths: ['**postgres**', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 jobs:

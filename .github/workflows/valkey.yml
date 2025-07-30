@@ -3,10 +3,10 @@
 name: valkey
 on:
   pull_request:
-    paths: ['**/valkey/**', 'scripts/**']
+    paths: ['**valkey**', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/valkey/**', 'scripts/**']
+    paths: ['**valkey**', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 jobs:

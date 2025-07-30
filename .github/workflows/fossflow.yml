@@ -3,10 +3,10 @@
 name: fossflow
 on:
   pull_request:
-    paths: ['**/fossflow/**', 'scripts/**']
+    paths: ['**fossflow**', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/fossflow/**', 'scripts/**']
+    paths: ['**fossflow**', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 jobs:

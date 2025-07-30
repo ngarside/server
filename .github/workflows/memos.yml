@@ -3,10 +3,10 @@
 name: memos
 on:
   pull_request:
-    paths: ['**/memos/**', 'scripts/**']
+    paths: ['**memos**', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/memos/**', 'scripts/**']
+    paths: ['**memos**', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 jobs:
