@@ -44,35 +44,8 @@ jobs:
         run: pipenv run pytest
         working-directory: adguardhome
 
-      - name: save
-        run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:$TAG
-
-      - name: upload
-        uses: actions/upload-artifact@v4
-        with:
-          compression-level: 9
-          name: adguardhome
-          path: adguardhome.tar
-          retention-days: 1
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-
-      - name: download
-        uses: actions/download-artifact@v4
-        with:
-          name: adguardhome
-
-      - name: load
-        run: podman load --input adguardhome.tar
-
       - name: login
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: push
-        run: podman push ghcr.io/ngarside/adguardhome
+        run: podman push ghcr.io/ngarside/adguardhome:$TAG
