@@ -4,11 +4,11 @@
 # Converts the git branch name, as provided by the GitHub Actions runtime, to a
 # container tag using the rules:
 # - If the branch name is 'master', then the tag will be 'latest'
-# - Otherwise the tag will be the branch name, sanitized using 'tag_sanitize.py'
+# - Otherwise the tag will be the branch name, sanitized using 'slugify.py'
 
 # Run with 'python tag_branch.py'
 
-import os, sys, tag_sanitize
+import os, sys, slugify
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
@@ -19,5 +19,5 @@ if __name__ == '__main__':
 	# Find and transform the branch name.
 	refHead = os.getenv('GITHUB_HEAD_REF')
 	refName = os.getenv('GITHUB_REF_NAME')
-	tag = tag_sanitize.sanitize(refHead or refName)
+	tag = slugify.sanitize(refHead or refName)
 	print('latest' if tag == 'master' else tag)
