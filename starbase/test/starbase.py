@@ -14,10 +14,10 @@ def fixture():
 	port = random.randrange(1000, 64000)
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', name, '--publish', f'{port}:80',
-		'--pull', 'never', f'ghcr.io/ngarside/starbase:{tag}',
+		'podman', 'run', '--detach', '--name', name, '--publish',
+		f'{port}:4173', '--pull', 'never', f'ghcr.io/ngarside/starbase:{tag}',
 	])
-	time.sleep(10)
+	time.sleep(5)
 	yield
 	subprocess.run(['podman', 'rm', '--force', name])
 
