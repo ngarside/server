@@ -11,9 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
 
       - name: checkout
@@ -22,7 +19,9 @@ jobs:
       - name: pipenv
         run: pip install pipenv && pipenv install
 
+      # Must use PAT to work around known issue in actions:
+      # https://github.com/cli/cli/issues/9606#issuecomment-2433338481
       - name: run
         run: pipenv run python3 scripts/src/purge.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CONTAINER_PURGE }}
