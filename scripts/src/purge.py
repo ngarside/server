@@ -6,21 +6,25 @@
 
 import datetime, os, requests, slugify
 
+def ensure_sucecss(response):
+	if response.status_code == 200:
+		return
+	print(f'\nExiting due to response error:')
+	print(f'\tAddress: {response.url}')
+	print(f'\tMethod: {response.request.method}')
+	print(f'\tResponse: {response.text}')
+	print(f'\tStatus: {response.status_code}')
+	exit(1)
+
 def github_delete(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.delete(url, headers=headers)
-	if response.status_code != 200:
-		print(f'\nReceived error {response.status_code}:')
-		print(response.text)
-		exit(1)
+	ensure_sucecss(response)
 
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.get(url, headers=headers)
-	if response.status_code != 200:
-		print(f'\nReceived error {response.status_code}:')
-		print(response.text)
-		exit(1)
+	ensure_sucecss(response)
 	return response.json()
 
 print('Initiating purge of GitHub containers')
