@@ -1,6 +1,9 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
+# Finds and deletes all images from the GitHub container registry which do not
+# have any tags corresponding to branches in this repository.
+
 import pprint, requests, tag_sanitize
 
 headers = { 'Authorization': f'Bearer {token}'}
