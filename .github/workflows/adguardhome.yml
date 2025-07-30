@@ -3,24 +3,16 @@
 name: adguardhome
 on:
   pull_request:
-    paths:
-      - '**/adguardhome/**'
-      - scripts/**
+    paths: ['**/adguardhome/**', 'scripts/**']
   push:
-    branches:
-      - master
-    paths:
-      - '**/adguardhome/**'
-      - scripts/**
-  schedule:
-    - cron: 0 0 * * 1
+    branches: [master]
+    paths: ['**/adguardhome/**', 'scripts/**']
+  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: { contents: read, packages: write }
     steps:
 
       - name: checkout
