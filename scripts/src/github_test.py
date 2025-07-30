@@ -6,25 +6,26 @@
 
 import datetime, os, requests, slugify
 
-print('Initiating purge of GitHub containers')
-
-token = os.getenv('GITHUB_TOKEN')
-cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
-
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.get(url, headers=headers)
 	response.raise_for_status()
 	return response.json()
 
+print('Initiating purge of GitHub containers')
+cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
+
+print('\tReading token from environment')
+token = os.getenv('GITHUB_TOKEN')
+
+print('\tRetrieving data from GitHub')
 branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
 branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
+containers = github_get('https://api.github.com/user/packages?package_type=container')
 
 print(f'\nDetected branches:')
 for branch in branch_tags:
 	print(f'\t{branch}')
-
-containers = github_get('https://api.github.com/users/ngarside/packages?package_type=container')
 
 for container in containers:
 	print(f'\nProcessing {container["name"]}:')
