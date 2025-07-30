@@ -1,81 +1,37 @@
 # This is free and unencumbered software released into the public domain.
 
 name: fossflow
-
 on:
   pull_request:
-    paths:
-      - .github/workflows/fossflow.yml
-      - fossflow/**
-      - scripts/**
+    paths: ['**/fossflow/**', 'scripts/**']
   push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/fossflow.yml
-      - fossflow/**
-      - scripts/**
+    branches: [master]
+    paths: ['**/fossflow/**', 'scripts/**']
+  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: { contents: read, packages: write }
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: pipenv
+      - name: Install dependencies
         run: pip install pipenv && pipenv install
 
-      - name: build
-        run: podman build --file src/fossflow.dockerfile --tag ghcr.io/ngarside/fossflow:latest .
-        working-directory: fossflow
+      - name: Generate tag
+        run: echo "TAG=$(pipenv run python3 scripts/src/tag_branch.py)" >> $GITHUB_ENV
 
-      - name: test
-        run: pipenv run pytest
-        working-directory: fossflow
+      - name: Build container
+        run: podman build --file fossflow/src/fossflow.dockerfile --tag ghcr.io/ngarside/fossflow:$TAG .
 
-      - name: save
-        run: podman save --output fossflow.tar ghcr.io/ngarside/fossflow:latest
+      - name: Run tests
+        run: pipenv run pytest fossflow
 
-      - name: upload
-        uses: actions/upload-artifact@v4
-        with:
-          compression-level: 9
-          name: fossflow
-          path: fossflow.tar
-          retention-days: 1
-
-  publish:
-    if: github.ref_name == 'master'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-
-      - name: download
-        uses: actions/download-artifact@v4
-        with:
-          name: fossflow
-
-      - name: load
-        run: podman load --input fossflow.tar
-
-      - name: login
+      - name: Login to registry
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
-      - name: push
-        run: podman push ghcr.io/ngarside/fossflow
-
-      - name: purge
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: fossflow
-          package-type: container
-          delete-only-untagged-versions: true
+      - name: Push container to registry
+        run: podman push ghcr.io/ngarside/fossflow:$TAG
