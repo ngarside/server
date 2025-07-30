@@ -6,6 +6,11 @@
 
 import datetime, os, requests, slugify
 
+def github_delete(url):
+	headers = { 'Authorization': f'Bearer {token}' }
+	response = requests.delete(url, headers=headers)
+	response.raise_for_status()
+
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.get(url, headers=headers)
@@ -28,7 +33,7 @@ for branch in branch_tags:
 	print(f'\t{branch}')
 
 for container in containers:
-	print(f'\nProcessing {container["name"]}:')
+	print(f'\nProcessing {container['name']}:')
 	versions = github_get(f'{container['url']}/versions')
 	for version in versions:
 		sha = version['name'].split(':')[1][:7]
@@ -41,9 +46,11 @@ for container in containers:
 			print('keep | active branch')
 		elif len(tags) > 0:
 			print('del  | missing branch')
+			github_delete(f'https://api.github.com/user/packages/container/{container['name']}/versions/{version['id']}')
 		elif updated > cutoff:
 			print('keep | untagged (after cutoff)')
 		else:
 			print('del  | untagged (before cutoff)')
+			github_delete(f'https://api.github.com/user/packages/container/{container['name']}/versions/{version['id']}')
 
 print('\nPurging completed')
