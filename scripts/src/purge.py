@@ -6,15 +6,25 @@
 
 import datetime, os, requests, slugify
 
+def ensure_sucecss(response):
+	if response.status_code < 300:
+		return
+	print('\nExiting due to response error:')
+	print(f'\tAddress: {response.url}')
+	print(f'\tMethod: {response.request.method}')
+	print(f'\tResponse: {response.text}')
+	print(f'\tStatus: {response.status_code}')
+	exit(1)
+
 def github_delete(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.delete(url, headers=headers)
-	response.raise_for_status()
+	ensure_sucecss(response)
 
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.get(url, headers=headers)
-	response.raise_for_status()
+	ensure_sucecss(response)
 	return response.json()
 
 print('Initiating purge of GitHub containers')
@@ -26,7 +36,7 @@ token = os.getenv('GITHUB_TOKEN')
 print('\tRetrieving data from GitHub')
 branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
 branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
-containers = github_get('https://api.github.com/user/packages?package_type=container')
+containers = github_get('https://api.github.com/users/ngarside/packages?package_type=container')
 
 print('\nDetected branches:')
 for branch in branch_tags:
@@ -46,11 +56,11 @@ for container in containers:
 			print('keep | active branch')
 		elif len(tags) > 0:
 			print('del  | missing branch')
-			github_delete(f'https://api.github.com/user/packages/container/{container['name']}/versions/{version['id']}')
+			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
 		elif updated > cutoff:
 			print('keep | untagged (after cutoff)')
 		else:
 			print('del  | untagged (before cutoff)')
-			github_delete(f'https://api.github.com/user/packages/container/{container['name']}/versions/{version['id']}')
+			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
 
 print('\nPurging completed')

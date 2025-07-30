@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-name: adguardhome
+name: purge
 on:
   pull_request:
     paths:
@@ -11,9 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: delete
     steps:
 
       - name: checkout
@@ -22,7 +19,9 @@ jobs:
       - name: pipenv
         run: pip install pipenv && pipenv install
 
-      - name: tag
+      # Must use PAT to work around known issue in actions:
+      # https://github.com/cli/cli/issues/9606#issuecomment-2433338481
+      - name: run
         run: pipenv run python3 scripts/src/purge.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CONTAINER_PURGE }}
