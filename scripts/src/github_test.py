@@ -4,8 +4,12 @@
 # Finds and deletes all images from the GitHub container registry which do not
 # have any tags corresponding to branches in this repository.
 
-import requests, slugify
+import datetime, os, requests, slugify
 
+print('Initiating purge of GitHub containers')
+
+token = os.getenv('GITHUB_TOKEN')
+cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
 
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
@@ -13,10 +17,8 @@ def github_get(url):
 	response.raise_for_status()
 	return response.json()
 
-print('Initiating purge of GitHub containers')
-
-branches_full = github_get('https://api.github.com/repos/ngarside/server/branches')
-branch_tags = [slugify.sanitize(branch['name']) for branch in branches_full]
+branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
+branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
 
 print(f'\nDetected branches:')
 for branch in branch_tags:
@@ -30,6 +32,7 @@ for container in containers:
 	for version in versions:
 		sha = version['name'].split(':')[1][:7]
 		print(f'\t{sha} | ', end='')
+		updated = datetime.datetime.fromisoformat(version['updated_at'])
 		tags = version['metadata']['container']['tags']
 		if 'latest' in tags:
 			print('keep | default branch')
@@ -37,7 +40,9 @@ for container in containers:
 			print('keep | active branch')
 		elif len(tags) > 0:
 			print('del  | missing branch')
+		elif updated > cutoff:
+			print('keep | untagged (after cutoff)')
 		else:
-			print('del  | untagged')
+			print('del  | untagged (before cutoff)')
 
 print('\nPurging completed')
