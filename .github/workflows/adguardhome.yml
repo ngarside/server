@@ -22,7 +22,7 @@ jobs:
         run: pip install pipenv && pipenv install
 
       - name: Generate tag
-        run: echo "TAG=$(pipenv run python3 scripts/src/tag_branch.py)" >> $GITHUB_ENV
+        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
 
       - name: Build container
         run: podman build --file adguardhome/src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
