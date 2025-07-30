@@ -1,7 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
 name: adguardhome
-
 on:
   pull_request:
     paths:
@@ -18,7 +17,6 @@ on:
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,50 +35,13 @@ jobs:
         run: echo "TAG=$(pipenv run python3 scripts/src/tag_branch.py)" >> $GITHUB_ENV
 
       - name: build
-        run: podman build --file src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
-        working-directory: adguardhome
+        run: podman build --file adguardhome/src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
 
       - name: test
-        run: pipenv run pytest
-        working-directory: adguardhome
-
-      - name: save
-        run: podman save --output adguardhome.tar ghcr.io/ngarside/adguardhome:$TAG
-
-      - name: upload
-        uses: actions/upload-artifact@v4
-        with:
-          compression-level: 9
-          name: adguardhome
-          path: adguardhome.tar
-          retention-days: 1
-
-  publish:
-    if: github.ref_name == 'master'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-
-      - name: download
-        uses: actions/download-artifact@v4
-        with:
-          name: adguardhome
-
-      - name: load
-        run: podman load --input adguardhome.tar
+        run: pipenv run pytest adguardhome
 
       - name: login
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: push
-        run: podman push ghcr.io/ngarside/adguardhome
-
-      - name: purge
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: adguardhome
-          package-type: container
-          delete-only-untagged-versions: true
+        run: podman push ghcr.io/ngarside/adguardhome:$TAG
