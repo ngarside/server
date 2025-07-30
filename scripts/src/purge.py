@@ -9,12 +9,18 @@ import datetime, os, requests, slugify
 def github_delete(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.delete(url, headers=headers)
-	response.raise_for_status()
+	if response.status_code != 200:
+		print(f'\nReceived error {response.status_code}:')
+		print(response.text)
+		exit(1)
 
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.get(url, headers=headers)
-	response.raise_for_status()
+	if response.status_code != 200:
+		print(f'\nReceived error {response.status_code}:')
+		print(response.text)
+		exit(1)
 	return response.json()
 
 print('Initiating purge of GitHub containers')
