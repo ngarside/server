@@ -8,9 +8,11 @@ updates:
       - caddy/**
       - fossflow/**
       - gitea/**
+      - memos/**
       - ostree/**
-      - postgres/**
       - penpot/**
+      - postgres/**
+      - starbase/**
       - valkey/**
     schedule:
       interval: daily
