@@ -2,16 +2,17 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import pytest, random, string, subprocess, time, valkey
+import os, pytest, random, string, subprocess, time, valkey
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	global port
 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1000, 64000)
+	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', name, '--publish',
-		f'{port}:6379', '--pull', 'never', 'ghcr.io/ngarside/valkey',
+		f'{port}:6379', '--pull', 'never', f'ghcr.io/ngarside/valkey:{tag}',
 	])
 	time.sleep(0.1)
 	yield
