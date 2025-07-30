@@ -26,8 +26,13 @@ for package in packages:
 	for version in versions:
 		print(version['name'])
 		tags = version['metadata']['container']['tags']
-		if len(tags) == 0:
-			print('  untagged - should be deleted')
-		elif not any(tag in branch_tags for tag in tags):
+		print(tags)
+		if 'latest' in tags:
+			print('  keep - master')
+		elif any(tag in branch_tags for tag in tags):
+			print('  keep - active branch')
+		elif len(tags) > 0:
 			print('  branch tag missing - should be deleted')
+		else:
+			print('  untagged - should be deleted')
 	break
