@@ -2,7 +2,7 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import pytest, random, requests, string, subprocess, tempfile, time
+import os, pytest, random, requests, string, subprocess, tempfile, time
 
 session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
@@ -13,10 +13,11 @@ def fixture():
 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1000, 64000)
 	dir = tempfile.mkdtemp()
+	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', name, '--publish', f'{port}:80',
 		'--pull', 'never', '--volume', f'{dir}:/opt/memos',
-		'ghcr.io/ngarside/memos'
+		f'ghcr.io/ngarside/memos:{tag}',
 	])
 	time.sleep(0.1)
 	yield

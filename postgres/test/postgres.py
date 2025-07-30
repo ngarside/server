@@ -2,18 +2,19 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import contextlib, psycopg, pytest, random, string, subprocess, time
+import contextlib, os, psycopg, pytest, random, string, subprocess, time
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	global session
 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1000, 64000)
+	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--env', 'POSTGRES_DB=postgres', '--env',
 		'POSTGRES_PASSWORD=postgres', '--env', 'POSTGRES_USER=postgres',
 		'--name', name, '--publish', f'{port}:5432', '--pull',
-		'never', 'ghcr.io/ngarside/postgres',
+		'never', f'ghcr.io/ngarside/postgres:{tag}',
 	])
 	for _ in range(100):
 		try:

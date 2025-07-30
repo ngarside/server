@@ -3,45 +3,35 @@
 name: adguardhome
 on:
   pull_request:
-    paths:
-      - .github/workflows/adguardhome.yml
-      - adguardhome/**
-      - scripts/**
+    paths: ['**adguardhome**', 'scripts/**']
   push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/adguardhome.yml
-      - adguardhome/**
-      - scripts/**
-  schedule:
-    - cron: 0 0 * * 1
+    branches: [master]
+    paths: ['**adguardhome**', 'scripts/**']
+  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: {contents: read, packages: write}
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: pipenv
+      - name: Install dependencies
         run: pip install pipenv && pipenv install
 
-      - name: tag
+      - name: Generate tag
         run: echo "TAG=$(pipenv run python3 scripts/src/tag_branch.py)" >> $GITHUB_ENV
 
-      - name: build
+      - name: Build container
         run: podman build --file adguardhome/src/adguardhome.dockerfile --tag ghcr.io/ngarside/adguardhome:$TAG .
 
-      - name: test
+      - name: Run tests
         run: pipenv run pytest adguardhome
 
-      - name: login
+      - name: Login to registry
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
-      - name: push
+      - name: Push container to registry
         run: podman push ghcr.io/ngarside/adguardhome:$TAG
