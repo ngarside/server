@@ -2,7 +2,7 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, random, requests, string, subprocess
+import os, pytest, random, requests, string, subprocess, time
 
 session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
@@ -17,6 +17,7 @@ def fixture():
 		'podman', 'run', '--detach', '--name', name, '--publish', f'{port}:80',
 		'--pull', 'never', f'ghcr.io/ngarside/starbase:{tag}',
 	])
+	time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', name])
 
