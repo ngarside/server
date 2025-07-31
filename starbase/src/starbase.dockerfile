@@ -1,3 +1,3 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM jordanroher/starbase-80:latest@sha256:2206a64f2843be18ea8d7b6103cd45486c384b066e8de05878c43e75e56ff9ff
+FROM jordanroher/starbase-80:latest@sha256:ad64c23dd65f28a0d0af747b1b7604064d09140e71e0223726c1fd1235edb77e
