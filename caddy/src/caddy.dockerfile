@@ -1,6 +1,8 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:latest@sha256:e23538fceb12f3f8cc97a174844aa99bdea7715023d6e088028850fd0601e2e2 AS build
+FROM docker.io/caddy:builder-alpine@sha256:1df07ddece81440960d630985847d6e50df8851766222ad8c1168324ef790457 AS build
+
+RUN xcaddy build --with github.com/caddy-dns/cloudflare
 
 RUN chmod ugo=rx /usr/bin/caddy
 
