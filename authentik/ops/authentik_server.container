@@ -15,6 +15,7 @@ Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
 ReadOnly=true
 StopSignal=SIGINT
+User=root
 UserNS=auto
 Volume=/etc/authentik/media:/media:ro
 

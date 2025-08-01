@@ -14,6 +14,7 @@ Image=ghcr.io/goauthentik/server:latest
 Network=authentik_internal.network:ip=10.7.0.5
 ReadOnly=true
 StopSignal=SIGINT
+User=root
 UserNS=auto
 Volume=/etc/authentik/blueprints:/blueprints/custom:ro
 
