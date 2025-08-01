@@ -18,7 +18,7 @@ ReadOnly=true
 StopSignal=SIGINT
 User=root
 UserNS=auto
-Volume=/etc/authentik/media:/media:ro
+Volume=/etc/authentik/media:/media/public:ro
 
 [Service]
 Restart=always

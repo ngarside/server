@@ -55,9 +55,8 @@ cp /tmp/git/penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/p
 cp /tmp/git/penpot/ops/penpot_backend.network /usr/etc/containers/systemd/users/1001/penpot_backend.network
 cp /tmp/git/penpot/ops/penpot_frontend.network /usr/etc/containers/systemd/users/1001/penpot_frontend.network
 
-mkdir /usr/etc/authentik
-mkdir /usr/etc/authentik/blueprints
-mkdir /usr/etc/authentik/media
+mkdir --parents /usr/etc/authentik/blueprints
+mkdir --parents /usr/etc/authentik/media
 
 cp /tmp/git/authentik/ops/authentik_external.network /usr/etc/containers/systemd/users/1001/authentik_external.network
 cp /tmp/git/authentik/ops/authentik_internal.network /usr/etc/containers/systemd/users/1001/authentik_internal.network
