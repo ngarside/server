@@ -5,6 +5,7 @@
 [Container]
 ContainerName=memos
 Image=ghcr.io/ngarside/memos:latest
+Network=authentik_external.network:ip=10.8.0.4
 Network=memos.network:ip=10.6.0.2
 Volume=/var/data/memos/opt:/opt/memos:U,Z
 
