@@ -8,12 +8,10 @@ Image=ghcr.io/ngarside/valkey:latest
 Network=authentik_internal.network:ip=10.7.0.2
 ReadOnly=true
 UserNS=auto:size=8
-Volume=/var/data/authentik/valkey:/data:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/authentik/valkey
 
 [Install]
 WantedBy=default.target
