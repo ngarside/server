@@ -55,6 +55,13 @@ cp /tmp/git/penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/p
 cp /tmp/git/penpot/ops/penpot_backend.network /usr/etc/containers/systemd/users/1001/penpot_backend.network
 cp /tmp/git/penpot/ops/penpot_frontend.network /usr/etc/containers/systemd/users/1001/penpot_frontend.network
 
+cp /tmp/git/authentik/ops/authentik_external.network /usr/etc/containers/systemd/users/1001/authentik_external.network
+cp /tmp/git/authentik/ops/authentik_internal.network /usr/etc/containers/systemd/users/1001/authentik_internal.network
+cp /tmp/git/authentik/ops/authentik_postgres.container /usr/etc/containers/systemd/users/1001/authentik_postgres.container
+cp /tmp/git/authentik/ops/authentik_server.container /usr/etc/containers/systemd/users/1001/authentik_server.container
+cp /tmp/git/authentik/ops/authentik_valkey.container /usr/etc/containers/systemd/users/1001/authentik_valkey.container
+cp /tmp/git/authentik/ops/authentik_worker.container /usr/etc/containers/systemd/users/1001/authentik_worker.container
+
 systemctl enable restic.timer
 
 chmod ug=r,o= /usr/etc/restic/restic.{env,sh}

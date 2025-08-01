@@ -1,0 +1,26 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=authentik_server
+Environment=AUTHENTIK_SECRET_KEY=4ecdPuxom7t70Z5ZN4gveo0hZDeDwAyz1TBn8tSiwlApsFmOqUNWX/r6TkF+ZgsAdD82NOwWweSfN3hc
+Environment=AUTHENTIK_REDIS__HOST=10.7.0.2
+Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
+Environment=AUTHENTIK_POSTGRESQL__USER=authentik
+Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
+Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
+Image=ghcr.io/goauthentik/server:latest
+Network=authentik_external.network:ip=10.8.0.3
+Network=authentik_internal.network:ip=10.7.0.4
+ReadOnly=true
+StopSignal=SIGINT
+UserNS=auto:size=256
+Volume=/etc/authentik/media:/media:ro
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
