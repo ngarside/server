@@ -10,6 +10,7 @@ Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
 Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
+Exec=worker
 Image=ghcr.io/goauthentik/server:latest
 Network=authentik_internal.network:ip=10.7.0.5
 ReadOnly=true
