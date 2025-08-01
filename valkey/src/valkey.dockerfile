@@ -26,4 +26,4 @@ EXPOSE 6379
 
 ENTRYPOINT ["/usr/bin/valkey-server"]
 
-CMD ["--protected-mode", "no"]
+CMD ["--protected-mode", "no", "--save"]
