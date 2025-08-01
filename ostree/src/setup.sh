@@ -55,12 +55,16 @@ cp /tmp/git/penpot/ops/valkey.container /usr/etc/containers/systemd/users/1001/p
 cp /tmp/git/penpot/ops/penpot_backend.network /usr/etc/containers/systemd/users/1001/penpot_backend.network
 cp /tmp/git/penpot/ops/penpot_frontend.network /usr/etc/containers/systemd/users/1001/penpot_frontend.network
 
+mkdir /usr/etc/authentik/blueprints
+mkdir /usr/etc/authentik/media
 cp /tmp/git/authentik/ops/authentik_external.network /usr/etc/containers/systemd/users/1001/authentik_external.network
 cp /tmp/git/authentik/ops/authentik_internal.network /usr/etc/containers/systemd/users/1001/authentik_internal.network
 cp /tmp/git/authentik/ops/authentik_postgres.container /usr/etc/containers/systemd/users/1001/authentik_postgres.container
 cp /tmp/git/authentik/ops/authentik_server.container /usr/etc/containers/systemd/users/1001/authentik_server.container
 cp /tmp/git/authentik/ops/authentik_valkey.container /usr/etc/containers/systemd/users/1001/authentik_valkey.container
 cp /tmp/git/authentik/ops/authentik_worker.container /usr/etc/containers/systemd/users/1001/authentik_worker.container
+cp /tmp/git/authentik/ops/blueprints_memos.yaml /usr/etc/authentik/blueprints/memos.yaml
+cp /tmp/git/authentik/ops/logo_memos.png /usr/etc/authentik/media/memos.png
 
 systemctl enable restic.timer
 
