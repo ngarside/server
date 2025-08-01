@@ -69,7 +69,7 @@ cp /tmp/git/authentik/ops/blueprints_memos.yaml /usr/etc/authentik/blueprints/me
 cp /tmp/git/authentik/ops/logo_memos.png /usr/etc/authentik/media/memos.png
 cp /tmp/git/authentik/ops/worker.env /usr/etc/authentik/env/worker
 
-chmod ug=r,o= /etc/authentik/env/worker
+chmod ug=r,o= /usr/etc/authentik/env/worker
 
 systemctl enable restic.timer
 
