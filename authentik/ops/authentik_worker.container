@@ -13,7 +13,6 @@ Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
 Exec=worker
 Image=ghcr.io/goauthentik/server:latest
 Network=authentik_internal.network:ip=10.7.0.5
-ReadOnly=true
 StopSignal=SIGINT
 User=root
 UserNS=auto
