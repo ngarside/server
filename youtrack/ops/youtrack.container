@@ -1,0 +1,23 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=youtrack
+Image=docker.io/jetbrains/youtrack:2025.2.89748
+Network=youtrack.network:ip=10.9.0.2
+Volume=/var/data/youtrack/backups:/opt/youtrack/backups:U,Z
+Volume=/var/data/youtrack/config:/opt/youtrack/conf:U,Z
+Volume=/var/data/youtrack/data:/opt/youtrack/data:U,Z
+Volume=/var/data/youtrack/logs:/opt/youtrack/logs:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=mkdir --parents /var/data/youtrack/backups
+ExecStartPre=mkdir --parents /var/data/youtrack/config
+ExecStartPre=mkdir --parents /var/data/youtrack/data
+ExecStartPre=mkdir --parents /var/data/youtrack/logs
+
+[Install]
+WantedBy=default.target

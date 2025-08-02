@@ -1,0 +1,67 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - YouTrack
+entries:
+
+  # Scope - Email
+  - id: custom-youtrack-scopes-email
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: email
+
+  # Scope - OpenID
+  - id: custom-youtrack-scopes-openid
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: openid
+
+  # Scope - Profile
+  - id: custom-youtrack-scopes-profile
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: profile
+
+  # Provider
+  - id: custom-youtrack-provider
+    model: authentik_providers_oauth2.oauth2provider
+    identifiers:
+      client_id: youtrack
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      name: YouTrack Provider
+      property_mappings:
+        - !KeyOf custom-youtrack-scopes-email
+        - !KeyOf custom-youtrack-scopes-openid
+        - !KeyOf custom-youtrack-scopes-profile
+      redirect_uris:
+        - matching_mode: strict
+          url: https://youtrack.usani.uk/auth/callback
+
+  # Application
+  - id: custom-youtrack-application
+    model: authentik_core.application
+    identifiers:
+      slug: youtrack
+    attrs:
+      icon: youtrack.png
+      name: YouTrack
+      provider: !KeyOf custom-youtrack-provider
+
+  # Group
+  - id: custom-youtrack-group
+    model: authentik_core.group
+    identifiers:
+      name: YouTrack Group
+
+  # Binding
+  - id: custom-youtrack-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-youtrack-group
+      order: 0
+      target: !KeyOf custom-youtrack-application
