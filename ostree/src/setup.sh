@@ -40,8 +40,8 @@ cp /tmp/git/fossflow/ops/fossflow.network /usr/etc/containers/systemd/users/1001
 cp /tmp/git/memos/ops/memos.container /usr/etc/containers/systemd/users/1001/memos.container
 cp /tmp/git/memos/ops/memos.network /usr/etc/containers/systemd/users/1001/memos.network
 
-cp /tmp/git/memos/ops/youtrack.container /usr/etc/containers/systemd/users/1001/youtrack.container
-cp /tmp/git/memos/ops/youtrack.network /usr/etc/containers/systemd/users/1001/youtrack.network
+cp /tmp/git/youtrack/ops/youtrack.container /usr/etc/containers/systemd/users/1001/youtrack.container
+cp /tmp/git/youtrack/ops/youtrack.network /usr/etc/containers/systemd/users/1001/youtrack.network
 
 cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 
