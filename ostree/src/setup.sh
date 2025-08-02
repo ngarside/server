@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-mkdir --parents /etc/caddy
+mkdir --parents /usr/etc/caddy
 mkdir --parents /usr/etc/containers/systemd/users/1001
 mkdir --parents /usr/etc/restic
 mkdir --parents /usr/etc/ssh/authorized_keys
