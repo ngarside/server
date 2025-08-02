@@ -40,7 +40,7 @@ entries:
         - !KeyOf custom-outline-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: https://outline.usani.uk/auth/callback
+          url: https://outline.usani.uk/auth/oidc.callback
 
   # Application
   - id: custom-outline-application
