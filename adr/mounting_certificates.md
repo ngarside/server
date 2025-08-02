@@ -54,4 +54,4 @@ directory isn't mounted.
 
 # References
 
-- https://go.dev/src/crypto/x509/root_linux.go
+- [go.dev/src/crypto/x509/root_linux.go](https://go.dev/src/crypto/x509/root_linux.go)
