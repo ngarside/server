@@ -1,0 +1,67 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Outline
+entries:
+
+  # Scope - Email
+  - id: custom-outline-scopes-email
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: email
+
+  # Scope - OpenID
+  - id: custom-outline-scopes-openid
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: openid
+
+  # Scope - Profile
+  - id: custom-outline-scopes-profile
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: profile
+
+  # Provider
+  - id: custom-outline-provider
+    model: authentik_providers_oauth2.oauth2provider
+    identifiers:
+      client_id: outline
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      name: Outline Provider
+      property_mappings:
+        - !KeyOf custom-outline-scopes-email
+        - !KeyOf custom-outline-scopes-openid
+        - !KeyOf custom-outline-scopes-profile
+      redirect_uris:
+        - matching_mode: strict
+          url: https://outline.usani.uk/auth/callback
+
+  # Application
+  - id: custom-outline-application
+    model: authentik_core.application
+    identifiers:
+      slug: outline
+    attrs:
+      icon: outline.png
+      name: Outline
+      provider: !KeyOf custom-outline-provider
+
+  # Group
+  - id: custom-outline-group
+    model: authentik_core.group
+    identifiers:
+      name: Outline Group
+
+  # Binding
+  - id: custom-outline-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-outline-group
+      order: 0
+      target: !KeyOf custom-outline-application
