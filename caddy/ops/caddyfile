@@ -31,3 +31,7 @@ memos.usani.uk {
 penpot.usani.uk {
 	reverse_proxy 10.3.0.9:8080
 }
+
+youtrack.usani.uk {
+	reverse_proxy 10.9.0.2:8080
+}

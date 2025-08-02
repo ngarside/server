@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-mkdir --parents /etc/caddy
+mkdir --parents /usr/etc/caddy
 mkdir --parents /usr/etc/containers/systemd/users/1001
 mkdir --parents /usr/etc/restic
 mkdir --parents /usr/etc/ssh/authorized_keys
@@ -19,7 +19,8 @@ cp /tmp/git/adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/us
 cp /tmp/git/adguardhome/ops/adguardhome.network /usr/etc/containers/systemd/users/1001/adguardhome.network
 cp /tmp/git/adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
 
-cp /tmp/git/caddy/ops/caddyfile /etc/caddy/caddyfile
+cp /tmp/git/caddy/ops/caddy.env /usr/etc/caddy/caddy.env
+cp /tmp/git/caddy/ops/caddyfile /usr/etc/caddy/caddyfile
 
 cp /tmp/git/ostree/ops/vconsole.conf /usr/etc/vconsole.conf
 
@@ -39,6 +40,9 @@ cp /tmp/git/fossflow/ops/fossflow.network /usr/etc/containers/systemd/users/1001
 
 cp /tmp/git/memos/ops/memos.container /usr/etc/containers/systemd/users/1001/memos.container
 cp /tmp/git/memos/ops/memos.network /usr/etc/containers/systemd/users/1001/memos.network
+
+cp /tmp/git/youtrack/ops/youtrack.container /usr/etc/containers/systemd/users/1001/youtrack.container
+cp /tmp/git/youtrack/ops/youtrack.network /usr/etc/containers/systemd/users/1001/youtrack.network
 
 cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 
@@ -61,7 +65,9 @@ cp /tmp/git/authentik/ops/authentik_server.container /usr/etc/containers/systemd
 cp /tmp/git/authentik/ops/authentik_valkey.container /usr/etc/containers/systemd/users/1001/authentik_valkey.container
 cp /tmp/git/authentik/ops/authentik_worker.container /usr/etc/containers/systemd/users/1001/authentik_worker.container
 cp /tmp/git/authentik/ops/blueprints_memos.yaml /usr/etc/authentik/blueprints/memos.yaml
+cp /tmp/git/authentik/ops/blueprints_youtrack.yaml /usr/etc/authentik/blueprints/youtrack.yaml
 cp /tmp/git/authentik/ops/logo_memos.png /usr/etc/authentik/media/memos.png
+cp /tmp/git/authentik/ops/logo_youtrack.png /usr/etc/authentik/media/youtrack.png
 cp /tmp/git/authentik/ops/worker.env /usr/etc/authentik/env/worker
 
 systemctl enable restic.timer
