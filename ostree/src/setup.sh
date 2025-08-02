@@ -44,6 +44,11 @@ cp /tmp/git/memos/ops/memos.network /usr/etc/containers/systemd/users/1001/memos
 cp /tmp/git/youtrack/ops/youtrack.container /usr/etc/containers/systemd/users/1001/youtrack.container
 cp /tmp/git/youtrack/ops/youtrack.network /usr/etc/containers/systemd/users/1001/youtrack.network
 
+mkdir --parents /usr/etc/outline
+cp /tmp/git/outline/ops/outline.container /usr/etc/containers/systemd/users/1001/outline.container
+cp /tmp/git/outline/ops/outline.env /usr/etc/outline/outline.env
+cp /tmp/git/outline/ops/outline.network /usr/etc/containers/systemd/users/1001/outline.network
+
 cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 
 cp /tmp/git/penpot/ops/backend.container /usr/etc/containers/systemd/users/1001/penpot_backend.container

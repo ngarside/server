@@ -1,0 +1,37 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=outline
+Environment=URL=https://outline.usani.uk
+Environment=PORT=80
+Environment=SECRET_KEY=a42cae960fd1d51efb86a81b4fb60a452337b8960ac0258f82a468a8307e1c1c
+Environment=UTILS_SECRET=bcebbd860e4e9fc3317ed985e289e4c0bce339c071ccef8dc31482571c9db90b
+Environment=DATABASE_URL=postgres://postgres:postgres@10.10.0.3:5432/outline
+Environment=PGSSLMODE=disable
+Environment=REDIS_URL=redis://10.10.0.4:6379
+Environment=FILE_STORAGE=local
+Environment=FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
+Environment=OIDC_CLIENT_ID=outline
+Environment=OIDC_AUTH_URI=http://usani.uk/application/o/authorize/
+Environment=OIDC_TOKEN_URI=http://usani.uk/application/o/token/
+Environment=OIDC_USERINFO_URI=http://usani.uk/application/o/userinfo/
+Environment=OIDC_LOGOUT_URI=http://usani.uk/application/o/outline/end-session/
+Environment=OIDC_USERNAME_CLAIM=preferred_username
+Environment=OIDC_DISPLAY_NAME=Authentik
+Environment="OIDC_SCOPES=openid profile email"
+Environment=SMTP_SERVICE=Mailjet
+Environment=SMTP_FROM_EMAIL=noreply@usani.uk
+EnvironmentFile=/usr/etc/outline/outline.env
+Image=docker.getoutline.com/outlinewiki/outline:latest
+Network=outline.network:ip=10.10.0.2
+Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=mkdir --parents /var/data/outline/data
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,23 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=outline_postgres
+Environment=POSTGRES_DB=outline
+Environment=POSTGRES_PASSWORD=postgres
+Environment=POSTGRES_USER=postgres
+Image=ghcr.io/ngarside/postgres:latest
+Network=outline.network:ip=10.10.0.3
+ReadOnly=true
+StopSignal=SIGINT
+UserNS=auto:size=256
+Volume=/var/data/outline/postgres:/var/lib/postgresql/data:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=mkdir --parents /var/data/outline/postgres
+
+[Install]
+WantedBy=default.target
