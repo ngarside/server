@@ -1,4 +1,6 @@
-# Mounting Certificates In Containers
+<!-- This is free and unencumbered software released into the public domain -->
+
+# <p align=center>Mounting Certificates In Containers
 
 Some containers mount the host's certificate store.
 
@@ -9,19 +11,19 @@ Some containers mount the host's certificate store.
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:O
 ```
 
-# The Problem
+# <p align=center>The Problem
 
 Containers inheriting from `scratch` do not contain any `ca-certificates` (or
 similar) package. This means that they cannot verify TLS certificates, which in
 turn prevents them from calling out to any HTTPS addresses.
 
-# The Solution
+# <p align=center>The Solution
 
 Mounting the host's certificate store allows containers to use the host's
 certificates for TLS. This bypasses the need for `ca-certificates` to be
 installed inside the container.
 
-# Discounted Alternatives
+# <p align=center>Discounted Alternatives
 
 Baking certificates into the containers would bloat their size and require
 updates whenever certificates are added or removed.
@@ -33,7 +35,7 @@ significantly bloat their size and increase their attack surface.
 Disabling HTTPS is a security risk and in some cases would require patching
 applications which do not support HTTP.
 
-# Using OverlayFS
+# <p align=center>Using OverlayFS
 
 The `O` flag mounts the folder as an overlay filesystem. This is necessary to
 work around the fact that the `/etc/pki` directory is labelled as `cert_t`, and
@@ -52,6 +54,6 @@ rather than the `/etc/pki/tls/certs` directory, as files in the latter are
 symlinks to files in the former, and therefore can't be read if the former
 directory isn't mounted.
 
-# References
+# <p align=center>References
 
 - [go.dev/src/crypto/x509/root_linux.go](https://go.dev/src/crypto/x509/root_linux.go)
