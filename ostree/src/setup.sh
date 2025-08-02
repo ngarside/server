@@ -76,6 +76,7 @@ cp /tmp/git/authentik/ops/blueprints_youtrack.yaml /usr/etc/authentik/blueprints
 cp /tmp/git/authentik/ops/blueprints_outline.yaml /usr/etc/authentik/blueprints/outline.yaml
 cp /tmp/git/authentik/ops/logo_memos.png /usr/etc/authentik/media/memos.png
 cp /tmp/git/authentik/ops/logo_youtrack.png /usr/etc/authentik/media/youtrack.png
+cp /tmp/git/authentik/ops/logo_outline.png /usr/etc/authentik/media/outline.png
 cp /tmp/git/authentik/ops/worker.env /usr/etc/authentik/env/worker
 
 systemctl enable restic.timer
