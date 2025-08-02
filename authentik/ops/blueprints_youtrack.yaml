@@ -38,9 +38,6 @@ entries:
         - !KeyOf custom-youtrack-scopes-email
         - !KeyOf custom-youtrack-scopes-openid
         - !KeyOf custom-youtrack-scopes-profile
-      redirect_uris:
-        - matching_mode: strict
-          url: https://youtrack.usani.uk/auth/callback
 
   # Application
   - id: custom-youtrack-application
