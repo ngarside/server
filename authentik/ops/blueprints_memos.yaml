@@ -17,8 +17,8 @@ entries:
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
       name: Memos Provider
       redirect_uris:
-      - matching_mode: strict
-        url: https://memos.usani.uk/auth/callback
+        - matching_mode: strict
+          url: https://memos.usani.uk/auth/callback
 
   # Application
   - id: custom-memos-application
