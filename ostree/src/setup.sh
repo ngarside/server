@@ -19,6 +19,7 @@ cp /tmp/git/adguardhome/ops/adguardhome.container /usr/etc/containers/systemd/us
 cp /tmp/git/adguardhome/ops/adguardhome.network /usr/etc/containers/systemd/users/1001/adguardhome.network
 cp /tmp/git/adguardhome/ops/stub.conf /usr/etc/systemd/resolved.conf.d/stub.conf
 
+cp /tmp/git/caddy/ops/caddy.env /etc/caddy/caddy.env
 cp /tmp/git/caddy/ops/caddyfile /etc/caddy/caddyfile
 
 cp /tmp/git/ostree/ops/vconsole.conf /usr/etc/vconsole.conf
