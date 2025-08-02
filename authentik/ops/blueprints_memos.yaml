@@ -1,0 +1,67 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Memos
+entries:
+
+  # Scope - Email
+  - id: custom-memos-scopes-email
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: email
+
+  # Scope - OpenID
+  - id: custom-memos-scopes-openid
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: openid
+
+  # Scope - Profile
+  - id: custom-memos-scopes-profile
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: profile
+
+  # Provider
+  - id: custom-memos-provider
+    model: authentik_providers_oauth2.oauth2provider
+    identifiers:
+      client_id: memos
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      name: Memos Provider
+      property_mappings:
+        - !KeyOf custom-memos-scopes-email
+        - !KeyOf custom-memos-scopes-openid
+        - !KeyOf custom-memos-scopes-profile
+      redirect_uris:
+        - matching_mode: strict
+          url: https://memos.usani.uk/auth/callback
+
+  # Application
+  - id: custom-memos-application
+    model: authentik_core.application
+    identifiers:
+      slug: memos
+    attrs:
+      icon: memos.png
+      name: Memos
+      provider: !KeyOf custom-memos-provider
+
+  # Group
+  - id: custom-memos-group
+    model: authentik_core.group
+    identifiers:
+      name: Memos Group
+
+  # Binding
+  - id: custom-memos-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-memos-group
+      order: 0
+      target: !KeyOf custom-memos-application

@@ -1,26 +1,33 @@
 # This is free and unencumbered software released into the public domain.
 
+(tls) {
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1
+	}
+}
+
+*.usani.uk {
+	import tls
+}
+
 usani.uk {
-	tls internal
-	reverse_proxy 10.5.0.2:4173
+	import tls
+	reverse_proxy 10.8.0.3:9000
 }
 
 adguardhome.usani.uk {
-	tls internal
 	reverse_proxy 10.2.0.2
 }
 
 fossflow.usani.uk {
-	tls internal
 	reverse_proxy 10.1.0.2
 }
 
 memos.usani.uk {
-	tls internal
 	reverse_proxy 10.6.0.2
 }
 
 penpot.usani.uk {
-	tls internal
 	reverse_proxy 10.3.0.9:8080
 }

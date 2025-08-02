@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=authentik_valkey
+Image=ghcr.io/ngarside/valkey:latest
+Network=authentik_internal.network:ip=10.7.0.2
+ReadOnly=true
+UserNS=auto:size=8
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
