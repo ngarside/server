@@ -29,7 +29,7 @@ memos.usani.uk {
 }
 
 outline.usani.uk {
-	reverse_proxy 10.10.0.2
+	reverse_proxy 10.10.0.2:8080
 }
 
 penpot.usani.uk {
