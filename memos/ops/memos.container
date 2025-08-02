@@ -7,7 +7,7 @@ ContainerName=memos
 Image=ghcr.io/ngarside/memos:latest
 Network=memos.network:ip=10.6.0.2
 Volume=/var/data/memos/opt:/opt/memos:U,Z
-Volume=/etc/pki/tls/certs/ca-bundle.crt:/etc/pki/tls/certs/ca-bundle.crt:ro
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:O
 
 [Service]
 Restart=always
