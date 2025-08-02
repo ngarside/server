@@ -25,7 +25,7 @@ Environment=SMTP_SERVICE=Mailjet
 Environment=SMTP_FROM_EMAIL=noreply@usani.uk
 Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=debug
-Environment=DEFAULT_LANGUAGE=en-GB
+Environment=DEFAULT_LANGUAGE=en_GB
 EnvironmentFile=/usr/etc/outline/outline.env
 Image=docker.io/outlinewiki/outline:latest
 Network=outline.network:ip=10.10.0.2
