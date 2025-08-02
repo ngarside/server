@@ -1,5 +1,0 @@
-# This is free and unencumbered software released into the public domain.
-
-[Network]
-Internal=true
-Subnet=10.5.0.0/24
