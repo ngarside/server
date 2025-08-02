@@ -24,7 +24,7 @@ Environment="OIDC_SCOPES=openid profile email"
 Environment=SMTP_SERVICE=Mailjet
 Environment=SMTP_FROM_EMAIL=noreply@usani.uk
 EnvironmentFile=/usr/etc/outline/outline.env
-Image=docker.getoutline.com/outlinewiki/outline:latest
+Image=docker.io/outlinewiki/outline:latest
 Network=outline.network:ip=10.10.0.2
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 
