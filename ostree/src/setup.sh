@@ -44,6 +44,13 @@ cp /tmp/git/memos/ops/memos.network /usr/etc/containers/systemd/users/1001/memos
 cp /tmp/git/youtrack/ops/youtrack.container /usr/etc/containers/systemd/users/1001/youtrack.container
 cp /tmp/git/youtrack/ops/youtrack.network /usr/etc/containers/systemd/users/1001/youtrack.network
 
+mkdir --parents /usr/etc/outline
+cp /tmp/git/outline/ops/outline.container /usr/etc/containers/systemd/users/1001/outline.container
+cp /tmp/git/outline/ops/outline.env /usr/etc/outline/outline.env
+cp /tmp/git/outline/ops/outline.network /usr/etc/containers/systemd/users/1001/outline.network
+cp /tmp/git/outline/ops/postgres.container /usr/etc/containers/systemd/users/1001/outline_postgres.container
+cp /tmp/git/outline/ops/valkey.container /usr/etc/containers/systemd/users/1001/outline_valkey.container
+
 cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 
 cp /tmp/git/penpot/ops/backend.container /usr/etc/containers/systemd/users/1001/penpot_backend.container
@@ -66,8 +73,10 @@ cp /tmp/git/authentik/ops/authentik_valkey.container /usr/etc/containers/systemd
 cp /tmp/git/authentik/ops/authentik_worker.container /usr/etc/containers/systemd/users/1001/authentik_worker.container
 cp /tmp/git/authentik/ops/blueprints_memos.yaml /usr/etc/authentik/blueprints/memos.yaml
 cp /tmp/git/authentik/ops/blueprints_youtrack.yaml /usr/etc/authentik/blueprints/youtrack.yaml
+cp /tmp/git/authentik/ops/blueprints_outline.yaml /usr/etc/authentik/blueprints/outline.yaml
 cp /tmp/git/authentik/ops/logo_memos.png /usr/etc/authentik/media/memos.png
 cp /tmp/git/authentik/ops/logo_youtrack.png /usr/etc/authentik/media/youtrack.png
+cp /tmp/git/authentik/ops/logo_outline.png /usr/etc/authentik/media/outline.png
 cp /tmp/git/authentik/ops/worker.env /usr/etc/authentik/env/worker
 
 systemctl enable restic.timer

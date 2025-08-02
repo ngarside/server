@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=outline_valkey
+Image=ghcr.io/ngarside/valkey:latest
+Network=outline.network:ip=10.10.0.4
+ReadOnly=true
+UserNS=auto:size=8
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
