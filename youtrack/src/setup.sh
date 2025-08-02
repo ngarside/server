@@ -25,5 +25,5 @@ podman run \
 	--rm \
 	--tty \
 	--volume /var/data/youtrack/config:/opt/youtrack/conf:U,Z \
-	$IMAGE \
+	"$IMAGE" \
 	configure --base-url https://youtrack.usani.uk
