@@ -1,0 +1,21 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=jellyfin
+Image=ghcr.io/jellyfin/jellyfin:2025072105
+Network=jellyfin.network:ip=10.11.0.2
+Volume=/var/data/jellyfin/cache:/cache:U,Z
+Volume=/var/data/jellyfin/config:/config:U,Z
+Volume=/var/data/jellyfin/media:/media:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=mkdir --parents /var/data/jellyfin/cache
+ExecStartPre=mkdir --parents /var/data/jellyfin/config
+ExecStartPre=mkdir --parents /var/data/jellyfin/media
+
+[Install]
+WantedBy=default.target

@@ -5,6 +5,7 @@
 			"docker.io/jetbrains/youtrack": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/outlinewiki/outline": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/goauthentik/server": [{ "type": "insecureAcceptAnything" }],
+			"ghcr.io/jellyfin/jellyfin": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/ngarside": [{ "type": "insecureAcceptAnything" }]
 		}
 	}
