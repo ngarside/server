@@ -5,6 +5,7 @@
 		"*.env": "properties",
 		"*.network": "ini",
 		"*.service": "ini",
-		"*.timer": "ini"
+		"*.timer": "ini",
+		"*.yamllint": "yaml"
 	}
 }
