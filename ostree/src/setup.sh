@@ -54,6 +54,9 @@ cp /tmp/git/outline/ops/valkey.container /usr/etc/containers/systemd/users/1001/
 cp /tmp/git/jellyfin/ops/jellyfin.container /usr/etc/containers/systemd/users/1001/jellyfin.container
 cp /tmp/git/jellyfin/ops/jellyfin.network /usr/etc/containers/systemd/users/1001/jellyfin.network
 
+cp /tmp/git/vaultwarden/ops/vaultwarden.container /usr/etc/containers/systemd/users/1001/vaultwarden.container
+cp /tmp/git/vaultwarden/ops/vaultwarden.network /usr/etc/containers/systemd/users/1001/vaultwarden.network
+
 cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
 
 cp /tmp/git/penpot/ops/backend.container /usr/etc/containers/systemd/users/1001/penpot_backend.container

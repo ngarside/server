@@ -15,6 +15,7 @@ Network=authentik_external.network:ip=10.8.0.2
 Network=youtrack.network:ip=10.9.0.3
 Network=outline.network:ip=10.10.0.5
 Network=jellyfin.network:ip=10.11.0.3
+Network=vaultwarden.network:ip=10.12.0.3
 PublishPort=80:80/tcp
 PublishPort=443:443/tcp
 ReadOnly=true

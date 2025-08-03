@@ -40,6 +40,10 @@ penpot.usani.uk {
 	reverse_proxy 10.3.0.9:8080
 }
 
+vaultwarden.usani.uk {
+	reverse_proxy 10.12.0.2
+}
+
 youtrack.usani.uk {
 	reverse_proxy 10.9.0.2:8080
 }
