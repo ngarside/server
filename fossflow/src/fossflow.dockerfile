@@ -4,7 +4,7 @@ FROM docker.io/caddy:latest@sha256:e23538fceb12f3f8cc97a174844aa99bdea7715023d6e
 
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/node:alpine@sha256:820e86612c21d0636580206d802a726f2595366e1b867e564cbc652024151e8a AS fossflow
+FROM docker.io/node:alpine@sha256:6a61dbdf1dd6adbfcf0c09237f8f0f7a101b479b0491f2e49b114e55f027ba16 AS fossflow
 
 RUN apk add git
 
