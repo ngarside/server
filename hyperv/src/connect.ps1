@@ -4,4 +4,4 @@
 
 $IP = sudo powershell "(Get-VM -Name Server).NetworkAdapters.IPAddresses[0]"
 
-ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null core@$IP
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null core@$IP 2> $null
