@@ -17,6 +17,7 @@ jobs:
       - name: check
         uses: hadolint/hadolint-action@v3.1.0
         with:
+          config: .hadolint
           dockerfile: '*.dockerfile'
           recursive: true
 

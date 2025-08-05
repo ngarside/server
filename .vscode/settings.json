@@ -3,6 +3,7 @@
 	"files.associations": {
 		"*.container": "ini",
 		"*.env": "properties",
+		"*.hadolint": "yaml",
 		"*.network": "ini",
 		"*.service": "ini",
 		"*.timer": "ini",
