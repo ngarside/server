@@ -4,6 +4,6 @@ FROM quay.io/fedora/fedora-coreos:stable@sha256:46020671ef1b209fc18d90e2151f7004
 
 SHELL ["/bin/bash", "-c"]
 
-RUN --mount=target=/tmp/git for file in /tmp/git/ostree/src/*.sh; do bash "$file"; done && \
-	rm --force --recursive /tmp/* && \
-	ostree container commit
+RUN --mount=target=/tmp/git for file in /tmp/git/ostree/src/*.sh; do bash "$file"; done
+
+RUN ostree container commit
