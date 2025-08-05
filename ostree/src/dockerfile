@@ -12,8 +12,10 @@ RUN find /tmp/git -type f -print0 | xargs -0 dos2unix
 
 FROM quay.io/fedora/fedora-coreos:stable@sha256:46020671ef1b209fc18d90e2151f7004022f3d3c1a4528eab69b36fe9f101fdf
 
-# Copy entire repository into the '/tmp/git' folder.
+SHELL ["/bin/bash", "-c"]
+
 COPY --from=root /tmp/git/ /tmp/git/
 
-# Run the setup scripts.
-RUN bash /tmp/git/ostree/src/setup.sh
+RUN for file in /tmp/git/ostree/src/*.sh; do bash "$file"; done && \
+	rm --force --recursive /tmp/* && \
+	ostree container commit
