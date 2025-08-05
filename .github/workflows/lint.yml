@@ -7,6 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: check
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          config: .hadolint
+          dockerfile: '*.dockerfile'
+          recursive: true
+
   ruff:
     runs-on: ubuntu-latest
     steps:
