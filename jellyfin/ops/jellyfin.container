@@ -8,7 +8,7 @@ Image=ghcr.io/jellyfin/jellyfin:2025072105
 Network=jellyfin.network:ip=10.11.0.2
 Volume=/var/data/jellyfin/cache:/cache:U,Z
 Volume=/var/data/jellyfin/config:/config:U,Z
-Volume=/var/data/jellyfin/media:/media:U,Z
+Volume=/var/data/jellyfin/media:/media:ro
 
 [Service]
 Restart=always
