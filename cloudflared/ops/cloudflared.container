@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=cloudflared
+EnvironmentFile=/etc/cloudflared/cloudflared.env
+Exec=tunnel --no-autoupdate run
+Image=docker.io/cloudflare/cloudflared:latest
+Network=cloudflared.network:ip=10.13.0.2
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
