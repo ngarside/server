@@ -7,7 +7,6 @@ ContainerName=cloudflared
 EnvironmentFile=/etc/cloudflared/cloudflared.env
 Image=docker.io/cloudflare/cloudflared:latest
 Network=cloudflared.network:ip=10.13.0.2
-UserNS=auto:size=256
 
 [Service]
 Restart=always
