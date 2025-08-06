@@ -3,6 +3,7 @@
 	"transports": {
 		"docker": {
 			"docker.io/alpine": [{ "type": "insecureAcceptAnything" }],
+			"docker.io/cloudflare/cloudflared": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/jetbrains/youtrack": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/outlinewiki/outline": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/vaultwarden/server": [{ "type": "insecureAcceptAnything" }],
