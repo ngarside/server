@@ -1,0 +1,20 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=gitea
+Image=ghcr.io/ngarside/gitea:latest
+Network=gitea.network:ip=10.14.0.2
+UserNS=auto:size=8
+Volume=/var/data/gitea/config:/usr/bin/data:U,Z
+Volume=/var/data/gitea/data:/var/lib/gitea:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+ExecStartPre=mkdir --parents /var/data/gitea/config
+ExecStartPre=mkdir --parents /var/data/gitea/data
+
+[Install]
+WantedBy=default.target
