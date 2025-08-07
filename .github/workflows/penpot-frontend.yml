@@ -1,76 +1,37 @@
 # This is free and unencumbered software released into the public domain.
 
 name: penpot-frontend
-
 on:
   pull_request:
-    paths:
-      - .github/workflows/penpot-frontend.yml
-      - penpot/**
-      - scripts/**
+    paths: ['**penpot**', 'scripts/**']
   push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/penpot-frontend.yml
-      - penpot/**
-      - scripts/**
-  schedule:
-    - cron: 0 0 * * 1
+    branches: [master]
+    paths: ['**penpot**', 'scripts/**']
+  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: {contents: read, packages: write}
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: build
-        run: podman build --file src/frontend.dockerfile --tag ghcr.io/ngarside/penpot-frontend:latest .
-        working-directory: penpot
+      - name: Install dependencies
+        run: pip install pipenv && pipenv install
 
-      - name: save
-        run: podman save --output penpot-frontend.tar ghcr.io/ngarside/penpot-frontend:latest
+      - name: Generate tag
+        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
 
-      - name: upload
-        uses: actions/upload-artifact@v4
-        with:
-          compression-level: 9
-          name: penpot-frontend
-          path: penpot-frontend.tar
-          retention-days: 1
+      - name: Build container
+        run: podman build --file penpot/src/frontend.dockerfile --tag ghcr.io/ngarside/penpot-frontend:$TAG .
 
-  publish:
-    if: github.ref_name == 'master'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
+      - name: Run tests
+        run: pipenv run pytest penpot
 
-      - name: download
-        uses: actions/download-artifact@v4
-        with:
-          name: penpot-frontend
-
-      - name: load
-        run: podman load --input penpot-frontend.tar
-
-      - name: login
+      - name: Login to registry
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
-      - name: push
-        run: podman push ghcr.io/ngarside/penpot-frontend:latest
-
-      - name: purge
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: penpot-frontend
-          package-type: container
-          delete-only-untagged-versions: true
+      - name: Push container to registry
+        run: podman push ghcr.io/ngarside/penpot-frontend:$TAG
