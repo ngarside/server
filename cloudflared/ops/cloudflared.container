@@ -8,6 +8,7 @@ EnvironmentFile=/etc/cloudflared/cloudflared.env
 Exec=tunnel --no-autoupdate run
 Image=docker.io/cloudflare/cloudflared:latest
 Network=cloudflared.network:ip=10.13.0.2
+ReadOnly=true
 
 [Service]
 Restart=always
