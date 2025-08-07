@@ -28,6 +28,10 @@ def test_admin_home():
 	response = session.get(f'http://localhost:{port_admin}', timeout=10)
 	assert response.status_code == 200
 
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
+	assert status.returncode == 0
+
 def test_dns_tcp():
 	request = dns.message.make_query('example.com', dns.rdatatype.ANY)
 	dns.query.tcp(request, '127.0.0.1', 10, port_dns)
