@@ -6,9 +6,9 @@ RUN chmod ugo=rx /opt/adguardhome/AdGuardHome
 
 FROM docker.io/library/golang:alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS healthcheck
 
-COPY healthcheck.go /healthcheck.go
+COPY healthcheck.go healthcheck.go
 
-RUN go build -ldflags="-w -s" /healthcheck.go
+RUN go build -ldflags="-w -s" healthcheck.go
 
 FROM scratch
 
