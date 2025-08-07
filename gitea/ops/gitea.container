@@ -6,16 +6,25 @@
 ContainerName=gitea
 Image=ghcr.io/ngarside/gitea:latest
 Network=gitea.network:ip=10.14.0.2
-Volume=/var/data/gitea/config:/usr/bin/data:U,Z
-Volume=/var/data/gitea/data:/var/lib/gitea:U,Z
+Volume=/var/data/gitea/config:/etc/gitea:U,Z
+Volume=/var/data/gitea/db:/usr/bin/data/db:U,Z
+Volume=/var/data/gitea/lfs:/usr/bin/data/lfs:U,Z
+Volume=/var/data/gitea/log:/usr/bin/data/log:U,Z
+Volume=/var/data/gitea/git:/usr/bin/data/git:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
 ExecStartPre=mkdir --parents /var/data/gitea/config
-ExecStartPre=mkdir --parents /var/data/gitea/data
+ExecStartPre=mkdir --parents /var/data/gitea/db
+ExecStartPre=mkdir --parents /var/data/gitea/lfs
+ExecStartPre=mkdir --parents /var/data/gitea/log
+ExecStartPre=mkdir --parents /var/data/gitea/git
 ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/config
-ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/data
+ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/db
+ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/lfs
+ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/log
+ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/git
 
 [Install]
 WantedBy=default.target
