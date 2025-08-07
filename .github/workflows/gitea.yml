@@ -1,48 +1,37 @@
 # This is free and unencumbered software released into the public domain.
 
 name: gitea
-
 on:
   pull_request:
-    paths:
-      - .github/workflows/gitea.yml
-      - gitea/**
-      - scripts/**
+    paths: ['**gitea**', 'scripts/**']
   push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/gitea.yml
-      - gitea/**
-      - scripts/**
-  schedule:
-    - cron: 0 0 * * 1
+    branches: [master]
+    paths: ['**gitea**', 'scripts/**']
+  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
-
 jobs:
-  gitea:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: {contents: read, packages: write}
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: login
+      - name: Install dependencies
+        run: pip install pipenv && pipenv install
+
+      - name: Generate tag
+        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
+
+      - name: Build container
+        run: podman build --file gitea/src/gitea.dockerfile --tag ghcr.io/ngarside/gitea:$TAG .
+
+      - name: Run tests
+        run: pipenv run pytest gitea
+
+      - name: Login to registry
         run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
 
-      - name: build
-        run: podman build --file src/gitea.dockerfile --tag ghcr.io/ngarside/gitea:latest .
-        working-directory: gitea
-
-      - name: push
-        run: podman push ghcr.io/ngarside/gitea:latest
-
-      - name: purge
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: gitea
-          package-type: container
-          delete-only-untagged-versions: true
+      - name: Push container to registry
+        run: podman push ghcr.io/ngarside/gitea:$TAG

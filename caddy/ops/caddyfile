@@ -24,6 +24,10 @@ fossflow.usani.uk {
 	reverse_proxy 10.1.0.2
 }
 
+gitea.usani.uk {
+	reverse_proxy 10.14.0.2:3000
+}
+
 jellyfin.usani.uk {
 	reverse_proxy 10.11.0.2:8096
 }

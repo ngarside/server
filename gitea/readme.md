@@ -2,8 +2,7 @@
 
 # <p align=center>Gitea
 
-A hardened container image and associated scripts for running Gitea via
-Podman and Systemd.
+Scripts for running Gitea via Podman and Systemd.
 
 # <p align=center>Initial Setup
 
