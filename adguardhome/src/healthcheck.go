@@ -11,7 +11,7 @@ import (
 func main() {
 	fmt.Println("Sending healthcheck request...")
 
-	res, err := http.Get("http://0.0.0.0:80")
+	res, err := http.Head("http://0.0.0.0:80")
 	if err != nil {
 		log.Fatalf("Request errored - %s", err)
 	}
