@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -41,32 +42,17 @@ func quadletReadContainer(path string) (QuadletContainer, error) {
 	}, nil
 }
 
-func envSetDefault(key string, defaultValue string) error {
-	_, exists := os.LookupEnv(key)
-	if exists {
-		return nil
-	}
-
-	return os.Setenv(key, defaultValue)
-}
-
 func main() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	pwd, err := os.Getwd()
+	quadletRoot, err := filepath.Abs(os.ExpandEnv(os.Getenv("QUADLET_ROOT")))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	envSetDefault("PWD", pwd)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	quadletRoot := os.ExpandEnv(os.Getenv("QUADLET_ROOT"))
 	log.Println(quadletRoot)
 
 	files, err := os.ReadDir(quadletRoot)
