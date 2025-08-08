@@ -15,10 +15,31 @@ import (
 	"github.com/joho/godotenv"
 )
 
+type QuadletContainer struct {
+	Name  string
+	Image string
+}
+
 type Response struct {
 	Results []struct {
 		Name string `json:"name"`
 	} `json:"results"`
+}
+
+func quadletReadContainer(path string) (QuadletContainer, error) {
+	data, err := ini.Load(path)
+	if err != nil {
+		return QuadletContainer{}, err
+	}
+
+	container := data.Section("Container")
+	name := container.Key("ContainerName").String()
+	image := container.Key("Image").String()
+
+	return QuadletContainer{
+		Name:  name,
+		Image: image,
+	}, nil
 }
 
 func main() {
@@ -47,16 +68,10 @@ func main() {
 		path := path.Join(root, name)
 		log.Println(path)
 
-		data, err := ini.Load(path)
+		quadletContainer, err := quadletReadContainer(path)
 		if err != nil {
 			log.Fatal(err)
 		}
-
-		container := data.Section("Container")
-		containerName := container.Key("ContainerName").String()
-		image := container.Key("Image").String()
-		log.Println(containerName)
-		log.Println(image)
 
 		//u, err := url.Parse("http://" + image)
 		//if err != nil {
@@ -71,7 +86,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		imageAct := r.FindStringSubmatch(image)
+		imageAct := r.FindStringSubmatch(quadletContainer.Image)
 		imageHost := imageAct[1]
 		image2 := imageAct[2]
 		log.Printf("%q", imageHost)
