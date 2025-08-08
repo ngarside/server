@@ -2,7 +2,6 @@
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -42,19 +41,35 @@ func quadletReadContainer(path string) (QuadletContainer, error) {
 	}, nil
 }
 
+func envSetDefault(key string, defaultValue string) error {
+	_, exists := os.LookupEnv(key)
+	if exists {
+		return nil
+	}
+
+	return os.Setenv(key, defaultValue)
+}
+
 func main() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	hi := os.Getenv("HI_TEST_ONE_THREE")
-	log.Println(hi)
-	//os.Exit(0)
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	fmt.Println("wok")
-	root := "C:\\Users\\Nathan\\Projects\\Server\\quadman\\samples"
-	files, err := os.ReadDir(root)
+	envSetDefault("PWD", pwd)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	quadletRoot := os.ExpandEnv(os.Getenv("QUADLET_ROOT"))
+	log.Println(quadletRoot)
+
+	files, err := os.ReadDir(quadletRoot)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -65,7 +80,7 @@ func main() {
 			continue
 		}
 
-		path := path.Join(root, name)
+		path := path.Join(quadletRoot, name)
 		log.Println(path)
 
 		quadletContainer, err := quadletReadContainer(path)
