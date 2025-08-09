@@ -8,8 +8,6 @@ rpm-ostree install hyperv-daemons restic
 rpm-ostree override remove \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
-	coreos-installer \
-	coreos-installer-bootinfra \
 	docker-cli \
 	nano \
 	nano-default-editor \
