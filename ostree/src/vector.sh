@@ -8,3 +8,4 @@ cp /tmp/git/vector/ops/vector.network /usr/etc/containers/systemd/users/1001/vec
 
 mkdir --parents /usr/etc/vector
 cp /tmp/git/vector/ops/vector.env /usr/etc/vector/vector.env
+cp /tmp/git/vector/ops/vector.toml /usr/etc/vector/vector.toml
