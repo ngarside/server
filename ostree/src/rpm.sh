@@ -11,7 +11,6 @@ rpm-ostree override remove \
 	nano \
 	nano-default-editor \
 	flatpak-session-helper \
-	ignition \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
