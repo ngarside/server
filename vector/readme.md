@@ -2,7 +2,8 @@
 
 # <p align=center>Valkey
 
-A mirror of the official Vector container image.
+A hardened container image and associated scripts for running Vector via
+Podman and Systemd.
 
 # <p align=center>References
 
