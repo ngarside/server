@@ -16,8 +16,6 @@ FROM scratch
 COPY --from=vector /usr/local/bin/vector /usr/bin/vector
 COPY --from=healthcheck /go/healthcheck /usr/bin/healthcheck
 
-EXPOSE 8686
-
 ENTRYPOINT ["/usr/bin/vector"]
 
 HEALTHCHECK CMD ["/usr/bin/healthcheck"]

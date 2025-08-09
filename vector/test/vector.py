@@ -14,17 +14,13 @@ def fixture():
 	dir = os.path.dirname(os.path.realpath(__file__))
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port}:8686', '--pull', 'never', '--read-only', '--volume',
+		'podman', 'run', '--detach', '--name', f'{name}', '--pull', 'never',
+		'--read-only', '--volume',
 		f'{dir}/vector.toml:/etc/vector/vector.toml:ro',
 		f'ghcr.io/ngarside/vector:{tag}', '--config', '/etc/vector/vector.toml'
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
-
-def test_api():
-	res = session.get(f'http://localhost:{port}/health')
-	assert res.status_code == 200
 
 def test_healthcheck():
 	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
