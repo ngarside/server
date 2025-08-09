@@ -6,7 +6,6 @@ set -euo pipefail
 rpm-ostree install hyperv-daemons restic
 
 rpm-ostree override remove \
-	afterburn-dracut \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
 	cifs-utils \
