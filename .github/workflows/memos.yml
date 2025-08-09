@@ -25,7 +25,7 @@ jobs:
         run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
 
       - name: Build container
-        run: podman build --file memos/src/memos.dockerfile --tag ghcr.io/ngarside/memos:$TAG .
+        run: podman build --file memos/src/memos.dockerfile --format docker --tag ghcr.io/ngarside/memos:$TAG .
 
       - name: Run tests
         run: pipenv run pytest memos
