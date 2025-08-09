@@ -25,3 +25,7 @@ def fixture():
 def test_api():
 	res = session.get(f'http://localhost:{port}/health')
 	assert res.status_code == 200
+
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
+	assert status.returncode == 0
