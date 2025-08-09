@@ -15,7 +15,6 @@ rpm-ostree override remove \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
-	google-compute-engine-guest-configs-udev \
 	moby-engine \
 	moby-filesystem \
 	NetworkManager-cloud-setup \
