@@ -1,6 +1,6 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-# <p align=center>Valkey
+# <p align=center>Vector
 
 A hardened container image and associated scripts for running Vector via
 Podman and Systemd.
