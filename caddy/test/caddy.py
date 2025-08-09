@@ -2,7 +2,7 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, random, requests, string, subprocess, time
+import os, pytest, random, requests, subprocess, time
 
 name, port = random.sample(range(1000, 64000), 2)
 
@@ -15,8 +15,8 @@ def fixture():
 	dir = os.path.dirname(os.path.realpath(__file__))
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'{port}:80',
-		'--pull', 'never', '--volume', f'{dir}:/etc/caddy:ro',
+		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
+		f'{port}:80', '--pull', 'never', '--volume', f'{dir}:/etc/caddy:ro',
 		f'ghcr.io/ngarside/caddy:{tag}',
 	])
 	time.sleep(0.1)
