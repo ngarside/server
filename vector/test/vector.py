@@ -2,7 +2,7 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, random, requests, string, subprocess
+import os, pytest, random, requests, subprocess
 
 name, port = random.sample(range(1000, 64000), 2)
 
