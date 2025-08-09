@@ -18,7 +18,6 @@ rpm-ostree override remove \
 	ignition \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
-	console-login-helper-messages-motdgen \
 	console-login-helper-messages-issuegen \
 	google-compute-engine-guest-configs-udev \
 	moby-engine \
