@@ -14,5 +14,6 @@ updates:
       - postgres/**
       - starbase/**
       - valkey/**
+      - vector/**
     schedule:
       interval: daily
