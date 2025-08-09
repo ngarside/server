@@ -4,6 +4,7 @@
 
 [Container]
 ContainerName=vector
+EnvironmentFile=/etc/vector/vector.env
 Image=ghcr.io/ngarside/vector:latest
 Network=vector.network:ip=10.15.0.2
 ReadOnly=true
