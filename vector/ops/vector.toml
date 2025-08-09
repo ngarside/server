@@ -1,0 +1,20 @@
+﻿# This is free and unencumbered software released into the public domain.
+
+[api]
+address = "0.0.0.0:8686"
+enabled = true
+
+[sources.demo_logs]
+format = "json"
+type = "demo_logs"
+
+[sinks.grafanacloud_logs]
+auth.password = "$GRAFANACLOUD_PASSWORD"
+auth.strategy = "basic"
+auth.user = "$GRAFANACLOUD_USERNAME"
+encoding.codec = "text"
+endpoint = "$GRAFANACLOUD_ENDPOINT"
+inputs = ["demo_logs"]
+labels.host = "{{ host }}"
+labels.service = "{{ service }}"
+type = "loki"
