@@ -8,7 +8,7 @@ FROM docker.io/library/golang:alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce
 
 WORKDIR /go
 
-COPY adguardhome/src/healthcheck.go healthcheck.go
+COPY memos/src/healthcheck.go healthcheck.go
 
 RUN go build -ldflags="-w -s" healthcheck.go
 RUN chmod ugo=rx /go/healthcheck

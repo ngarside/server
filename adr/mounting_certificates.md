@@ -56,4 +56,6 @@ directory isn't mounted.
 
 # <p align=center>References
 
+- [github.com/alexcrichton/openssl-probe/blob/main/src/lib.rs](
+    https://github.com/alexcrichton/openssl-probe/blob/main/src/lib.rs)
 - [go.dev/src/crypto/x509/root_linux.go](https://go.dev/src/crypto/x509/root_linux.go)

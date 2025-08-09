@@ -1,0 +1,14 @@
+# This is free and unencumbered software released into the public domain.
+
+[api]
+address = "0.0.0.0:8686"
+enabled = true
+
+[sources.demo_logs]
+format = "json"
+type = "demo_logs"
+
+[sinks.console]
+encoding.codec = "json"
+inputs = ["demo_logs"]
+type = "console"
