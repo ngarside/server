@@ -8,7 +8,6 @@ rpm-ostree install hyperv-daemons restic
 rpm-ostree override remove \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
-	docker-cli \
 	nano \
 	nano-default-editor \
 	flatpak-session-helper \
