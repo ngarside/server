@@ -11,7 +11,6 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
-	global port
 	dir = os.path.dirname(os.path.realpath(__file__))
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
