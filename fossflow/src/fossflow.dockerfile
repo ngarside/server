@@ -16,15 +16,27 @@ RUN npm ci && npm run build
 
 RUN chmod -R ugo=r build
 
+FROM docker.io/library/golang:alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS healthcheck
+
+WORKDIR /go
+
+COPY fossflow/src/healthcheck.go healthcheck.go
+
+RUN go build -ldflags="-w -s" healthcheck.go
+RUN chmod ugo=rx /go/healthcheck
+
 FROM scratch
 
-COPY --from=fossflow /fossflow/build /srv
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
+COPY --from=fossflow /fossflow/build /srv
+COPY --from=healthcheck /go/healthcheck /usr/bin/healthcheck
 
 EXPOSE 80
 
 WORKDIR /srv
 
 ENTRYPOINT ["/usr/bin/caddy"]
+
+HEALTHCHECK CMD ["/usr/bin/healthcheck"]
 
 CMD ["file-server"]
