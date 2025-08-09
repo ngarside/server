@@ -15,7 +15,7 @@ def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port}:8686', '--pull', 'never', '--volume',
+		f'{port}:8686', '--pull', 'never', '--read-only', '--volume',
 		f'{dir}/vector.toml:/etc/vector/vector.toml:ro',
 		f'ghcr.io/ngarside/vector:{tag}', '--config', '/etc/vector/vector.toml'
 	])
