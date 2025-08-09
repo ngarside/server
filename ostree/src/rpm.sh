@@ -14,8 +14,6 @@ rpm-ostree override remove \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
-	moby-engine \
-	moby-filesystem \
 	NetworkManager-cloud-setup \
 	rsync \
 	toolbox \
