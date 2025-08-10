@@ -10,3 +10,5 @@ cp /tmp/git/ostree/ops/vconsole.conf /usr/etc/vconsole.conf
 cp /tmp/git/ostree/ops/sysctl.conf /usr/etc/sysctl.d/0-server.conf
 
 cp /tmp/git/ostree/ops/subuid.txt /usr/etc/subuid
+
+cp /tmp/git/ostree/ops/sudoers.conf /usr/etc/sudoers.d/0-server.conf
