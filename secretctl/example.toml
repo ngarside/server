@@ -3,3 +3,9 @@ key = "k"
 value = "v"
 user = "u"
 driver = "dr"
+
+[[secrets]]
+key = "k2"
+value = "v2"
+user = "u2"
+driver = "dr2"
