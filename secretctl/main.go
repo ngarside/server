@@ -85,7 +85,11 @@ func main() {
 		fmt.Printf("[%s]\n", secret.Key)
 		fmt.Printf("Driver: %s\n", secret.Driver)
 		fmt.Printf("User: %s\n", secret.User)
-		fmt.Printf("Value: %s\n", secret.Value)
+		fmt.Print("Value: ")
+		for range secret.Value {
+			fmt.Print("*")
+		}
+		fmt.Println()
 		err = validate(secret)
 		if err != nil {
 			log.Fatal("SECRET err")
