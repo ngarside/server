@@ -1,7 +1,6 @@
 ﻿package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -55,7 +54,7 @@ func validate(secret Secret) error {
 }
 
 func main() {
-	log.Println(title)
+	fmt.Println(title)
 	// Return early unless the program is run with a single "cat" command
 	if len(os.Args) != 2 || os.Args[1] != "cat" {
 		return
@@ -69,17 +68,13 @@ func main() {
 	}
 
 	for _, secret := range file.Secrets {
-		log.Println(secret.User)
+		fmt.Printf("%s:\n", secret.Key)
+		fmt.Printf("  Driver: %s\n", secret.Driver)
+		fmt.Printf("  User: %s\n", secret.User)
+		fmt.Printf("  Value: %s\n", secret.Value)
 		err = validate(secret)
 		if err != nil {
 			log.Fatal("SECRET err")
 		}
 	}
-
-	jsonData, err := json.MarshalIndent(file.Secrets, "", "  ")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Println(string(jsonData))
 }
