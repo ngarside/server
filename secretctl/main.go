@@ -3,6 +3,7 @@
 import (
 	"encoding/json"
 	"log"
+	"os"
 
 	"github.com/BurntSushi/toml"
 )
@@ -25,6 +26,12 @@ type Secret struct {
 }
 
 func main() {
+	// Return early unless the program is run with a single "cat" command
+	if len(os.Args) != 2 || os.Args[1] != "cat" {
+		return
+	}
+
+	// cat the file to check that it is parsed properly (cat command)
 	var file SecretFile
 	_, err := toml.DecodeFile("example.toml", &file)
 	if err != nil {
