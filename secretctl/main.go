@@ -55,7 +55,7 @@ func validate(secret Secret) error {
 }
 
 func main() {
-	fmt.Println(title)
+	fmt.Print(title)
 	// Return early unless the program is run with a single "cat" command
 	if len(os.Args) != 3 || os.Args[1] != "cat" {
 		return
