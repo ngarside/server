@@ -20,7 +20,7 @@ type Secret struct {
 
 func main() {
 	var file SecretFile
-	_, err := toml.DecodeFile("C:\\Users\\Nathan\\Projects\\Server\\secretctl\\example.toml", &file)
+	_, err := toml.DecodeFile("example.toml", &file)
 	if err != nil {
 		log.Fatal(err)
 	}
