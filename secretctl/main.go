@@ -61,6 +61,7 @@ func main() {
 	}
 
 	// cat the file to check that it is parsed properly (cat command)
+	fmt.Printf("Reading file - %s\n", "example.toml")
 	var file SecretFile
 	_, err := toml.DecodeFile("example.toml", &file)
 	if err != nil {
@@ -68,10 +69,11 @@ func main() {
 	}
 
 	for _, secret := range file.Secrets {
-		fmt.Printf("%s:\n", secret.Key)
-		fmt.Printf("  Driver: %s\n", secret.Driver)
-		fmt.Printf("  User: %s\n", secret.User)
-		fmt.Printf("  Value: %s\n", secret.Value)
+		fmt.Println()
+		fmt.Printf("[%s]\n", secret.Key)
+		fmt.Printf("Driver: %s\n", secret.Driver)
+		fmt.Printf("User: %s\n", secret.User)
+		fmt.Printf("Value: %s\n", secret.Value)
 		err = validate(secret)
 		if err != nil {
 			log.Fatal("SECRET err")
