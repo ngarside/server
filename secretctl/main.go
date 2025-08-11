@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/BurntSushi/toml"
 )
@@ -23,7 +24,7 @@ type SecretFile struct {
 type DriverType string
 
 const (
-	PodmanDriver DriverType = "Podman"
+	PodmanDriver DriverType = "podman"
 )
 
 type Secret struct {
@@ -34,19 +35,19 @@ type Secret struct {
 }
 
 func validate(secret Secret) error {
-	if secret.Driver == "" {
+	if secret.Driver != "podman" {
 		return fmt.Errorf("driver is required")
 	}
 
-	if secret.Key == "" {
+	if strings.TrimSpace(secret.Key) == "" {
 		return fmt.Errorf("key is required")
 	}
 
-	if secret.User == "" {
+	if secret.User != "" && strings.TrimSpace(secret.User) == "" {
 		return fmt.Errorf("user is required")
 	}
 
-	if secret.Value == "" {
+	if strings.TrimSpace(secret.Value) == "" {
 		return fmt.Errorf("value is required")
 	}
 
@@ -92,6 +93,7 @@ func main() {
 		fmt.Println()
 		err = validate(secret)
 		if err != nil {
+			log.Print(err)
 			log.Fatal("SECRET err")
 		}
 	}

@@ -2,16 +2,16 @@
 key = "k"
 value = "v"
 user = "u"
-driver = "dr"
+driver = "podman"
 
 [[secrets]]
 key = "k2"
 value = "v2"
 user = "u2"
-driver = "dr2"
+driver = "podman"
 
 [[secrets]]
 key = "k2"
 value = "v3"
 user = "u2"
-driver = "dr2"
+driver = "podman"
