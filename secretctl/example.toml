@@ -13,5 +13,5 @@ driver = "dr2"
 [[secrets]]
 key = "k2"
 value = "v3"
-user = "u3"
-driver = "dr3"
+user = "u2"
+driver = "dr2"

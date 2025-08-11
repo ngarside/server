@@ -71,11 +71,12 @@ func main() {
 	map2 := map[string]int{}
 	secrets := []Secret{}
 	for _, secret := range file.Secrets {
-		if existingIndex, exists := map2[secret.Key]; exists {
+		key := secret.Key + secret.User + string(secret.Driver)
+		if existingIndex, exists := map2[key]; exists {
 			// Remove the existing secret from the slice
 			secrets = append(secrets[:existingIndex], secrets[existingIndex+1:]...)
 		}
-		map2[secret.Key] = len(secrets)
+		map2[key] = len(secrets)
 		secrets = append(secrets, secret)
 	}
 
