@@ -1,0 +1,5 @@
+﻿[[secrets]]
+key = "k"
+value = "v"
+user = "u"
+driver = "dr"
