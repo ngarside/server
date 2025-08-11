@@ -11,8 +11,14 @@ type SecretFile struct {
 	Secrets []Secret
 }
 
+type DriverType string
+
+const (
+	PodmanDriver DriverType = "Podman"
+)
+
 type Secret struct {
-	Driver string
+	Driver DriverType
 	Key    string
 	User   string
 	Value  string
