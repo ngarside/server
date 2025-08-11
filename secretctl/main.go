@@ -56,14 +56,14 @@ func validate(secret Secret) error {
 func main() {
 	fmt.Println(title)
 	// Return early unless the program is run with a single "cat" command
-	if len(os.Args) != 2 || os.Args[1] != "cat" {
+	if len(os.Args) != 3 || os.Args[1] != "cat" {
 		return
 	}
 
 	// cat the file to check that it is parsed properly (cat command)
-	fmt.Printf("Reading file - %s\n", "example.toml")
+	fmt.Printf("Reading file - %s\n", os.Args[2])
 	var file SecretFile
-	_, err := toml.DecodeFile("example.toml", &file)
+	_, err := toml.DecodeFile(os.Args[2], &file)
 	if err != nil {
 		log.Fatal(err)
 	}
