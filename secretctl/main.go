@@ -9,6 +9,14 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
+const title = `
+                        _       _   _
+ ___  ___  ___ _ __ ___| |_ ___| |_| |
+/ __|/ _ \/ __| '__/ _ \ __/ __| __| |
+\__ \  __/ (__| | |  __/ || (__| |_| |
+|___/\___|\___|_|  \___|\__\___|\__|_|
+`
+
 type SecretFile struct {
 	Secrets []Secret
 }
@@ -47,6 +55,7 @@ func validate(secret Secret) error {
 }
 
 func main() {
+	log.Println(title)
 	// Return early unless the program is run with a single "cat" command
 	if len(os.Args) != 2 || os.Args[1] != "cat" {
 		return
