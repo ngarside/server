@@ -68,7 +68,14 @@ func main() {
 		log.Fatal(err)
 	}
 
+	map2 := map[string]int{}
+	secrets := []Secret{}
 	for _, secret := range file.Secrets {
+		map2[secret.Key] = len(secrets)
+		secrets = append(secrets, secret)
+	}
+
+	for _, secret := range secrets {
 		fmt.Println()
 		fmt.Printf("[%s]\n", secret.Key)
 		fmt.Printf("Driver: %s\n", secret.Driver)
