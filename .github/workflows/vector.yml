@@ -4,10 +4,10 @@ name: vector
 
 on:
   pull_request:
-    paths: ['**vector**', 'scripts/**']
+    paths: ['**vector**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**vector**', 'scripts/**']
+    paths: ['**vector**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
