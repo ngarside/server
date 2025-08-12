@@ -3,8 +3,8 @@
 	"extends": ["config:recommended"],
 	"packageRules": [
 		{
-			"matchFiles": ["*"],
-			"enabled": false
+			"enabled": false,
+			"matchFiles": ["*"]
 		},
 		{
 			"automerge": true,
