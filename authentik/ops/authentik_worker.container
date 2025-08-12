@@ -1,6 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
+After=authentik_postgres.container
+After=authentik_valkey.container
+Requires=authentik_postgres.container
+Requires=authentik_valkey.container
 
 [Container]
 ContainerName=authentik_worker
