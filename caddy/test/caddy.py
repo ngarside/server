@@ -4,7 +4,7 @@
 
 import os, pytest, random, requests, subprocess, time
 
-name, port = random.sample(range(1000, 64000), 2)
+name, port = random.sample(range(1025, 65536), 2)
 
 session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
