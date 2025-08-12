@@ -28,13 +28,17 @@ jobs:
         run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
 
       - name: Build container
-        run: podman build --file {{ inputs.path }} --format docker --tag ghcr.io/ngarside/{{ inputs.name }}:$TAG .
+        run: >
+          podman build --file {{ inputs.path }} --format docker
+          --tag ghcr.io/ngarside/{{ inputs.name }}:$TAG .
 
       - name: Run tests
         run: pipenv run pytest {{ inputs.name }}
 
       - name: Login to registry
-        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          podman login ghcr.io --username ${{ github.actor }}
+          --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push container to registry
         run: podman push ghcr.io/ngarside/{{ inputs.name }}:$TAG
