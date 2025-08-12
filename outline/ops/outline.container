@@ -2,7 +2,11 @@
 
 [Unit]
 After=authentik_server.container
+After=outline_postgres.container
+After=outline_valkey.container
 Requires=authentik_server.container
+Requires=outline_postgres.container
+Requires=outline_valkey.container
 
 [Container]
 ContainerName=outline
