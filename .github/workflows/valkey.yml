@@ -12,28 +12,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  container_build:
+    uses: ./.github/workflows/container_build.yml
     permissions: {contents: read, packages: write}
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: pip install pipenv && pipenv install
-
-      - name: Generate tag
-        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
-
-      - name: Build container
-        run: podman build --file valkey/src/valkey.dockerfile --tag ghcr.io/ngarside/valkey:$TAG .
-
-      - name: Run tests
-        run: pipenv run pytest valkey
-
-      - name: Login to registry
-        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push container to registry
-        run: podman push ghcr.io/ngarside/valkey:$TAG
+    with:
+      name: valkey
+      path: valkey/src/valkey.dockerfile
