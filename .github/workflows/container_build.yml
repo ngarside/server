@@ -1,0 +1,40 @@
+# This is free and unencumbered software released into the public domain.
+
+name: container_build
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      path:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: {contents: read, packages: write}
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install pipenv && pipenv install
+
+      - name: Generate tag
+        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
+
+      - name: Build container
+        run: podman build --file {{ inputs.path }} --format docker --tag ghcr.io/ngarside/{{ inputs.name }}:$TAG .
+
+      - name: Run tests
+        run: pipenv run pytest {{ inputs.name }}
+
+      - name: Login to registry
+        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push container to registry
+        run: podman push ghcr.io/ngarside/{{ inputs.name }}:$TAG
