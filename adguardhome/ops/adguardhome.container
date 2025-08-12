@@ -10,6 +10,7 @@ PublishPort=53:53/tcp
 PublishPort=53:53/udp
 ReadOnly=true
 UserNS=auto:size=8
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:O
 Volume=/var/data/adguardhome/etc:/etc/adguardhome:U,Z
 Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
 
