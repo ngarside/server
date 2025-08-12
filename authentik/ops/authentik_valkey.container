@@ -6,6 +6,7 @@
 ContainerName=authentik_valkey
 Image=ghcr.io/ngarside/valkey:latest
 Network=authentik_internal.network:ip=10.7.0.2
+NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
 

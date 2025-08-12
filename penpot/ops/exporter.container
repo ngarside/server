@@ -11,6 +11,7 @@ Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Image=ghcr.io/ngarside/penpot-exporter:latest
 Network=penpot_backend.network:ip=10.4.0.4
 Network=penpot_frontend.network:ip=10.3.0.7
+NoNewPrivileges=true
 UserNS=auto
 
 [Service]

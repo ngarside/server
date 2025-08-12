@@ -6,6 +6,7 @@
 ContainerName=vaultwarden
 Image=docker.io/vaultwarden/server:latest
 Network=vaultwarden.network:ip=10.12.0.2
+NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/var/data/vaultwarden/data:/data:U,Z

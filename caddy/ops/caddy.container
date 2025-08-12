@@ -18,6 +18,7 @@ Network=jellyfin.network:ip=10.11.0.3
 Network=vaultwarden.network:ip=10.12.0.3
 Network=cloudflared.network:ip=10.13.0.3
 Network=gitea.network:ip=10.14.0.3
+NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/caddy:/etc/caddy:ro
