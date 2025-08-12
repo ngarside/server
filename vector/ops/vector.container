@@ -8,7 +8,7 @@ EnvironmentFile=/etc/vector/vector.env
 Image=ghcr.io/ngarside/vector:latest
 Network=vector.network:ip=10.15.0.2
 ReadOnly=true
-Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:O
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/etc/vector/vector.toml:/etc/vector/vector.toml:ro
 
 [Service]
