@@ -3,6 +3,14 @@
 extends: default
 
 rules:
+  # Document start lines serve no purpose given how this project uses YAML.
   document-start: disable
+
+  # Authentik's syntax for templates inside blueprints is pre-processed (that is, it's not YAML
+  # despite being inside YAML files) and therefore can't be split across multiple lines.
   line-length: disable
+
+  # Results in false positives for GitHub Actions 'on' blocks, which represent a significant portion
+  # of the YAML files in this project, so disabling on a per-file basis would result in too much
+  # boilerplate for not enough benefit.
   truthy: disable
