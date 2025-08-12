@@ -5,5 +5,5 @@ FROM quay.io/fedora/fedora-coreos:stable@sha256:67c9125048afe7168a7da7353ee4c15b
 SHELL ["/bin/bash", "-c"]
 
 RUN --mount=target=/tmp/git set -euo pipefail && \
-	for file in /tmp/git/ostree/src/*.sh; do bash "$file"; done && \
+	for file in /tmp/git/ostree/src/*.sh; do bash "$file" || exit; done && \
 	ostree container commit
