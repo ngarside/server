@@ -3,8 +3,14 @@
 	"extends": ["config:recommended"],
 	"packageRules": [
 		{
-			"matchFiles": ["**/*.dockerfile", "**/*.yml", "requirements.txt"],
-			"enabled": false
+			"enabled": false,
+			"matchFiles": ["*"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"enabled": true,
+			"matchFiles": ["requirements.txt"]
 		}
 	]
 }
