@@ -3,14 +3,10 @@
 	"extends": ["config:recommended"],
 	"packageRules": [
 		{
-			"enabled": false,
-			"matchFiles": ["*"]
-		},
-		{
 			"automerge": true,
 			"automergeStrategy": "squash",
 			"enabled": true,
-			"matchFiles": [".github/workflows/*.yml", "requirements.txt"]
+			"matchFiles": ["*"]
 		}
 	],
 	"prConcurrentLimit": 1
