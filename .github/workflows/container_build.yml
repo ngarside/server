@@ -24,16 +24,19 @@ jobs:
       - name: Install dependencies
         run: pip install pipenv && pipenv install
 
+      - name: Calculate root path
+        run: echo "ROOT=$(echo "${{ inputs.path }}" | cut --delimiter / --fields 1)" >> $GITHUB_ENV
+
       - name: Generate tag
         run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
 
       - name: Build container
         run: >
-          podman build --file ${{ inputs.path }} --format docker
+          podman build --file "${{ inputs.path }}" --format docker
           --tag ghcr.io/ngarside/${{ inputs.name }}:$TAG .
 
       - name: Run tests
-        run: pipenv run pytest ${{ inputs.name }}
+        run: pipenv run pytest $ROOT
 
       - name: Login to registry
         run: >
