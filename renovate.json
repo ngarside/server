@@ -10,7 +10,7 @@
 			"automerge": true,
 			"automergeStrategy": "squash",
 			"enabled": true,
-			"matchFiles": ["requirements.txt"]
+			"matchFiles": [".github/workflows/*.yml", "requirements.txt"]
 		}
 	],
 	"prConcurrentLimit": 1
