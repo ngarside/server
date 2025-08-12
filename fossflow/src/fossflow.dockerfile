@@ -6,7 +6,7 @@ RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/node:alpine@sha256:e8e882c692a08878d55ec8ff6c5a4a71b3edca25eda0af4406e2a160d8a93cf2 AS fossflow
 
-RUN apk add git
+RUN apk --no-cache add git
 
 RUN git clone --depth 1 https://github.com/stan-smith/fossflow fossflow
 
