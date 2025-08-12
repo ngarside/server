@@ -1,6 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 name: memos
+
 on:
   pull_request:
     paths: ['**memos**', 'scripts/**']
@@ -9,6 +10,7 @@ on:
     paths: ['**memos**', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
