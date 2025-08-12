@@ -12,7 +12,7 @@ jobs:
     steps:
 
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: check
         uses: hadolint/hadolint-action@v3.1.0
@@ -26,7 +26,7 @@ jobs:
     steps:
 
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: install
         run: pip install pipenv && pipenv install
@@ -39,7 +39,7 @@ jobs:
     steps:
 
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: check
         run: git ls-files | grep '\.sh$' | xargs shellcheck --external-sources
@@ -49,7 +49,7 @@ jobs:
     steps:
 
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: check
         run: yamllint .
