@@ -4,10 +4,10 @@ name: adguardhome
 
 on:
   pull_request:
-    paths: ['**adguardhome**', 'scripts/**', 'requirements.txt']
+    paths: ['**adguardhome**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**adguardhome**', 'scripts/**', 'requirements.txt']
+    paths: ['**adguardhome**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 

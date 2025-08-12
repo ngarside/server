@@ -4,10 +4,10 @@ name: valkey
 
 on:
   pull_request:
-    paths: ['**valkey**', 'scripts/**', 'requirements.txt']
+    paths: ['**valkey**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**valkey**', 'scripts/**', 'requirements.txt']
+    paths: ['**valkey**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
