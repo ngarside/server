@@ -4,10 +4,10 @@ name: ostree
 
 on:
   pull_request:
-    paths: ['**/ops/**', '**ostree**', 'scripts/**']
+    paths: ['**/ops/**', '**ostree**', 'scripts/**', 'requirements.txt']
   push:
     branches: [master]
-    paths: ['**/ops/**', '**ostree**', 'scripts/**']
+    paths: ['**/ops/**', '**ostree**', 'scripts/**', 'requirements.txt']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 

@@ -4,10 +4,10 @@ name: caddy
 
 on:
   pull_request:
-    paths: ['**caddy**', 'scripts/**']
+    paths: ['**caddy**', 'scripts/**', 'requirements.txt']
   push:
     branches: [master]
-    paths: ['**caddy**', 'scripts/**']
+    paths: ['**caddy**', 'scripts/**', 'requirements.txt']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
