@@ -6,6 +6,7 @@
 ContainerName=memos
 Image=ghcr.io/ngarside/memos:latest
 Network=memos.network:ip=10.6.0.2
+NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/var/data/memos/opt:/opt/memos:U,Z

@@ -6,6 +6,7 @@
 ContainerName=gitea
 Image=ghcr.io/ngarside/gitea:latest
 Network=gitea.network:ip=10.14.0.2
+NoNewPrivileges=true
 Volume=/var/data/gitea/config:/etc/gitea:U,Z
 Volume=/var/data/gitea/db:/usr/bin/data/db:U,Z
 Volume=/var/data/gitea/lfs:/usr/bin/data/lfs:U,Z

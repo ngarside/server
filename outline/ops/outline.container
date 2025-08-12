@@ -26,6 +26,7 @@ Environment=DEFAULT_LANGUAGE=en_GB
 EnvironmentFile=/etc/outline/outline.env
 Image=docker.io/outlinewiki/outline:latest
 Network=outline.network:ip=10.10.0.2
+NoNewPrivileges=true
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 
 [Service]

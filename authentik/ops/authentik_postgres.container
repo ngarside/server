@@ -10,6 +10,7 @@ Environment=POSTGRES_PASSWORD=authentik
 Environment=POSTGRES_USER=authentik
 Image=ghcr.io/ngarside/postgres:latest
 Network=authentik_internal.network:ip=10.7.0.3
+NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT
 UserNS=auto:size=256

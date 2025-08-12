@@ -17,6 +17,7 @@ Exec=server
 Image=ghcr.io/goauthentik/server:latest
 Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
+NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT
 User=root

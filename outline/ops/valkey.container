@@ -6,6 +6,7 @@
 ContainerName=outline_valkey
 Image=ghcr.io/ngarside/valkey:latest
 Network=outline.network:ip=10.10.0.4
+NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
 

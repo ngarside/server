@@ -9,6 +9,7 @@ Environment=POSTGRES_PASSWORD=postgres
 Environment=POSTGRES_USER=postgres
 Image=ghcr.io/ngarside/postgres:latest
 Network=outline.network:ip=10.10.0.3
+NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT
 UserNS=auto:size=256
