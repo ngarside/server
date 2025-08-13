@@ -6,7 +6,7 @@
 ContainerName=caddy
 Environment=XDG_CONFIG_HOME=/opt
 EnvironmentFile=/etc/caddy/caddy.env
-Image=ghcr.io/ngarside/caddy:latest
+Image=ghcr.io/ngarside/caddy:2.10.0
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
 Network=memos.network:ip=10.6.0.3
