@@ -9,6 +9,15 @@
 # Run with 'python tagify.py'
 
 import os, sys, slugify
+import re
+
+
+def parse_version(file):
+	match = re.search(r'^FROM.*:[^\d]*([\.\d]*).*$', file)
+	if match:
+		return match.group(1)
+		if line.startswith('ARG VERSION='):
+			return line.split('=')[1].strip()
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
