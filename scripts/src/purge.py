@@ -57,6 +57,10 @@ if __name__ == '__main__':
 
 	for container in containers:
 		print(f'\nProcessing {container['name']}:')
+		repository = container['repository']['full_name']
+		if repository != 'ngarside/server':
+			print('\tNot under parent repository; skipping')
+			continue
 		versions = github_get(f'{container['url']}/versions')
 		for version in versions:
 			sha = version['name'].split(':')[1][:7]
