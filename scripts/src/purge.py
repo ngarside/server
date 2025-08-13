@@ -35,6 +35,10 @@ def github_get(url):
 	ensure_sucecss(response)
 	return response.json()
 
+def is_semantic(tag):
+	match = re.match(r'^\d+(\.\d+)*$', tag)
+	return match is not None
+
 print('Initiating purge of GitHub containers')
 cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
 
