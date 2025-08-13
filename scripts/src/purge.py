@@ -41,7 +41,7 @@ def is_semantic(tag):
 
 if __name__ == '__main__':
 	print('Initiating purge of GitHub containers')
-	cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
+	cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=30)
 
 	print('\tReading token from environment')
 	token = os.getenv('GITHUB_TOKEN')
