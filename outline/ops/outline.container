@@ -28,7 +28,7 @@ Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=debug
 Environment=DEFAULT_LANGUAGE=en_GB
 EnvironmentFile=/etc/outline/outline.env
-Image=docker.io/outlinewiki/outline:latest
+Image=docker.io/outlinewiki/outline:0.85.1
 Network=outline.network:ip=10.10.0.2
 NoNewPrivileges=true
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z

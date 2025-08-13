@@ -18,7 +18,7 @@ Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
 Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
 EnvironmentFile=/etc/authentik/env/worker
 Exec=worker
-Image=ghcr.io/goauthentik/server:latest
+Image=ghcr.io/goauthentik/server:2025.6.4
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
 StopSignal=SIGINT
