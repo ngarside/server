@@ -8,7 +8,7 @@ sys.path.append(str(Path(__file__).parent.parent / 'src'))
 import pytest, tagify
 
 @pytest.mark.parametrize('input, expected', [
-	('FROM hi:1.2.3', '1.2.3'),
+	('# Notice \n FROM hi:1.2.3 \n RUN echo test \n FROM hi:4.5.6', '1.2.3'),
 ])
 
 def test_sanitize(input, expected):
