@@ -28,9 +28,9 @@ if __name__ == '__main__':
 
 	# If the current ref is 'master', then return the semantic version.
 	if ref == 'master':
-		print(parse_version(''))
-		exit(0)
+		with open(sys.argv[1], 'r') as file:
+			print(parse_version(file))
+			sys.exit(0)
 
 	# Otherwise return the ref name, sanitized using 'slugify.py'.
-	tag = slugify.sanitize(ref)
-	print('latest' if tag == 'master' else tag)
+	print(slugify.sanitize(ref))
