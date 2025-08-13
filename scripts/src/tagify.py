@@ -1,32 +1,36 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-# Converts the git branch name, as provided by the GitHub Actions runtime, to a
-# container tag using the rules:
-# - If the branch name is 'master', then the tag will be 'latest'
+# Calculates the tag for a given image definition:
+# - If the current ref head or name is 'master', then the tag will be the
+#   semantic version (lacking any prefixes or suffixes) of the first base image
+#   specified in the provided file
 # - Otherwise the tag will be the branch name, sanitized using 'slugify.py'
 
-# Run with 'python tagify.py'
+# Run with 'python tagify.py <path>'
 
-import os, sys, slugify
-import re
-
+import os, re, sys, slugify
 
 def parse_version(file):
 	match = re.search(r'^FROM.*:[^\d]*([\.\d]*).*$', file)
 	if match:
 		return match.group(1)
-		if line.startswith('ARG VERSION='):
-			return line.split('=')[1].strip()
+	return None
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
-	if len(sys.argv) != 1:
-		print('Usage: python tagify.py')
+	if len(sys.argv) != 2:
+		print('Usage: python tagify.py <path>')
 		sys.exit(2)
 
-	# Find and transform the branch name.
-	refHead = os.getenv('GITHUB_HEAD_REF')
-	refName = os.getenv('GITHUB_REF_NAME')
-	tag = slugify.sanitize(refHead or refName)
+	# Find the name of the currently checked out ref.
+	ref = os.getenv('GITHUB_HEAD_REF') or os.getenv('GITHUB_REF_NAME')
+
+	# If the current ref is 'master', then return the semantic version.
+	if ref == 'master':
+		print(parse_version(''))
+		exit(0)
+
+	# Otherwise return the ref name, sanitized using 'slugify.py'.
+	tag = slugify.sanitize(ref)
 	print('latest' if tag == 'master' else tag)
