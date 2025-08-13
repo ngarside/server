@@ -27,10 +27,9 @@ if __name__ == '__main__':
 	ref = os.getenv('GITHUB_HEAD_REF') or os.getenv('GITHUB_REF_NAME') or 'master'
 
 	# If the current ref is 'master', then return the semantic version.
-	if ref == 'master':
-		with open(sys.argv[1], 'r') as file:
-			print(version(file.read()))
-			sys.exit(0)
+	with open(sys.argv[1], 'r') as file:
+		print(version(file.read()))
+		sys.exit(0)
 
 	# Otherwise return the ref name, sanitized using 'slugify.py'.
 	print(slugify.sanitize(ref))
