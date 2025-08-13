@@ -1,10 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/neosmemo/memos:stable@sha256:e278981311adb91712328cdd81d2f7bcf132f055b051338bbfaecf0538ba69fe AS memos
+FROM docker.io/neosmemo/memos:0.25.0 AS memos
 
 RUN chmod ugo=rx /usr/local/memos/memos
 
-FROM docker.io/library/golang:alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS healthcheck
+FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
 
 WORKDIR /go
 
