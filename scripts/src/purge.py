@@ -4,12 +4,18 @@
 # Finds and deletes all images from the GitHub container registry which do not
 # have any tags corresponding to branches in this repository.
 
+# Finds and deletes all images from the GitHub container registry which do not:
+# - Have a semantic version tag
+# - Have a tag matching the name of an active branch
+
 # Requires a `GITHUB_TOKEN` environment variable containing a GitHub personal
 # access token with the permissions:
 # - repo
 # - delete:packages
 
-import datetime, os, requests, slugify
+# Run with 'python purge.py'
+
+import datetime, os, re, requests, slugify
 
 def ensure_sucecss(response):
 	if response.status_code < 300:
