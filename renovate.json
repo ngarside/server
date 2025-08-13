@@ -24,15 +24,19 @@
 			"automergeStrategy": "squash",
 			"enabled": true,
 			"matchFileNames": [
-				"*"
+				".github/workflows/*.yml",
+				"requirements.txt"
 			]
 		},
 		{
-			"automerge": false,
+			"automerge": true,
+			"automergeStrategy": "squash",
 			"enabled": true,
 			"matchFileNames": [
-				"**/*.container"
-			]
+				"**/*.container",
+				"**/*.dockerfile"
+			],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		}
 	],
 	"prConcurrentLimit": 1
