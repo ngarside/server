@@ -56,16 +56,17 @@ for container in containers:
 		updated = datetime.datetime.fromisoformat(version['updated_at'])
 		tags = version['metadata']['container']['tags']
 		if 'latest' in tags:
-			print('keep | default branch')
+			print('keep | default branch          ', end='')
 		elif any(tag in branch_tags for tag in tags):
-			print('keep | active branch')
+			print('keep | active branch ')
 		elif len(tags) > 0:
-			print('del  | missing branch')
+			print('del  | missing branch          ', end='')
 			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
 		elif updated > cutoff:
-			print('keep | untagged (after cutoff)')
+			print('keep | untagged (after cutoff) ', end='')
 		else:
-			print('del  | untagged (before cutoff)')
+			print('del  | untagged (before cutoff)', end='')
 			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
+		print(f' | {tags}')
 
 print('\nPurging completed')
