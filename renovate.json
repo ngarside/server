@@ -37,6 +37,13 @@
 				"**/*.dockerfile"
 			],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		},
+		{
+			"enabled": false,
+			"matchFileNames": [
+				"ostree/src/ostree.dockerfile"
+			],
+			"matchUpdateTypes": ["major"]
 		}
 	],
 	"prConcurrentLimit": 1
