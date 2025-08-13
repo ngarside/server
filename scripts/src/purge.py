@@ -39,41 +39,42 @@ def is_semantic(tag):
 	match = re.match(r'^\d+(\.\d+)*$', tag)
 	return match is not None
 
-print('Initiating purge of GitHub containers')
-cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
+if __name__ == '__main__':
+	print('Initiating purge of GitHub containers')
+	cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=7)
 
-print('\tReading token from environment')
-token = os.getenv('GITHUB_TOKEN')
+	print('\tReading token from environment')
+	token = os.getenv('GITHUB_TOKEN')
 
-print('\tRetrieving data from GitHub')
-branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
-branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
-containers = github_get('https://api.github.com/users/ngarside/packages?package_type=container')
+	print('\tRetrieving data from GitHub')
+	branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
+	branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
+	containers = github_get('https://api.github.com/users/ngarside/packages?package_type=container')
 
-print('\nDetected branches:')
-for branch in branch_tags:
-	print(f'\t{branch}')
+	print('\nDetected branches:')
+	for branch in branch_tags:
+		print(f'\t{branch}')
 
-for container in containers:
-	print(f'\nProcessing {container['name']}:')
-	versions = github_get(f'{container['url']}/versions')
-	for version in versions:
-		sha = version['name'].split(':')[1][:7]
-		print(f'\t{sha} | ', end='')
-		updated = datetime.datetime.fromisoformat(version['updated_at'])
-		tags = version['metadata']['container']['tags']
-		if any(is_semantic(tag) for tag in tags) and updated > cutoff:
-			print('keep | recent semver ')
-		elif any(tag in branch_tags for tag in tags):
-			print('keep | active branch ')
-		else:
-			if any(is_semantic(tag) for tag in tags):
-				print('del  | legacy semver ', end='')
-			elif len(tags) > 0:
-				print('del  | missing branch', end='')
-			elif len(tags) == 0:
-				print('del  | untagged      ', end='')
-			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
-		print(f' | {tags}')
+	for container in containers:
+		print(f'\nProcessing {container['name']}:')
+		versions = github_get(f'{container['url']}/versions')
+		for version in versions:
+			sha = version['name'].split(':')[1][:7]
+			print(f'\t{sha} | ', end='')
+			updated = datetime.datetime.fromisoformat(version['updated_at'])
+			tags = version['metadata']['container']['tags']
+			if any(is_semantic(tag) for tag in tags) and updated > cutoff:
+				print('keep | recent semver ')
+			elif any(tag in branch_tags for tag in tags):
+				print('keep | active branch ')
+			else:
+				if any(is_semantic(tag) for tag in tags):
+					print('del  | legacy semver ', end='')
+				elif len(tags) > 0:
+					print('del  | missing branch', end='')
+				elif len(tags) == 0:
+					print('del  | untagged      ', end='')
+				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
+			print(f' | {tags}')
 
-print('\nPurging completed')
+	print('\nPurging completed')
