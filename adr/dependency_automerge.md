@@ -102,12 +102,23 @@ have the option of upgrading to them.
 }
 ```
 
-The Fedora base images do not follow semver, in the sense that unstable major
-versions do not have any suffixes, and are therefore indistinguishable from
-stable versions. Fedora base images are also consumed directly by the base
-system (using automatic upgrades within the OS), which differentiates them from
-the other images which are only consumed indirectly. Therefore it is only safe
-to automerge minor updates for images based on Fedora.
+Fedora base images are consumed directly by the base system (using automatic
+upgrades within the OS), which differentiates them from the other images which
+are only consumed indirectly. As Fedora utilises semantic versioning it is
+therefore safe to automerge minor updates for images based on Fedora.
+
+```json
+{
+	"enabled": false,
+	"matchFileNames": ["**/ostree.dockerfile"],
+	"matchUpdateTypes": ["major"]
+}
+```
+
+While Fedora iteself utilises semantic versioning, the Fedora base images do not
+follow it correctly, in the sense that unstable major versions do not have any
+suffixes. This makes them indistinguishable from stable versions. Upgrading
+through major versions therefore needs to be explicitly disabled.
 
 # <p align=center>Python
 

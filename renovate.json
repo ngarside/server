@@ -57,6 +57,11 @@
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		},
 		{
+			"enabled": false,
+			"matchFileNames": ["**/ostree.dockerfile"],
+			"matchUpdateTypes": ["major"]
+		},
+		{
 			"automerge": true,
 			"automergeStrategy": "squash",
 			"matchFileNames": ["requirements.txt"]
