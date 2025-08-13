@@ -19,11 +19,10 @@ import pytest, tagify
 	# Complex reference.
 	('''
 		# Header
-		FROM docker.io/my/image:v1.2.3-alpine@sha256:abcdefg
-		FROM foo:1.2.3
+		FROM docker.io/my/image:v12.34.56-alpine@sha256:abcdefg
 		RUN echo test
-		FROM bar:4.5.6
-	''', '1.2.3'),
+		FROM bar:78.90.12
+	''', '12.34.56'),
 ])
 
 def test_sanitize(input, expected):
