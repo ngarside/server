@@ -26,4 +26,4 @@ import pytest, tagify
 ])
 
 def test_sanitize(input, expected):
-	assert tagify.parse_version(input) == expected
+	assert tagify.version(input) == expected

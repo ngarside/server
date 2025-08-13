@@ -11,7 +11,7 @@
 
 import os, re, sys, slugify
 
-def parse_version(file):
+def version(file):
 	match = re.search(r'^\s*FROM.*?:[^\d]*([\.\d]*).*$', file, re.MULTILINE)
 	if match:
 		return match.group(1)
@@ -29,7 +29,7 @@ if __name__ == '__main__':
 	# If the current ref is 'master', then return the semantic version.
 	if ref == 'master':
 		with open(sys.argv[1], 'r') as file:
-			print(parse_version(file))
+			print(version(file))
 			sys.exit(0)
 
 	# Otherwise return the ref name, sanitized using 'slugify.py'.
