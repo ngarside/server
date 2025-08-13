@@ -8,6 +8,19 @@ Documenting the rationale for which dependencies are automatically merged.
 
 > Always automerge minor updates.
 
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchCurrentVersion": "!/^0/",
+	"matchFileNames": [
+		"**/*.container",
+		"!**/youtrack.container"
+	],
+	"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+}
+```
+
 The semantic versioning specification dictates that minor upgrades for stable
 versions (`>= 1.0.0`) are always backwards compatible. It should therefore be
 safe to automerge all minor updates for container files (`*.container`).
@@ -19,6 +32,16 @@ below).
 
 > Always automerge patch updates.
 
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchCurrentVersion": "/^0/",
+	"matchFileNames": ["**/*.container"],
+	"matchUpdateTypes": ["patch", "pin", "digest"]
+}
+```
+
 The semantic versioning specification allows any unstable versions (`< 1.0.0`)
 to contain backwards incompatible changes. However, in practice, backwards
 incompatible changes are always limited to minor versions. It should therefore
@@ -29,6 +52,16 @@ versions `< 1.0.0`.
 
 > Always automerge patch updates.
 
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchCurrentVersion": "/^0/",
+	"matchFileNames": ["**/youtrack.container"],
+	"matchUpdateTypes": ["patch", "pin", "digest"]
+}
+```
+
 The calendar versioning specification does not have strict requirements on when
 breaking changes are allowed, but in practice all projects utilising it only
 allow breaking changes in major and minor versions. It should therefore be safe
@@ -38,6 +71,17 @@ calendar versioning.
 # <p align=center>Images
 
 > Always automerge all updates.
+
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchFileNames": [
+		"**/*.dockerfile",
+		"!**/ostree.dockerfile"
+	]
+}
+```
 
 Published container images (`*.dockerfile`) are not automatically used anywhere.
 Rather, the decision of whether or not to upgrade to a new image is done in the
@@ -50,6 +94,15 @@ have the option of upgrading to them.
 
 > Always automerge minor updates.
 
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchFileNames": ["**/ostree.dockerfile"],
+	"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+}
+```
+
 The Fedora base images do not follow semver, in the sense that unstable major
 versions do not have any suffixes, and are therefore indistinguishable from
 stable versions. Fedora base images are also consumed directly by the base
@@ -61,6 +114,14 @@ to automerge minor updates for images based on Fedora.
 
 > Always automerge all updates.
 
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchFileNames": ["requirements.txt"]
+}
+```
+
 Python scripts are well tested and are exclusively used in CI/CD pipelines.
 There is therefore little risk of an incompatible update getting through, and
 even if one did the consequences would be minimal.
@@ -68,6 +129,14 @@ even if one did the consequences would be minimal.
 # <p align=center>Workflows
 
 > Always automerge all updates.
+
+```json
+{
+	"automerge": true,
+	"automergeStrategy": "squash",
+	"matchFileNames": [".github/workflows/*.yml"]
+}
+```
 
 Workflow dependencies are simple and automatically tested simply by being run.
 They are also (obviously) exclusively used in CI/CD. There is therefore little
