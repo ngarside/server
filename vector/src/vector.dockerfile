@@ -1,8 +1,8 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
-FROM docker.io/timberio/vector:latest-distroless-static@sha256:3d82ad9269fa3316fbae2a9dd7ad702bc044f46fe24ec58cc6e167cb1f543d0d AS vector
+FROM docker.io/timberio/vector:0.49.0-distroless-static AS vector
 
-FROM docker.io/library/golang:alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS healthcheck
+FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
 
 WORKDIR /go
 
