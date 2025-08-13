@@ -29,7 +29,7 @@ if __name__ == '__main__':
 	# If the current ref is 'master', then return the semantic version.
 	if ref == 'master':
 		with open(sys.argv[1], 'r') as file:
-			print(version(file))
+			print(version(file.read()))
 			sys.exit(0)
 
 	# Otherwise return the ref name, sanitized using 'slugify.py'.
