@@ -24,7 +24,7 @@ if __name__ == '__main__':
 		sys.exit(2)
 
 	# Find the name of the currently checked out ref.
-	ref = os.getenv('GITHUB_HEAD_REF') or os.getenv('GITHUB_REF_NAME')
+	ref = os.getenv('GITHUB_HEAD_REF') or os.getenv('GITHUB_REF_NAME') or 'master'
 
 	# If the current ref is 'master', then return the semantic version.
 	if ref == 'master':
