@@ -4,6 +4,11 @@
 # Finds and deletes all images from the GitHub container registry which do not
 # have any tags corresponding to branches in this repository.
 
+# Requires a `GITHUB_TOKEN` environment variable containing a GitHub personal
+# access token with the permissions:
+# - repo
+# - delete:packages
+
 import datetime, os, requests, slugify
 
 def ensure_sucecss(response):
