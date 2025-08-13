@@ -22,28 +22,49 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"enabled": true,
+			"matchCurrentVersion": "!/^0/",
 			"matchFileNames": [
-				".github/workflows/*.yml",
-				"requirements.txt"
+				"**/*.container",
+				"!**/youtrack.container"
+			],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchCurrentVersion": "/^0/",
+			"matchFileNames": ["**/*.container"],
+			"matchUpdateTypes": ["patch", "pin", "digest"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": ["**/youtrack.container"],
+			"matchUpdateTypes": ["patch", "pin", "digest"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": [
+				"**/*.dockerfile",
+				"!**/ostree.dockerfile"
 			]
 		},
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"enabled": true,
-			"matchFileNames": [
-				"**/*.container",
-				"**/*.dockerfile"
-			],
+			"matchFileNames": ["**/ostree.dockerfile"],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		},
 		{
-			"enabled": false,
-			"matchFileNames": [
-				"ostree/src/ostree.dockerfile"
-			],
-			"matchUpdateTypes": ["major"]
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": ["requirements.txt"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": [".github/workflows/*.yml"]
 		}
 	],
 	"prConcurrentLimit": 1
