@@ -4,41 +4,32 @@ name: iso
 
 on:
   pull_request:
-    paths:
-      - .github/workflows/iso.yml
-      - iso/**
-      - scripts/**
+    paths: ['**iso**', 'scripts/**']
   push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/iso.yml
-      - iso/**
-      - scripts/**
-  schedule:
-    - cron: 0 0 * * 1
+    branches: [master]
+    paths: ['**iso**', 'scripts/**']
+  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
 jobs:
-  iso:
+  build:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v5
 
-      - name: build
+      - name: Build ISO
         run: bash src/build.sh
         working-directory: iso
 
       # https://stackoverflow.com/a/69977763
-      - name: change ownership
+      - name: Change ownership
         run: |
           USER=$(whoami)
           sudo chown $USER:$USER iso/bin/server.iso
 
-      - name: package
-        if: github.ref_name == 'master'
+      - name: Package
         uses: actions/upload-artifact@v4
         with:
           name: server.iso
