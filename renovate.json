@@ -25,6 +25,9 @@
 			"matchCurrentVersion": "!/^0/",
 			"matchFileNames": [
 				"**/*.container",
+				"!**/authentik_server.container",
+				"!**/authentik_worker.container",
+				"!**/cloudflared.container",
 				"!**/youtrack.container"
 			],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
@@ -39,7 +42,12 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchFileNames": ["**/youtrack.container"],
+			"matchFileNames": [
+				"**/authentik_server.container",
+				"**/authentik_worker.container",
+				"**/cloudflared.container",
+				"**/youtrack.container"
+			],
 			"matchUpdateTypes": ["patch", "pin", "digest"]
 		},
 		{
