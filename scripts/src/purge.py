@@ -2,7 +2,7 @@
 # This is free and unencumbered software released into the public domain.
 
 # Finds and deletes all images from the GitHub container registry which do not:
-# - Have a semantic version tag
+# - Have a semantic version tag and were created since the cutoff date
 # - Have a tag matching the name of an active branch
 
 # Requires a `GITHUB_TOKEN` environment variable containing a GitHub personal
@@ -62,17 +62,17 @@ for container in containers:
 		print(f'\t{sha} | ', end='')
 		updated = datetime.datetime.fromisoformat(version['updated_at'])
 		tags = version['metadata']['container']['tags']
-		if 'latest' in tags:
-			print('keep | default branch          ', end='')
+		if any(is_semantic(tag) for tag in tags) and updated > cutoff:
+			print('keep | recent semver ')
 		elif any(tag in branch_tags for tag in tags):
 			print('keep | active branch ')
-		elif len(tags) > 0:
-			print('del  | missing branch          ', end='')
-			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
-		elif updated > cutoff:
-			print('keep | untagged (after cutoff) ', end='')
 		else:
-			print('del  | untagged (before cutoff)', end='')
+			if any(is_semantic(tag) for tag in tags):
+				print('del  | legacy semver ', end='')
+			elif len(tags) > 0:
+				print('del  | missing branch', end='')
+			elif len(tags) == 0:
+				print('del  | untagged      ', end='')
 			github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
 		print(f' | {tags}')
 
