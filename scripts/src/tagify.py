@@ -12,7 +12,7 @@
 import os, re, sys, slugify
 
 def parse_version(file):
-	match = re.search(r'^FROM.*:[^\d]*([\.\d]*).*$', file)
+	match = re.search(r'^\s*FROM.*:[^\d]*([\.\d]*).*$', file, re.MULTILINE)
 	if match:
 		return match.group(1)
 	return None
