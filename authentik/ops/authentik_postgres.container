@@ -8,8 +8,9 @@ Environment=POSTGRES_DB=authentik
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD=authentik
 Environment=POSTGRES_USER=authentik
-Image=ghcr.io/ngarside/postgres:latest
+Image=ghcr.io/ngarside/postgres:17.5
 Network=authentik_internal.network:ip=10.7.0.3
+NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT
 UserNS=auto:size=256

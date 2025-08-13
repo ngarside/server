@@ -8,7 +8,7 @@ import contextlib, os, psycopg, pytest, random, string, subprocess, time
 def fixture():
 	global session
 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
-	port = random.randrange(1000, 64000)
+	port = random.randrange(1025, 65536)
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--env', 'POSTGRES_DB=postgres', '--env',

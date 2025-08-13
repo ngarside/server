@@ -5,7 +5,7 @@ import dns.resolver, os, pytest, random, requests, subprocess, tempfile
 
 etc = tempfile.TemporaryDirectory()
 opt = tempfile.TemporaryDirectory()
-name, port_admin, port_dns = random.sample(range(1000, 64000), 3)
+name, port_admin, port_dns = random.sample(range(1025, 65536), 3)
 
 session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))

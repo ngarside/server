@@ -1,37 +1,20 @@
 # This is free and unencumbered software released into the public domain.
 
 name: gitea
+
 on:
   pull_request:
-    paths: ['**gitea**', 'scripts/**']
+    paths: ['**gitea**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**gitea**', 'scripts/**']
+    paths: ['**gitea**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  container_build:
+    uses: ./.github/workflows/container_build.yml
     permissions: {contents: read, packages: write}
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: pip install pipenv && pipenv install
-
-      - name: Generate tag
-        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py)" >> $GITHUB_ENV
-
-      - name: Build container
-        run: podman build --file gitea/src/gitea.dockerfile --tag ghcr.io/ngarside/gitea:$TAG .
-
-      - name: Run tests
-        run: pipenv run pytest gitea
-
-      - name: Login to registry
-        run: podman login ghcr.io --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push container to registry
-        run: podman push ghcr.io/ngarside/gitea:$TAG
+    with:
+      name: gitea
+      path: gitea/src/gitea.dockerfile

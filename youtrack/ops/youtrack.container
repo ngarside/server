@@ -4,8 +4,9 @@
 
 [Container]
 ContainerName=youtrack
-Image=docker.io/jetbrains/youtrack:2025.2.89748
+Image=docker.io/jetbrains/youtrack:2025.2.92387
 Network=youtrack.network:ip=10.9.0.2
+NoNewPrivileges=true
 Volume=/var/data/youtrack/backups:/opt/youtrack/backups:U,Z
 Volume=/var/data/youtrack/config:/opt/youtrack/conf:U,Z
 Volume=/var/data/youtrack/data:/opt/youtrack/data:U,Z

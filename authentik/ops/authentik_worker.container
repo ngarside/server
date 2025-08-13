@@ -1,6 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
+After=authentik_postgres.container
+After=authentik_valkey.container
+Requires=authentik_postgres.container
+Requires=authentik_valkey.container
 
 [Container]
 ContainerName=authentik_worker
@@ -14,8 +18,9 @@ Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
 Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
 EnvironmentFile=/etc/authentik/env/worker
 Exec=worker
-Image=ghcr.io/goauthentik/server:latest
+Image=ghcr.io/goauthentik/server:2025.6.4
 Network=authentik_internal.network:ip=10.7.0.5
+NoNewPrivileges=true
 StopSignal=SIGINT
 User=root
 UserNS=auto

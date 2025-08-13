@@ -1,12 +1,12 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:builder-alpine@sha256:cc6c40aa7cdea02ef9cb99f3c4e4664ecdb6066ae93ae52ed5288afc511e1241 AS caddy
+FROM docker.io/caddy:2.10.0-builder-alpine AS caddy
 
 RUN xcaddy build --with github.com/caddy-dns/cloudflare
 
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/library/golang:alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS healthcheck
+FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
 
 WORKDIR /go
 

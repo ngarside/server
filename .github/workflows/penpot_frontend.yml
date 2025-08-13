@@ -1,13 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
-name: adguardhome
+name: penpot-frontend
 
 on:
   pull_request:
-    paths: ['**adguardhome**', 'requirements.txt', 'scripts/**']
+    paths: ['**penpot**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**adguardhome**', 'requirements.txt', 'scripts/**']
+    paths: ['**penpot**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
@@ -16,5 +16,5 @@ jobs:
     uses: ./.github/workflows/container_build.yml
     permissions: {contents: read, packages: write}
     with:
-      name: adguardhome
-      path: adguardhome/src/adguardhome.dockerfile
+      name: penpot-frontend
+      path: penpot/src/frontend.dockerfile

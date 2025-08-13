@@ -1,0 +1,84 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"customManagers": [
+		{
+			"autoReplaceStringTemplate": "{{{indentation}}}Image={{{depName}}}{{#if newValue}}:{{{newValue}}}{{/if}}{{#if newDigest}}@{{{newDigest}}}{{/if}}",
+			"customType": "regex",
+			"datasourceTemplate": "docker",
+			"managerFilePatterns": [
+				"/.*\\.container$/"
+			],
+			"matchStrings": [
+				"(?<indentation>\\n\\s*)Image\\s*=\\s*(?<depName>[a-zA-Z0-9/._-]+)(?::(?<currentValue>[a-zA-Z0-9._-]+))?(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
+			],
+			"matchStringsStrategy": "any",
+			"versioningTemplate": "docker"
+		}
+	],
+	"extends": [
+		"config:recommended"
+	],
+	"packageRules": [
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchCurrentVersion": "!/^0/",
+			"matchFileNames": [
+				"**/*.container",
+				"!**/authentik_server.container",
+				"!**/authentik_worker.container",
+				"!**/cloudflared.container",
+				"!**/youtrack.container"
+			],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchCurrentVersion": "/^0/",
+			"matchFileNames": ["**/*.container"],
+			"matchUpdateTypes": ["patch", "pin", "digest"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": [
+				"**/authentik_server.container",
+				"**/authentik_worker.container",
+				"**/cloudflared.container",
+				"**/youtrack.container"
+			],
+			"matchUpdateTypes": ["patch", "pin", "digest"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": [
+				"**/*.dockerfile",
+				"!**/ostree.dockerfile"
+			]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": ["**/ostree.dockerfile"],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		},
+		{
+			"enabled": false,
+			"matchFileNames": ["**/ostree.dockerfile"],
+			"matchUpdateTypes": ["major"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": ["requirements.txt"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": [".github/workflows/*.yml"]
+		}
+	],
+	"prConcurrentLimit": 1
+}

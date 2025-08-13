@@ -1,9 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 ignored:
-  - DL3019
   - DL3018
-  - DL3047
   - DL3059
   - DL4006
   - SC2046
