@@ -1,9 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:2.10.0 AS caddy
-
-RUN chmod ugo=rx /usr/bin/caddy
-
 FROM docker.io/node:24.5.0-alpine AS fossflow
 
 RUN apk --no-cache add git
@@ -15,6 +11,10 @@ WORKDIR /fossflow
 RUN npm ci && npm run build
 
 RUN chmod -R ugo=r build
+
+FROM docker.io/caddy:2.10.0 AS caddy
+
+RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
 
