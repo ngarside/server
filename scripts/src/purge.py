@@ -1,9 +1,6 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-# Finds and deletes all images from the GitHub container registry which do not
-# have any tags corresponding to branches in this repository.
-
 # Finds and deletes all images from the GitHub container registry which do not:
 # - Have a semantic version tag
 # - Have a tag matching the name of an active branch
