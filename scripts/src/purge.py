@@ -68,9 +68,9 @@ if __name__ == '__main__':
 			updated = datetime.datetime.fromisoformat(version['updated_at'])
 			tags = version['metadata']['container']['tags']
 			if any(is_semantic(tag) for tag in tags) and updated > cutoff:
-				print('keep | recent semver ')
+				print('keep | recent semver ', end='')
 			elif any(tag in branch_tags for tag in tags):
-				print('keep | active branch ')
+				print('keep | active branch ', end='')
 			else:
 				if any(is_semantic(tag) for tag in tags):
 					print('del  | legacy semver ', end='')
