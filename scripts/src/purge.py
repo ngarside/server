@@ -14,7 +14,7 @@
 
 import datetime, os, re, requests, slugify
 
-def ensure_sucecss(response):
+def ensure_success(response):
 	if response.status_code < 300:
 		return
 	print('\nExiting due to response error:')
@@ -27,12 +27,12 @@ def ensure_sucecss(response):
 def github_delete(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.delete(url, headers=headers)
-	ensure_sucecss(response)
+	ensure_success(response)
 
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
 	response = requests.get(url, headers=headers)
-	ensure_sucecss(response)
+	ensure_success(response)
 	return response.json()
 
 def is_semantic(tag):
