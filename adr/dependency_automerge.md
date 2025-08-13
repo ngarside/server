@@ -56,7 +56,6 @@ versions `< 1.0.0`.
 {
 	"automerge": true,
 	"automergeStrategy": "squash",
-	"matchCurrentVersion": "/^0/",
 	"matchFileNames": ["**/youtrack.container"],
 	"matchUpdateTypes": ["patch", "pin", "digest"]
 }
