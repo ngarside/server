@@ -4,10 +4,10 @@ name: postgres
 
 on:
   pull_request:
-    paths: ['postgres.yml', 'postgres/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/postgres.yml', 'postgres/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['postgres.yml', 'postgres/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/postgres.yml', 'postgres/src/**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
