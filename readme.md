@@ -11,6 +11,7 @@ configure the container secrets:
 
 ```sh
 # Cloudflare
+echo -n 'SECRETDATA' | podman secret create cloudflare_api_token -
 echo -n 'SECRETDATA' | podman secret create cloudflare_tunnel_token -
 
 # Grafana Cloud
