@@ -10,9 +10,12 @@ Image=ghcr.io/ngarside/vector:0.49.0.63
 Network=vector.network:ip=10.15.0.2
 NoNewPrivileges=true
 ReadOnly=true
-Secret=grafana_cloud_password,type=env,target=GRAFANA_CLOUD_PASSWORD
-Secret=grafana_cloud_uri,type=env,target=GRAFANA_CLOUD_URI
-Secret=grafana_cloud_username,type=env,target=GRAFANA_CLOUD_USERNAME
+Secret=grafana_loki_password,type=env,target=GRAFANA_LOKI_PASSWORD
+Secret=grafana_loki_uri,type=env,target=GRAFANA_LOKI_URI
+Secret=grafana_loki_username,type=env,target=GRAFANA_LOKI_USERNAME
+Secret=grafana_prometheus_password,type=env,target=GRAFANA_PROMETHEUS_PASSWORD
+Secret=grafana_prometheus_uri,type=env,target=GRAFANA_PROMETHEUS_URI
+Secret=grafana_prometheus_username,type=env,target=GRAFANA_PROMETHEUS_USERNAME
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/etc/vector:/etc/vector:ro
