@@ -12,7 +12,7 @@ RUN git checkout 1405f285a816bc5c56beee8365e08bfbdf69b0e9
 
 RUN npm ci && npm run docker:build
 
-RUN chmod -R ugo=r build
+RUN chmod -R ugo=r dist
 
 FROM docker.io/caddy:2.10.0 AS caddy
 
@@ -30,7 +30,7 @@ RUN chmod ugo=rx /go/healthcheck
 FROM scratch
 
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
-COPY --from=fossflow /fossflow/build /srv
+COPY --from=fossflow /fossflow/dist /srv
 COPY --from=healthcheck /go/healthcheck /usr/bin/healthcheck
 
 EXPOSE 80
