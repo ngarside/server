@@ -7,7 +7,7 @@ on:
     paths: ['**/penpot_frontend.yml', 'penpot/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/penpot_frontend.yml', 'penpot/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/penpot_frontend.yml', 'penpot/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:
