@@ -4,7 +4,6 @@
 
 [Container]
 ContainerName=vector
-EnvironmentFile=/etc/vector/vector.env
 Image=ghcr.io/ngarside/vector:0.49.0
 Network=vector.network:ip=10.15.0.2
 NoNewPrivileges=true
