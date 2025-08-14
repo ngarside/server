@@ -16,13 +16,14 @@ Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
 Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
-EnvironmentFile=/etc/authentik/env/worker
 Exec=server
 Image=ghcr.io/goauthentik/server:2025.6.4
 Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
 NoNewPrivileges=true
 ReadOnly=true
+Secret=mailjet_smtp_password,type=env,target=AUTHENTIK_EMAIL__PASSWORD
+Secret=mailjet_smtp_username,type=env,target=AUTHENTIK_EMAIL__USERNAME
 StopSignal=SIGINT
 User=root
 UserNS=auto
