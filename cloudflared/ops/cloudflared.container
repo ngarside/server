@@ -4,12 +4,12 @@
 
 [Container]
 ContainerName=cloudflared
-EnvironmentFile=/etc/cloudflared/cloudflared.env
 Exec=tunnel --no-autoupdate run
 Image=docker.io/cloudflare/cloudflared:2025.8.0
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
 ReadOnly=true
+Secret=cloudflare_tunnel_token,type=env,target=TUNNEL_TOKEN
 
 [Service]
 Restart=always
