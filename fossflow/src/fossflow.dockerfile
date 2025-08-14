@@ -12,10 +12,6 @@ RUN git checkout 1405f285a816bc5c56beee8365e08bfbdf69b0e9
 
 RUN npm ci && npm run build
 
-RUN ls /
-
-RUN ls /fossflow
-
 RUN chmod -R ugo=r build
 
 FROM docker.io/caddy:2.10.0 AS caddy
