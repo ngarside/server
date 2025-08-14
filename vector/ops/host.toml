@@ -1,0 +1,10 @@
+﻿# This is free and unencumbered software released into the public domain.
+
+[sources.host_source]
+type = "host_metrics"
+
+[sinks.host_console]
+encoding.codec = "text"
+inputs = ["host_source"]
+target = "stdout"
+type = "console"
