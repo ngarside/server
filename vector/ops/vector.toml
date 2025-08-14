@@ -3,23 +3,3 @@
 [api]
 address = "0.0.0.0:8686"
 enabled = true
-
-[sources.demo]
-format = "json"
-type = "demo_logs"
-
-[transforms.demo_method]
-type = "remap"
-inputs = ["demo"]
-source = ".method = parse_json!(.message).method"
-
-[sinks.grafanacloud_logs]
-auth.password = "$GRAFANA_CLOUD_PASSWORD"
-auth.strategy = "basic"
-auth.user = "$GRAFANA_CLOUD_USERNAME"
-encoding.codec = "text"
-endpoint = "$GRAFANA_CLOUD_URI"
-inputs = ["demo_method"]
-labels.method = "{{ .method }}"
-labels.service = "{{ .service }}"
-type = "loki"
