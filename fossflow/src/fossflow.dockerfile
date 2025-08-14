@@ -8,7 +8,7 @@ RUN git clone https://github.com/stan-smith/fossflow fossflow
 
 WORKDIR /fossflow
 
-RUN git checkout 1405f285a816bc5c56beee8365e08bfbdf69b0e9
+RUN git checkout d15ad9b8e5be42c6b300650de43aac2590aa81ca
 
 RUN npm ci && npm run build
 
