@@ -20,4 +20,4 @@ ENTRYPOINT ["/usr/bin/vector"]
 
 HEALTHCHECK CMD ["/usr/bin/healthcheck"]
 
-CMD ["--config", "/etc/vector/vector.toml"]
+CMD ["--config", "/etc/vector/*.toml"]

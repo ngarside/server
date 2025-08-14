@@ -13,7 +13,7 @@ Secret=grafana_cloud_uri,type=env,target=GRAFANA_CLOUD_URI
 Secret=grafana_cloud_username,type=env,target=GRAFANA_CLOUD_USERNAME
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
-Volume=/etc/vector/vector.toml:/etc/vector/vector.toml:ro
+Volume=/etc/vector:/etc/vector:ro
 
 [Service]
 Restart=always
