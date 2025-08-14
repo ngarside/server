@@ -4,7 +4,7 @@
 
 [Container]
 ContainerName=memos
-Image=ghcr.io/ngarside/memos:0.25.0.96
+Image=ghcr.io/ngarside/memos:0.25.0.102
 Network=memos.network:ip=10.6.0.2
 NoNewPrivileges=true
 ReadOnly=true
