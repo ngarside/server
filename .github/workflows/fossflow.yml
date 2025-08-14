@@ -4,10 +4,10 @@ name: fossflow
 
 on:
   pull_request:
-    paths: ['**fossflow**', 'requirements.txt', 'scripts/**']
+    paths: ['**/fossflow.yml', 'fossflow/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**fossflow**', 'requirements.txt', 'scripts/**']
+    paths: ['**/fossflow.yml', 'fossflow/src/**', 'requirements.txt', 'scripts/**']
   schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
