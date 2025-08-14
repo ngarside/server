@@ -8,7 +8,6 @@ on:
   push:
     branches: [master]
     paths: ['**/gitea.yml', 'gitea/src/**', 'requirements.txt', 'scripts/**']
-  schedule: [cron: 0 0 * * 1]
   workflow_dispatch:
 
 jobs:
