@@ -7,7 +7,7 @@ on:
     paths: ['**/ops/**', '**ostree**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/ops/**', '**ostree**', 'requirements.txt', 'scripts/**']
+    paths: ['**/ops/**', '**ostree**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

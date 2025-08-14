@@ -7,7 +7,7 @@ on:
     paths: ['**/gitea.yml', 'gitea/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/gitea.yml', 'gitea/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/gitea.yml', 'gitea/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

@@ -7,7 +7,7 @@ on:
     paths: ['**/adguardhome.yml', 'adguardhome/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/adguardhome.yml', 'adguardhome/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/adguardhome.yml', 'adguardhome/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

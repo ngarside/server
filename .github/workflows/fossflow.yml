@@ -7,7 +7,7 @@ on:
     paths: ['**/fossflow.yml', 'fossflow/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/fossflow.yml', 'fossflow/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/fossflow.yml', 'fossflow/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

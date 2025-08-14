@@ -7,7 +7,7 @@ on:
     paths: ['**/caddy.yml', 'caddy/src/**', 'requirements.txt', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/caddy.yml', 'caddy/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/caddy.yml', 'caddy/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:
