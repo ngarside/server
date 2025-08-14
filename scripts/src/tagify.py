@@ -4,7 +4,7 @@
 # Calculates the tag for a given image definition:
 # - If the current ref head or name is 'master', then the tag will be the
 #   semantic version (lacking any prefixes or suffixes) of the first base image
-#   specified in the provided file
+#   specified in the provided file, suffixed by the current workflow run number (if set)
 # - Otherwise the tag will be the branch name, sanitized using 'slugify.py'
 
 # Run with 'python tagify.py <path>'
@@ -26,11 +26,16 @@ if __name__ == '__main__':
 	# Find the name of the currently checked out ref.
 	ref = os.getenv('GITHUB_HEAD_REF') or os.getenv('GITHUB_REF_NAME') or 'master'
 
-	# If the current ref is 'master', then return the semantic version.
-	if ref == 'master':
-		with open(sys.argv[1], 'r') as file:
-			print(version(file.read()))
-			sys.exit(0)
+	# If the current branch is not the default branch, then return
+	# the ref name, sanitized using 'slugify.py'.
+	if ref != 'master':
+		print(slugify.sanitize(ref))
+		sys.exit(0)
 
-	# Otherwise return the ref name, sanitized using 'slugify.py'.
-	print(slugify.sanitize(ref))
+	# Otherwise return the semantic version.
+	with open(sys.argv[1], 'r') as file:
+		tag = version(file.read())
+		run = os.getenv('GITHUB_RUN_NUMBER')
+		if run is not None:
+			tag += f'.{run}'
+		print(tag)
