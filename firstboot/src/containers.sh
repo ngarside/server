@@ -1,7 +1,10 @@
+#!/usr/bin/env bash
 # This is free and unencumbered software released into the public domain.
 
 # On first boot, this script must be modified to include the appropriate secret
 # data and then run as the 'containers' user.
+
+set -euo pipefail
 
 # Cloudflare.
 echo -n 'SECRETDATA' | podman secret create cloudflare_api_token -
