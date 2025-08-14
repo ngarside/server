@@ -14,10 +14,15 @@ configure the container secrets:
 echo -n 'SECRETDATA' | podman secret create cloudflare_api_token -
 echo -n 'SECRETDATA' | podman secret create cloudflare_tunnel_token -
 
-# Grafana Cloud
-echo -n 'SECRETDATA' | podman secret create grafana_cloud_password -
-echo -n 'SECRETDATA' | podman secret create grafana_cloud_uri -
-echo -n 'SECRETDATA' | podman secret create grafana_cloud_username -
+# Grafana Cloud - Loki
+echo -n 'SECRETDATA' | podman secret create grafana_loki_password -
+echo -n 'SECRETDATA' | podman secret create grafana_loki_uri -
+echo -n 'SECRETDATA' | podman secret create grafana_loki_username -
+
+# Grafana Cloud - Prometheus
+echo -n 'SECRETDATA' | podman secret create grafana_prometheus_password -
+echo -n 'SECRETDATA' | podman secret create grafana_prometheus_uri -
+echo -n 'SECRETDATA' | podman secret create grafana_prometheus_username -
 
 # Mailjet
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
