@@ -31,6 +31,8 @@ EnvironmentFile=/etc/outline/outline.env
 Image=docker.io/outlinewiki/outline:0.86.1
 Network=outline.network:ip=10.10.0.2
 NoNewPrivileges=true
+Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
+Secret=mailjet_smtp_username,type=env,target=SMTP_USERNAME
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 
 [Service]
