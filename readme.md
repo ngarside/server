@@ -17,6 +17,10 @@ echo -n 'SECRETDATA' | podman secret create cloudflare_tunnel_token -
 echo -n 'SECRETDATA' | podman secret create grafana_cloud_password -
 echo -n 'SECRETDATA' | podman secret create grafana_cloud_uri -
 echo -n 'SECRETDATA' | podman secret create grafana_cloud_username -
+
+# Mailjet
+echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
+echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
 ```
 
 # <p align=center>Security
