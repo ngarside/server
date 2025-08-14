@@ -8,6 +8,8 @@ RUN git clone --depth 1 https://github.com/stan-smith/fossflow fossflow
 
 WORKDIR /fossflow
 
+RUN git checkout 1405f285a816bc5c56beee8365e08bfbdf69b0e9
+
 RUN npm ci && npm run build
 
 RUN ls /
