@@ -4,7 +4,7 @@
 
 [Container]
 ContainerName=adguardhome
-Image=ghcr.io/ngarside/adguardhome:0.107.64.275
+Image=ghcr.io/ngarside/adguardhome:0.107.64.279
 Network=adguardhome.network:ip=10.2.0.2
 NoNewPrivileges=true
 PublishPort=53:53/tcp
