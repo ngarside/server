@@ -10,7 +10,7 @@ WORKDIR /fossflow
 
 RUN npm ci && npm run build
 
-RUN tree
+RUN ls /
 
 RUN chmod -R ugo=r build
 
