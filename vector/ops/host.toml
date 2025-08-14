@@ -3,8 +3,10 @@
 [sources.host_source]
 type = "host_metrics"
 
-[sinks.host_console]
-encoding.codec = "text"
+[sinks.host_prometheus]
+auth.password = "$GRAFANA_CLOUD_PASSWORD"
+auth.strategy = "basic"
+auth.user = "$GRAFANA_CLOUD_USERNAME"
+endpoint = "$GRAFANA_CLOUD_URI"
 inputs = ["host_source"]
-target = "stdout"
-type = "console"
+type = "prometheus_remote_write"
