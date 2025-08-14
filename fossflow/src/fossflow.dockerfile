@@ -4,7 +4,7 @@ FROM docker.io/node:24.5.0-alpine AS fossflow
 
 RUN apk --no-cache add git
 
-RUN git clone --depth 1 https://github.com/stan-smith/fossflow fossflow
+RUN git clone https://github.com/stan-smith/fossflow fossflow
 
 WORKDIR /fossflow
 
