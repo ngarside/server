@@ -10,6 +10,8 @@ WORKDIR /fossflow
 
 RUN npm ci && npm run build
 
+RUN tree
+
 RUN chmod -R ugo=r build
 
 FROM docker.io/caddy:2.10.0 AS caddy
