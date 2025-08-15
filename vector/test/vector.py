@@ -17,7 +17,8 @@ def fixture():
 		'podman', 'run', '--detach', '--name', f'{name}', '--pull', 'never',
 		'--read-only', '--volume',
 		f'{dir}/vector.toml:/etc/vector/vector.toml:ro',
-		f'ghcr.io/ngarside/vector:{tag}', '--config', '/etc/vector/vector.toml'
+		f'ghcr.io/ngarside/vector-unprivileged:{tag}', '--config',
+		'/etc/vector/vector.toml',
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
