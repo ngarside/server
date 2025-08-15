@@ -4,6 +4,7 @@
 set -euo pipefail
 
 mkdir --parents /usr/etc/containers/systemd/users/1001
+cp /tmp/git/vector/ops/privileged.container /usr/etc/containers/systemd/users/1001/vector_privileged.container
 cp /tmp/git/vector/ops/unprivileged.container /usr/etc/containers/systemd/users/1001/vector_unprivileged.container
 cp /tmp/git/vector/ops/vector.network /usr/etc/containers/systemd/users/1001/vector.network
 

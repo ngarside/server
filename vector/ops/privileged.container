@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=vector_privileged
+Image=ghcr.io/ngarside/vector-privileged:0.49.0.8
+Network=vector.network:ip=10.15.0.3
+NoNewPrivileges=true
+ReadOnly=true
+Volume=/etc/vector/privileged:/etc/vector:ro
+Volume=/var/log/journal:/var/log/journal:ro:ro
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
