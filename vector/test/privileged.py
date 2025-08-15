@@ -8,7 +8,7 @@ name, port = random.sample(range(1025, 65536), 2)
 
 dir = os.path.dirname(os.path.realpath(__file__))
 tag = os.getenv('TAG') or 'latest'
-image = f'ghcr.io/ngarside/vector-unprivileged:{tag}'
+image = f'ghcr.io/ngarside/vector-privileged:{tag}'
 
 session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
