@@ -5,6 +5,8 @@ version: 1.5.0
 passwd:
   users:
     - name: containers
+      groups:
+        - systemd-journal
 storage:
   disks:
     - device: /dev/sdb
