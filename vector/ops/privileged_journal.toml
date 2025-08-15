@@ -8,3 +8,8 @@ type = 'journald'
 encoding.codec = 'text'
 inputs = ['journal_source']
 type = 'console'
+
+[sinks.journal_vector]
+address = '10.15.0.2:6000'
+inputs = ['journal_source']
+type = 'vector'
