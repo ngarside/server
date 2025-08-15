@@ -8,5 +8,6 @@ cp /tmp/git/vector/ops/vector.container /usr/etc/containers/systemd/users/1001/v
 cp /tmp/git/vector/ops/vector.network /usr/etc/containers/systemd/users/1001/vector.network
 
 mkdir --parents /usr/etc/vector
-cp /tmp/git/vector/ops/host.toml /usr/etc/vector/host.toml
-cp /tmp/git/vector/ops/vector.toml /usr/etc/vector/vector.toml
+cp /tmp/git/vector/ops/host.toml /usr/etc/vector/unprivileged/host.toml
+cp /tmp/git/vector/ops/journal.toml /usr/etc/vector/unprivileged/journal.toml
+cp /tmp/git/vector/ops/vector.toml /usr/etc/vector/unprivileged/vector.toml
