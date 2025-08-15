@@ -1,0 +1,10 @@
+# This is free and unencumbered software released into the public domain.
+
+[sources.journal_source]
+extra_args = ['--boot=all', '--merge']
+type = 'journald'
+
+[sinks.journal_vector]
+address = '10.15.0.2:6000'
+inputs = ['journal_source']
+type = 'vector'
