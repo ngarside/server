@@ -25,4 +25,5 @@ auth.strategy = "basic"
 auth.user = "$GRAFANA_PROMETHEUS_USERNAME"
 endpoint = "$GRAFANA_PROMETHEUS_URI"
 inputs = ["vector_metrics"]
+labels.service = "{{ .service }}"
 type = "prometheus_remote_write"
