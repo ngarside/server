@@ -4,10 +4,12 @@
 
 [Container]
 ContainerName=vector_privileged
+GroupAdd=keep-groups
 Image=ghcr.io/ngarside/vector-privileged:0.49.0.8
 Network=vector.network:ip=10.15.0.3
 NoNewPrivileges=true
 ReadOnly=true
+SecurityLabelDisable=true
 Volume=/etc/vector/privileged:/etc/vector:ro
 Volume=/var/log/journal:/var/log/journal:ro
 Volume=/var/data/vector/privileged/data:/var/lib/vector:U,Z
