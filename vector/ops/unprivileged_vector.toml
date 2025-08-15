@@ -17,6 +17,7 @@ auth.user = "$GRAFANA_LOKI_USERNAME"
 encoding.codec = "text"
 endpoint = "$GRAFANA_LOKI_URI"
 inputs = ["vector_instance"]
+labels.uid = "{{ ._UID }}"
 type = "loki"
 
 [sinks.vector_prometheus]
@@ -25,5 +26,4 @@ auth.strategy = "basic"
 auth.user = "$GRAFANA_PROMETHEUS_USERNAME"
 endpoint = "$GRAFANA_PROMETHEUS_URI"
 inputs = ["vector_metrics"]
-labels.uid = "{{ ._UID }}"
 type = "prometheus_remote_write"
