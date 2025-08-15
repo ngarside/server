@@ -14,7 +14,7 @@ session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
 has_image = subprocess.run(['podman', 'image', 'inspect', image]).returncode
-pytestmark = pytest.mark.skipif(has_image != 0, reason=f'Image not found')
+pytestmark = pytest.mark.skipif(has_image != 0, reason='Image not found')
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
