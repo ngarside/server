@@ -1,6 +1,6 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"commitMessage": "{{{commitMessagePrefix}}} {{{commitMessageAction}}} {{{commitMessageExtra}}} {{{commitMessageSuffix}}}",
+	"commitMessageTopic": "",
 	"customManagers": [
 		{
 			"autoReplaceStringTemplate": "{{{indentation}}}Image={{{depName}}}{{#if newValue}}:{{{newValue}}}{{/if}}{{#if newDigest}}@{{{newDigest}}}{{/if}}",
