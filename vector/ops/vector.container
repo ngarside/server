@@ -16,7 +16,7 @@ Secret=grafana_prometheus_uri,type=env,target=GRAFANA_PROMETHEUS_URI
 Secret=grafana_prometheus_username,type=env,target=GRAFANA_PROMETHEUS_USERNAME
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
-Volume=/etc/vector:/etc/vector:ro
+Volume=/etc/vector/unprivileged:/etc/vector:ro
 Volume=/proc:/proc:ro
 Volume=/sys:/sys:ro
 
