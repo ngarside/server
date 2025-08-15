@@ -10,3 +10,8 @@ podman run --name vectortest --replace --rm --security-opt label=disable --volum
 
 
 podman run --name vectortest --replace --rm --security-opt label=disable --volume /home/containers/vectortest:/etc/vector:ro --volume /var/log/journal:/var/log/journal:ro --volume /home/containers/vectortest/data:/var/lib/vector:U,Z --privileged --entrypoint /bin/bash --group-add keep-groups -it timberio/vector:0.49.0-debian
+
+
+
+
+podman run --name vectortest --replace --rm --security-opt label=disable --volume /home/containers/vectortest:/etc/vector:ro --volume /var/log/journal:/var/log/journal:ro --volume /home/containers/vectortest/data:/var/lib/vector:U,Z --entrypoint /bin/bash --group-add keep-groups -it timberio/vector:0.49.0-debian
