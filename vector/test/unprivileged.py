@@ -2,7 +2,7 @@
 
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, random, requests, subprocess, time
+import os, pytest, random, requests, subprocess
 
 name, port = random.sample(range(1025, 65536), 2)
 
@@ -20,11 +20,6 @@ def fixture():
 		f'ghcr.io/ngarside/vector-unprivileged:{tag}', '--config',
 		'/etc/vector/vector.toml',
 	])
-	for _ in range(100):
-		health = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
-		if health.returncode == 0:
-			break
-		time.sleep(0.1)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
