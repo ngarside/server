@@ -1,9 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 [sources.journal_source]
-type = "journald"
+extra_args = ['--boot=all', '--merge']
+type = 'journald'
 
 [sinks.journal_console]
 encoding.codec = 'text'
-inputs = ["journal_source"]
-type = "console"
+inputs = ['journal_source']
+type = 'console'
