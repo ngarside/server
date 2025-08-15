@@ -7,7 +7,7 @@ ContainerName=outline_postgres
 Environment=POSTGRES_DB=outline
 Environment=POSTGRES_PASSWORD=postgres
 Environment=POSTGRES_USER=postgres
-Image=ghcr.io/ngarside/postgres:17.5.89
+Image=ghcr.io/ngarside/postgres:17.6.91
 Network=outline.network:ip=10.10.0.3
 NoNewPrivileges=true
 ReadOnly=true
