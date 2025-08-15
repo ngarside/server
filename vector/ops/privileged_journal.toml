@@ -4,11 +4,6 @@
 extra_args = ['--boot=all', '--merge']
 type = 'journald'
 
-[sinks.journal_console]
-encoding.codec = 'text'
-inputs = ['journal_source']
-type = 'console'
-
 [sinks.journal_vector]
 address = '10.15.0.2:6000'
 inputs = ['journal_source']
