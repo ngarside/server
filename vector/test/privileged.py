@@ -15,7 +15,10 @@ def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--pull', 'never',
-		'--read-only', f'ghcr.io/ngarside/vector-privileged:{tag}',
+		'--read-only', '--volume',
+		f'{dir}/vector.toml:/etc/vector/vector.toml:ro',
+		f'ghcr.io/ngarside/vector-privileged:{tag}', '--config',
+		'/etc/vector/vector.toml',
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
