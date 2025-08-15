@@ -1,5 +1,9 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
+# The upstream reference is duplicated as it both:
+# - Needs to appear first to be detected as the upstream tag
+# - Needs to appear last to be inherited from
+
 FROM docker.io/timberio/vector:0.49.0-debian AS vector
 
 FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
@@ -11,9 +15,8 @@ COPY vector/src/healthcheck.go healthcheck.go
 RUN go build -ldflags="-w -s" healthcheck.go
 RUN chmod ugo=rx /go/healthcheck
 
-FROM scratch
+FROM docker.io/timberio/vector:0.49.0-debian AS vector
 
-COPY --from=vector /usr/local/bin/vector /usr/bin/vector
 COPY --from=healthcheck /go/healthcheck /usr/bin/healthcheck
 
 ENTRYPOINT ["/usr/bin/vector"]
