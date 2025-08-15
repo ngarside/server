@@ -5,6 +5,7 @@ address = "0.0.0.0:8686"
 enabled = true
 
 [sources.vector_instance]
+address = "10.15.0.2:6000"
 type = "vector"
 
 [sources.vector_metrics]
