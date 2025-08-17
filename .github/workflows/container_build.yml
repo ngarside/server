@@ -28,7 +28,7 @@ jobs:
         run: echo "ROOT=$(echo "${{ inputs.path }}" | cut --delimiter / --fields 1)" >> $GITHUB_ENV
 
       - name: Generate tag
-        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py '${{ inputs.path }}')" >> $GITHUB_ENV
+        run: echo "TAG=$(uv run python3 scripts/src/tagify.py '${{ inputs.path }}')" >> $GITHUB_ENV
 
       - name: Build container
         run: >
