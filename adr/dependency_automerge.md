@@ -136,7 +136,7 @@ through major versions therefore needs to be explicitly disabled.
 {
 	"automerge": true,
 	"automergeStrategy": "squash",
-	"matchFileNames": ["requirements.txt"]
+	"matchFileNames": ["pyproject.toml"]
 }
 ```
 
