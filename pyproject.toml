@@ -12,11 +12,11 @@ dependencies = [
 dynamic = ["version"]
 name = "server"
 
+[tool.pytest.ini_options]
+python_files = ["test/*.py"]
+
 [tool.ruff.lint]
 ignore = ['E401', 'E402', 'E722']
 
 [tool.setuptools.packages]
 find = { }
-
-[tool.pytest.ini_options]
-python_files = ["test/*.py"]
