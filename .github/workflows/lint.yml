@@ -29,10 +29,10 @@ jobs:
         uses: actions/checkout@v5
 
       - name: install
-        run: pip install pipenv && pipenv install
+        run: pip install uv
 
       - name: check
-        run: pipenv run ruff check
+        run: uv run ruff check
 
   shellcheck:
     runs-on: ubuntu-latest
