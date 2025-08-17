@@ -5,7 +5,7 @@ on:
   pull_request:
     paths:
       - scripts/src/purge.py
-      - requirements.txt
+      - pyproject.toml
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:

@@ -4,7 +4,7 @@ name: vector_privileged
 
 on:
   pull_request:
-    paths: ['**/vector.yml', 'vector/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/vector.yml', 'vector/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/vector.yml', 'vector/src/**', 'scripts/**']

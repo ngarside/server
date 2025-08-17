@@ -6,14 +6,14 @@ on:
   pull_request:
     paths:
       - .github/workflows/scripts.yml
-      - requirements.txt
+      - pyproject.toml
       - scripts/**
   push:
     branches:
       - master
     paths:
       - .github/workflows/scripts.yml
-      - requirements.txt
+      - pyproject.toml
       - scripts/**
   workflow_dispatch:
 

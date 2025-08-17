@@ -4,7 +4,7 @@ name: ostree
 
 on:
   pull_request:
-    paths: ['**/ops/**', '**ostree**', 'requirements.txt', 'scripts/**']
+    paths: ['**/ops/**', '**ostree**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/ops/**', '**ostree**', 'scripts/**']
