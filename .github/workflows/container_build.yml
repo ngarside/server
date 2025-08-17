@@ -22,13 +22,13 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install dependencies
-        run: pip install pipenv && pipenv install
+        run: pip install uv
 
       - name: Calculate root path
         run: echo "ROOT=$(echo "${{ inputs.path }}" | cut --delimiter / --fields 1)" >> $GITHUB_ENV
 
       - name: Generate tag
-        run: echo "TAG=$(pipenv run python3 scripts/src/tagify.py '${{ inputs.path }}')" >> $GITHUB_ENV
+        run: echo "TAG=$(uv run scripts/src/tagify.py '${{ inputs.path }}')" >> $GITHUB_ENV
 
       - name: Build container
         run: >
@@ -36,7 +36,7 @@ jobs:
           --tag ghcr.io/ngarside/${{ inputs.name }}:$TAG .
 
       - name: Run tests
-        run: pipenv run pytest $ROOT
+        run: uv run pytest $ROOT
 
       - name: Login to registry
         run: >

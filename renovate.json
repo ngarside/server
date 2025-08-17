@@ -73,7 +73,7 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchFileNames": ["requirements.txt"]
+			"matchFileNames": ["pyproject.toml"]
 		},
 		{
 			"automerge": true,

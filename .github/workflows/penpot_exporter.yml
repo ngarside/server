@@ -4,7 +4,7 @@ name: penpot-exporter
 
 on:
   pull_request:
-    paths: ['**/penpot_exporter.yml', 'penpot/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/penpot_exporter.yml', 'penpot/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/penpot_exporter.yml', 'penpot/src/**', 'scripts/**']

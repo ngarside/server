@@ -4,7 +4,7 @@ name: caddy
 
 on:
   pull_request:
-    paths: ['**/caddy.yml', 'caddy/src/**', 'requirements.txt', 'scripts/**']
+    paths: ['**/caddy.yml', 'caddy/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/caddy.yml', 'caddy/src/**', 'scripts/**']
