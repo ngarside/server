@@ -4,7 +4,7 @@
 
 [Container]
 ContainerName=penpot_valkey
-Image=ghcr.io/ngarside/valkey:8.1.3.100
+Image=ghcr.io/ngarside/valkey:8.1.3.103
 Network=penpot_backend.network:ip=10.4.0.2
 NoNewPrivileges=true
 ReadOnly=true
