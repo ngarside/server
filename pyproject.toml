@@ -11,3 +11,6 @@ dependencies = [
 ]
 dynamic = ["version"]
 name = "server"
+
+[tool.ruff.lint]
+ignore = ['E401', 'E402', 'E722']
