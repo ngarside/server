@@ -1,12 +1,12 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-# <p align=center>Server
-
 <p align=center>
 	<img src=https://img.shields.io/github/license/ngarside/server?style=for-the-badge>
 	&nbsp;
 	<img src=https://img.shields.io/github/languages/top/ngarside/server?style=for-the-badge>
 </p>
+
+# <p align=center>Server
 
 The GitOps codebase for my home server.
 
