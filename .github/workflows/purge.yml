@@ -23,6 +23,6 @@ jobs:
       # Must use PAT to work around known issue in actions:
       # https://github.com/cli/cli/issues/9606#issuecomment-2433338481
       - name: run
-        run: uv run python3 scripts/src/purge.py
+        run: uv run scripts/src/purge.py
         env:
           GITHUB_TOKEN: ${{ secrets.CONTAINER_PURGE }}
