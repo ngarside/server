@@ -1,6 +1,7 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
 [sources.host_source]
+filesystem.mountpoints.excludes = ["*/proc/sys/fs/binfmt_misc"]
 type = "host_metrics"
 
 [sinks.host_prometheus]
