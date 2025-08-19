@@ -3,9 +3,9 @@
 
 set -euo pipefail
 
-rpm-ostree install hyperv-daemons restic
+dnf --assumeyes install hyperv-daemons restic
 
-rpm-ostree override remove \
+dnf --assumeyes remove \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
 	nano \
