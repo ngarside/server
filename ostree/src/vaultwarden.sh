@@ -3,6 +3,6 @@
 
 set -euo pipefail
 
-mkdir --parents /usr/etc/containers/systemd/users/1001
-cp /tmp/git/vaultwarden/ops/vaultwarden.container /usr/etc/containers/systemd/users/1001/vaultwarden.container
-cp /tmp/git/vaultwarden/ops/vaultwarden.network /usr/etc/containers/systemd/users/1001/vaultwarden.network
+mkdir --parents /etc/containers/systemd/users/1001
+cp /tmp/git/vaultwarden/ops/vaultwarden.container /etc/containers/systemd/users/1001/vaultwarden.container
+cp /tmp/git/vaultwarden/ops/vaultwarden.network /etc/containers/systemd/users/1001/vaultwarden.network
