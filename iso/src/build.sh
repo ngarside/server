@@ -9,7 +9,7 @@ mkdir --parents bin
 
 # Compile ignition file --------------------------------------------------------
 
-docker run \
+podman run \
 	--interactive \
 	--rm \
 	--volume .:/opt \
@@ -22,7 +22,7 @@ docker run \
 
 # Download latest ISO ----------------------------------------------------------
 
-docker run \
+podman run \
 	--interactive \
 	--rm \
 	--volume ./bin:/opt \
@@ -36,7 +36,7 @@ mv bin/*.iso.sig bin/original.iso.sig
 
 cp ops/wipe.sh bin/wipe.sh
 
-docker run \
+podman run \
 	--interactive \
 	--rm \
 	--volume ./bin:/opt quay.io/coreos/coreos-installer:release \

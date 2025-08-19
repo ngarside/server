@@ -1,5 +1,6 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"commitMessageTopic": "",
 	"customManagers": [
 		{
 			"autoReplaceStringTemplate": "{{{indentation}}}Image={{{depName}}}{{#if newValue}}:{{{newValue}}}{{/if}}{{#if newDigest}}@{{{newDigest}}}{{/if}}",
@@ -18,6 +19,9 @@
 	"extends": [
 		"config:recommended"
 	],
+	"lockFileMaintenance": {
+		"enabled": true
+	},
 	"packageRules": [
 		{
 			"automerge": true,
@@ -72,7 +76,7 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchFileNames": ["requirements.txt"]
+			"matchFileNames": ["pyproject.toml"]
 		},
 		{
 			"automerge": true,

@@ -1,8 +1,0 @@
-# This is free and unencumbered software released into the public domain.
-
-dnspython==2.7.0
-psycopg[binary]==3.2.9
-pytest==8.4.1
-requests==2.32.4
-ruff==0.12.8
-valkey==6.1.1

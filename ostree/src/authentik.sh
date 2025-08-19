@@ -5,7 +5,6 @@ set -euo pipefail
 
 mkdir --parents /usr/etc/containers/systemd/users/1001
 mkdir --parents /usr/etc/authentik/blueprints
-mkdir --parents /usr/etc/authentik/env
 mkdir --parents /usr/etc/authentik/media
 
 cp /tmp/git/authentik/ops/authentik_external.network /usr/etc/containers/systemd/users/1001/authentik_external.network
@@ -20,4 +19,3 @@ cp /tmp/git/authentik/ops/blueprints_outline.yaml /usr/etc/authentik/blueprints/
 cp /tmp/git/authentik/ops/logo_memos.png /usr/etc/authentik/media/memos.png
 cp /tmp/git/authentik/ops/logo_youtrack.png /usr/etc/authentik/media/youtrack.png
 cp /tmp/git/authentik/ops/logo_outline.png /usr/etc/authentik/media/outline.png
-cp /tmp/git/authentik/ops/worker.env /usr/etc/authentik/env/worker

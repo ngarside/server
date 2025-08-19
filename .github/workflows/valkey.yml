@@ -4,11 +4,10 @@ name: valkey
 
 on:
   pull_request:
-    paths: ['**valkey**', 'requirements.txt', 'scripts/**']
+    paths: ['**/valkey.yml', 'valkey/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**valkey**', 'requirements.txt', 'scripts/**']
-  schedule: [cron: 0 0 * * 1]
+    paths: ['**/valkey.yml', 'valkey/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

@@ -2,7 +2,7 @@
 
 FROM docker.io/timberio/vector:0.49.0-distroless-static AS vector
 
-FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
+FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
 
 WORKDIR /go
 
@@ -20,4 +20,4 @@ ENTRYPOINT ["/usr/bin/vector"]
 
 HEALTHCHECK CMD ["/usr/bin/healthcheck"]
 
-CMD ["--config", "/etc/vector/vector.toml"]
+CMD ["--config", "/etc/vector/*.toml"]

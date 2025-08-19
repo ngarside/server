@@ -4,11 +4,10 @@ name: penpot-exporter
 
 on:
   pull_request:
-    paths: ['**penpot**', 'requirements.txt', 'scripts/**']
+    paths: ['**/penpot_exporter.yml', 'penpot/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**penpot**', 'requirements.txt', 'scripts/**']
-  schedule: [cron: 0 0 * * 1]
+    paths: ['**/penpot_exporter.yml', 'penpot/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

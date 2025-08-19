@@ -4,11 +4,10 @@ name: memos
 
 on:
   pull_request:
-    paths: ['**memos**', 'requirements.txt', 'scripts/**']
+    paths: ['**/memos.yml', 'memos/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**memos**', 'requirements.txt', 'scripts/**']
-  schedule: [cron: 0 0 * * 1]
+    paths: ['**/memos.yml', 'memos/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

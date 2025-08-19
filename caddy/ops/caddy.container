@@ -5,8 +5,7 @@
 [Container]
 ContainerName=caddy
 Environment=XDG_CONFIG_HOME=/opt
-EnvironmentFile=/etc/caddy/caddy.env
-Image=ghcr.io/ngarside/caddy:2.10.0
+Image=ghcr.io/ngarside/caddy:2.10.0.266
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
 Network=memos.network:ip=10.6.0.3
@@ -20,8 +19,10 @@ Network=cloudflared.network:ip=10.13.0.3
 Network=gitea.network:ip=10.14.0.3
 NoNewPrivileges=true
 ReadOnly=true
+Secret=cloudflare_api_token,type=env,target=CLOUDFLARE_API_TOKEN
 UserNS=auto:size=8
 Volume=/etc/caddy:/etc/caddy:ro
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/caddy/opt:/opt/caddy:U,Z
 
 [Service]

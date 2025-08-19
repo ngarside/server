@@ -5,7 +5,7 @@ on:
   pull_request:
     paths:
       - scripts/src/purge.py
-      - requirements.txt
+      - pyproject.toml
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
@@ -18,11 +18,11 @@ jobs:
         uses: actions/checkout@v5
 
       - name: pipenv
-        run: pip install pipenv && pipenv install
+        run: pip install uv
 
       # Must use PAT to work around known issue in actions:
       # https://github.com/cli/cli/issues/9606#issuecomment-2433338481
       - name: run
-        run: pipenv run python3 scripts/src/purge.py
+        run: uv run scripts/src/purge.py
         env:
           GITHUB_TOKEN: ${{ secrets.CONTAINER_PURGE }}

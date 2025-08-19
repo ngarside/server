@@ -6,7 +6,7 @@ RUN xcaddy build --with github.com/caddy-dns/cloudflare
 
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
+FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
 
 WORKDIR /go
 

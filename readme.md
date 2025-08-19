@@ -2,6 +2,12 @@
 
 # <p align=center>Server
 
+<p align=center>
+	<img src=https://img.shields.io/github/license/ngarside/server?style=for-the-badge>
+	&nbsp;
+	<img src=https://img.shields.io/github/languages/top/ngarside/server?style=for-the-badge>
+</p>
+
 The GitOps codebase for my home server.
 
 # <p align=center>Security

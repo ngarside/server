@@ -4,11 +4,10 @@ name: caddy
 
 on:
   pull_request:
-    paths: ['**caddy**', 'requirements.txt', 'scripts/**']
+    paths: ['**/caddy.yml', 'caddy/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**caddy**', 'requirements.txt', 'scripts/**']
-  schedule: [cron: 0 0 * * 1]
+    paths: ['**/caddy.yml', 'caddy/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:

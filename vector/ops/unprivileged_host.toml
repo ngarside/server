@@ -1,0 +1,13 @@
+﻿# This is free and unencumbered software released into the public domain.
+
+[sources.host_source]
+filesystem.mountpoints.excludes = ["*/proc/sys/fs/binfmt_misc"]
+type = "host_metrics"
+
+[sinks.host_prometheus]
+auth.password = "$GRAFANA_PROMETHEUS_PASSWORD"
+auth.strategy = "basic"
+auth.user = "$GRAFANA_PROMETHEUS_USERNAME"
+endpoint = "$GRAFANA_PROMETHEUS_URI"
+inputs = ["host_source"]
+type = "prometheus_remote_write"

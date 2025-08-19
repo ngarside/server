@@ -4,7 +4,7 @@ FROM docker.io/adguard/adguardhome:v0.107.64 AS adguardhome
 
 RUN chmod ugo=rx /opt/adguardhome/AdGuardHome
 
-FROM docker.io/library/golang:1.24.6-alpine AS healthcheck
+FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
 
 WORKDIR /go
 

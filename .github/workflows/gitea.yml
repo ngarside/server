@@ -4,11 +4,10 @@ name: gitea
 
 on:
   pull_request:
-    paths: ['**gitea**', 'requirements.txt', 'scripts/**']
+    paths: ['**/gitea.yml', 'gitea/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**gitea**', 'requirements.txt', 'scripts/**']
-  schedule: [cron: 0 0 * * 1]
+    paths: ['**/gitea.yml', 'gitea/src/**', 'scripts/**']
   workflow_dispatch:
 
 jobs:
