@@ -2,6 +2,10 @@
 
 # Opens the VM's homepage in the default browser.
 
-$IP = sudo powershell "(Get-VM -Name Server).NetworkAdapters.IPAddresses[0]"
+param (
+	[Parameter(Mandatory=$true)][string]$name
+)
+
+$IP = sudo powershell "(Get-VM -Name $name).NetworkAdapters.IPAddresses[0]"
 
 Start-Process "http://$IP"

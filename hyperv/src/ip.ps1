@@ -2,4 +2,8 @@
 
 # Prints the IP address of the VM.
 
-sudo powershell "(Get-VM -Name Server).NetworkAdapters.IPAddresses[0]"
+param (
+	[Parameter(Mandatory=$true)][string]$name
+)
+
+sudo powershell "(Get-VM -Name $name).NetworkAdapters.IPAddresses[0]"
