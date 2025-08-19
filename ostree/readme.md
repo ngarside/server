@@ -6,6 +6,7 @@ Scripts to build a custom OSTree image based on Fedora CoreOS.
 
 # <p align=center>References
 
+- [github.com/osbuild/bootc-image-builder](https://github.com/osbuild/bootc-image-builder)
 - [github.com/ostreedev/ostree](https://github.com/ostreedev/ostree)
 - [ostreedev.github.io/ostree](https://ostreedev.github.io/ostree)
 
