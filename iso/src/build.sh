@@ -7,42 +7,15 @@ set -euo pipefail
 
 mkdir --parents bin
 
-# Compile ignition file --------------------------------------------------------
+# Build ISO --------------------------------------------------------------------
 
 podman run \
 	--interactive \
-	--rm \
-	--volume .:/opt \
-	quay.io/coreos/butane:release \
-		--files-dir /opt \
-		--pretty \
-		--strict \
-		< src/butane.yml \
-		> bin/ignition.json
-
-# Download latest ISO ----------------------------------------------------------
-
-podman run \
-	--interactive \
-	--rm \
-	--volume ./bin:/opt \
-	quay.io/coreos/coreos-installer:release \
-	download --directory /opt --format iso
-
-mv bin/*.iso bin/original.iso
-mv bin/*.iso.sig bin/original.iso.sig
-
-# Customise ISO ----------------------------------------------------------------
-
-cp ops/wipe.sh bin/wipe.sh
-
-podman run \
-	--interactive \
-	--rm \
-	--volume ./bin:/opt quay.io/coreos/coreos-installer:release \
-		iso customize \
-		--dest-device /dev/sda \
-		--dest-ignition /opt/ignition.json \
-		--output /opt/server.iso \
-		--pre-install /opt/wipe.sh \
-		/opt/original.iso
+	--privileged \
+	--tty \
+	--volume ./bin:/output \
+	--volume /var/lib/containers/storage:/var/lib/containers/storage \
+	quay.io/centos-bootc/bootc-image-builder:latest \
+	--rootfs btrfs \
+	--type iso \
+	ghcr.io/ngarside/server:feature_bootc
