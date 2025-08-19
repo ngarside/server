@@ -23,8 +23,3 @@ storage:
   files:
     - path: /var/lib/systemd/linger/containers
       mode: 0644
-systemd:
-  units:
-    - name: rebase.service
-      enabled: true
-      contents_local: ops/rebase.service
