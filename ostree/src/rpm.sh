@@ -15,6 +15,5 @@ rpm-ostree override remove \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
 	NetworkManager-cloud-setup \
-	python3 \
 	toolbox \
 	nvidia-gpu-firmware
