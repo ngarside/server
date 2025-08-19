@@ -2,28 +2,30 @@
 
 # Creates a new VM. For this to work the VM must not already exist.
 
+param (
+	[Parameter(Mandatory=$true)][string]$name
+)
+
 sudo powershell @"
-	New-VMSwitch -Name "Server Switch" -NetAdapterName Ethernet
+	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name $name -Path F: -Switch "Default Switch"
 
-	New-VM -Generation 2 -MemoryStartupBytes 8GB -Name Server -Path F: -Switch "Server Switch"
+	New-VHD -Dynamic -Path "F:\$name\Virtual Hard Disks\System.vhdx" -SizeBytes 250GB
 
-	New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\System.vhdx" -SizeBytes 250GB
+	New-VHD -Dynamic -Path "F:\$name\Virtual Hard Disks\Data.vhdx" -SizeBytes 1TB
 
-	New-VHD -Dynamic -Path "F:\Server\Virtual Hard Disks\Data.vhdx" -SizeBytes 1TB
+	`$DiskDrive = Add-VMDvdDrive -VMName $name -PassThru
 
-	$DiskDrive = Add-VMDvdDrive -VMName Server -PassThru
+	`$SystemDrive = Add-VMHardDiskDrive -VMName $name -PassThru -Path "F:\$name\Virtual Hard Disks\System.vhdx"
 
-	$SystemDrive = Add-VMHardDiskDrive -VMName Server -PassThru -Path "F:\Server\Virtual Hard Disks\System.vhdx"
+	Add-VMHardDiskDrive -VMName $name -Path "F:\$name\Virtual Hard Disks\Data.vhdx"
 
-	Add-VMHardDiskDrive -VMName Server -Path "F:\Server\Virtual Hard Disks\Data.vhdx"
+	Set-VMProcessor -VMName $name -Count 32
 
-	Set-VMProcessor -VMName Server -Count 32
+	Set-VMFirmware -VMName $name -SecureBootTemplate "MicrosoftUEFICertificateAuthority"
 
-	Set-VMFirmware -VMName Server -SecureBootTemplate "MicrosoftUEFICertificateAuthority"
+	Set-VM -VMName $name -AutomaticStartAction Nothing
 
-	Set-VM -VMName Server -AutomaticStartAction Nothing
+	Set-VM -VMName $name -AutomaticStopAction TurnOff
 
-	Set-VM -VMName Server -AutomaticStopAction TurnOff
-
-	Set-VMFirmware Server -BootOrder $SystemDrive,$DiskDrive
+	Set-VMFirmware $name -BootOrder `$SystemDrive,`$DiskDrive
 "@

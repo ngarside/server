@@ -2,10 +2,12 @@
 
 # Deletes the VM if it exists.
 
+param (
+	[Parameter(Mandatory=$true)][string]$name
+)
+
 sudo powershell @"
-	Remove-VM -Name Server -Force
+	Remove-VM -Name $name -Force
 
-	Remove-VMSwitch "Server Switch"
-
-	Remove-Item -Force -Path F:\Server -Recurse
+	Remove-Item -Force -Path F:\$name -Recurse
 "@
