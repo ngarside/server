@@ -15,6 +15,7 @@ podman run \
 	--tty \
 	--volume ./bin:/output \
 	--volume /var/lib/containers/storage:/var/lib/containers/storage \
+	--volume ./iso/src/config.toml:/config.toml:ro \
 	quay.io/centos-bootc/bootc-image-builder:latest \
 	--rootfs btrfs \
 	--type iso \
