@@ -2,4 +2,8 @@
 
 # Boots the VM if it is currently powered off.
 
-sudo powershell "Start-VM -Name Server"
+param (
+	[Parameter(Mandatory=$true)][string]$name
+)
+
+sudo powershell "Start-VM -Name $name"

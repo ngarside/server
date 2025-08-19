@@ -2,4 +2,8 @@
 
 # Shuts down the VM if it is currently running.
 
-sudo powershell "Stop-VM -Name Server"
+param (
+	[Parameter(Mandatory=$true)][string]$name
+)
+
+sudo powershell "Stop-VM -Name $name"
