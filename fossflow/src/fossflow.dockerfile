@@ -14,7 +14,7 @@ RUN npm ci && npm run docker:build
 
 RUN chmod -R ugo=r dist
 
-FROM docker.io/caddy:2.10.0 AS caddy
+FROM docker.io/caddy:2.10.2 AS caddy
 
 RUN chmod ugo=rx /usr/bin/caddy
 
