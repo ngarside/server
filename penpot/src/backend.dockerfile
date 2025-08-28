@@ -1,3 +1,3 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/penpotapp/backend:2.8.1
+FROM docker.io/penpotapp/backend:2.9.0
