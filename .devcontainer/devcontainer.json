@@ -1,0 +1,15 @@
+{
+	"build": {
+		"dockerfile": "dev.containerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig"
+			]
+		}
+	},
+	"runArgs": [
+		"--security-opt=label=disable"
+	]
+}
