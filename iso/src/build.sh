@@ -5,7 +5,7 @@ set -euo pipefail
 
 # Create build directory -------------------------------------------------------
 
-mkdir --parents bin
+mkdir --parents ./iso/bin
 
 # Build ISO --------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ podman run \
 	--interactive \
 	--privileged \
 	--tty \
-	--volume ./bin:/output \
+	--volume ./iso/bin:/output \
 	--volume /var/lib/containers/storage:/var/lib/containers/storage \
 	--volume ./iso/src/config.toml:/config.toml:ro \
 	quay.io/centos-bootc/bootc-image-builder:latest \
