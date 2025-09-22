@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-dnf --assumeyes install hyperv-daemons restic
+dnf --assumeyes install restic
 
 dnf --assumeyes remove \
 	amd-gpu-firmware \
