@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora-bootc:42.20250718.0
+FROM quay.io/fedora/fedora-bootc:42
 
 SHELL ["/bin/bash", "-c"]
 
