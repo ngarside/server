@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-rpm-ostree install hyperv-daemons restic
+rpm-ostree install restic
 
 rpm-ostree override remove \
 	afterburn-dracut \
