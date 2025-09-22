@@ -7,6 +7,10 @@ set -euo pipefail
 
 mkdir --parents ./iso/bin
 
+# Pull base image --------------------------------------------------------------
+
+podman pull ghcr.io/ngarside/server:feature_bootc
+
 # Build ISO --------------------------------------------------------------------
 
 podman run \
