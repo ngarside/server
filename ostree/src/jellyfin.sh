@@ -3,6 +3,6 @@
 
 set -euo pipefail
 
-mkdir --parents /usr/etc/containers/systemd/users/1001
-cp /tmp/git/jellyfin/ops/jellyfin.container /usr/etc/containers/systemd/users/1001/jellyfin.container
-cp /tmp/git/jellyfin/ops/jellyfin.network /usr/etc/containers/systemd/users/1001/jellyfin.network
+mkdir --parents /etc/containers/systemd/users/1001
+cp /tmp/git/jellyfin/ops/jellyfin.container /etc/containers/systemd/users/1001/jellyfin.container
+cp /tmp/git/jellyfin/ops/jellyfin.network /etc/containers/systemd/users/1001/jellyfin.network

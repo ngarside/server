@@ -3,4 +3,4 @@
 
 set -euo pipefail
 
-echo server > /usr/etc/hostname
+echo server > /etc/hostname

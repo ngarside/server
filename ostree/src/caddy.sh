@@ -3,8 +3,8 @@
 
 set -euo pipefail
 
-mkdir --parents /usr/etc/caddy
-mkdir --parents /usr/etc/containers/systemd/users/1001
+mkdir --parents /etc/caddy
+mkdir --parents /etc/containers/systemd/users/1001
 
-cp /tmp/git/caddy/ops/caddyfile /usr/etc/caddy/caddyfile
-cp /tmp/git/caddy/ops/caddy.container /usr/etc/containers/systemd/users/1001/caddy.container
+cp /tmp/git/caddy/ops/caddyfile /etc/caddy/caddyfile
+cp /tmp/git/caddy/ops/caddy.container /etc/containers/systemd/users/1001/caddy.container

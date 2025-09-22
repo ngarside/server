@@ -3,6 +3,6 @@
 
 set -euo pipefail
 
-mkdir --parents /usr/etc/containers/systemd/users/1001
-cp /tmp/git/cloudflared/ops/cloudflared.container /usr/etc/containers/systemd/users/1001/cloudflared.container
-cp /tmp/git/cloudflared/ops/cloudflared.network /usr/etc/containers/systemd/users/1001/cloudflared.network
+mkdir --parents /etc/containers/systemd/users/1001
+cp /tmp/git/cloudflared/ops/cloudflared.container /etc/containers/systemd/users/1001/cloudflared.container
+cp /tmp/git/cloudflared/ops/cloudflared.network /etc/containers/systemd/users/1001/cloudflared.network
