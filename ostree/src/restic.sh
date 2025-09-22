@@ -3,13 +3,13 @@
 
 set -euo pipefail
 
-mkdir --parents /usr/etc/restic
+mkdir --parents /etc/restic
 
-cp /tmp/git/restic/src/restic.env /usr/etc/restic/restic.env
-cp /tmp/git/restic/src/restic.sh /usr/etc/restic/restic.sh
+cp /tmp/git/restic/src/restic.env /etc/restic/restic.env
+cp /tmp/git/restic/src/restic.sh /etc/restic/restic.sh
 cp /tmp/git/restic/ops/restic.service /usr/lib/systemd/system/restic.service
 cp /tmp/git/restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
 systemctl enable restic.timer
 
-chmod ug=r,o= /usr/etc/restic/restic.{env,sh}
+chmod ug=r,o= /etc/restic/restic.{env,sh}

@@ -3,9 +3,9 @@
 
 set -euo pipefail
 
-mkdir --parents /usr/etc/ssh/authorized_keys
-mkdir --parents /usr/etc/ssh/sshd_config.d
+mkdir --parents /etc/ssh/authorized_keys
+mkdir --parents /etc/ssh/sshd_config.d
 
-cp /tmp/git/sshd/ops/authorizedkeys.conf /usr/etc/ssh/sshd_config.d/20-authorizedkeys.conf
-cp /tmp/git/sshd/ops/hardening.conf /usr/etc/ssh/sshd_config.d/10-hardening.conf
-cp /tmp/git/sshd/ops/authorizedkeys.pub /usr/etc/ssh/authorized_keys/core
+cp /tmp/git/sshd/ops/authorizedkeys.conf /etc/ssh/sshd_config.d/20-authorizedkeys.conf
+cp /tmp/git/sshd/ops/hardening.conf /etc/ssh/sshd_config.d/10-hardening.conf
+cp /tmp/git/sshd/ops/authorizedkeys.pub /etc/ssh/authorized_keys/core
