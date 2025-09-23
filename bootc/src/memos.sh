@@ -4,5 +4,5 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /tmp/git/memos/ops/memos.container /etc/containers/systemd/users/1001/memos.container
-cp /tmp/git/memos/ops/memos.network /etc/containers/systemd/users/1001/memos.network
+cp /git/memos/ops/memos.container /etc/containers/systemd/users/1001/memos.container
+cp /git/memos/ops/memos.network /etc/containers/systemd/users/1001/memos.network

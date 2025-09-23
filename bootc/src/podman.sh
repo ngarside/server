@@ -3,4 +3,4 @@
 
 set -euo pipefail
 
-cp /tmp/git/podman/ops/policy.json /etc/containers/policy.json
+cp /git/podman/ops/policy.json /etc/containers/policy.json
