@@ -63,6 +63,9 @@ if __name__ == '__main__':
 
 	for container in containers:
 		print(f'\nProcessing {container['name']}:')
+		if 'repository' not in container:
+			print('\tPackage does not belong to any repository; skipping')
+			continue
 		repository = container['repository']['full_name']
 		if repository != 'ngarside/server':
 			print('\tNot under parent repository; skipping')
