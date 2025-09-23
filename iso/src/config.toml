@@ -2,10 +2,10 @@
 
 [customizations.installer.kickstart]
 contents = """
-autopart --noswap --type=lvm
-clearpart --all --disklabel=gpt --drives=vda --initlabel
-ignoredisk --only-use=vda
-rootpw --lock
-text --non-interactive
-zerombr
+	autopart --noswap --type=lvm
+	clearpart --all --disklabel=gpt --drives=vda --initlabel
+	ignoredisk --only-use=vda
+	rootpw --lock
+	text --non-interactive
+	zerombr
 """
