@@ -5,6 +5,7 @@ contents = """
 	autopart --noswap --type=lvm
 	clearpart --all --drives=vda --initlabel
 	ignoredisk --only-use=vda
+	reboot --eject
 	rootpw --lock
 	text --non-interactive
 	zerombr
