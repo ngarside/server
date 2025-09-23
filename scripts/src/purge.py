@@ -12,7 +12,7 @@
 
 # Run with 'python purge.py'
 
-import datetime, os, re, requests, slugify
+import datetime, dotenv, os, re, requests, slugify
 
 def ensure_success(response):
 	if response.status_code < 300:
@@ -43,8 +43,14 @@ if __name__ == '__main__':
 	print('Initiating purge of GitHub containers')
 	cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=30)
 
+	print('\tReading environment files')
+	dotenv.load_dotenv()
+
 	print('\tReading token from environment')
 	token = os.getenv('GITHUB_TOKEN')
+	if token is None or len(token) == 0:
+		print('\tEnvironment variable GITHUB_TOKEN empty or unset; exiting')
+		exit(1)
 
 	print('\tRetrieving data from GitHub')
 	branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
@@ -57,11 +63,17 @@ if __name__ == '__main__':
 
 	for container in containers:
 		print(f'\nProcessing {container['name']}:')
+		if 'repository' not in container:
+			print('\tPackage does not belong to any repository; skipping')
+			continue
 		repository = container['repository']['full_name']
 		if repository != 'ngarside/server':
 			print('\tNot under parent repository; skipping')
 			continue
 		versions = github_get(f'{container['url']}/versions')
+		if len(versions) == 1:
+			print('\tPackage only has one version; skipping')
+			continue
 		for version in versions:
 			sha = version['name'].split(':')[1][:7]
 			print(f'\t{sha} | ', end='')
