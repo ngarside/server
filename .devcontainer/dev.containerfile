@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora:43
+FROM quay.io/fedora/fedora:44
 
 RUN << EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install git go-task python3-pip
