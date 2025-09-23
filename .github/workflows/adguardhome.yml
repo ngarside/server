@@ -7,7 +7,7 @@ on:
     paths: ['**/adguardhome.yml', 'adguardhome/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/adguardhome.yml', 'adguardhome/src/**', 'scripts/**']
+    paths: ['**/adguardhome.yml', 'adguardhome/src/**']
   workflow_dispatch:
 
 jobs:

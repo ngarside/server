@@ -7,7 +7,7 @@ on:
     paths: ['**/valkey.yml', 'valkey/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/valkey.yml', 'valkey/src/**', 'scripts/**']
+    paths: ['**/valkey.yml', 'valkey/src/**']
   workflow_dispatch:
 
 jobs:
