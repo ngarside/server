@@ -1,0 +1,33 @@
+# This is free and unencumbered software released into the public domain.
+
+name: penpot
+
+on:
+  pull_request:
+    paths: ['**/penpot.yml', 'penpot/src/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/penpot.yml', 'penpot/src/**']
+  workflow_dispatch:
+
+jobs:
+  penpot_backend:
+    uses: ./.github/workflows/container_build.yml
+    permissions: {contents: read, packages: write}
+    with:
+      name: penpot-backend
+      path: penpot/src/backend.dockerfile
+
+  penpot_exporter:
+    uses: ./.github/workflows/container_build.yml
+    permissions: {contents: read, packages: write}
+    with:
+      name: penpot-exporter
+      path: penpot/src/exporter.dockerfile
+
+  penpot_frontend:
+    uses: ./.github/workflows/container_build.yml
+    permissions: {contents: read, packages: write}
+    with:
+      name: penpot-frontend
+      path: penpot/src/frontend.dockerfile
