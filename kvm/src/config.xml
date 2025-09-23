@@ -1,7 +1,7 @@
 <!-- This is free and unencumbered software released into the public domain. -->
 
 <domain type="kvm">
-	<name>fedora</name>
+	<name>Server</name>
 	<uuid>196ba86a-110b-4638-ab2b-551903807b80</uuid>
 	<metadata>
 		<libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
