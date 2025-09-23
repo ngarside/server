@@ -13,4 +13,4 @@ fi
 
 # Find & print the virtual machine's IP ----------------------------------------
 
-virsh net-dhcp-leases default | grep --color none --only-matching 192[^/]*
+virsh net-dhcp-leases default | grep --color none --only-matching "192[^/]*"

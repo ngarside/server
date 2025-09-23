@@ -13,6 +13,6 @@ fi
 
 # Open the virtual machine's homepage ------------------------------------------
 
-IP=$(virsh net-dhcp-leases default | grep --only-matching 192[^/]*)
+IP=$(virsh net-dhcp-leases default | grep --only-matching "192[^/]*")
 
 xdg-open "http://$IP"

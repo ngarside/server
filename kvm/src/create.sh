@@ -29,6 +29,6 @@ qemu-nbd --disconnect /dev/nbd0
 
 # Create virtual machine -------------------------------------------------------
 
-CONFIG="$(dirname $BASH_SOURCE[0])/config.xml"
+CONFIG="$(dirname "${BASH_SOURCE[0]}")/config.xml"
 
 virsh define "$CONFIG"
