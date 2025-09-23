@@ -45,6 +45,9 @@ if __name__ == '__main__':
 
 	print('\tReading token from environment')
 	token = os.getenv('GITHUB_TOKEN')
+	if token is None or len(token) == 0:
+		print('\tEnvironment variable GITHUB_TOKEN empty or unset; exiting')
+		exit(1)
 
 	print('\tRetrieving data from GitHub')
 	branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
