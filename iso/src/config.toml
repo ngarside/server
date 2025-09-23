@@ -1,6 +1,0 @@
-# This is free and unencumbered software released into the public domain.
-
-[[customizations.filesystem]]
-minsize = 137438953472
-mountpoint = "/"
-type = "btrfs"
