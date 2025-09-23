@@ -5,10 +5,10 @@ set -euo pipefail
 
 mkdir --parents /etc/restic
 
-cp /tmp/git/restic/src/restic.env /etc/restic/restic.env
-cp /tmp/git/restic/src/restic.sh /etc/restic/restic.sh
-cp /tmp/git/restic/ops/restic.service /usr/lib/systemd/system/restic.service
-cp /tmp/git/restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
+cp /git/restic/src/restic.env /etc/restic/restic.env
+cp /git/restic/src/restic.sh /etc/restic/restic.sh
+cp /git/restic/ops/restic.service /usr/lib/systemd/system/restic.service
+cp /git/restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
 systemctl enable restic.timer
 
