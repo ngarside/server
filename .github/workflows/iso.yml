@@ -4,9 +4,6 @@ name: iso
 
 on:
   pull_request:
-    paths: ['**iso**', 'scripts/**']
-  push:
-    branches: [master]
     paths: ['**iso**']
   workflow_dispatch:
 

@@ -9,7 +9,7 @@ mkdir --parents ./iso/bin
 
 # Pull base image --------------------------------------------------------------
 
-podman pull ghcr.io/ngarside/server:feature_bootc
+podman pull ghcr.io/ngarside/server:latest
 
 # Build ISO --------------------------------------------------------------------
 
@@ -22,4 +22,4 @@ podman run \
 	quay.io/centos-bootc/bootc-image-builder:latest \
 	--rootfs btrfs \
 	--type iso \
-	ghcr.io/ngarside/server:feature_bootc
+	ghcr.io/ngarside/server:latest
