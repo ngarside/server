@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/node:24.6.0-alpine AS fossflow
+FROM docker.io/node:24.8.0-alpine AS fossflow
 
 RUN apk --no-cache add git
 
