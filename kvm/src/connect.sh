@@ -15,7 +15,7 @@ fi
 
 IP=$(virsh net-dhcp-leases default | grep --only-matching 192[^/]*)
 
-sudo -u $SUDO_USER ssh \
+sudo -u "$SUDO_USER" ssh \
 	-o StrictHostKeyChecking=no \
 	-o UserKnownHostsFile=/dev/null \
 	core@$IP 2> /dev/null
