@@ -58,18 +58,18 @@
 			"automergeStrategy": "squash",
 			"matchFileNames": [
 				"**/*.dockerfile",
-				"!**/ostree.dockerfile"
+				"!**/bootc.dockerfile"
 			]
 		},
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchFileNames": ["**/ostree.dockerfile"],
+			"matchFileNames": ["**/bootc.dockerfile"],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		},
 		{
 			"enabled": false,
-			"matchFileNames": ["**/ostree.dockerfile"],
+			"matchFileNames": ["**/bootc.dockerfile"],
 			"matchUpdateTypes": ["major"]
 		},
 		{

@@ -1,13 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
-name: ostree
+name: bootc
 
 on:
   pull_request:
-    paths: ['**/ops/**', '**ostree**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/ops/**', '**bootc**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/ops/**', '**ostree**']
+    paths: ['**/ops/**', '**bootc**']
   workflow_dispatch:
 
 jobs:
@@ -16,4 +16,4 @@ jobs:
     permissions: {contents: read, packages: write}
     with:
       name: server
-      path: ostree/src/ostree.dockerfile
+      path: bootc/src/bootc.dockerfile

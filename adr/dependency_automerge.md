@@ -85,7 +85,7 @@ calendar versioning.
 	"automergeStrategy": "squash",
 	"matchFileNames": [
 		"**/*.dockerfile",
-		"!**/ostree.dockerfile"
+		"!**/bootc.dockerfile"
 	]
 }
 ```
@@ -105,7 +105,7 @@ have the option of upgrading to them.
 {
 	"automerge": true,
 	"automergeStrategy": "squash",
-	"matchFileNames": ["**/ostree.dockerfile"],
+	"matchFileNames": ["**/bootc.dockerfile"],
 	"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 }
 ```
@@ -118,7 +118,7 @@ therefore safe to automerge minor updates for images based on Fedora.
 ```json
 {
 	"enabled": false,
-	"matchFileNames": ["**/ostree.dockerfile"],
+	"matchFileNames": ["**/bootc.dockerfile"],
 	"matchUpdateTypes": ["major"]
 }
 ```

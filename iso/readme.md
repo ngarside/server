@@ -2,15 +2,12 @@
 
 # <p align=center>ISO
 
-Scripts to build a custom Fedora CoreOS ISO which supports:
-
-- Unattended installation
-- Automatic rebasing onto the custom OSTree image
-- Minimum possible configuration which is not possible within OSTree
+Scripts to build an installable ISO based on the custom [bootc](../bootc) container image.
 
 # <p align=center>References
 
-- [docs.fedoraproject.org/fedora-coreos](https://docs.fedoraproject.org/en-US/fedora-coreos)
+- [github.com/osbuild/bootc-image-builder](https://github.com/osbuild/bootc-image-builder)
+- [osbuild.org/](https://osbuild.org)
 
 # <p align=center>License
 
