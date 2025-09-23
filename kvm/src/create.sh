@@ -23,7 +23,7 @@ modprobe nbd max_part=8
 
 qemu-nbd --connect /dev/nbd0 /var/lib/libvirt/images/server-data.qcow2
 
-mkfs.btrfs --label data /dev/nbd0
+mkfs.btrfs --device-uuid $(uuidgen) --label data /dev/nbd0
 
 qemu-nbd --disconnect /dev/nbd0
 
