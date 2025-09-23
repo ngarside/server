@@ -68,6 +68,9 @@ if __name__ == '__main__':
 			print('\tNot under parent repository; skipping')
 			continue
 		versions = github_get(f'{container['url']}/versions')
+		if len(versions) == 1:
+			print('\tPackage only has one version; skipping')
+			continue
 		for version in versions:
 			sha = version['name'].split(':')[1][:7]
 			print(f'\t{sha} | ', end='')
