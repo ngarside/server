@@ -2,7 +2,7 @@
 
 FROM docker.io/timberio/vector:0.49.0-distroless-static AS vector
 
-FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
+FROM docker.io/library/golang:1.25.1-alpine AS healthcheck
 
 WORKDIR /go
 

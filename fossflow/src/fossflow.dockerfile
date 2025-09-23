@@ -18,7 +18,7 @@ FROM docker.io/caddy:2.10.2 AS caddy
 
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
+FROM docker.io/library/golang:1.25.1-alpine AS healthcheck
 
 WORKDIR /go
 
