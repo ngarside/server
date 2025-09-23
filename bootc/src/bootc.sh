@@ -11,6 +11,8 @@ cp /git/bootc/ops/sysctl.conf /etc/sysctl.d/0-server.conf
 
 cp /git/bootc/ops/subuid.txt /etc/subuid
 
+cp /git/bootc/ops/fstab.conf /etc/fstab
+
 mkdir --parents /etc/sudoers.d
 cp /git/bootc/ops/sudoers.conf /etc/sudoers.d/server
 chmod 0440 /etc/sudoers.d/server
