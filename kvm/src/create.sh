@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # This is free and unencumbered software released into the public domain.
+# Creates a new virtual machine.
 
 set -euo pipefail
 
