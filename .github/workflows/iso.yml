@@ -7,7 +7,7 @@ on:
     paths: ['**iso**', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**iso**', 'scripts/**']
+    paths: ['**iso**']
   workflow_dispatch:
 
 jobs:

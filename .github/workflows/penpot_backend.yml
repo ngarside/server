@@ -7,7 +7,7 @@ on:
     paths: ['**/penpot_backend.yml', 'penpot/src/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/penpot_backend.yml', 'penpot/src/**', 'scripts/**']
+    paths: ['**/penpot_backend.yml', 'penpot/src/**']
   workflow_dispatch:
 
 jobs:
