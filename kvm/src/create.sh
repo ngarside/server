@@ -18,9 +18,17 @@ qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 64G
 # Create data disk image -------------------------------------------------------
 
 qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 512G
-mkfs.btrfs --label data /var/lib/libvirt/images/server-data.qcow2
+
+modprobe nbd max_part=8
+
+qemu-nbd --connect /dev/nbd0 /var/lib/libvirt/images/server-data.qcow2
+
+mkfs.btrfs --label data /dev/nbd0
+
+qemu-nbd --disconnect /dev/nbd0
 
 # Create virtual machine -------------------------------------------------------
 
-XML="$(dirname $BASH_SOURCE[0])/config.xml"
-virsh define "$XML"
+CONFIG="$(dirname $BASH_SOURCE[0])/config.xml"
+
+virsh define "$CONFIG"
