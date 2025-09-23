@@ -9,4 +9,4 @@ qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 64G
 qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 512G
 
 XML="$(dirname $BASH_SOURCE[0])/config.xml"
-virsh create "$XML"
+virsh define "$XML"
