@@ -18,7 +18,7 @@ qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 64G
 # Create data disk image -------------------------------------------------------
 
 qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 512G
-mkfs.btrfs /var/lib/libvirt/images/server-data.qcow2
+mkfs.btrfs --label data /var/lib/libvirt/images/server-data.qcow2
 
 # Create virtual machine -------------------------------------------------------
 
