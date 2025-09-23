@@ -1,6 +1,6 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
-FROM docker.io/timberio/vector:0.49.0-distroless-static AS vector
+FROM docker.io/timberio/vector:0.50.0-distroless-static AS vector
 
 FROM docker.io/library/golang:1.25.1-alpine AS healthcheck
 
