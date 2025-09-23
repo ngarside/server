@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/neosmemo/memos:0.25.0 AS memos
+FROM docker.io/neosmemo/memos:0.25.1 AS memos
 
 RUN chmod ugo=rx /usr/local/memos/memos
 
