@@ -17,7 +17,7 @@ Environment=PENPOT_DATABASE_PASSWORD=penpot
 Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Environment=PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
 Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
-Image=ghcr.io/ngarside/penpot-backend:2.8.1.46
+Image=ghcr.io/ngarside/penpot-backend:2.9.0.68
 Network=penpot_backend.network:ip=10.4.0.5
 Network=penpot_frontend.network:ip=10.3.0.8
 NoNewPrivileges=true
