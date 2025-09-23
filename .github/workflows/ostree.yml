@@ -7,7 +7,7 @@ on:
     paths: ['**/ops/**', '**ostree**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/ops/**', '**ostree**', 'scripts/**']
+    paths: ['**/ops/**', '**ostree**']
   workflow_dispatch:
 
 jobs:
