@@ -33,7 +33,7 @@
 			<source file="/var/lib/libvirt/images/server-root.qcow2" />
 			<target dev="vda" bus="virtio" />
 			<address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0" />
-			<boot order="1" />
+			<boot order="2" />
 		</disk>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
@@ -46,7 +46,7 @@
 			<target dev="sda" bus="sata" />
 			<readonly />
 			<address type="drive" controller="0" bus="0" target="0" unit="0" />
-			<boot order="2" />
+			<boot order="1" />
 		</disk>
 		<controller type="pci" index="0" model="pcie-root" />
 		<controller type="pci" index="1" model="pcie-root-port">
