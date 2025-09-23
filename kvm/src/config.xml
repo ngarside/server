@@ -8,9 +8,9 @@
 			<libosinfo:os id="http://fedoraproject.org/fedora/unknown" />
 		</libosinfo:libosinfo>
 	</metadata>
-	<memory unit="KiB">8392704</memory>
-	<currentMemory unit="KiB">8392704</currentMemory>
-	<vcpu placement="static">8</vcpu>
+	<memory unit="KiB">33554432</memory>
+	<currentMemory unit="KiB">33554432</currentMemory>
+	<vcpu placement="static">32</vcpu>
 	<os>
 		<type arch="x86_64" machine="pc-q35-9.2">hvm</type>
 		<boot dev="hd" />
