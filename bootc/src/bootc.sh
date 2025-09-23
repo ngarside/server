@@ -14,3 +14,7 @@ cp /tmp/git/bootc/ops/subuid.txt /etc/subuid
 mkdir --parents /etc/sudoers.d
 cp /tmp/git/bootc/ops/sudoers.conf /etc/sudoers.d/server
 chmod 0440 /etc/sudoers.d/server
+
+cp /tmp/git/bootc/ops/root.conf /usr/lib/ostree/prepare-root.conf
+KERNEL=$(cd /usr/lib/modules && echo *)
+dracut --force --verbose "/usr/lib/modules/$KERNEL/initramfs.img" "$KERNEL"
