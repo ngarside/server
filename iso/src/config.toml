@@ -2,7 +2,7 @@
 
 [customizations.installer.kickstart]
 contents = """
-	autopart --noswap --type=lvm
+	autopart --noswap --type=plain --fstype=btrfs --nohome
 	clearpart --all --drives=vda --initlabel
 	ignoredisk --only-use=vda
 	reboot --eject
