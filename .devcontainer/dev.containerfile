@@ -2,4 +2,4 @@
 
 FROM quay.io/fedora/fedora:43
 
-RUN dnf --assumeyes --setopt=install_weak_deps=false install git python3
+RUN dnf --assumeyes --setopt=install_weak_deps=false install git python3-pip
