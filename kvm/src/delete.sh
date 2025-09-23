@@ -13,6 +13,7 @@ fi
 
 # Delete the virtual machine ---------------------------------------------------
 
+virsh destroy Server || true
 virsh undefine Server
 
 # Delete the disk images -------------------------------------------------------
