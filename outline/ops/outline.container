@@ -28,7 +28,7 @@ Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=debug
 Environment=DEFAULT_LANGUAGE=en_GB
 EnvironmentFile=/etc/outline/outline.env
-Image=docker.io/outlinewiki/outline:0.86.1
+Image=docker.io/outlinewiki/outline:0.87.4
 Network=outline.network:ip=10.10.0.2
 NoNewPrivileges=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
