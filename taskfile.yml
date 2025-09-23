@@ -1,0 +1,16 @@
+# This is free and unencumbered software released into the public domain.
+
+version: 3
+tasks:
+
+  default:
+    cmd: task --list-all
+    desc: List all tasks
+    silent: true
+
+  install:
+    cmds:
+      - pip install uv
+      - uv pip install --requirements pyproject.toml --system
+    desc: Install development dependencies
+    silent: true
