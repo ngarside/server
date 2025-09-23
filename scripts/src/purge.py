@@ -12,7 +12,7 @@
 
 # Run with 'python purge.py'
 
-import datetime, os, re, requests, slugify
+import datetime, dotenv, os, re, requests, slugify
 
 def ensure_success(response):
 	if response.status_code < 300:
@@ -42,6 +42,9 @@ def is_semantic(tag):
 if __name__ == '__main__':
 	print('Initiating purge of GitHub containers')
 	cutoff = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=30)
+
+	print('\tReading environment files')
+	dotenv.load_dotenv()
 
 	print('\tReading token from environment')
 	token = os.getenv('GITHUB_TOKEN')
