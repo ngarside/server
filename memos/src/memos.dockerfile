@@ -4,7 +4,7 @@ FROM docker.io/neosmemo/memos:0.25.0 AS memos
 
 RUN chmod ugo=rx /usr/local/memos/memos
 
-FROM docker.io/library/golang:1.25.0-alpine AS healthcheck
+FROM docker.io/library/golang:1.25.1-alpine AS healthcheck
 
 WORKDIR /go
 

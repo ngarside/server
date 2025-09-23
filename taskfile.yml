@@ -14,3 +14,8 @@ tasks:
       - uv pip install --requirements pyproject.toml --system
     desc: Install development dependencies
     silent: true
+
+  purge:
+    cmd: python3 scripts/src/purge.py
+    desc: Delete all unused container images from the GitHub registry
+    silent: true
