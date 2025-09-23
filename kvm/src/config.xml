@@ -2,12 +2,6 @@
 
 <domain type="kvm">
 	<name>Server</name>
-	<uuid>196ba86a-110b-4638-ab2b-551903807b80</uuid>
-	<metadata>
-		<libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
-			<libosinfo:os id="http://fedoraproject.org/fedora/unknown" />
-		</libosinfo:libosinfo>
-	</metadata>
 	<memory unit="KiB">33554432</memory>
 	<currentMemory unit="KiB">33554432</currentMemory>
 	<vcpu placement="static">32</vcpu>
