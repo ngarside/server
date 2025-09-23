@@ -37,21 +37,21 @@
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
 			<source file="/var/lib/libvirt/images/server-root.qcow2" />
-			<target dev="sda" bus="sata" />
-			<address type="drive" controller="0" bus="0" target="0" unit="0" />
+			<target dev="vda" bus="virtio" />
+			<address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0" />
 			<boot order="1" />
 		</disk>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
 			<source file="/var/lib/libvirt/images/server-data.qcow2" />
-			<target dev="sdb" bus="sata" />
-			<address type="drive" controller="0" bus="0" target="0" unit="1" />
+			<target dev="vdb" bus="virtio" />
+			<address type="pci" domain="0x0000" bus="0x08" slot="0x00" function="0x0" />
 		</disk>
 		<disk type="file" device="cdrom">
 			<driver name="qemu" type="raw" />
-			<target dev="sdc" bus="sata" />
+			<target dev="sda" bus="sata" />
 			<readonly />
-			<address type="drive" controller="0" bus="0" target="0" unit="2" />
+			<address type="drive" controller="0" bus="0" target="0" unit="0" />
 			<boot order="2" />
 		</disk>
 		<controller type="pci" index="0" model="pcie-root" />
