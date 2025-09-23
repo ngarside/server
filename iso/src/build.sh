@@ -5,44 +5,21 @@ set -euo pipefail
 
 # Create build directory -------------------------------------------------------
 
-mkdir --parents bin
+mkdir --parents ./iso/bin
 
-# Compile ignition file --------------------------------------------------------
+# Pull base image --------------------------------------------------------------
 
-podman run \
-	--interactive \
-	--rm \
-	--volume .:/opt \
-	quay.io/coreos/butane:release \
-		--files-dir /opt \
-		--pretty \
-		--strict \
-		< src/butane.yml \
-		> bin/ignition.json
+podman pull ghcr.io/ngarside/server:feature_bootc
 
-# Download latest ISO ----------------------------------------------------------
+# Build ISO --------------------------------------------------------------------
 
 podman run \
 	--interactive \
-	--rm \
-	--volume ./bin:/opt \
-	quay.io/coreos/coreos-installer:release \
-	download --directory /opt --format iso
-
-mv bin/*.iso bin/original.iso
-mv bin/*.iso.sig bin/original.iso.sig
-
-# Customise ISO ----------------------------------------------------------------
-
-cp ops/wipe.sh bin/wipe.sh
-
-podman run \
-	--interactive \
-	--rm \
-	--volume ./bin:/opt quay.io/coreos/coreos-installer:release \
-		iso customize \
-		--dest-device /dev/sda \
-		--dest-ignition /opt/ignition.json \
-		--output /opt/server.iso \
-		--pre-install /opt/wipe.sh \
-		/opt/original.iso
+	--privileged \
+	--tty \
+	--volume ./iso/bin:/output \
+	--volume /var/lib/containers/storage:/var/lib/containers/storage \
+	quay.io/centos-bootc/bootc-image-builder:latest \
+	--rootfs btrfs \
+	--type iso \
+	ghcr.io/ngarside/server:feature_bootc
