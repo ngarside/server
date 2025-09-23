@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora-coreos:42.20250920.20.0
+FROM quay.io/fedora/fedora-coreos:42.20250923.20.0
 
 SHELL ["/bin/bash", "-c"]
 
