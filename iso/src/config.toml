@@ -1,0 +1,60 @@
+# This is free and unencumbered software released into the public domain.
+
+# [[customizations.filesystem]]
+# minsize = "32 GiB"
+# mountpoint = "/"
+# type = "btrfs"
+
+# [[customizations.filesystem]]
+# minsize = "128 GiB"
+# mountpoint = "/var/data"
+# type = "btrfs"
+
+# [[customizations.disk.partitions]]
+# type = "plain"
+# label = "data"
+# mountpoint = "/var/data"
+# fs_type = "btrfs"
+# minsize = "32 GiB"
+
+# [customizations.installer]
+# unattended = false
+
+# [customizations]
+# installation_device = "/dev/vda"
+
+# [customizations.installer.kickstart]
+# contents = """
+# text
+# zerombr
+# clearpart --all --initlabel --disklabel=gpt
+# autopart --noswap --type=lvm
+# network --bootproto=dhcp --device=link --activate --onboot=on
+# """
+
+# [customizations.installer.modules]
+# enable = [
+# 	"org.fedoraproject.Anaconda.Modules.Storage",
+# ]
+
+# THIS WORKED! FOR DRIVES! BUT HAD TO CONFIGURE MANUALLY!
+# BUT IT ALSO REQUIRED CREATED A ROOT USER AND NON-ROOT USER!
+# [customizations.installer.kickstart]
+# contents = """
+# text
+# """
+
+[customizations.installer.kickstart]
+contents = """
+autopart --noswap --type=lvm
+clearpart --all --disklabel=gpt --drives=vda --initlabel
+ignoredisk --only-use=vda
+rootpw --lock
+text --non-interactive
+zerombr
+"""
+
+# [customizations.installer.modules]
+# enable = [
+# 	"org.fedoraproject.Anaconda.Modules.Storage",
+# ]
