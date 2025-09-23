@@ -2,7 +2,7 @@
 
 # <p align=center>KVM
 
-Scripts to create and manage a KVM virtual machine used for testing.
+Scripts to create and manage KVM virtual machines used for testing.
 
 # <p align=center>References
 
