@@ -14,6 +14,9 @@ export RESTIC_PASSWORD
 export AWS_SECRET_ACCESS_KEY
 export RESTIC_REPOSITORY
 
+# Prune old snapshots
+restic forget --keep-last 100 --prune
+
 # Delete dangling snapshot if it wasn't cleaned up correctly
 btrfs subvolume delete /var/data/@backup || true
 
