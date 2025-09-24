@@ -15,5 +15,9 @@ dnf --assumeyes remove \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
 	NetworkManager-cloud-setup \
+	python-pip-wheel \
+	python3 \
+	python3-libs \
+	sudo-python-plugin \
 	toolbox \
 	nvidia-gpu-firmware
