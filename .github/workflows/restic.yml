@@ -19,7 +19,7 @@ jobs:
 
       - name: Clean
         run: >-
-          docker run
+          podman run
           --env AWS_ACCESS_KEY_ID="${{ secrets.RESTIC_KEY }}"
           --env RESTIC_PASSWORD="${{ secrets.RESTIC_PASSWORD }}"
           --env AWS_SECRET_ACCESS_KEY="${{ secrets.RESTIC_SECRET }}"
