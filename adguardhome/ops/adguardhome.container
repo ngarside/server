@@ -12,14 +12,14 @@ PublishPort=53:53/udp
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
-Volume=/var/data/adguardhome/etc:/etc/adguardhome:U,Z
-Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
+Volume=/data/adguardhome/etc:/etc/adguardhome:U,Z
+Volume=/data/adguardhome/opt:/opt/adguardhome:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/adguardhome/etc
-ExecStartPre=mkdir --parents /var/data/adguardhome/opt
+ExecStartPre=mkdir --parents /data/adguardhome/etc
+ExecStartPre=mkdir --parents /data/adguardhome/opt
 
 [Install]
 WantedBy=default.target

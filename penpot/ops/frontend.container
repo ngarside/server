@@ -16,13 +16,13 @@ Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
 Image=ghcr.io/ngarside/penpot-frontend:2.9.0.9
 Network=penpot_frontend.network:ip=10.3.0.9
 NoNewPrivileges=true
-Volume=/var/data/penpot/assets:/opt/data/assets:z
+Volume=/data/penpot/assets:/opt/data/assets:z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/penpot/assets
-ExecStartPre=podman unshare chown 1001:1001 /var/data/penpot/assets
+ExecStartPre=mkdir --parents /data/penpot/assets
+ExecStartPre=podman unshare chown 1001:1001 /data/penpot/assets
 
 [Install]
 WantedBy=default.target

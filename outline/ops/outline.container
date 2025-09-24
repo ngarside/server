@@ -33,12 +33,12 @@ Network=outline.network:ip=10.10.0.2
 NoNewPrivileges=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
 Secret=mailjet_smtp_username,type=env,target=SMTP_USERNAME
-Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
+Volume=/data/outline/data:/var/lib/outline/data:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/outline/data
+ExecStartPre=mkdir --parents /data/outline/data
 
 [Install]
 WantedBy=default.target

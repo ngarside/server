@@ -8,13 +8,13 @@ set -euo pipefail
 source /etc/restic/restic.env
 
 # Delete dangling snapshot if it wasn't cleaned up correctly
-btrfs subvolume delete /var/data/@backup || true
+btrfs subvolume delete /data/@backup || true
 
 # Create a new snapshot
-btrfs subvolume snapshot -r /var/data /var/data/@backup
+btrfs subvolume snapshot -r /data /data/@backup
 
 # Backup using restic
-restic backup /var/data/@backup
+restic backup /data/@backup
 
 # Delete snapshot once backup has completed
-btrfs subvolume delete /var/data/@backup
+btrfs subvolume delete /data/@backup

@@ -12,12 +12,12 @@ ReadOnly=true
 SecurityLabelDisable=true
 Volume=/etc/vector/privileged:/etc/vector:ro
 Volume=/var/log/journal:/var/log/journal:ro
-Volume=/var/data/vector/privileged/data:/var/lib/vector:U,Z
+Volume=/data/vector/privileged/data:/var/lib/vector:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/vector/privileged/data
+ExecStartPre=mkdir --parents /data/vector/privileged/data
 
 [Install]
 WantedBy=default.target

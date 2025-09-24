@@ -9,12 +9,12 @@ Network=vaultwarden.network:ip=10.12.0.2
 NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
-Volume=/var/data/vaultwarden/data:/data:U,Z
+Volume=/data/vaultwarden/data:/data:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/vaultwarden/data
+ExecStartPre=mkdir --parents /data/vaultwarden/data
 
 [Install]
 WantedBy=default.target

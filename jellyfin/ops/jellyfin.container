@@ -7,16 +7,16 @@ ContainerName=jellyfin
 Image=ghcr.io/jellyfin/jellyfin:10.10.7
 Network=jellyfin.network:ip=10.11.0.2
 NoNewPrivileges=true
-Volume=/var/data/jellyfin/cache:/cache:U,Z
-Volume=/var/data/jellyfin/config:/config:U,Z
-Volume=/var/data/jellyfin/media:/media:ro
+Volume=/data/jellyfin/cache:/cache:U,Z
+Volume=/data/jellyfin/config:/config:U,Z
+Volume=/data/jellyfin/media:/media:ro
 
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/jellyfin/cache
-ExecStartPre=mkdir --parents /var/data/jellyfin/config
-ExecStartPre=mkdir --parents /var/data/jellyfin/media
+ExecStartPre=mkdir --parents /data/jellyfin/cache
+ExecStartPre=mkdir --parents /data/jellyfin/config
+ExecStartPre=mkdir --parents /data/jellyfin/media
 
 [Install]
 WantedBy=default.target
