@@ -5,7 +5,7 @@ set -euo pipefail
 
 mkdir --parents /etc/restic
 
-cp /git/restic/src/restic.sh /etc/restic/restic.sh
+cp /git/restic/ops/restic.sh /etc/restic/restic.sh
 cp /git/restic/ops/restic.service /usr/lib/systemd/system/restic.service
 cp /git/restic/ops/restic.timer /usr/lib/systemd/system/restic.timer
 
