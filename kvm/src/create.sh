@@ -23,7 +23,11 @@ modprobe nbd max_part=8
 
 qemu-nbd --connect /dev/nbd0 /var/lib/libvirt/images/server-data.qcow2
 
-mkfs.btrfs --label data /dev/nbd0
+parted /dev/nbd0 mklabel gpt
+
+parted --align optimal /dev/nbd0 mkpart primary 0% 100%
+
+mkfs.btrfs --force --label data /dev/nbd0p1
 
 qemu-nbd --disconnect /dev/nbd0
 

@@ -6,7 +6,8 @@
 		"vscode": {
 			"extensions": [
 				"EditorConfig.EditorConfig",
-				"redhat.vscode-xml"
+				"redhat.vscode-xml",
+				"tamasfe.even-better-toml"
 			]
 		}
 	},
