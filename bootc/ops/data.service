@@ -1,0 +1,11 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+Description=Give ownership of the data mount to the containers user
+
+[Service]
+Type=oneshot
+ExecStart=chown containers:containers /var/data
+
+[Install]
+WantedBy=default.target
