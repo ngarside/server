@@ -18,9 +18,10 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Clean
-        run: restic forget --keep-last 100 --prune
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.RESTIC_REPOSITORY_KEY }}
-          RESTIC_PASSWORD: ${{ secrets.RESTIC_REPOSITORY_PASSWORD }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.RESTIC_REPOSITORY_SECRET }}
-          RESTIC_REPOSITORY: ${{ secrets.RESTIC_REPOSITORY_URI }}
+        run: >
+          podman run
+          --env AWS_ACCESS_KEY_ID="${{ secrets.RESTIC_REPOSITORY_KEY }}"
+          --env RESTIC_PASSWORD="${{ secrets.RESTIC_REPOSITORY_PASSWORD }}"
+          --env AWS_SECRET_ACCESS_KEY="${{ secrets.RESTIC_REPOSITORY_SECRET }}"
+          --env RESTIC_REPOSITORY="${{ secrets.RESTIC_REPOSITORY_URI }}"
+          ghcr.io/restic/restic forget --keep-last 100 --prune
