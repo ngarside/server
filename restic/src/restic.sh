@@ -4,8 +4,11 @@
 set -euo pipefail
 
 # Load environment variables
-# shellcheck source=restic/src/restic.env
-source /etc/restic/restic.env
+AWS_ACCESS_KEY_ID=$(podman secret inspect restic_repository_key --showsecret | jq --raw-output ".[].SecretData")
+RESTIC_PASSWORD=$(podman secret inspect restic_repository_password --showsecret | jq --raw-output ".[].SecretData")
+AWS_SECRET_ACCESS_KEY=$(podman secret inspect restic_repository_secret --showsecret | jq --raw-output ".[].SecretData")
+RESTIC_REPOSITORY=$(podman secret inspect restic_repository_uri --showsecret | jq --raw-output ".[].SecretData")
+RESTIC_REPOSITORY="s3:$RESTIC_REPOSITORY"
 
 # Delete dangling snapshot if it wasn't cleaned up correctly
 btrfs subvolume delete /var/data/@backup || true
