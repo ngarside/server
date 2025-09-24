@@ -27,12 +27,12 @@ Environment=SMTP_FROM_EMAIL=noreply@usani.uk
 Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=debug
 Environment=DEFAULT_LANGUAGE=en_GB
-EnvironmentFile=/etc/outline/outline.env
 Image=docker.io/outlinewiki/outline:0.87.4
 Network=outline.network:ip=10.10.0.2
 NoNewPrivileges=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
 Secret=mailjet_smtp_username,type=env,target=SMTP_USERNAME
+Secret=outline_oidc_secret,type=env,target=OIDC_CLIENT_SECRET
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 
 [Service]
