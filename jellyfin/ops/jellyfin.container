@@ -13,7 +13,7 @@ Volume=/var/data/jellyfin/media:/media:ro
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/jellyfin/cache
 ExecStartPre=mkdir --parents /var/data/jellyfin/config
 ExecStartPre=mkdir --parents /var/data/jellyfin/media
