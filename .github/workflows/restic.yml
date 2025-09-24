@@ -19,7 +19,7 @@ jobs:
 
       - name: Clean
         run: >
-          podman run
+          sudo podman run
           --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY
           --env RESTIC_PASSWORD --env RESTIC_REPOSITORY
           ghcr.io/restic/restic forget --keep-last 100 --prune
