@@ -2,8 +2,10 @@
 
 [Unit]
 After=authentik_postgres.container
+After=authentik_server.container
 After=authentik_valkey.container
 Requires=authentik_postgres.container
+Requires=authentik_server.container
 Requires=authentik_valkey.container
 
 [Container]

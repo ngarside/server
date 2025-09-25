@@ -33,6 +33,7 @@ Volume=/etc/authentik/media:/media/public:ro
 [Service]
 Restart=always
 TimeoutStartSec=9000
+ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore outline_oidc_secret -"
 
 [Install]
 WantedBy=default.target
