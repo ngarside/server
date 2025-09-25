@@ -41,7 +41,7 @@ entries:
         - !KeyOf custom-penpot-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: https://penpot.usani.uk/auth/oidc.callback
+          url: https://penpot.usani.uk/api/auth/oauth/oidc/callback
 
   # Application
   - id: custom-penpot-application
