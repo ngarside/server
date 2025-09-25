@@ -24,7 +24,6 @@ Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
 
 Environment=PENPOT_OIDC_CLIENT_ID=penpot
 Environment=PENPOT_OIDC_BASE_URI=https://usani.uk/application/o/penpot
-Environment=PENPOT_OIDC_CLIENT_SECRET=<client-id>
 Environment=
 Environment=
 Environment=
@@ -37,7 +36,7 @@ Image=ghcr.io/ngarside/penpot-backend:2.9.0.70
 Network=penpot_backend.network:ip=10.4.0.5
 Network=penpot_frontend.network:ip=10.3.0.8
 NoNewPrivileges=true
-Secret=penpot_oidc_secret,type=env,target=OIDC_CLIENT_SECRET
+Secret=penpot_oidc_secret,type=env,target=PENPOT_OIDC_CLIENT_SECRET
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
