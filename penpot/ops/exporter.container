@@ -6,7 +6,7 @@ Requires=penpot_valkey.container
 
 [Container]
 ContainerName=penpot_exporter
-Environment=PENPOT_PUBLIC_URI=http://10.3.0.9:8080
+Environment=PENPOT_PUBLIC_URI=https://penpot.usani.uk
 Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Image=ghcr.io/ngarside/penpot-exporter:2.9.0.70
 Network=penpot_backend.network:ip=10.4.0.4
