@@ -6,14 +6,14 @@ Scripts for running Outline via Podman and Systemd.
 
 # <p align=center>Manual Setup
 
-Before running Outline for the first time on a system, these steps need to be
-performed manually:
+Before running Outline for the first time on a system, you must first run this command as the
+containers user:
 
-- Copy the client secret from the Outline Provider in Authentik
-- Run this command as the containers user, using the client secret copied above
-  ```sh
-  echo -n 'CLIENTSECRET' | podman secret create outline_oidc_secret -
-  ```
+```sh
+dd bs=96 count=1 if=/dev/urandom status=none \
+| base64 --wrap 0 \
+| podman secret create outline_oidc_secret -
+```
 
 # <p align=center>References
 

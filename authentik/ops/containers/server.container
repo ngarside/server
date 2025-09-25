@@ -24,6 +24,7 @@ NoNewPrivileges=true
 ReadOnly=true
 Secret=mailjet_smtp_password,type=env,target=AUTHENTIK_EMAIL__PASSWORD
 Secret=mailjet_smtp_username,type=env,target=AUTHENTIK_EMAIL__USERNAME
+Secret=outline_oidc_secret,type=env,target=OUTLINE_CLIENT_SECRET
 StopSignal=SIGINT
 User=root
 UserNS=auto
