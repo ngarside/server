@@ -14,7 +14,7 @@ dnf --assumeyes remove \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
-	NetworkManager-cloud-setup \
+	NetworkManager \
 	qemu-user-static* \
 	python-pip-wheel \
 	python3 \
