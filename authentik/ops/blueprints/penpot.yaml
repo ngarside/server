@@ -1,0 +1,68 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Penpot
+entries:
+
+  # Scope - Email
+  - id: custom-penpot-scopes-email
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: email
+
+  # Scope - OpenID
+  - id: custom-penpot-scopes-openid
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: openid
+
+  # Scope - Profile
+  - id: custom-penpot-scopes-profile
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: profile
+
+  # Provider
+  - id: custom-penpot-provider
+    model: authentik_providers_oauth2.oauth2provider
+    identifiers:
+      client_id: penpot
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_secret: !Env
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      name: Penpot Provider
+      property_mappings:
+        - !KeyOf custom-penpot-scopes-email
+        - !KeyOf custom-penpot-scopes-openid
+        - !KeyOf custom-penpot-scopes-profile
+      redirect_uris:
+        - matching_mode: strict
+          url: https://penpot.usani.uk/auth/oidc.callback
+
+  # Application
+  - id: custom-penpot-application
+    model: authentik_core.application
+    identifiers:
+      slug: penpot
+    attrs:
+      icon: penpot.png
+      name: Penpot
+      provider: !KeyOf custom-penpot-provider
+
+  # Group
+  - id: custom-penpot-group
+    model: authentik_core.group
+    identifiers:
+      name: Penpot Group
+
+  # Binding
+  - id: custom-penpot-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-penpot-group
+      order: 0
+      target: !KeyOf custom-penpot-application
