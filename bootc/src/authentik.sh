@@ -16,9 +16,15 @@ cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/
 cp /git/authentik/ops/containers/valkey.container /etc/containers/systemd/users/1001/valkey.container
 cp /git/authentik/ops/containers/worker.container /etc/containers/systemd/users/1001/worker.container
 
+cp /git/authentik/ops/logos/adguardhome.png /etc/authentik/media/adguardhome.png
+cp /git/authentik/ops/logos/fossflow.png /etc/authentik/media/fossflow.png
+cp /git/authentik/ops/logos/gitea.png /etc/authentik/media/gitea.png
+cp /git/authentik/ops/logos/jellyfin.png /etc/authentik/media/jellyfin.png
 cp /git/authentik/ops/logos/memos.png /etc/authentik/media/memos.png
-cp /git/authentik/ops/logos/youtrack.png /etc/authentik/media/youtrack.png
 cp /git/authentik/ops/logos/outline.png /etc/authentik/media/outline.png
+cp /git/authentik/ops/logos/penpot.png /etc/authentik/media/penpot.png
+cp /git/authentik/ops/logos/vaultwarden.png /etc/authentik/media/vaultwarden.png
+cp /git/authentik/ops/logos/youtrack.png /etc/authentik/media/youtrack.png
 
 cp /git/authentik/ops/networks/external.network /etc/containers/systemd/users/1001/external.network
 cp /git/authentik/ops/networks/internal.network /etc/containers/systemd/users/1001/internal.network
