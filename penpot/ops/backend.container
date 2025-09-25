@@ -1,8 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 [Unit]
+After=authentik_server.container
 After=penpot_postgres.container
 After=penpot_valkey.container
+Requires=authentik_server.container
 Requires=penpot_postgres.container
 Requires=penpot_valkey.container
 
