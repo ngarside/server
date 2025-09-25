@@ -23,3 +23,6 @@ echo -n 'SECRETDATA' | podman secret create grafana_prometheus_username -
 # Mailjet.
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
+
+# Physical / Virtual Machine.
+echo -n 'SECRETDATA' | podman secret create machine_domain_root -
