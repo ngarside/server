@@ -11,10 +11,10 @@ cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
 cp /git/authentik/ops/blueprints/outline.yaml /etc/authentik/blueprints/outline.yaml
 cp /git/authentik/ops/blueprints/youtrack.yaml /etc/authentik/blueprints/youtrack.yaml
 
-cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/postgres.container
-cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/1001/server.container
-cp /git/authentik/ops/containers/valkey.container /etc/containers/systemd/users/1001/valkey.container
-cp /git/authentik/ops/containers/worker.container /etc/containers/systemd/users/1001/worker.container
+cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/authentik_postgres.container
+cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/1001/authentik_server.container
+cp /git/authentik/ops/containers/valkey.container /etc/containers/systemd/users/1001/authentik_valkey.container
+cp /git/authentik/ops/containers/worker.container /etc/containers/systemd/users/1001/authentik_worker.container
 
 cp /git/authentik/ops/logos/adguardhome.png /etc/authentik/media/adguardhome.png
 cp /git/authentik/ops/logos/fossflow.png /etc/authentik/media/fossflow.png
@@ -26,5 +26,5 @@ cp /git/authentik/ops/logos/penpot.png /etc/authentik/media/penpot.png
 cp /git/authentik/ops/logos/vaultwarden.png /etc/authentik/media/vaultwarden.png
 cp /git/authentik/ops/logos/youtrack.png /etc/authentik/media/youtrack.png
 
-cp /git/authentik/ops/networks/external.network /etc/containers/systemd/users/1001/external.network
-cp /git/authentik/ops/networks/internal.network /etc/containers/systemd/users/1001/internal.network
+cp /git/authentik/ops/networks/external.network /etc/containers/systemd/users/1001/authentik_external.network
+cp /git/authentik/ops/networks/internal.network /etc/containers/systemd/users/1001/authentik_internal.network
