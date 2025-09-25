@@ -7,15 +7,24 @@ mkdir --parents /etc/containers/systemd/users/1001
 mkdir --parents /etc/authentik/blueprints
 mkdir --parents /etc/authentik/media
 
-cp /git/authentik/ops/authentik_external.network /etc/containers/systemd/users/1001/authentik_external.network
-cp /git/authentik/ops/authentik_internal.network /etc/containers/systemd/users/1001/authentik_internal.network
-cp /git/authentik/ops/authentik_postgres.container /etc/containers/systemd/users/1001/authentik_postgres.container
-cp /git/authentik/ops/authentik_server.container /etc/containers/systemd/users/1001/authentik_server.container
-cp /git/authentik/ops/authentik_valkey.container /etc/containers/systemd/users/1001/authentik_valkey.container
-cp /git/authentik/ops/authentik_worker.container /etc/containers/systemd/users/1001/authentik_worker.container
-cp /git/authentik/ops/blueprints_memos.yaml /etc/authentik/blueprints/memos.yaml
-cp /git/authentik/ops/blueprints_youtrack.yaml /etc/authentik/blueprints/youtrack.yaml
-cp /git/authentik/ops/blueprints_outline.yaml /etc/authentik/blueprints/outline.yaml
-cp /git/authentik/ops/logo_memos.png /etc/authentik/media/memos.png
-cp /git/authentik/ops/logo_youtrack.png /etc/authentik/media/youtrack.png
-cp /git/authentik/ops/logo_outline.png /etc/authentik/media/outline.png
+cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
+cp /git/authentik/ops/blueprints/outline.yaml /etc/authentik/blueprints/outline.yaml
+cp /git/authentik/ops/blueprints/youtrack.yaml /etc/authentik/blueprints/youtrack.yaml
+
+cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/authentik_postgres.container
+cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/1001/authentik_server.container
+cp /git/authentik/ops/containers/valkey.container /etc/containers/systemd/users/1001/authentik_valkey.container
+cp /git/authentik/ops/containers/worker.container /etc/containers/systemd/users/1001/authentik_worker.container
+
+cp /git/authentik/ops/logos/adguardhome.png /etc/authentik/media/adguardhome.png
+cp /git/authentik/ops/logos/fossflow.png /etc/authentik/media/fossflow.png
+cp /git/authentik/ops/logos/gitea.png /etc/authentik/media/gitea.png
+cp /git/authentik/ops/logos/jellyfin.png /etc/authentik/media/jellyfin.png
+cp /git/authentik/ops/logos/memos.png /etc/authentik/media/memos.png
+cp /git/authentik/ops/logos/outline.png /etc/authentik/media/outline.png
+cp /git/authentik/ops/logos/penpot.png /etc/authentik/media/penpot.png
+cp /git/authentik/ops/logos/vaultwarden.png /etc/authentik/media/vaultwarden.png
+cp /git/authentik/ops/logos/youtrack.png /etc/authentik/media/youtrack.png
+
+cp /git/authentik/ops/networks/external.network /etc/containers/systemd/users/1001/authentik_external.network
+cp /git/authentik/ops/networks/internal.network /etc/containers/systemd/users/1001/authentik_internal.network
