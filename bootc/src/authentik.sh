@@ -8,8 +8,8 @@ mkdir --parents /etc/authentik/blueprints
 mkdir --parents /etc/authentik/media
 
 cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
-cp /git/authentik/ops/blueprints/youtrack.yaml /etc/authentik/blueprints/youtrack.yaml
 cp /git/authentik/ops/blueprints/outline.yaml /etc/authentik/blueprints/outline.yaml
+cp /git/authentik/ops/blueprints/youtrack.yaml /etc/authentik/blueprints/youtrack.yaml
 
 cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/postgres.container
 cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/1001/server.container
