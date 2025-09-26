@@ -7,7 +7,7 @@
 set -euo pipefail
 
 # Read the root domain name.
-ROOT=$(podman secret inspect --format {{.SecretData}} --showsecret machine_domain_root)
+ROOT=$(podman secret inspect --format "{{.SecretData}}" --showsecret machine_domain_root)
 
 # Ensure that we're running as the 'containers' user.
 USER=$(id --name --user)
