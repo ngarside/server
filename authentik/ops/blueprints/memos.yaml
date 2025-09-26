@@ -40,7 +40,7 @@ entries:
         - !KeyOf custom-memos-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: https://memos.usani.uk/auth/callback
+          url: !Format [https://memos.%s/auth/callback, !Env MACHINE_DOMAIN_ROOT]
 
   # Application
   - id: custom-memos-application
