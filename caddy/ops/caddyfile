@@ -26,7 +26,6 @@ fossflow.{$MACHINE_DOMAIN_ROOT} {
 				forward_auth 10.8.0.3:9000 {
 						uri /outpost.goauthentik.io/auth/caddy
 						copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
-						trusted_proxies private_ranges
 				}
 				reverse_proxy 10.1.0.2
 		}
