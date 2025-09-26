@@ -7,47 +7,47 @@
 	}
 }
 
-*.{env.MACHINE_DOMAIN_ROOT} {
+*.{$MACHINE_DOMAIN_ROOT} {
 	import tls
 }
 
-{env.MACHINE_DOMAIN_ROOT} {
+{$MACHINE_DOMAIN_ROOT} {
 	import tls
 	reverse_proxy 10.8.0.3:9000
 }
 
-adguardhome.{env.MACHINE_DOMAIN_ROOT} {
+adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.2.0.2
 }
 
-fossflow.{env.MACHINE_DOMAIN_ROOT} {
+fossflow.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.1.0.2
 }
 
-gitea.{env.MACHINE_DOMAIN_ROOT} {
+gitea.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.14.0.2:3000
 }
 
-jellyfin.{env.MACHINE_DOMAIN_ROOT} {
+jellyfin.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.11.0.2:8096
 }
 
-memos.{env.MACHINE_DOMAIN_ROOT} {
+memos.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.6.0.2
 }
 
-outline.{env.MACHINE_DOMAIN_ROOT} {
+outline.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.10.0.2:8080
 }
 
-penpot.{env.MACHINE_DOMAIN_ROOT} {
+penpot.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.3.0.9:8080
 }
 
-vaultwarden.{env.MACHINE_DOMAIN_ROOT} {
+vaultwarden.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.12.0.2
 }
 
-youtrack.{env.MACHINE_DOMAIN_ROOT} {
+youtrack.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.9.0.2:8080
 }
