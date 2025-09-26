@@ -22,6 +22,7 @@ Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
 NoNewPrivileges=true
 ReadOnly=true
+Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 Secret=mailjet_smtp_password,type=env,target=AUTHENTIK_EMAIL__PASSWORD
 Secret=mailjet_smtp_username,type=env,target=AUTHENTIK_EMAIL__USERNAME
 Secret=outline_oidc_secret,type=env,target=OUTLINE_CLIENT_SECRET
