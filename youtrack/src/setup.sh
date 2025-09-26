@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 # This is free and unencumbered software released into the public domain.
 
-# This script configures YouTrack to use the 'youtrack.usani.uk' base URL.
+# This script configures YouTrack to use the 'youtrack' subdomain URL.
 # It needs to be run manually once when creating a new server instance.
 
 set -euo pipefail
+
+# Read the root domain name.
+ROOT=$(podman secret inspect --format "{{.SecretData}}" --showsecret machine_domain_root)
 
 # Ensure that we're running as the 'containers' user.
 USER=$(id --name --user)
@@ -26,4 +29,4 @@ podman run \
 	--tty \
 	--volume /var/data/youtrack/config:/opt/youtrack/conf:U,Z \
 	"$IMAGE" \
-	configure --base-url https://youtrack.usani.uk
+	configure --base-url "https://youtrack.${ROOT}"
