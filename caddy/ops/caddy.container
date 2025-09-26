@@ -20,6 +20,7 @@ Network=gitea.network:ip=10.14.0.3
 NoNewPrivileges=true
 ReadOnly=true
 Secret=cloudflare_api_token,type=env,target=CLOUDFLARE_API_TOKEN
+Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 UserNS=auto:size=8
 Volume=/etc/caddy:/etc/caddy:ro
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro

@@ -7,47 +7,47 @@
 	}
 }
 
-*.usani.uk {
+*.{env.MACHINE_DOMAIN_ROOT} {
 	import tls
 }
 
-usani.uk {
+{env.MACHINE_DOMAIN_ROOT} {
 	import tls
 	reverse_proxy 10.8.0.3:9000
 }
 
-adguardhome.usani.uk {
+adguardhome.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.2.0.2
 }
 
-fossflow.usani.uk {
+fossflow.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.1.0.2
 }
 
-gitea.usani.uk {
+gitea.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.14.0.2:3000
 }
 
-jellyfin.usani.uk {
+jellyfin.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.11.0.2:8096
 }
 
-memos.usani.uk {
+memos.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.6.0.2
 }
 
-outline.usani.uk {
+outline.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.10.0.2:8080
 }
 
-penpot.usani.uk {
+penpot.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.3.0.9:8080
 }
 
-vaultwarden.usani.uk {
+vaultwarden.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.12.0.2
 }
 
-youtrack.usani.uk {
+youtrack.{env.MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.9.0.2:8080
 }
