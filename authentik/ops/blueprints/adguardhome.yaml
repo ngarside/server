@@ -1,0 +1,52 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - AdGuard Home
+entries:
+
+  # Provider
+  - id: custom-adguardhome-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: https://adguardhome.usani.uk
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: AdGuard Home Provider
+
+  # Application
+  - id: custom-adguardhome-application
+    model: authentik_core.application
+    identifiers:
+      slug: adguardhome
+    attrs:
+      icon: adguardhome.png
+      name: AdGuard Home
+      provider: !KeyOf custom-adguardhome-provider
+
+  # Outpost
+  - id: custom-adguardhome-outpost
+    model: authentik_outposts.outpost
+    identifiers:
+      name: authentik Embedded Outpost
+    attrs:
+      providers:
+        - !KeyOf custom-adguardhome-provider
+
+  # Group
+  - id: custom-adguardhome-group
+    model: authentik_core.group
+    identifiers:
+      name: AdGuard Home Group
+
+  # Binding
+  - id: custom-adguardhome-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-adguardhome-group
+      order: 0
+      target: !KeyOf custom-adguardhome-application
