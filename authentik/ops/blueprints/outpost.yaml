@@ -13,5 +13,5 @@ entries:
       name: authentik Embedded Outpost
     attrs:
       providers:
-        - !KeyOf custom-adguardhome-provider
-        - !KeyOf custom-fossflow-provider
+        - !Find [authentik_providers_proxy.proxyprovider, [name, AdGuard Home Provider]]
+        - !Find [authentik_providers_proxy.proxyprovider, [name, Fossflow Provider]]
