@@ -14,7 +14,7 @@ NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT
 UserNS=auto:size=256
-Volume=/var/data/authentik/postgres:/var/lib/postgresql/data:U,Z
+Volume=/var/data/authentik/postgres:/var/lib/postgresql:U,Z
 
 [Service]
 Restart=always
