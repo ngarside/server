@@ -7,6 +7,7 @@ mkdir --parents /etc/containers/systemd/users/1001
 mkdir --parents /etc/authentik/blueprints
 mkdir --parents /etc/authentik/media
 
+cp /git/authentik/ops/blueprints/fossflow.yaml /etc/authentik/blueprints/fossflow.yaml
 cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
 cp /git/authentik/ops/blueprints/outline.yaml /etc/authentik/blueprints/outline.yaml
 cp /git/authentik/ops/blueprints/penpot.yaml /etc/authentik/blueprints/penpot.yaml

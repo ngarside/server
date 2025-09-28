@@ -21,7 +21,27 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 }
 
 fossflow.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.1.0.2
+		route {
+				reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
+				forward_auth 10.8.0.3:9000 {
+					uri /outpost.goauthentik.io/auth/caddy
+					copy_headers {
+						X-Authentik-Email
+						X-Authentik-Entitlements
+						X-Authentik-Groups
+						X-Authentik-Jwt
+						X-Authentik-Meta-App
+						X-Authentik-Meta-Jwks
+						X-Authentik-Meta-Outpost
+						X-Authentik-Meta-Provider
+						X-Authentik-Meta-Version
+						X-Authentik-Name
+						X-Authentik-Uid
+						X-Authentik-Username
+					}
+				}
+				reverse_proxy 10.1.0.2
+		}
 }
 
 gitea.{$MACHINE_DOMAIN_ROOT} {
