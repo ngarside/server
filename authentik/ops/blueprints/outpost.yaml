@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Outpost
+entries:
+
+  # Outpost
+  - id: custom-fossflow-outpost
+    model: authentik_outposts.outpost
+    identifiers:
+      name: authentik Embedded Outpost
+    attrs:
+      providers:
+        - !Find [authentik_providers_proxy.proxyprovider, [name, AdGuard Home Provider]]
+        - !Find [authentik_providers_proxy.proxyprovider, [name, Fossflow Provider]]

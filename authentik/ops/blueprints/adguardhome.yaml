@@ -28,15 +28,6 @@ entries:
       name: AdGuard Home
       provider: !KeyOf custom-adguardhome-provider
 
-  # Outpost
-  - id: custom-adguardhome-outpost
-    model: authentik_outposts.outpost
-    identifiers:
-      name: authentik Embedded Outpost
-    attrs:
-      providers:
-        - !KeyOf custom-adguardhome-provider
-
   # Group
   - id: custom-adguardhome-group
     model: authentik_core.group
