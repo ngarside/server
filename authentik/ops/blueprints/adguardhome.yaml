@@ -13,6 +13,7 @@ entries:
       external_host: https://adguardhome.usani.uk
     attrs:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      basic_auth_enabled: true
       basic_auth_password_attribute: rootroot
       basic_auth_user_attribute: root
       client_type: confidential
