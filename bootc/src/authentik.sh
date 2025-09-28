@@ -13,6 +13,7 @@ cp /git/authentik/ops/blueprints/gitea.yaml /etc/authentik/blueprints/gitea.yaml
 cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
 cp /git/authentik/ops/blueprints/outline.yaml /etc/authentik/blueprints/outline.yaml
 cp /git/authentik/ops/blueprints/penpot.yaml /etc/authentik/blueprints/penpot.yaml
+cp /git/authentik/ops/blueprints/vaultwarden.yaml /etc/authentik/blueprints/vaultwarden.yaml
 cp /git/authentik/ops/blueprints/youtrack.yaml /etc/authentik/blueprints/youtrack.yaml
 
 cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/authentik_postgres.container
