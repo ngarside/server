@@ -22,7 +22,7 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 		forward_auth 10.8.0.3:9000 {
 			uri /outpost.goauthentik.io/auth/caddy
 			copy_headers {
-				Authorization
+				authorization
 				X-Authentik-Email
 				X-Authentik-Entitlements
 				X-Authentik-Groups
