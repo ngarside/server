@@ -28,15 +28,6 @@ entries:
       name: Fossflow
       provider: !KeyOf custom-fossflow-provider
 
-  # Outpost
-  - id: custom-fossflow-outpost
-    model: authentik_outposts.outpost
-    identifiers:
-      name: authentik Embedded Outpost
-    attrs:
-      providers:
-        - !KeyOf custom-fossflow-provider
-
   # Group
   - id: custom-fossflow-group
     model: authentik_core.group
