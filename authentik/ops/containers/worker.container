@@ -22,6 +22,7 @@ Exec=worker
 Image=ghcr.io/goauthentik/server:2025.8.3
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
+Secret=gitea_oidc_secret,type=env,target=GITEA_CLIENT_SECRET
 Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 Secret=mailjet_smtp_password,type=env,target=AUTHENTIK_EMAIL__PASSWORD
 Secret=mailjet_smtp_username,type=env,target=AUTHENTIK_EMAIL__USERNAME
