@@ -36,7 +36,6 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 				X-Authentik-Username
 			}
 		}
-		request_header Authorization "Basic cm9vdDpyb290cm9vdA=="
 		reverse_proxy 10.2.0.2
 	}
 }
