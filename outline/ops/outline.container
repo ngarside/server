@@ -11,7 +11,7 @@ Requires=outline_valkey.container
 [Container]
 ContainerName=outline
 Environment=URL=https://outline.usani.uk
-Environment=PORT=8080
+Environment=PORT=80
 Environment=SECRET_KEY=a42cae960fd1d51efb86a81b4fb60a452337b8960ac0258f82a468a8307e1c1c
 Environment=UTILS_SECRET=bcebbd860e4e9fc3317ed985e289e4c0bce339c071ccef8dc31482571c9db90b
 Environment=DATABASE_URL=postgres://postgres:postgres@10.10.0.3:5432/outline
