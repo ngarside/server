@@ -1,0 +1,52 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Fossflow
+entries:
+
+  # Provider
+  - id: custom-fossflow-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: https://fossflow.usani.uk
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Fossflow Provider
+
+  # Application
+  - id: custom-fossflow-application
+    model: authentik_core.application
+    identifiers:
+      slug: fossflow
+    attrs:
+      icon: fossflow.png
+      name: Fossflow
+      provider: !KeyOf custom-fossflow-provider
+
+  # Outpost
+  - id: custom-fossflow-outpost
+    model: authentik_outposts.outpost
+    identifiers:
+      name: authentik Embedded Outpost
+    attrs:
+      providers:
+        - !KeyOf custom-fossflow-provider
+
+  # Group
+  - id: custom-fossflow-group
+    model: authentik_core.group
+    identifiers:
+      name: Fossflow Group
+
+  # Binding
+  - id: custom-fossflow-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-fossflow-group
+      order: 0
+      target: !KeyOf custom-fossflow-application
