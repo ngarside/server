@@ -1,0 +1,68 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Vaultwarden
+entries:
+
+  # Scope - Email
+  - id: custom-vaultwarden-scopes-email
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: email
+
+  # Scope - OpenID
+  - id: custom-vaultwarden-scopes-openid
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: openid
+
+  # Scope - Profile
+  - id: custom-vaultwarden-scopes-profile
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: profile
+
+  # Provider
+  - id: custom-vaultwarden-provider
+    model: authentik_providers_oauth2.oauth2provider
+    identifiers:
+      client_id: vaultwarden
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_secret: !Env VAULTWARDEN_CLIENT_SECRET
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      name: Vaultwarden Provider
+      property_mappings:
+        - !KeyOf custom-vaultwarden-scopes-email
+        - !KeyOf custom-vaultwarden-scopes-openid
+        - !KeyOf custom-vaultwarden-scopes-profile
+      redirect_uris:
+        - matching_mode: strict
+          url: !Format [https://vaultwarden.%s/auth/oidc.callback, !Env MACHINE_DOMAIN_ROOT]
+
+  # Application
+  - id: custom-vaultwarden-application
+    model: authentik_core.application
+    identifiers:
+      slug: vaultwarden
+    attrs:
+      icon: vaultwarden.png
+      name: Vaultwarden
+      provider: !KeyOf custom-vaultwarden-provider
+
+  # Group
+  - id: custom-vaultwarden-group
+    model: authentik_core.group
+    identifiers:
+      name: Vaultwarden Group
+
+  # Binding
+  - id: custom-vaultwarden-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-vaultwarden-group
+      order: 0
+      target: !KeyOf custom-vaultwarden-application
