@@ -2,6 +2,10 @@
 
 ignored:
   - DL3018
+
+  # Rule is incompatible with busybox's implementation of wget.
+  - DL3047
+
   - DL3059
   - DL4006
   - SC2046

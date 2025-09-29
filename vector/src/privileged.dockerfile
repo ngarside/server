@@ -6,21 +6,12 @@
 
 FROM docker.io/timberio/vector:0.50.0-debian
 
-FROM docker.io/library/golang:1.25.1-alpine AS healthcheck
-
-WORKDIR /go
-
-COPY vector/src/healthcheck.go healthcheck.go
-
-RUN go build -ldflags="-w -s" healthcheck.go
-RUN chmod ugo=rx /go/healthcheck
+FROM docker.io/alpine:3.22.1 AS headcheck
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
+RUN unzip /linux_x64.zip
 
 FROM docker.io/timberio/vector:0.50.0-debian
-
-COPY --from=healthcheck /go/healthcheck /usr/bin/healthcheck
-
+COPY --from=headcheck /headcheck /usr/bin/headcheck
 ENTRYPOINT ["/usr/bin/vector"]
-
-HEALTHCHECK CMD ["/usr/bin/healthcheck"]
-
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0:8686/health"]
 CMD ["--config", "/etc/vector/*.toml"]
