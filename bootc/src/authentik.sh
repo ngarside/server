@@ -29,6 +29,7 @@ cp /git/authentik/ops/logos/fossflow.png /etc/authentik/media/fossflow.png
 cp /git/authentik/ops/logos/gitea.png /etc/authentik/media/gitea.png
 cp /git/authentik/ops/logos/jellyfin.png /etc/authentik/media/jellyfin.png
 cp /git/authentik/ops/logos/memos.png /etc/authentik/media/memos.png
+cp /git/authentik/ops/logos/opencloud.png /etc/authentik/media/opencloud.png
 cp /git/authentik/ops/logos/outline.png /etc/authentik/media/outline.png
 cp /git/authentik/ops/logos/penpot.png /etc/authentik/media/penpot.png
 cp /git/authentik/ops/logos/vaultwarden.png /etc/authentik/media/vaultwarden.png
