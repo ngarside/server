@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: excalidraw
+
+on:
+  pull_request:
+    paths: ['**/excalidraw.yml', 'excalidraw/src/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/excalidraw.yml', 'excalidraw/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yml
+    permissions: {contents: read, packages: write}
+    with:
+      name: excalidraw
+      path: excalidraw/src/excalidraw.dockerfile
