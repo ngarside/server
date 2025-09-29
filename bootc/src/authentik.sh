@@ -12,6 +12,7 @@ cp /git/authentik/ops/blueprints/chartdb.yaml /etc/authentik/blueprints/chartdb.
 cp /git/authentik/ops/blueprints/fossflow.yaml /etc/authentik/blueprints/fossflow.yaml
 cp /git/authentik/ops/blueprints/gitea.yaml /etc/authentik/blueprints/gitea.yaml
 cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
+cp /git/authentik/ops/blueprints/opencloud.yaml /etc/authentik/blueprints/opencloud.yaml
 cp /git/authentik/ops/blueprints/outline.yaml /etc/authentik/blueprints/outline.yaml
 cp /git/authentik/ops/blueprints/outpost.yaml /etc/authentik/blueprints/outpost.yaml
 cp /git/authentik/ops/blueprints/penpot.yaml /etc/authentik/blueprints/penpot.yaml
