@@ -1,0 +1,43 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - OpenCloud
+entries:
+
+  # Provider
+  - id: custom-opencloud-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: https://opencloud.usani.uk
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: OpenCloud Provider
+
+  # Application
+  - id: custom-opencloud-application
+    model: authentik_core.application
+    identifiers:
+      slug: opencloud
+    attrs:
+      icon: opencloud.png
+      name: OpenCloud
+      provider: !KeyOf custom-opencloud-provider
+
+  # Group
+  - id: custom-opencloud-group
+    model: authentik_core.group
+    identifiers:
+      name: OpenCloud Group
+
+  # Binding
+  - id: custom-opencloud-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-opencloud-group
+      order: 0
+      target: !KeyOf custom-opencloud-application
