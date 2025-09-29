@@ -39,6 +39,14 @@ import pytest, tagify
 		RUN echo test
 		FROM bar:4.5.6
 	''', '1.2.3.4.5'),
+
+	# Rolling reference.
+	('''
+		# Header
+		FROM docker.io/my/image:latest@sha256:abcdefg
+		RUN echo test
+		FROM bar:4.5.6
+	''', '0.0.0'),
 ])
 
 def test_sanitize(input, expected):
