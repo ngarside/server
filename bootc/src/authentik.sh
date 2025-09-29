@@ -8,6 +8,7 @@ mkdir --parents /etc/authentik/blueprints
 mkdir --parents /etc/authentik/media
 
 cp /git/authentik/ops/blueprints/adguardhome.yaml /etc/authentik/blueprints/adguardhome.yaml
+cp /git/authentik/ops/blueprints/chartdb.yaml /etc/authentik/blueprints/chartdb.yaml
 cp /git/authentik/ops/blueprints/fossflow.yaml /etc/authentik/blueprints/fossflow.yaml
 cp /git/authentik/ops/blueprints/gitea.yaml /etc/authentik/blueprints/gitea.yaml
 cp /git/authentik/ops/blueprints/memos.yaml /etc/authentik/blueprints/memos.yaml
@@ -23,6 +24,7 @@ cp /git/authentik/ops/containers/valkey.container /etc/containers/systemd/users/
 cp /git/authentik/ops/containers/worker.container /etc/containers/systemd/users/1001/authentik_worker.container
 
 cp /git/authentik/ops/logos/adguardhome.png /etc/authentik/media/adguardhome.png
+cp /git/authentik/ops/logos/chartdb.png /etc/authentik/media/chartdb.png
 cp /git/authentik/ops/logos/fossflow.png /etc/authentik/media/fossflow.png
 cp /git/authentik/ops/logos/gitea.png /etc/authentik/media/gitea.png
 cp /git/authentik/ops/logos/jellyfin.png /etc/authentik/media/jellyfin.png
