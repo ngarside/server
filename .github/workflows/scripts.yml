@@ -4,7 +4,7 @@ name: scripts
 
 on:
   pull_request:
-    paths: ['**/scripts.yml', 'scripts/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/scripts.yml', 'pyproject.toml', 'scripts/**']
   workflow_dispatch:
 
 jobs:
