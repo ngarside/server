@@ -15,8 +15,8 @@ Volume=/var/data/opencloud/data:/var/lib/opencloud:U,Z
 [Service]
 Restart=always
 TimeoutStartSec=300
-ExecStartPre=mkdir --parents /var/data/adguardhome/config
-ExecStartPre=mkdir --parents /var/data/adguardhome/data
+ExecStartPre=mkdir --parents /var/data/opencloud/config
+ExecStartPre=mkdir --parents /var/data/opencloud/data
 
 [Install]
 WantedBy=default.target
