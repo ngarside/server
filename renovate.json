@@ -82,6 +82,5 @@
 			"automergeStrategy": "squash",
 			"matchFileNames": [".github/workflows/*.yml"]
 		}
-	],
-	"prConcurrentLimit": 1
+	]
 }
