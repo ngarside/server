@@ -40,6 +40,10 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
+chartdb.{$MACHINE_DOMAIN_ROOT} {
+	reverse_proxy 10.16.0.2
+}
+
 fossflow.{$MACHINE_DOMAIN_ROOT} {
 	route {
 		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
