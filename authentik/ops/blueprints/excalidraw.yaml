@@ -1,0 +1,43 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Excalidraw
+entries:
+
+  # Provider
+  - id: custom-excalidraw-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: https://excalidraw.usani.uk
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Excalidraw Provider
+
+  # Application
+  - id: custom-excalidraw-application
+    model: authentik_core.application
+    identifiers:
+      slug: excalidraw
+    attrs:
+      icon: excalidraw.png
+      name: Excalidraw
+      provider: !KeyOf custom-excalidraw-provider
+
+  # Group
+  - id: custom-excalidraw-group
+    model: authentik_core.group
+    identifiers:
+      name: Excalidraw Group
+
+  # Binding
+  - id: custom-excalidraw-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-excalidraw-group
+      order: 0
+      target: !KeyOf custom-excalidraw-application
