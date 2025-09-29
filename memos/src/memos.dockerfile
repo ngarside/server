@@ -3,7 +3,7 @@
 FROM docker.io/neosmemo/memos:0.25.1 AS memos
 RUN chmod ugo=rx /usr/local/memos/memos
 
-FROM docker.io/library/alpine:latest AS headcheck
+FROM docker.io/alpine:3.22.1 AS headcheck
 RUN wget --progress=dot:giga https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 

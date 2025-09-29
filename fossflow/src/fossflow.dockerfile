@@ -11,7 +11,7 @@ RUN chmod -R ugo=r dist
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/library/alpine:latest AS headcheck
+FROM docker.io/alpine:3.22.1 AS headcheck
 RUN wget --progress=dot:giga https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
