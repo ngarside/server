@@ -4,6 +4,7 @@
 
 [Container]
 ContainerName=opencloud
+Environment=OC_URL=https://opencloud.usani.uk
 Environment=PROXY_TLS=false
 Image=docker.io/opencloudeu/opencloud:2.0.4
 Network=opencloud.network:ip=10.17.0.2
