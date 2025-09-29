@@ -1,0 +1,18 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Container]
+ContainerName=excalidraw
+Image=ghcr.io/ngarside/excalidraw:0.0.0.4
+Network=excalidraw.network:ip=10.18.0.2
+NoNewPrivileges=true
+ReadOnly=true
+UserNS=auto:size=8
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
