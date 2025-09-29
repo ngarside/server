@@ -1,0 +1,43 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - ChartDB
+entries:
+
+  # Provider
+  - id: custom-chartdb-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: https://chartdb.usani.uk
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: ChartDB Provider
+
+  # Application
+  - id: custom-chartdb-application
+    model: authentik_core.application
+    identifiers:
+      slug: chartdb
+    attrs:
+      icon: chartdb.png
+      name: ChartDB
+      provider: !KeyOf custom-chartdb-provider
+
+  # Group
+  - id: custom-chartdb-group
+    model: authentik_core.group
+    identifiers:
+      name: ChartDB Group
+
+  # Binding
+  - id: custom-chartdb-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-chartdb-group
+      order: 0
+      target: !KeyOf custom-chartdb-application
