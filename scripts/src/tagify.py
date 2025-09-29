@@ -5,6 +5,8 @@
 # - If the current ref head or name is 'master', then the tag will be the
 #   semantic version (lacking any prefixes or suffixes) of the first base image
 #   specified in the provided file, suffixed by the current workflow run number (if set)
+# - If the first base image does not use semantic versioning (for example if it is a
+#   rolling release image) then the version will default to '0.0.0'
 # - Otherwise the tag will be the branch name, sanitized using 'slugify.py'
 
 # Run with 'python tagify.py <path>'
@@ -15,7 +17,7 @@ def version(file):
 	match = re.search(r'^\s*FROM.*?:[^\d]*([\.\d]*).*$', file, re.MULTILINE)
 	if match:
 		return match.group(1)
-	return None
+	return '0.0.0'
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
