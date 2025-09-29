@@ -13,7 +13,7 @@ COPY --from=headcheck /headcheck /usr/bin/headcheck
 EXPOSE 53/tcp 53/udp 80/tcp
 WORKDIR /opt/adguardhome
 ENTRYPOINT ["/usr/bin/adguardhome"]
-HEALTHCHECK CMD ["/usr/bin/headcheck"]
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
 CMD [ \
 	"--config", "/etc/adguardhome/config.yml", \
 	"--no-check-update", \

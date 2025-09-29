@@ -14,7 +14,7 @@ COPY --from=headcheck /headcheck /usr/bin/headcheck
 EXPOSE 80
 WORKDIR /opt/caddy
 ENTRYPOINT ["/usr/bin/caddy"]
-HEALTHCHECK CMD ["/usr/bin/headcheck"]
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/reverse_proxy/upstreams"]
 CMD [ \
 	"run", \
 	"--adapter", "caddyfile", \

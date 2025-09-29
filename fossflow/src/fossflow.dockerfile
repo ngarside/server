@@ -22,5 +22,5 @@ COPY --from=headcheck /headcheck /usr/bin/headcheck
 EXPOSE 80
 WORKDIR /srv
 ENTRYPOINT ["/usr/bin/caddy"]
-HEALTHCHECK CMD ["/usr/bin/headcheck"]
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
 CMD ["file-server"]
