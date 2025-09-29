@@ -14,7 +14,7 @@
 import os, re, sys, slugify
 
 def version(file):
-	match = re.search(r'^\s*FROM.*?:[^\d]*([\.\d]*).*$', file, re.MULTILINE)
+	match = re.search(r'^\s*FROM.*?:[a-z]*([\.\d]*).*$', file, re.MULTILINE)
 	if match:
 		return match.group(1)
 	return '0.0.0'
