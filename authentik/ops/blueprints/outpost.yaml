@@ -14,4 +14,5 @@ entries:
     attrs:
       providers:
         - !Find [authentik_providers_proxy.proxyprovider, [name, AdGuard Home Provider]]
+        - !Find [authentik_providers_proxy.proxyprovider, [name, ChartDB Provider]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Fossflow Provider]]
