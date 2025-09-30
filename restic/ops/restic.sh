@@ -24,7 +24,7 @@ btrfs subvolume delete /var/data/@backup || true
 btrfs subvolume snapshot -r /var/data /var/data/@backup
 
 # Backup using restic
-restic backup /var/data/@backup
+restic backup --exclude "*.mkv" /var/data/@backup
 
 # Delete snapshot once backup has completed
 btrfs subvolume delete /var/data/@backup
