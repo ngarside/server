@@ -4,7 +4,7 @@
 
 [Container]
 ContainerName=fossflow
-Image=ghcr.io/ngarside/fossflow:24.8.0.154
+Image=ghcr.io/ngarside/fossflow:24.9.0.163
 Network=fossflow.network:ip=10.1.0.2
 NoNewPrivileges=true
 ReadOnly=true
