@@ -6,7 +6,7 @@
 ContainerName=opencloud
 Environment=OC_URL=https://opencloud.usani.uk
 Environment=PROXY_TLS=false
-Image=docker.io/opencloudeu/opencloud:2.0.4
+Image=docker.io/opencloudeu/opencloud-rolling:3.5.0
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
 ReadOnly=true
