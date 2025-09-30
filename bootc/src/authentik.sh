@@ -6,8 +6,8 @@ set -euo pipefail
 mkdir --parents /etc/authentik
 mkdir --parents /etc/containers/systemd/users/1001
 
-cp /git/authentik/ops/blueprints /etc/authentik/blueprints
-cp /git/authentik/ops/logos /etc/authentik/media
+cp --recursive /git/authentik/ops/blueprints /etc/authentik/blueprints
+cp --recursive /git/authentik/ops/logos /etc/authentik/media
 
 cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/authentik_postgres.container
 cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/1001/authentik_server.container
