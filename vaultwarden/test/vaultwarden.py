@@ -16,7 +16,7 @@ def fixture():
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port}:80', '--pull', 'never', f'ghcr.io/ngarside/vaultwarden:{tag}',
 	])
-	time.sleep(0.1)
+	time.sleep(1)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
