@@ -8,7 +8,8 @@ RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
 FROM scratch
-COPY --from=vaultwarden /vaultwarden /usr/bin/vaultwarden
 COPY --from=headcheck /headcheck /usr/bin/headcheck
+COPY --from=vaultwarden /vaultwarden /usr/bin/vaultwarden
+COPY --from=vaultwarden /web-vault /web-vault
 ENTRYPOINT ["/usr/bin/vaultwarden"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/alive"]
