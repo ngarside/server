@@ -15,8 +15,22 @@ RUN << EOF
 	INR
 
 	chmod +x /usr/bin/task
+
+	cat > /etc/containers/containers.conf <<- 'INR'
+		[containers]
+		cgroupns = "host"
+		cgroups = "disabled"
+		ipcns = "host"
+		log_driver = "k8s-file"
+		netns = "host"
+		userns = "host"
+		utsns = "host"
+
+		[engine]
+		cgroup_manager = "cgroupfs"
+		events_logger = "file"
+		runtime = "crun"
+	INR
 EOF
 
 VOLUME /var/lib/containers
-
-ADD https://raw.githubusercontent.com/containers/image_build/refs/heads/main/podman/containers.conf /etc/containers/containers.conf
