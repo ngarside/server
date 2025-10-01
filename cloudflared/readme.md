@@ -2,7 +2,8 @@
 
 # <p align=center>Cloudflared
 
-Scripts for running Cloudflared via Podman and Systemd.
+A hardened container image and associated scripts for running Cloudflared via
+Podman and Systemd.
 
 # <p align=center>References
 
