@@ -1,18 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
-(tls) {
+*.{$MACHINE_DOMAIN_ROOT}, {$MACHINE_DOMAIN_ROOT} {
 	tls {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 		resolvers 1.1.1.1
 	}
 }
 
-*.{$MACHINE_DOMAIN_ROOT} {
-	import tls
-}
-
 {$MACHINE_DOMAIN_ROOT} {
-	import tls
 	reverse_proxy 10.8.0.3:9000
 }
 
