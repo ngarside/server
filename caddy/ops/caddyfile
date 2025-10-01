@@ -1,6 +1,16 @@
 # This is free and unencumbered software released into the public domain.
 
-(tls) {
+(common) {
+	header {
+		Content-Security-Policy: default-src 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
+		Cross-Origin-Opener-Policy: same-origin
+		Cross-Origin-Resource-Policy: same-origin
+		X-Content-Type-Options: nosniff
+		X-Frame-Options SAMEORIGIN
+	}
+	request_body {
+		max_size 100mb
+	}
 	tls {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 		resolvers 1.1.1.1
@@ -8,11 +18,11 @@
 }
 
 *.{$MACHINE_DOMAIN_ROOT} {
-	import tls
+	import common
 }
 
 {$MACHINE_DOMAIN_ROOT} {
-	import tls
+	import common
 	reverse_proxy 10.8.0.3:9000
 }
 
