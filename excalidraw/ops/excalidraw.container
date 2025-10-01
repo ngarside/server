@@ -4,7 +4,7 @@
 
 [Container]
 ContainerName=excalidraw
-Image=ghcr.io/ngarside/excalidraw:0.0.0.4
+Image=ghcr.io/ngarside/excalidraw:0.0.0.6
 Network=excalidraw.network:ip=10.18.0.2
 NoNewPrivileges=true
 ReadOnly=true
