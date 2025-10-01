@@ -3,7 +3,8 @@
 FROM quay.io/fedora/fedora:43
 
 RUN << EOF
-	dnf --assumeyes --setopt=install_weak_deps=false install git go-task python3-pip
+	dnf --assumeyes --setopt=install_weak_deps=false install \
+		fuse-overlayfs git go-task podman python3-pip
 
 	cat > /usr/bin/task <<- 'INR'
 		#!/usr/bin/env sh
