@@ -6,7 +6,6 @@
 			"docker.io/jetbrains/youtrack": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/opencloudeu/opencloud-rolling": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/outlinewiki/outline": [{ "type": "insecureAcceptAnything" }],
-			"docker.io/vaultwarden/server": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/goauthentik/server": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/jellyfin/jellyfin": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/ngarside": [{ "type": "insecureAcceptAnything" }]
