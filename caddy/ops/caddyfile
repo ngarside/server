@@ -1,10 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
 *.{$MACHINE_DOMAIN_ROOT}, {$MACHINE_DOMAIN_ROOT} {
-	tls {
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-		resolvers 1.1.1.1
-	}
 	header {
 		Content-Security-Policy: default-src 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
 		Cross-Origin-Opener-Policy: same-origin
@@ -14,6 +10,10 @@
 	}
 	request_body {
 		max_size 100mb
+	}
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1
 	}
 }
 
