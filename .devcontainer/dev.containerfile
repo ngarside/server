@@ -11,7 +11,6 @@ RUN << EOF
 
 	cat > /usr/bin/task <<- 'INR'
 		#!/usr/bin/env sh
-
 		go-task "$@"
 	INR
 
