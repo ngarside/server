@@ -32,3 +32,12 @@ tasks:
     cmd: python3 scripts/src/purge.py
     desc: Delete all unused container images from the GitHub registry
     silent: true
+
+  run:
+    cmd: >-
+      podman run --interactive --rm --tty ghcr.io/ngarside/{{.service}}
+    desc: Run the container for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task run service=<service>
+    silent: true
