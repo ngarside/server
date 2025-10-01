@@ -35,7 +35,11 @@ tasks:
 
   run:
     cmd: >-
-      podman run --interactive --rm --tty ghcr.io/ngarside/{{.service}} {{.CLI_ARGS}}
+      podman run
+      --interactive --rm --tty
+      --volume /etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
+      ghcr.io/ngarside/{{.service}}
+      {{.CLI_ARGS}}
     desc: Run the container for the given service
     preconditions:
       - sh: test -n '{{.service}}'
