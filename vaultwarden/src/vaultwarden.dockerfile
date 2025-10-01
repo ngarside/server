@@ -11,5 +11,8 @@ FROM scratch
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=vaultwarden /vaultwarden /usr/bin/vaultwarden
 COPY --from=vaultwarden /web-vault /web-vault
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=80
+ENV ROCKET_PROFILE="release"
 ENTRYPOINT ["/usr/bin/vaultwarden"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/alive"]
