@@ -12,7 +12,7 @@
 		}
 	},
 	"runArgs": [
-		"--cap-add=sys_admin,mknod",
+		"--cap-add=mknod,sys_admin",
 		"--security-opt=label=disable"
 	]
 }
