@@ -6,6 +6,7 @@
 		resolvers 1.1.1.1
 	}
 	header {
+		X-Content-Type-Options: nosniff
 		X-Frame-Options SAMEORIGIN
 	}
 	request_body {
