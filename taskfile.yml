@@ -8,6 +8,11 @@ tasks:
     desc: List all tasks
     silent: true
 
+  build:
+    cmd: podman build --format docker --file cloudflared/src/cloudflared.dockerfile --tag ghcr.io/ngarside/cloudflared .
+    desc: Build the given container
+    silent: true
+
   install:
     cmds:
       - pip install uv
