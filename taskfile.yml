@@ -9,8 +9,16 @@ tasks:
     silent: true
 
   build:
-    cmd: podman build --format docker --file cloudflared/src/cloudflared.dockerfile --tag ghcr.io/ngarside/cloudflared .
-    desc: Build the given container
+    cmd: >-
+      podman build
+      --format docker
+      --file {{.service}}/src/{{.service}}.dockerfile
+      --tag ghcr.io/ngarside/{{.service}}
+      $PWD
+    desc: Build the container for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task build service=<service>
     silent: true
 
   install:
