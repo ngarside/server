@@ -2,7 +2,7 @@
 
 # <p align=center>Vaultwarden
 
-A hardened container image and associated scripts for running Memos via
+A hardened container image and associated scripts for running Vaultwarden via
 Podman and Systemd.
 
 # <p align=center>References
