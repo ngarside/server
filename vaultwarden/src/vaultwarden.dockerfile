@@ -12,4 +12,3 @@ COPY --from=vaultwarden /vaultwarden /usr/bin/vaultwarden
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 ENTRYPOINT ["/usr/bin/vaultwarden"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/alive"]
-CMD ["--data", "/opt/memos", "--mode", "prod", "--port", "80"]
