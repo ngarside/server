@@ -1,5 +1,9 @@
 # This is free and unencumbered software released into the public domain.
 
+# This container, among other things, allows running podman within podman.
+# - https://github.com/containers/image_build/tree/main/podman
+# - https://redhat.com/en/blog/podman-inside-container
+
 FROM quay.io/fedora/fedora:43
 
 RUN << EOF
