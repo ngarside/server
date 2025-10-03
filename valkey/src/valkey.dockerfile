@@ -4,7 +4,7 @@
 # https://github.com/ZoeyVid/valkey-static/blob/latest/Dockerfile
 # https://github.com/ZoeyVid/valkey-static/blob/latest/COPYING
 
-FROM docker.io/valkey/valkey:8.1.3 AS valkey
+FROM docker.io/valkey/valkey:8.1.4 AS valkey
 RUN valkey-server --version | grep --only-matching --perl-regexp '(?<=v=)\S*' >> /version
 
 FROM docker.io/alpine:3.22.1 AS build
