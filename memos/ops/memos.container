@@ -14,7 +14,7 @@ Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/memos/opt
 
 [Install]

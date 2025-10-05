@@ -22,7 +22,7 @@ Volume=/sys:/sys:ro
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 
 [Install]
 WantedBy=default.target
