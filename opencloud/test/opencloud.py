@@ -16,7 +16,7 @@ def fixture():
 	subprocess.run([
 		'podman', 'run',
 		'--pull', 'never', '--rm', '--volume', f'{etc.name}:/etc/opencloud',
-		f'ghcr.io/ngarside/opencloud:{tag}', 'init', '--admin-password', 'admin',
+		f'ghcr.io/ngarside/opencloud:{tag}', 'init',
 		'--insecure', 'yes',
 	])
 	subprocess.run([
