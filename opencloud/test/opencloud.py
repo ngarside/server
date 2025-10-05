@@ -24,7 +24,7 @@ def fixture():
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish', '9100:9200', '--pull',
 		'never', '--volume', f'{etc.name}:/etc/opencloud', f'ghcr.io/ngarside/opencloud:{tag}',
 	])
-	time.sleep(5)
+	time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
