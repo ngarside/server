@@ -7,8 +7,6 @@ import os, pytest, random, requests, subprocess, tempfile, time
 etc = tempfile.TemporaryDirectory()
 name = random.randrange(1025, 65536)
 
-port = 9100
-
 session = requests.Session()
 session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
@@ -22,7 +20,7 @@ def fixture():
 		'--insecure', 'yes',
 	])
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'{port}:9200',
+		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'9100:9200',
 		'--pull', 'never', '--volume', f'{etc.name}:/etc/opencloud',
 		f'ghcr.io/ngarside/opencloud:{tag}',
 	])
@@ -31,5 +29,5 @@ def fixture():
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
 def test_home():
-	response = session.get(f'http://localhost:{port}', timeout=10)
+	response = session.get(f'http://localhost:9100', timeout=10)
 	assert response.status_code == 200
