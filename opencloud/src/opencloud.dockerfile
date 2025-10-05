@@ -13,6 +13,7 @@ RUN echo "v$(cat /version)/opencloud-$(cat /version)-linux-amd64" >> /release
 RUN wget https://github.com/opencloud-eu/opencloud/releases/download/$(cat /release)
 RUN mv /var/lib/opencloud/opencloud-$(cat /version)-linux-amd64 /opencloud
 RUN chmod ugo=rx /opencloud
+USER 1000
 
 FROM scratch
 COPY --from=opencloud /opencloud /usr/bin/opencloud
