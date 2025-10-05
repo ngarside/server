@@ -8,6 +8,19 @@ tasks:
     desc: List all tasks
     silent: true
 
+  build:
+    cmd: >-
+      podman build
+      --format docker
+      --file {{.service}}/src/{{.service}}.dockerfile
+      --tag ghcr.io/ngarside/{{.service}}
+      $PWD
+    desc: Build the container for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task build service=<service>
+    silent: true
+
   install:
     cmds:
       - pip install uv
@@ -18,4 +31,25 @@ tasks:
   purge:
     cmd: python3 scripts/src/purge.py
     desc: Delete all unused container images from the GitHub registry
+    silent: true
+
+  run:
+    cmd: >-
+      podman run
+      --interactive --rm --tty
+      --volume /etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
+      ghcr.io/ngarside/{{.service}}
+      {{.CLI_ARGS}}
+    desc: Run the container for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task run service=<service> [-- args]
+    silent: true
+
+  test:
+    cmd: uv run --locked pytest {{.service}}
+    desc: Run tests for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task test service=<service>
     silent: true
