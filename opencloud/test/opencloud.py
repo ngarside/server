@@ -2,6 +2,9 @@
 
 # This is free and unencumbered software released into the public domain.
 
+# The host port is hardcoded to 9100 as this is required by OpenCloud.
+# https://github.com/search?q=repo%3Aopencloud-eu%2Fopencloud%209100&type=code
+
 import os, pytest, random, requests, subprocess, tempfile, time
 
 etc = tempfile.TemporaryDirectory()
