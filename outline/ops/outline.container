@@ -30,6 +30,7 @@ Environment=DEFAULT_LANGUAGE=en_GB
 Image=ghcr.io/ngarside/outline:0.87.4.2
 Network=outline.network:ip=10.10.0.2
 NoNewPrivileges=true
+ReadOnly=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
 Secret=mailjet_smtp_username,type=env,target=SMTP_USERNAME
 Secret=outline_oidc_secret,type=env,target=OIDC_CLIENT_SECRET
