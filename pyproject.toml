@@ -12,6 +12,7 @@ dependencies = [
 ]
 dynamic = ["version"]
 name = "server"
+requires-python = ">=3.13"
 
 [tool.pytest.ini_options]
 python_files = ["test/*.py"]

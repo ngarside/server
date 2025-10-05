@@ -47,7 +47,7 @@ tasks:
     silent: true
 
   test:
-    cmd: uv run pytest {{.service}}
+    cmd: uv run --locked pytest {{.service}}
     desc: Run tests for the given service
     preconditions:
       - sh: test -n '{{.service}}'
