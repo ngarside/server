@@ -21,7 +21,7 @@ def fixture():
 		f'ghcr.io/ngarside/opencloud:{tag}', 'init', '--insecure', 'yes',
 	])
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'9100:9200', '--pull',
+		'podman', 'run', '--detach', '--name', f'{name}', '--publish', '9200:9200', '--pull',
 		'never', '--volume', f'{etc.name}:/etc/opencloud', f'ghcr.io/ngarside/opencloud:{tag}',
 	])
 	time.sleep(5)
@@ -29,5 +29,5 @@ def fixture():
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
 def test_home():
-	response = session.get(f'http://localhost:9100', timeout=10)
+	response = session.get('http://localhost:9200', timeout=10)
 	assert response.status_code == 200
