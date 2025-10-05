@@ -9,9 +9,9 @@ FROM docker.io/opencloudeu/opencloud-rolling:3.5.0 AS opencloud
 USER root
 RUN apk --no-cache add grep
 RUN opencloud version | grep --only-matching --perl-regexp '(?<=Version: )\S*' >> /version
-RUN echo "opencloud-$(cat /version)-linux-amd64" >> /release
-RUN wget https://github.com/opencloud-eu/opencloud/releases/download/v$(cat /version)/$(cat /release)
-RUN mv /var/lib/opencloud/$(cat /release) /opencloud
+RUN echo "v$(cat /version)/opencloud-$(cat /version)-linux-amd64" >> /release
+RUN wget https://github.com/opencloud-eu/opencloud/releases/download/$(cat /release)
+RUN mv /var/lib/opencloud/opencloud-$(cat /version)-linux-amd64 /opencloud
 RUN chmod ugo=rx /opencloud
 
 FROM scratch
