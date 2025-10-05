@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: jellyfin
+
+on:
+  pull_request:
+    paths: ['**/jellyfin.yml', 'jellyfin/src/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/jellyfin.yml', 'jellyfin/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yml
+    permissions: {contents: read, packages: write}
+    with:
+      name: jellyfin
+      path: jellyfin/src/jellyfin.dockerfile
