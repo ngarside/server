@@ -16,7 +16,13 @@ RUN mv /opencloud-$(cat /version)-linux-amd64 /opencloud
 RUN chmod ugo=rx /opencloud
 USER 1000
 
+FROM docker.io/alpine:3.22.1 AS headcheck
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
+RUN unzip /linux_x64.zip
+
 FROM scratch
+COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=opencloud /opencloud /usr/bin/opencloud
-ENTRYPOINT ["/usr/bin/opencloud"]
 CMD ["server"]
+ENTRYPOINT ["/usr/bin/opencloud"]
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0:9200/status"]
