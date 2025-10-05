@@ -5,7 +5,7 @@
 import os, pytest, random, requests, subprocess, tempfile, time
 
 etc = tempfile.TemporaryDirectory()
-name, port = random.sample(range(1025, 65536), 2)
+name = random.randrange(1025, 65536)
 
 port = 9100
 
