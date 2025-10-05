@@ -2,7 +2,7 @@
 
 # <p align=center>OpenCloud
 
-A container image and associated scripts for running OpenCloud via
+A hardened container image and associated scripts for running OpenCloud via
 Podman and Systemd.
 
 # <p align=center>Manual Setup

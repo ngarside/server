@@ -6,10 +6,12 @@
 ContainerName=opencloud
 Environment=OC_URL=https://opencloud.usani.uk
 Environment=PROXY_TLS=false
-Image=docker.io/opencloudeu/opencloud-rolling:3.5.0
+Image=ghcr.io/ngarside/opencloud:3.5.0.10
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
 ReadOnly=true
+UserNS=auto:size=8
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/opencloud/config:/etc/opencloud:U,Z
 Volume=/var/data/opencloud/data:/var/lib/opencloud:U,Z
 

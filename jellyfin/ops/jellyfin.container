@@ -4,7 +4,7 @@
 
 [Container]
 ContainerName=jellyfin
-Image=ghcr.io/jellyfin/jellyfin:10.10.7
+Image=ghcr.io/ngarside/jellyfin:10.10.7.2
 Network=jellyfin.network:ip=10.11.0.2
 NoNewPrivileges=true
 Volume=/var/data/jellyfin/cache:/cache:U,Z

@@ -45,3 +45,11 @@ tasks:
       - sh: test -n '{{.service}}'
         msg: task run service=<service> [-- args]
     silent: true
+
+  test:
+    cmd: uv run --locked pytest {{.service}}
+    desc: Run tests for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task test service=<service>
+    silent: true
