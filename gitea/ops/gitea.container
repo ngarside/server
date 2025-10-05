@@ -15,7 +15,7 @@ Volume=/var/data/gitea/git:/usr/bin/data/git:U,Z
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/gitea/config
 ExecStartPre=mkdir --parents /var/data/gitea/db
 ExecStartPre=mkdir --parents /var/data/gitea/lfs

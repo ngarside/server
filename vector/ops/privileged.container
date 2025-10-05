@@ -16,7 +16,7 @@ Volume=/var/data/vector/privileged/data:/var/lib/vector:U,Z
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/vector/privileged/data
 
 [Install]
