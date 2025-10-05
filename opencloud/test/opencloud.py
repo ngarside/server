@@ -16,14 +16,14 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--name', f'{name}', '--publish', f'{port}:80',
-		'--pull', 'never', '--rm', '--volume', f'/workspaces/Server/etc:/etc/opencloud',
+		'podman', 'run',
+		'--pull', 'never', '--rm', '--volume', f'{etc.name}:/etc/opencloud',
 		f'ghcr.io/ngarside/opencloud:{tag}', 'init', '--admin-password', 'admin',
 		'--insecure', 'yes',
 	])
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'{port}:9200',
-		'--pull', 'never', '--volume', f'/workspaces/Server/etc:/etc/opencloud',
+		'--pull', 'never', '--volume', f'{etc.name}:/etc/opencloud',
 		f'ghcr.io/ngarside/opencloud:{tag}',
 	])
 	time.sleep(5)
