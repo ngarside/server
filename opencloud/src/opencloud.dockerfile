@@ -10,7 +10,7 @@ SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 WORKDIR /
 RUN apk --no-cache add grep
-RUN opencloud version | grep --only-matching --perl-regexp '(?<=Version: )\S*' >> /version
+RUN (opencloud version || true) | grep -oP '(?<=Version: )\S*' >> /version
 RUN echo "v$(cat /version)/opencloud-$(cat /version)-linux-amd64" >> /release
 RUN wget "https://github.com/opencloud-eu/opencloud/releases/download/$(cat /release)"
 RUN mv "/opencloud-$(cat /version)-linux-amd64" /opencloud
