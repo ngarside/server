@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=authentik_valkey
-Image=ghcr.io/ngarside/valkey:8.1.4.133
+Image=ghcr.io/ngarside/valkey:8.1.4.143
 Network=authentik_internal.network:ip=10.7.0.2
 NoNewPrivileges=true
 ReadOnly=true
