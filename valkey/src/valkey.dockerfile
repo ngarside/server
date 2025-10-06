@@ -12,7 +12,7 @@ RUN apk --no-cache add ca-certificates git build-base pkgconf
 RUN git clone https://github.com/valkey-io/valkey
 WORKDIR /valkey
 COPY --from=valkey /version /version
-RUN git checkout $(cat /version)
+RUN git checkout "$(cat /version)"
 RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no BUILD_TLS=no
 RUN chmod ugo=rx /valkey/src/valkey-server
 
