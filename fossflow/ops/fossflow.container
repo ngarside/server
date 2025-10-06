@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=fossflow
 Image=ghcr.io/ngarside/fossflow:24.9.0.163
