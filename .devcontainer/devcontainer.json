@@ -1,7 +1,11 @@
 {
 	"build": {
-		"dockerfile": "dev.containerfile"
+		"dockerfile": "devcontainer.dockerfile"
 	},
+	"capAdd": [
+		"mknod",
+		"sys_admin"
+	],
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -11,8 +15,7 @@
 			]
 		}
 	},
-	"runArgs": [
-		"--cap-add=mknod,sys_admin",
-		"--security-opt=label=disable"
+	"securityOpt": [
+		"label=nested"
 	]
 }
