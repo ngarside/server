@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=excalidraw
 Image=ghcr.io/ngarside/excalidraw:0.0.0.6

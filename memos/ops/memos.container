@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=memos
 Image=ghcr.io/ngarside/memos:0.25.1.141
