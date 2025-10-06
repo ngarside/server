@@ -4,7 +4,7 @@
 ContainerName=opencloud
 Environment=OC_URL=https://opencloud.usani.uk
 Environment=PROXY_TLS=false
-Image=ghcr.io/ngarside/opencloud:3.5.0.10
+Image=ghcr.io/ngarside/opencloud:3.5.0.14
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
 ReadOnly=true
