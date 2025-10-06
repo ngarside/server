@@ -10,15 +10,10 @@ RUN << EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
 		fuse-overlayfs git go-task podman python3-pip
 
+	mv /usr/bin/go-task /usr/bin/task
+
 	echo "root:10000:5000" > /etc/subgid
 	echo "root:10000:5000" > /etc/subuid
-
-	cat > /usr/bin/task <<- 'INR'
-		#!/usr/bin/env sh
-		go-task "$@"
-	INR
-
-	chmod +x /usr/bin/task
 
 	cat > /etc/containers/containers.conf <<- 'INR'
 		[containers]
