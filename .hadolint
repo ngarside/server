@@ -1,11 +1,22 @@
 # This is free and unencumbered software released into the public domain.
 
 ignored:
+  # Pinned versions are unable to be updated by Renovate.
+  # https://github.com/hadolint/hadolint/wiki/dl3018
   - DL3018
 
-  # Rule is incompatible with busybox's implementation of wget.
+  # Incompatible with busybox's implementation of wget.
+  # https://github.com/hadolint/hadolint/wiki/dl3047
   - DL3047
 
+  # Excessively harms readability when used without heredocs, which aren't supported by
+  # the version of Podman currently used by GitHub Actions.
+  # https://discourse.ubuntu.com/t/podman-image-build-failing-with-heredoc-syntax/54803
+  # https://github.com/hadolint/hadolint/wiki/dl3059
   - DL3059
+
+  # https://github.com/hadolint/hadolint/wiki/dl4006
   - DL4006
+
+  # https://github.com/hadolint/hadolint/wiki/sc2046
   - SC2046
