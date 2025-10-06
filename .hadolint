@@ -14,6 +14,3 @@ ignored:
   # https://discourse.ubuntu.com/t/podman-image-build-failing-with-heredoc-syntax/54803
   # https://github.com/hadolint/hadolint/wiki/dl3059
   - DL3059
-
-  # https://github.com/hadolint/hadolint/wiki/dl4006
-  # - DL4006
