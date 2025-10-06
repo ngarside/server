@@ -6,6 +6,7 @@
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
 FROM docker.io/opencloudeu/opencloud-rolling:3.5.0 AS opencloud
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 WORKDIR /
 RUN apk --no-cache add grep

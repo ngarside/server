@@ -5,6 +5,7 @@
 # https://github.com/ZoeyVid/valkey-static/blob/latest/COPYING
 
 FROM docker.io/valkey/valkey:8.1.4 AS valkey
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN valkey-server --version | grep --only-matching --perl-regexp '(?<=v=)\S*' >> /version
 
 FROM docker.io/alpine:3.22.1 AS build
