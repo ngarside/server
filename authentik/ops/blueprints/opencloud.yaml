@@ -10,7 +10,7 @@ entries:
   - id: custom-opencloud-provider
     model: authentik_providers_proxy.proxyprovider
     identifiers:
-      external_host: https://opencloud.usani.uk
+      external_host: !Format [https://opencloud.%s, !Env MACHINE_DOMAIN_ROOT]
     attrs:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
       client_type: confidential
