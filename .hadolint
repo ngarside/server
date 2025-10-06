@@ -16,7 +16,7 @@ ignored:
   - DL3059
 
   # https://github.com/hadolint/hadolint/wiki/dl4006
-  - DL4006
+  # - DL4006
 
   # https://github.com/hadolint/hadolint/wiki/sc2046
-  - SC2046
+  # - SC2046
