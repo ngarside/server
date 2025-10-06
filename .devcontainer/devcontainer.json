@@ -1,4 +1,5 @@
 {
+	"$schema": "https://raw.github.com/devcontainers/spec/refs/heads/main/schemas/devContainer.schema.json",
 	"build": {
 		"dockerfile": "devcontainer.dockerfile"
 	},
