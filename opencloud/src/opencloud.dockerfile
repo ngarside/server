@@ -6,13 +6,14 @@
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
 FROM docker.io/opencloudeu/opencloud-rolling:3.5.0 AS opencloud
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 WORKDIR /
 RUN apk --no-cache add grep
-RUN opencloud version | grep --only-matching --perl-regexp '(?<=Version: )\S*' >> /version
+RUN (opencloud version || true) | grep -oP '(?<=Version: )\S*' >> /version
 RUN echo "v$(cat /version)/opencloud-$(cat /version)-linux-amd64" >> /release
-RUN wget https://github.com/opencloud-eu/opencloud/releases/download/$(cat /release)
-RUN mv /opencloud-$(cat /version)-linux-amd64 /opencloud
+RUN wget "https://github.com/opencloud-eu/opencloud/releases/download/$(cat /release)"
+RUN mv "/opencloud-$(cat /version)-linux-amd64" /opencloud
 RUN chmod ugo=rx /opencloud
 USER 1000
 
