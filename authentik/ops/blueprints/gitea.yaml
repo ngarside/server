@@ -41,7 +41,7 @@ entries:
         - !KeyOf custom-gitea-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: !Format [https://gitea.%s/auth/oidc.callback, !Env MACHINE_DOMAIN_ROOT]
+          url: !Format [https://gitea.%s/user/oauth2/Authentik/callback, !Env MACHINE_DOMAIN_ROOT]
 
   # Application
   - id: custom-gitea-application
