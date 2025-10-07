@@ -2,7 +2,7 @@
 # This is free and unencumbered software released into the public domain.
 
 gitea admin auth add-oauth \
-	--auto-discover-url https://$MACHINE_DOMAIN_ROOT/application/o/gitea/.well-known/openid-configuration \
+	--auto-discover-url "https://$MACHINE_DOMAIN_ROOT/application/o/gitea/.well-known/openid-configuration" \
 	--key gitea \
 	--name Authentik \
 	--provider openidConnect\
