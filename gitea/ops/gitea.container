@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=gitea
-Image=ghcr.io/ngarside/gitea:1.24.160
+Image=ghcr.io/ngarside/gitea:feature_gitea-root
 Network=gitea.network:ip=10.14.0.2
 NoNewPrivileges=true
 ReadOnly=true
