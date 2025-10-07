@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=gitea
-Image=ghcr.io/ngarside/gitea:1.24.160
+Image=ghcr.io/ngarside/gitea:feature_gitea-root
 Network=gitea.network:ip=10.14.0.2
 NoNewPrivileges=true
 ReadOnly=true
@@ -21,10 +21,6 @@ ExecStartPre=mkdir --parents /var/data/gitea/db
 ExecStartPre=mkdir --parents /var/data/gitea/lfs
 ExecStartPre=mkdir --parents /var/data/gitea/log
 ExecStartPre=mkdir --parents /var/data/gitea/git
-ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/db
-ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/lfs
-ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/log
-ExecStartPre=podman unshare chown 1000:1000 /var/data/gitea/git
 
 [Install]
 WantedBy=default.target
