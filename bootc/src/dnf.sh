@@ -19,6 +19,7 @@ dnf --assumeyes remove \
 	console-login-helper-messages-issuegen \
 	NetworkManager-cloud-setup \
 	NetworkManager-tui \
+	ntfs* \
 	qemu-user-static* \
 	python-pip-wheel \
 	python3 \
