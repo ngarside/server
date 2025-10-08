@@ -10,6 +10,7 @@ dnf --assumeyes remove \
 	adwaita-sans-fonts \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
+	bluez \
 	nano \
 	nano-default-editor \
 	flatpak-session-helper \
