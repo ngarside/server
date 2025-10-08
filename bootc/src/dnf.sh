@@ -11,6 +11,7 @@ dnf --assumeyes remove \
 	nano \
 	nano-default-editor \
 	flatpak-session-helper \
+	*fonts* \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
