@@ -6,11 +6,14 @@ set -euo pipefail
 dnf --assumeyes install restic
 
 dnf --assumeyes remove \
+	adwaita-mono-fonts \
+	adwaita-sans-fonts \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
 	nano \
 	nano-default-editor \
 	flatpak-session-helper \
+	fonts-filesystem \
 	console-login-helper-messages \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
@@ -23,3 +26,5 @@ dnf --assumeyes remove \
 	sudo-python-plugin \
 	toolbox \
 	nvidia-gpu-firmware
+
+dnf clean all
