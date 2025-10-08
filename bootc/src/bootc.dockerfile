@@ -3,5 +3,5 @@
 FROM quay.io/fedora/fedora-bootc:43
 SHELL ["/bin/bash", "-c"]
 RUN --mount=target=/git set -euo pipefail && \
-	for file in /git/bootc/src/*.sh; do bash "$file" || exit; done
-RUN bootc container lint
+	for file in /git/bootc/src/*.sh; do bash "$file" || exit; done && \
+	bootc container lint
