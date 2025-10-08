@@ -24,3 +24,5 @@ dnf --assumeyes remove \
 	sudo-python-plugin \
 	toolbox \
 	nvidia-gpu-firmware
+
+dnf clean all
