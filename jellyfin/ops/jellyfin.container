@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=jellyfin
 Image=ghcr.io/ngarside/jellyfin:10.10.7.2

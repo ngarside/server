@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=youtrack
 Image=docker.io/jetbrains/youtrack:2025.2.98781

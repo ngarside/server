@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=adguardhome
 Image=ghcr.io/ngarside/adguardhome:0.107.67.326
@@ -17,7 +15,7 @@ Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/adguardhome/etc
 ExecStartPre=mkdir --parents /var/data/adguardhome/opt
 

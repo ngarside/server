@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=outline_postgres
 Environment=POSTGRES_DB=outline
@@ -17,7 +15,7 @@ Volume=/var/data/outline/postgres:/var/lib/postgresql:U,Z
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/outline/postgres
 
 [Install]

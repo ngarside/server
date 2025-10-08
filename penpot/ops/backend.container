@@ -26,6 +26,7 @@ Image=ghcr.io/ngarside/penpot-backend:2.10.0.27
 Network=penpot_backend.network:ip=10.4.0.5
 Network=penpot_frontend.network:ip=10.3.0.8
 NoNewPrivileges=true
+ReadOnly=true
 Secret=penpot_oidc_secret,type=env,target=PENPOT_OIDC_CLIENT_SECRET
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 

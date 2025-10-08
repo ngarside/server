@@ -6,3 +6,6 @@ set -euo pipefail
 mkdir --parents /etc/containers/systemd/users/1001
 cp /git/gitea/ops/gitea.container /etc/containers/systemd/users/1001/gitea.container
 cp /git/gitea/ops/gitea.network /etc/containers/systemd/users/1001/gitea.network
+
+mkdir --parents /etc/gitea
+cp /git/gitea/ops/gitea.ini /etc/gitea/app.ini

@@ -12,6 +12,7 @@ Image=ghcr.io/ngarside/penpot-exporter:2.10.0.25
 Network=penpot_backend.network:ip=10.4.0.4
 Network=penpot_frontend.network:ip=10.3.0.7
 NoNewPrivileges=true
+ReadOnly=true
 UserNS=auto
 
 [Service]

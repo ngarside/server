@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=caddy
 Environment=XDG_CONFIG_HOME=/opt
@@ -31,7 +29,7 @@ Volume=/var/data/caddy/opt:/opt/caddy:U,Z
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/caddy/opt
 
 [Install]

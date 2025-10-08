@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: outline
+
+on:
+  pull_request:
+    paths: ['**/outline.yml', 'outline/src/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/outline.yml', 'outline/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yml
+    permissions: {contents: read, packages: write}
+    with:
+      name: outline
+      path: outline/src/outline.dockerfile

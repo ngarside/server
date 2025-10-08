@@ -118,7 +118,7 @@ therefore safe to automerge minor updates for images based on Fedora.
 ```json
 {
 	"enabled": false,
-	"matchFileNames": ["**/bootc.dockerfile"],
+	"matchFileNames": ["**/bootc.dockerfile", "**/devcontainer.dockerfile"],
 	"matchUpdateTypes": ["major"]
 }
 ```
@@ -161,7 +161,7 @@ They are also (obviously) exclusively used in CI/CD. There is therefore little
 risk of an incompatible update getting through, and even if one did the
 consequences would be minimal.
 
-# References
+# <p align=center>References
 
 - [calver.org](https://calver.org)
 - [quay.io/organization/fedora](https://quay.io/organization/fedora)

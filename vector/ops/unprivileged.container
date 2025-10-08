@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=vector_unprivileged
 Image=ghcr.io/ngarside/vector-unprivileged:0.50.0.40
@@ -22,7 +20,7 @@ Volume=/sys:/sys:ro
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 
 [Install]
 WantedBy=default.target

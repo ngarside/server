@@ -1,7 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-[Unit]
-
 [Container]
 ContainerName=cloudflared
 Exec=tunnel --no-autoupdate run
@@ -14,7 +12,7 @@ Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
 Restart=always
-TimeoutStartSec=300
+TimeoutStartSec=9000
 
 [Install]
 WantedBy=default.target
