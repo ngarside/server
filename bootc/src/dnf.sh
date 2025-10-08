@@ -25,7 +25,7 @@ dnf --assumeyes remove \
 	python-pip-wheel \
 	python3 \
 	python3-libs \
-	rpm-ostree \
+	rpm-ostree* \
 	sudo-python-plugin \
 	toolbox \
 	nvidia-gpu-firmware
