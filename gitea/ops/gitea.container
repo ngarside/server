@@ -6,6 +6,7 @@ Image=ghcr.io/ngarside/gitea:1.24.6.182
 Network=gitea.network:ip=10.14.0.2
 NoNewPrivileges=true
 ReadOnly=true
+Secret=gitea_internal_secret
 Secret=gitea_lfs_secret
 Secret=gitea_oidc_secret,type=env,target=GITEA_CLIENT_SECRET
 Secret=gitea_security_secret
@@ -25,6 +26,7 @@ ExecStartPre=mkdir --parents /var/data/gitea/git
 ExecStartPre=mkdir --parents /var/data/gitea/home
 ExecStartPre=mkdir --parents /var/data/gitea/lfs
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_lfs_secret -"
+ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_internal_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_security_secret -"
 
 [Install]
