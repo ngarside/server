@@ -3,8 +3,7 @@
 
 import dns.resolver, os, pytest, random, requests, subprocess, tempfile
 
-etc = tempfile.TemporaryDirectory()
-opt = tempfile.TemporaryDirectory()
+etc, opt = [tempfile.TemporaryDirectory() for _ in range(2)]
 name, port_admin, port_dns = random.sample(range(1025, 65536), 3)
 
 session = requests.Session()
