@@ -6,7 +6,7 @@
 
 FROM docker.io/timberio/vector:0.50.0-debian
 
-FROM docker.io/alpine:3.22.1 AS headcheck
+FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
