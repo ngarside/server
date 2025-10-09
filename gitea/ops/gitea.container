@@ -8,6 +8,7 @@ NoNewPrivileges=true
 ReadOnly=true
 Secret=gitea_lfs_secret
 Secret=gitea_oidc_secret,type=env,target=GITEA_CLIENT_SECRET
+Secret=gitea_security_secret
 Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 UserNS=auto:size=8
 Volume=/etc/gitea:/etc/gitea:ro
@@ -24,6 +25,7 @@ ExecStartPre=mkdir --parents /var/data/gitea/git
 ExecStartPre=mkdir --parents /var/data/gitea/home
 ExecStartPre=mkdir --parents /var/data/gitea/lfs
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_lfs_secret -"
+ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_security_secret -"
 
 [Install]
 WantedBy=default.target
