@@ -15,16 +15,16 @@ UserNS=auto:size=8
 Volume=/etc/gitea:/etc/gitea:ro
 Volume=/var/data/gitea/db:/opt/db:U,Z
 Volume=/var/data/gitea/git:/opt/git:U,Z
-Volume=/var/data/gitea/home:/var/lib/gitea:U,Z
 Volume=/var/data/gitea/lfs:/opt/lfs:U,Z
+Volume=/var/data/gitea/work:/var/lib/gitea:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/gitea/db
 ExecStartPre=mkdir --parents /var/data/gitea/git
-ExecStartPre=mkdir --parents /var/data/gitea/home
 ExecStartPre=mkdir --parents /var/data/gitea/lfs
+ExecStartPre=mkdir --parents /var/data/gitea/work
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_global_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_internal_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_lfs_secret -"
