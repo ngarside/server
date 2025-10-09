@@ -14,7 +14,6 @@ Volume=/var/data/gitea/db:/usr/bin/data/db:U,Z
 Volume=/var/data/gitea/git:/usr/bin/data/git:U,Z
 Volume=/var/data/gitea/home:/var/lib/gitea:U,Z
 Volume=/var/data/gitea/lfs:/usr/bin/data/lfs:U,Z
-Volume=/var/data/gitea/log:/usr/bin/data/log:U,Z
 
 [Service]
 Restart=always
@@ -23,7 +22,6 @@ ExecStartPre=mkdir --parents /var/data/gitea/db
 ExecStartPre=mkdir --parents /var/data/gitea/git
 ExecStartPre=mkdir --parents /var/data/gitea/home
 ExecStartPre=mkdir --parents /var/data/gitea/lfs
-ExecStartPre=mkdir --parents /var/data/gitea/log
 
 [Install]
 WantedBy=default.target
