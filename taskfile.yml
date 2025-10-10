@@ -13,6 +13,7 @@ tasks:
       podman build
       --format docker
       --file {{.service}}/src/{{.service}}.dockerfile
+      --no-cache
       --tag ghcr.io/ngarside/{{.service}}
       $PWD
     desc: Build the container for the given service

@@ -39,9 +39,11 @@ RUN make configure
 RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
 RUN make
 
-FROM scratch
+FROM alpine
+# for ldd for testing
+RUN apk add build-base
 COPY --from=git /git/git /usr/bin/git
-ENTRYPOINT ["usr/bin/git"]
+# ENTRYPOINT ["usr/bin/git"]
 
 
 # make -j "$(nproc)" CFLAGS="-static"
