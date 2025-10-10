@@ -44,6 +44,7 @@ FROM alpine
 RUN apk add build-base
 COPY --from=git /git/git /usr/bin/git
 # ENTRYPOINT ["usr/bin/git"]
+COPY --from=gitea /app/gitea/gitea /app/gitea/gitea
 
 
 # make -j "$(nproc)" CFLAGS="-static"
