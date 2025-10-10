@@ -42,14 +42,22 @@ RUN apt --yes install wget
 RUN wget -O gitea https://dl.gitea.com/gitea/1.24.6/gitea-1.24.6-linux-amd64
 RUN chmod +x gitea
 
+# Pattern is required to copy symbolic links to the new image
+# https://stackoverflow.com/a/66823636
+RUN mkdir /tmp/cp
+# RUN cp -a /usr/bin/exec /tmp/cp/exec
+# RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-receive-pack
+# RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-archive
+RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-pack
+
 FROM alpine
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 # for ldd for testing
 RUN apk add build-base
 COPY --from=git /git/git /usr/bin/git
-COPY --from=git /git/git-upload-pack /usr/bin/git-upload-pack
+# COPY --from=git /git/git-upload-pack /usr/bin/git-upload-pack
 ENTRYPOINT ["/app/gitea/gitea"]
 COPY --from=git /git/gitea /app/gitea/gitea
-
+COPY --from=git /tmp/cp/ /usr/bin/
 
 # make -j "$(nproc)" CFLAGS="-static"
