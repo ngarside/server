@@ -47,6 +47,7 @@ ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 # for ldd for testing
 RUN apk add build-base
 COPY --from=git /git/git /usr/bin/git
+COPY --from=git /git/git-upload-pack /usr/bin/git-upload-pack
 ENTRYPOINT ["/app/gitea/gitea"]
 COPY --from=git /git/gitea /app/gitea/gitea
 
