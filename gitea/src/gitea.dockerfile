@@ -46,9 +46,9 @@ RUN chmod +x gitea
 # https://stackoverflow.com/a/66823636
 RUN mkdir /tmp/cp
 # RUN cp -a /usr/bin/exec /tmp/cp/exec
-# RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-receive-pack
-# RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-archive
-RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-upload-pack
+RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-receive-pack
+# RUN cp -a /usr/bin/git-upload-archive /tmp/cp/git-upload-archive
+RUN cp -a /usr/bin/git-upload-pack /tmp/cp/git-upload-pack
 
 FROM alpine
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
