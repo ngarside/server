@@ -40,6 +40,7 @@ RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
 RUN make
 
 FROM alpine
+# ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 # for ldd for testing
 RUN apk add build-base
 COPY --from=git /git/git /usr/bin/git
