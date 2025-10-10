@@ -38,6 +38,9 @@ RUN git checkout v2.51.0
 RUN make configure
 RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
 RUN make
+RUN apt --yes install wget
+RUN wget -O gitea https://dl.gitea.com/gitea/1.24.6/gitea-1.24.6-linux-amd64
+RUN chmod +x gitea
 
 FROM alpine
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
@@ -45,7 +48,7 @@ ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 RUN apk add build-base
 COPY --from=git /git/git /usr/bin/git
 # ENTRYPOINT ["usr/bin/git"]
-COPY --from=gitea /app/gitea/gitea /app/gitea/gitea
+COPY --from=git /git/gitea /app/gitea/gitea
 
 
 # make -j "$(nproc)" CFLAGS="-static"
