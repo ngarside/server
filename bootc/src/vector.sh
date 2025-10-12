@@ -11,5 +11,5 @@ cp /git/vector/ops/containers/unprivileged.container /etc/containers/systemd/use
 
 cp /git/vector/ops/networks/vector.network /etc/containers/systemd/users/1001/vector.network
 
-cp /git/vector/ops/privileged /etc/vector/privileged
-cp /git/vector/ops/unprivileged /etc/vector/unprivileged
+cp --recursive /git/vector/ops/privileged /etc/vector/privileged
+cp --recursive /git/vector/ops/unprivileged /etc/vector/unprivileged
