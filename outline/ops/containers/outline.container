@@ -14,9 +14,9 @@ Environment=URL=https://outline.usani.uk
 Environment=PORT=8080
 Environment=SECRET_KEY=a42cae960fd1d51efb86a81b4fb60a452337b8960ac0258f82a468a8307e1c1c
 Environment=UTILS_SECRET=bcebbd860e4e9fc3317ed985e289e4c0bce339c071ccef8dc31482571c9db90b
-Environment=DATABASE_URL=postgres://postgres:postgres@10.10.0.3:5432/outline
+Environment=DATABASE_URL=postgres://postgres:postgres@10.19.0.3:5432/outline
 Environment=PGSSLMODE=disable
-Environment=REDIS_URL=redis://10.10.0.4:6379
+Environment=REDIS_URL=redis://10.19.0.4:6379
 Environment=FILE_STORAGE=local
 Environment=FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
 Environment=OIDC_CLIENT_ID=outline
@@ -29,6 +29,7 @@ Environment=LOG_LEVEL=debug
 Environment=DEFAULT_LANGUAGE=en_GB
 Image=ghcr.io/ngarside/outline:0.87.4.2
 Network=outline_external.network:ip=10.10.0.2
+Network=outline_internal.network:ip=10.19.0.2
 NoNewPrivileges=true
 ReadOnly=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
