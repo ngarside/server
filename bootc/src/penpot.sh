@@ -11,5 +11,5 @@ cp /git/penpot/ops/containers/frontend.container /etc/containers/systemd/users/1
 cp /git/penpot/ops/containers/postgres.container /etc/containers/systemd/users/1001/penpot_postgres.container
 cp /git/penpot/ops/containers/valkey.container /etc/containers/systemd/users/1001/penpot_valkey.container
 
-cp /git/penpot/ops/networks/backend.network /etc/containers/systemd/users/1001/penpot_backend.network
-cp /git/penpot/ops/networks/frontend.network /etc/containers/systemd/users/1001/penpot_frontend.network
+cp /git/penpot/ops/networks/internal.network /etc/containers/systemd/users/1001/penpot_internal.network
+cp /git/penpot/ops/networks/external.network /etc/containers/systemd/users/1001/penpot_external.network
