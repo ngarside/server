@@ -7,9 +7,6 @@ mkdir --parents /etc/containers/systemd/users/1001
 cp /git/vector/ops/containers/privileged.container /etc/containers/systemd/users/1001/vector_privileged.container
 cp /git/vector/ops/containers/unprivileged.container /etc/containers/systemd/users/1001/vector_unprivileged.container
 
-mkdir --parents /etc/vector/privileged
-cp /git/vector/ops/privileged/journal.toml /etc/vector/privileged/journal.toml
-
-mkdir --parents /etc/vector/unprivileged
-cp /git/vector/ops/unprivileged/host.toml /etc/vector/unprivileged/host.toml
-cp /git/vector/ops/unprivileged/vector.toml /etc/vector/unprivileged/vector.toml
+mkdir --parents /etc/vector
+cp /git/vector/ops/privileged /etc/vector/privileged
+cp /git/vector/ops/unprivileged /etc/vector/unprivileged
