@@ -2,7 +2,6 @@
 	"default": [{ "type": "reject" }],
 	"transports": {
 		"docker": {
-			"docker.io/cloudflare/cloudflared": [{ "type": "insecureAcceptAnything" }],
 			"docker.io/jetbrains/youtrack": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/goauthentik/server": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/ngarside": [{ "type": "insecureAcceptAnything" }]
