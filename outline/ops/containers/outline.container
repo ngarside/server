@@ -28,7 +28,7 @@ Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=debug
 Environment=DEFAULT_LANGUAGE=en_GB
 Image=ghcr.io/ngarside/outline:0.87.4.2
-Network=outline.network:ip=10.10.0.2
+Network=outline_external.network:ip=10.10.0.2
 NoNewPrivileges=true
 ReadOnly=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD

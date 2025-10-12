@@ -3,7 +3,7 @@
 [Container]
 ContainerName=outline_valkey
 Image=ghcr.io/ngarside/valkey:8.1.4.147
-Network=outline.network:ip=10.10.0.4
+Network=outline_external.network:ip=10.10.0.4
 NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8
