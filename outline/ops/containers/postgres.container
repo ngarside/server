@@ -6,7 +6,7 @@ Environment=POSTGRES_DB=outline
 Environment=POSTGRES_PASSWORD=postgres
 Environment=POSTGRES_USER=postgres
 Image=ghcr.io/ngarside/postgres:18.0.119
-Network=outline.network:ip=10.10.0.3
+Network=outline_internal.network:ip=10.19.0.3
 NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT

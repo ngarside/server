@@ -4,7 +4,8 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /git/outline/ops/outline.container /etc/containers/systemd/users/1001/outline.container
-cp /git/outline/ops/outline.network /etc/containers/systemd/users/1001/outline.network
-cp /git/outline/ops/postgres.container /etc/containers/systemd/users/1001/outline_postgres.container
-cp /git/outline/ops/valkey.container /etc/containers/systemd/users/1001/outline_valkey.container
+cp /git/outline/ops/containers/outline.container /etc/containers/systemd/users/1001/outline.container
+cp /git/outline/ops/networks/external.network /etc/containers/systemd/users/1001/outline_external.network
+cp /git/outline/ops/networks/internal.network /etc/containers/systemd/users/1001/outline_internal.network
+cp /git/outline/ops/containers/postgres.container /etc/containers/systemd/users/1001/outline_postgres.container
+cp /git/outline/ops/containers/valkey.container /etc/containers/systemd/users/1001/outline_valkey.container
