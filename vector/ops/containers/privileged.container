@@ -4,7 +4,7 @@
 ContainerName=vector_privileged
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/vector-privileged:0.50.0.53
-Network=vector.network:ip=10.15.0.3
+Network=none
 NoNewPrivileges=true
 ReadOnly=true
 SecurityLabelDisable=true
