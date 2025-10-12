@@ -4,7 +4,7 @@ name: vector_unprivileged
 
 on:
   pull_request:
-    paths: ['**/vector.yml', 'vector/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/vector.yml', 'vector/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/vector.yml', 'vector/src/**']
