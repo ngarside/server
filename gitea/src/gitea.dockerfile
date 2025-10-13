@@ -22,6 +22,8 @@
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 
+FROM docker.io/alpine/git:2.49.1 AS gitv
+
 FROM docker.io/debian:13.1 AS bash
 RUN apt update
 RUN apt --yes install bash-static
