@@ -7,11 +7,15 @@
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 
-FROM docker.io/alpine/git:2.49.1 AS git
-
 FROM docker.io/debian:13.1 AS bash
 RUN apt update
 RUN apt --yes install bash-static
+
+FROM docker.io/alpine/git:2.49.1 AS git
+
+FROM docker.io/alpine:3.22.2 AS headcheck
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
+RUN unzip /linux_x64.zip
 
 FROM docker.io/debian:13.1 AS build
 ENV export NO_OPENSSL=1
