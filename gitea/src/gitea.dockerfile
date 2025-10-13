@@ -22,6 +22,10 @@
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 
+FROM docker.io/debian:13.1 AS bash
+RUN apt update
+RUN apt --yes install bash-static
+
 FROM docker.io/debian:13.1 AS git
 # ENV CFLAGS=-static
 ENV export NO_OPENSSL=1
@@ -57,6 +61,7 @@ RUN apk add build-base bash
 COPY --from=git /git/git /usr/bin/git
 # COPY --from=git /git/git-upload-pack /usr/bin/git-upload-pack
 ENTRYPOINT ["/app/gitea/gitea"]
+COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=git /git/gitea /app/gitea/gitea
 COPY --from=git /tmp/cp/ /usr/bin/
 
