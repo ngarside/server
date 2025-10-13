@@ -16,8 +16,7 @@ Environment=SECRET_KEY=a42cae960fd1d51efb86a81b4fb60a452337b8960ac0258f82a468a83
 Environment=UTILS_SECRET=bcebbd860e4e9fc3317ed985e289e4c0bce339c071ccef8dc31482571c9db90b
 Environment=DATABASE_HOST=10.19.0.3
 Environment=DATABASE_NAME=outline
-Environment=DATABASE_PASSWORD=postgres
-Environment=DATABASE_USER=postgres
+Environment=DATABASE_USER=outline
 Environment=PGSSLMODE=disable
 Environment=REDIS_URL=redis://10.19.0.4:6379
 Environment=FILE_STORAGE=local
@@ -38,6 +37,7 @@ ReadOnly=true
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
 Secret=mailjet_smtp_username,type=env,target=SMTP_USERNAME
 Secret=outline_oidc_secret,type=env,target=OIDC_CLIENT_SECRET
+Secret=outline_postgres_password,type=env,target=DATABASE_PASSWORD
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 
 [Service]
