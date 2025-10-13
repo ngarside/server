@@ -24,9 +24,9 @@ RUN unzip /linux_x64.zip
 
 FROM docker.io/debian:13.1 AS build
 COPY --from=git /version /version
-ENV export NO_OPENSSL=1
-ENV export NO_CURL=1
-ENV export CFLAGS="${CFLAGS} -static"
+ENV NO_OPENSSL=1
+ENV NO_CURL=1
+ENV CFLAGS="${CFLAGS} -static"
 RUN apt update
 RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
