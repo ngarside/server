@@ -2,13 +2,13 @@
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 
-FROM docker.io/alpine/git:2.49.1 AS gitv
+FROM docker.io/alpine/git:2.49.1 AS git
 
 FROM docker.io/debian:13.1 AS bash
 RUN apt update
 RUN apt --yes install bash-static
 
-FROM docker.io/debian:13.1 AS git
+FROM docker.io/debian:13.1 AS build
 # ENV CFLAGS=-static
 ENV export NO_OPENSSL=1
 ENV export NO_CURL=1
@@ -45,12 +45,12 @@ ENV HOME=/root
 ENV USER=root
 # for ldd for testing
 # RUN apk add build-base bash
-COPY --from=git /git/git /usr/bin/git
+COPY --from=build /git/git /usr/bin/git
 # COPY --from=git /git/git-upload-pack /usr/bin/git-upload-pack
 ENTRYPOINT ["/app/gitea/gitea"]
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
-COPY --from=git /git/gitea /app/gitea/gitea
-COPY --from=git /tmp/cp/ /usr/bin/
+COPY --from=build /git/gitea /app/gitea/gitea
+COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=gitd /usr/share/git-core/templates/ /usr/share/git-core/templates/
 COPY --from=gitd /usr/share/git-core/templates/ /git/out/share/git-core/templates
 
