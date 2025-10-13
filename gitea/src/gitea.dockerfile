@@ -9,7 +9,6 @@ RUN apt update
 RUN apt --yes install bash-static
 
 FROM docker.io/debian:13.1 AS build
-# ENV CFLAGS=-static
 ENV export NO_OPENSSL=1
 ENV export NO_CURL=1
 ENV export CFLAGS="${CFLAGS} -static"
@@ -36,15 +35,10 @@ FROM scratch
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
 ENV USER=root
-# for ldd for testing
-# RUN apk add build-base bash
 COPY --from=build /git/git /usr/bin/git
-# COPY --from=git /git/git-upload-pack /usr/bin/git-upload-pack
 ENTRYPOINT ["/app/gitea/gitea"]
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/gitea /app/gitea/gitea
 COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=git /usr/share/git-core/templates/ /usr/share/git-core/templates/
 COPY --from=git /usr/share/git-core/templates/ /git/out/share/git-core/templates
-
-# make -j "$(nproc)" CFLAGS="-static"
