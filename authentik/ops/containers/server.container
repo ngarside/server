@@ -15,13 +15,13 @@ Environment=AUTHENTIK_REDIS__HOST=10.7.0.2
 Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
-Environment=AUTHENTIK_POSTGRESQL__PASSWORD=authentik
 Exec=server
 Image=ghcr.io/goauthentik/server:2025.8.4
 Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
 NoNewPrivileges=true
 ReadOnly=true
+Secret=authentik_postgres_password,type=env,target=AUTHENTIK_POSTGRESQL__PASSWORD
 Secret=gitea_oidc_secret,type=env,target=GITEA_CLIENT_SECRET
 Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 Secret=mailjet_smtp_password,type=env,target=AUTHENTIK_EMAIL__PASSWORD
