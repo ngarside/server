@@ -15,7 +15,6 @@ RUN echo "v$(cat /version)/opencloud-$(cat /version)-linux-amd64" >> /release
 RUN wget "https://github.com/opencloud-eu/opencloud/releases/download/$(cat /release)"
 RUN mv "/opencloud-$(cat /version)-linux-amd64" /opencloud
 RUN chmod ugo=rx /opencloud
-USER 1000
 
 FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
