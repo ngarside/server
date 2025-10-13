@@ -4,7 +4,7 @@ name: vaultwarden
 
 on:
   pull_request:
-    paths: ['**/vaultwarden.yml', 'vaultwarden/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/vaultwarden.yml', 'vaultwarden/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/vaultwarden.yml', 'vaultwarden/src/**']

@@ -1,6 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
 ignored:
+  # Containers are intentionally run as root.
+  # https://github.com/hadolint/hadolint/wiki/dl3002
+  - DL3002
+
   # Pinned versions are unable to be updated by Renovate.
   # https://github.com/hadolint/hadolint/wiki/dl3018
   - DL3018

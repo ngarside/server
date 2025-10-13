@@ -4,7 +4,7 @@ name: gitea
 
 on:
   pull_request:
-    paths: ['**/gitea.yml', 'gitea/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/gitea.yml', 'gitea/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/gitea.yml', 'gitea/src/**']

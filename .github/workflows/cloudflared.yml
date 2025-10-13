@@ -1,13 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
-name: jellyfin
+name: cloudflared
 
 on:
   pull_request:
-    paths: ['**/jellyfin.yml', 'jellyfin/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/cloudflared.yml', 'cloudflared/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/jellyfin.yml', 'jellyfin/src/**']
+    paths: ['**/cloudflared.yml', 'cloudflared/src/**']
   workflow_dispatch:
 
 jobs:
@@ -15,5 +15,5 @@ jobs:
     uses: ./.github/workflows/container_build.yml
     permissions: {contents: read, packages: write}
     with:
-      name: jellyfin
-      path: jellyfin/src/jellyfin.dockerfile
+      name: cloudflared
+      path: cloudflared/src/cloudflared.dockerfile

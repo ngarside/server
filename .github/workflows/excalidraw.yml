@@ -4,7 +4,7 @@ name: excalidraw
 
 on:
   pull_request:
-    paths: ['**/excalidraw.yml', 'excalidraw/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/excalidraw.yml', 'excalidraw/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/excalidraw.yml', 'excalidraw/src/**']

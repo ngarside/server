@@ -4,7 +4,7 @@ name: penpot
 
 on:
   pull_request:
-    paths: ['**/penpot.yml', 'penpot/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/penpot.yml', 'penpot/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/penpot.yml', 'penpot/src/**']

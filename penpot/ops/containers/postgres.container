@@ -6,8 +6,8 @@ Environment=POSTGRES_DB=penpot
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD=penpot
 Environment=POSTGRES_USER=penpot
-Image=ghcr.io/ngarside/postgres:18.0.119
-Network=penpot_backend.network:ip=10.4.0.3
+Image=ghcr.io/ngarside/postgres:18.0.131
+Network=penpot_internal.network:ip=10.4.0.3
 NoNewPrivileges=true
 ReadOnly=true
 StopSignal=SIGINT

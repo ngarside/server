@@ -3,7 +3,7 @@
 [Container]
 ContainerName=cloudflared
 Exec=tunnel --no-autoupdate run
-Image=docker.io/cloudflare/cloudflared:2025.9.1
+Image=ghcr.io/ngarside/cloudflared:2025.9.1.2
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
 ReadOnly=true

@@ -1,6 +1,10 @@
 #!/usr/bin/env python
-
 # This is free and unencumbered software released into the public domain.
 
-def test_stub():
-	assert True
+import os, subprocess
+
+image = f'ghcr.io/ngarside/restic:{os.getenv('TAG') or 'latest'}'
+
+def test_whoami():
+	result = subprocess.run(['podman', 'run', image, 'version'], capture_output=True, text=True)
+	assert result.stdout.startswith('restic')

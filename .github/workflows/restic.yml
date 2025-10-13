@@ -4,7 +4,7 @@ name: restic
 
 on:
   pull_request:
-    paths: ['**/restic.yml', 'restic/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/restic.yml', 'restic/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/restic.yml', 'restic/src/**']

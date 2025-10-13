@@ -11,6 +11,7 @@
 		"vscode": {
 			"extensions": [
 				"EditorConfig.EditorConfig",
+				"ms-python.python",
 				"redhat.vscode-xml",
 				"tamasfe.even-better-toml"
 			]

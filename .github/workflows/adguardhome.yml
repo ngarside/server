@@ -4,7 +4,7 @@ name: adguardhome
 
 on:
   pull_request:
-    paths: ['**/adguardhome.yml', 'adguardhome/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/adguardhome.yml', 'adguardhome/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/adguardhome.yml', 'adguardhome/src/**']
