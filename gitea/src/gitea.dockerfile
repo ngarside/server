@@ -5,5 +5,7 @@ ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 # hadolint ignore=DL3002
 USER root
 COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
+COPY gitea/src/oidc.sh /usr/bin/oidc
 RUN chmod +x /usr/bin/entrypoint
+RUN chmod +x /usr/bin/oidc
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/usr/bin/entrypoint"]

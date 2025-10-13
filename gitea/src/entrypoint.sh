@@ -17,6 +17,8 @@ if [ -z "$MACHINE_DOMAIN_ROOT" ]; then
 	exit
 fi
 
+/usr/bin/oidc &
+
 gitea admin auth add-oauth \
 	--auto-discover-url "https://$MACHINE_DOMAIN_ROOT/application/o/gitea/.well-known/openid-configuration" \
 	--key gitea \
