@@ -1,5 +1,9 @@
 # This is free and unencumbered software released into the public domain.
 
+[Unit]
+After=authentik_server.container
+Requires=authentik_server.container
+
 [Container]
 ContainerName=gitea
 Image=ghcr.io/ngarside/gitea:1.24.6.187
