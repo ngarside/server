@@ -13,9 +13,6 @@ FROM docker.io/debian:13.1 AS build
 ENV export NO_OPENSSL=1
 ENV export NO_CURL=1
 ENV export CFLAGS="${CFLAGS} -static"
-ARG export NO_OPENSSL=1
-ARG export NO_CURL=1
-ARG export CFLAGS="${CFLAGS} -static"
 RUN apt update
 RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
 RUN git clone https://github.com/git/git --branch v2.51.0 --depth 1
