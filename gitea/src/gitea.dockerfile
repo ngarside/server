@@ -32,10 +32,6 @@ RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-receive-pack
 # RUN cp -a /usr/bin/git-upload-archive /tmp/cp/git-upload-archive
 RUN cp -a /usr/bin/git-upload-pack /tmp/cp/git-upload-pack
 
-FROM docker.io/debian:13.1 AS gitd
-RUN apt update
-RUN apt --yes install git
-
 FROM scratch
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
@@ -48,7 +44,7 @@ ENTRYPOINT ["/app/gitea/gitea"]
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/gitea /app/gitea/gitea
 COPY --from=build /tmp/cp/ /usr/bin/
-COPY --from=gitd /usr/share/git-core/templates/ /usr/share/git-core/templates/
-COPY --from=gitd /usr/share/git-core/templates/ /git/out/share/git-core/templates
+COPY --from=git /usr/share/git-core/templates/ /usr/share/git-core/templates/
+COPY --from=git /usr/share/git-core/templates/ /git/out/share/git-core/templates
 
 # make -j "$(nproc)" CFLAGS="-static"
