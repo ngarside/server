@@ -1,13 +1,18 @@
 # This is free and unencumbered software released into the public domain.
 
+[Unit]
+After=authentik_server.container
+Requires=authentik_server.container
+
 [Container]
 ContainerName=gitea
-Image=ghcr.io/ngarside/gitea:1.24.6.184
+Image=ghcr.io/ngarside/gitea:1.24.6.190
 Network=gitea.network:ip=10.14.0.2
 NoNewPrivileges=true
 ReadOnly=true
 Secret=gitea_global_secret
 Secret=gitea_internal_secret
+Secret=gitea_jwt_secret
 Secret=gitea_lfs_secret
 Secret=gitea_oidc_secret
 Secret=machine_domain_root
@@ -27,6 +32,7 @@ ExecStartPre=mkdir --parents /var/data/gitea/lfs
 ExecStartPre=mkdir --parents /var/data/gitea/work
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_global_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_internal_secret -"
+ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_jwt_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_lfs_secret -"
 
 [Install]
