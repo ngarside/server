@@ -1,25 +1,5 @@
 # This is free and unencumbered software released into the public domain.
 
-# FROM docker.io/gitea/gitea:1.24.6-rootless
-# ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
-# # hadolint ignore=DL3002
-# USER root
-
-# FROM docker.io/alpine:3.22.2
-# RUN apk --no-cache add autoconf build-base git
-# RUN git clone https://github.com/git/git
-# WORKDIR /git
-# RUN git checkout v2.51.0
-# RUN make configure
-
-
-# NO_REGEX=NeedsStartEnd
-# RUN ./configure prefix=/bin
-
-
-
-
-
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 
 FROM docker.io/alpine/git:2.49.1 AS gitv
