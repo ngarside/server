@@ -26,13 +26,12 @@ FROM docker.io/debian:13.1 AS build
 COPY --from=git /version /version
 ENV NO_OPENSSL=1
 ENV NO_CURL=1
-ENV CFLAGS="${CFLAGS} -static"
 RUN apt update
 RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
 WORKDIR /git
 RUN make configure
-RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
+RUN ./configure prefix=/git/out CFLAGS=-static
 RUN make
 # Pattern is required to copy symbolic links to the new image
 # https://stackoverflow.com/a/66823636
