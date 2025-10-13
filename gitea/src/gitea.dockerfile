@@ -12,18 +12,20 @@ RUN apt update
 RUN apt --yes install bash-static
 
 FROM docker.io/alpine/git:2.49.1 AS git
+RUN git version | grep -o "[0-9.]*" >> /version
 
 FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
 FROM docker.io/debian:13.1 AS build
+COPY --from=git /version /version
 ENV export NO_OPENSSL=1
 ENV export NO_CURL=1
 ENV export CFLAGS="${CFLAGS} -static"
 RUN apt update
 RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
-RUN git clone https://github.com/git/git --branch v2.51.0 --depth 1
+RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
 WORKDIR /git
 RUN make configure
 RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
