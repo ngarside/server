@@ -6,6 +6,7 @@
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
+USER root
 RUN gitea --version | grep -o "[0-9.]*" | head -n 1 >> /version
 RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
 RUN chmod +x gitea
