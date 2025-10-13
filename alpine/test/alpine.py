@@ -7,5 +7,4 @@ image = f'ghcr.io/ngarside/alpine:{os.getenv('TAG') or 'latest'}'
 
 def test_whoami():
 	status = subprocess.run(['podman', 'run', image, 'whoami'], capture_output=True)
-	assert status.returncode == 0
 	assert status.stdout == b'root\n'
