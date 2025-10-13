@@ -7,6 +7,8 @@
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 RUN gitea --version | grep -o "[0-9.]*" | head -n 1 >> /version
+RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
+RUN chmod +x gitea
 
 FROM docker.io/debian:13.1 AS bash
 RUN apt update
@@ -31,9 +33,6 @@ WORKDIR /git
 RUN make configure
 RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
 RUN make
-RUN apt --yes install wget
-RUN wget -O gitea https://dl.gitea.com/gitea/1.24.6/gitea-1.24.6-linux-amd64
-RUN chmod +x gitea
 
 # Pattern is required to copy symbolic links to the new image
 # https://stackoverflow.com/a/66823636
