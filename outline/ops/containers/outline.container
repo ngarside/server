@@ -14,7 +14,10 @@ Environment=URL=https://outline.usani.uk
 Environment=PORT=8080
 Environment=SECRET_KEY=a42cae960fd1d51efb86a81b4fb60a452337b8960ac0258f82a468a8307e1c1c
 Environment=UTILS_SECRET=bcebbd860e4e9fc3317ed985e289e4c0bce339c071ccef8dc31482571c9db90b
-Environment=DATABASE_URL=postgres://postgres:postgres@10.19.0.3:5432/outline
+Environment=DATABASE_HOST=10.19.0.3
+Environment=DATABASE_NAME=outline
+Environment=DATABASE_PASSWORD=postgres
+Environment=DATABASE_USER=postgres
 Environment=PGSSLMODE=disable
 Environment=REDIS_URL=redis://10.19.0.4:6379
 Environment=FILE_STORAGE=local
