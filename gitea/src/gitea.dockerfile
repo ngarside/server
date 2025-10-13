@@ -49,7 +49,7 @@ ENV USER=root
 COPY --from=build /git/git /usr/bin/git
 ENTRYPOINT ["/app/gitea/gitea"]
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
-COPY --from=build /git/gitea /app/gitea/gitea
+COPY --from=gitea /git/gitea /app/gitea/gitea
 COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=git /usr/share/git-core/templates/ /usr/share/git-core/templates/
 COPY --from=git /usr/share/git-core/templates/ /git/out/share/git-core/templates
