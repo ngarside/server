@@ -6,6 +6,7 @@
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
+RUN gitea --version | grep -o "[0-9.]*" | head -n 1 >> /version
 
 FROM docker.io/debian:13.1 AS bash
 RUN apt update
