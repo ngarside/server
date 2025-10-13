@@ -1,5 +1,10 @@
 # This is free and unencumbered software released into the public domain.
 
+# This file downloads the Gitea release as it is statically compiled, whereas
+# the Docker release is dynamically compiled. The Docker image is still
+# referenced to support automated dependency updates.
+# https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
+
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 
 FROM docker.io/alpine/git:2.49.1 AS git
