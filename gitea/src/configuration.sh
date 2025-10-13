@@ -3,7 +3,7 @@
 
 # Wait for Gitea server to initialise ----------------------------------------------------
 echo "[CONFIG] Waiting for Gitea server to initialise"
-RETRIES_MAX=20
+RETRIES_MAX=30
 RETRIES_CURRENT=1
 while (( RETRIES_CURRENT <= RETRIES_MAX )); do
 	echo "[CONFIG] Sending HTTP request (attempt $RETRIES_CURRENT of $RETRIES_MAX)"
