@@ -10,7 +10,6 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
-	dir = os.path.dirname(os.path.realpath(__file__))
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
@@ -23,4 +22,4 @@ def fixture():
 
 def test_root():
 	response = session.get(f'http://localhost:{port}')
-	assert response.status_code == 303
+	assert response.status_code == 200
