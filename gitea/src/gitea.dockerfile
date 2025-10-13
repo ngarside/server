@@ -36,9 +36,8 @@ ARG export NO_CURL=1
 ARG export CFLAGS="${CFLAGS} -static"
 RUN apt update
 RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
-RUN git clone https://github.com/git/git
+RUN git clone https://github.com/git/git --branch v2.51.0 --depth 1
 WORKDIR /git
-RUN git checkout v2.51.0
 RUN make configure
 RUN ./configure prefix=/git/out CFLAGS="${CFLAGS} -static"
 RUN make
