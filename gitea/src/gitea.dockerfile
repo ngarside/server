@@ -15,6 +15,8 @@ FROM docker.io/debian:13.1 AS bash
 RUN apt update
 RUN apt --yes install bash-static
 
+FROM docker.io/busybox:1.37.0-musl AS busybox
+
 FROM docker.io/alpine/git:2.49.1 AS git
 RUN git version | grep -o "[0-9.]*" >> /version
 
@@ -38,8 +40,6 @@ RUN mkdir /tmp/cp
 RUN cp -a /git/git-receive-pack /tmp/cp/git-receive-pack
 RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
 RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
-
-FROM docker.io/busybox:1.37.0-musl AS busybox
 
 FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
