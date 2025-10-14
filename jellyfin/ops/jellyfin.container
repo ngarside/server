@@ -9,7 +9,7 @@ ReadOnly=true
 UserNS=auto
 Volume=/var/data/jellyfin/cache:/cache:U,Z
 Volume=/var/data/jellyfin/config:/config:U,Z
-Volume=/var/data/jellyfin/media:/media:ro
+Volume=/var/data/jellyfin/media:/media:U,Z,ro
 
 [Service]
 Restart=always
