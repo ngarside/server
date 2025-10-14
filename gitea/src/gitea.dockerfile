@@ -41,9 +41,9 @@ RUN make configure
 RUN ./configure CFLAGS=-static
 RUN make
 RUN mkdir /tmp/cp
-RUN cp -a /git/git-receive-pack /tmp/cp/git-receive-pack
-RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
-RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
+RUN ln --symbolic /usr/bin/git /tmp/cp/git-receive-pack
+RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-archive
+RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-pack
 
 FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
