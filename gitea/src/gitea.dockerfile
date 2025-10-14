@@ -30,7 +30,7 @@ RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev 
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
 WORKDIR /git
 RUN make configure
-RUN ./configure prefix=/git/out CFLAGS=-static
+RUN ./configure CFLAGS=-static
 RUN make
 # Pattern is required to copy symbolic links to the new image
 # https://stackoverflow.com/a/66823636
