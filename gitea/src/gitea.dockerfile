@@ -49,3 +49,6 @@ ENTRYPOINT ["/usr/bin/gitea"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
 ENV USER=root
+RUN rm -r /home
+RUN rm -r /tmp
+RUN rm -r /var
