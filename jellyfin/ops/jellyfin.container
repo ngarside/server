@@ -5,6 +5,8 @@ ContainerName=jellyfin
 Image=ghcr.io/ngarside/jellyfin:10.11.0.8
 Network=jellyfin.network:ip=10.11.0.2
 NoNewPrivileges=true
+ReadOnly=true
+UserNS=auto
 Volume=/var/data/jellyfin/cache:/cache:U,Z
 Volume=/var/data/jellyfin/config:/config:U,Z
 Volume=/var/data/jellyfin/media:/media:ro
