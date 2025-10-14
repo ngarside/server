@@ -48,6 +48,8 @@ RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-archive
 RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-pack
 
 FROM scratch
+COPY gitea/src/configuration.sh /usr/bin/configuration
+COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
@@ -55,7 +57,9 @@ COPY --from=busybox /bin/busybox /bin/busybox
 COPY --from=busybox /tmp/cp-bin/ /bin/
 COPY --from=busybox /tmp/cp-usr/ /usr/bin/
 COPY --from=gitea /var/lib/gitea/gitea /usr/bin/gitea
-ENTRYPOINT ["/usr/bin/gitea"]
+ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
 ENV USER=root
+RUN chmod +x /usr/bin/configuration
+RUN chmod +x /usr/bin/entrypoint
