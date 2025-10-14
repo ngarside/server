@@ -41,7 +41,7 @@ RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
 
 FROM docker.io/busybox:1.37.0-musl AS busybox
 
-FROM docker.io/busybox:1.37.0-musl
+FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
@@ -51,9 +51,10 @@ ENTRYPOINT ["/usr/bin/gitea"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
 ENV USER=root
-RUN rm -r /home
-RUN rm -r /tmp
-RUN rm -r /var
+# RUN rm -r /home
+# RUN rm -r /tmp
+# RUN rm -r /var
 # RUN rm /usr/bin/env
-RUN rm -r /bin
+# RUN rm -r /bin
 COPY --from=busybox /bin/ /bin/
+COPY --from=busybox /usr/bin/env /usr/bin/env
