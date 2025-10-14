@@ -51,10 +51,5 @@ ENTRYPOINT ["/usr/bin/gitea"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
 ENV USER=root
-# RUN rm -r /home
-# RUN rm -r /tmp
-# RUN rm -r /var
-# RUN rm /usr/bin/env
-# RUN rm -r /bin
 COPY --from=busybox /bin/ /bin/
 COPY --from=busybox /usr/bin/env /usr/bin/env
