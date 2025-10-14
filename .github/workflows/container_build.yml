@@ -36,7 +36,7 @@ jobs:
           --tag ghcr.io/ngarside/${{ inputs.name }}:$TAG .
 
       - name: Run tests
-        run: uv run pytest $ROOT
+        run: uv run pytest -rA $ROOT
 
       - name: Login to registry
         run: >
