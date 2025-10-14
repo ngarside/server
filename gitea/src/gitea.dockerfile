@@ -42,7 +42,7 @@ RUN cp -a /git/git-fetch-pack /tmp/cp/git-fetch-pack
 RUN cp -a /git/git-send-pack /tmp/cp/git-send-pack
 RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
 
-FROM busybox
+FROM docker.io/busybox:1.37.0-musl
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
