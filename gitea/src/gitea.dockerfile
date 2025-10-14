@@ -40,6 +40,7 @@ RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
 # Unclear if these are used - may be unnecessary
 RUN cp -a /git/git-fetch-pack /tmp/cp/git-fetch-pack
 RUN cp -a /git/git-send-pack /tmp/cp/git-send-pack
+RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
 
 FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
