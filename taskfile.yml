@@ -33,6 +33,20 @@ tasks:
     desc: Delete all unused container images from the GitHub registry
     silent: true
 
+  rebuild:
+    cmd: >-
+      podman build
+      --format docker
+      --file {{.service}}/src/{{.service}}.dockerfile
+      --no-cache
+      --tag ghcr.io/ngarside/{{.service}}
+      $PWD
+    desc: Build the container for the given service (without cache)
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task rebuild service=<service>
+    silent: true
+
   run:
     cmd: >-
       podman run

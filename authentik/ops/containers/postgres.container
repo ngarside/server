@@ -4,12 +4,12 @@
 ContainerName=authentik_postgres
 Environment=POSTGRES_DB=authentik
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
-Environment=POSTGRES_PASSWORD=authentik
 Environment=POSTGRES_USER=authentik
 Image=ghcr.io/ngarside/postgres:18.0.131
 Network=authentik_internal.network:ip=10.7.0.3
 NoNewPrivileges=true
 ReadOnly=true
+Secret=authentik_postgres_password,type=env,target=POSTGRES_PASSWORD
 StopSignal=SIGINT
 UserNS=auto:size=256
 Volume=/var/data/authentik/postgres:/var/lib/postgresql:U,Z
@@ -18,6 +18,7 @@ Volume=/var/data/authentik/postgres:/var/lib/postgresql:U,Z
 Restart=always
 TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/authentik/postgres
+ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore authentik_postgres_password -"
 
 [Install]
 WantedBy=default.target
