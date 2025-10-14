@@ -20,7 +20,9 @@ RUN apt update
 RUN apt --yes install bash-static
 
 FROM docker.io/busybox:1.37.0-musl AS busybox
+RUN mkdir /tmp/cp-bin
 RUN mkdir /tmp/cp-usr
+RUN find /bin ! -name busybox -exec sh -c 'ln -s /bin/busybox "/tmp/cp-bin/$(basename {})"' \;
 RUN cp -a /usr/bin/env /tmp/cp-usr/env
 
 FROM docker.io/alpine/git:2.49.1 AS git
@@ -49,7 +51,8 @@ FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
-COPY --from=busybox /bin/ /bin/
+COPY --from=busybox /bin/busybox /bin/busybox
+COPY --from=busybox /tmp/cp-bin/ /bin/
 COPY --from=busybox /tmp/cp-usr/ /usr/bin/
 COPY --from=gitea /var/lib/gitea/gitea /usr/bin/gitea
 ENTRYPOINT ["/usr/bin/gitea"]
