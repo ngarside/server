@@ -4,7 +4,7 @@ name: jellyfin
 
 on:
   pull_request:
-    paths: ['**/jellyfin.yml', 'jellyfin/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/jellyfin.yml', 'jellyfin/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/jellyfin.yml', 'jellyfin/src/**']

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 # This is free and unencumbered software released into the public domain.
 
 # The host port is hardcoded to 9200 as this is required by OpenCloud.

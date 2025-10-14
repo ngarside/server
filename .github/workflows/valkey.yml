@@ -4,7 +4,7 @@ name: valkey
 
 on:
   pull_request:
-    paths: ['**/valkey.yml', 'valkey/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/valkey.yml', 'valkey/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/valkey.yml', 'valkey/src/**']

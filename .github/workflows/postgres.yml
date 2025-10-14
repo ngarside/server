@@ -4,7 +4,7 @@ name: postgres
 
 on:
   pull_request:
-    paths: ['**/postgres.yml', 'postgres/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/postgres.yml', 'postgres/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/postgres.yml', 'postgres/src/**']

@@ -1,9 +1,9 @@
 # This is free and unencumbered software released into the public domain.
 
 [Container]
-ContainerName=penpot_valkey
-Image=ghcr.io/ngarside/valkey:8.1.4.143
-Network=penpot_backend.network:ip=10.4.0.2
+ContainerName=outline_valkey
+Image=ghcr.io/ngarside/valkey:8.1.4.147
+Network=outline_internal.network:ip=10.19.0.4
 NoNewPrivileges=true
 ReadOnly=true
 UserNS=auto:size=8

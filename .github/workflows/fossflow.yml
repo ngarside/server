@@ -4,7 +4,7 @@ name: fossflow
 
 on:
   pull_request:
-    paths: ['**/fossflow.yml', 'fossflow/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/fossflow.yml', 'fossflow/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/fossflow.yml', 'fossflow/src/**']

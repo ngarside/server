@@ -4,7 +4,7 @@ name: alpine
 
 on:
   pull_request:
-    paths: ['**/alpine.yml', 'alpine/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/alpine.yml', 'alpine/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/alpine.yml', 'alpine/src/**']

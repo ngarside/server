@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/node:24.9.0-alpine AS fossflow
+FROM docker.io/node:24.10.0-alpine AS fossflow
 RUN apk --no-cache add git
 RUN git clone https://github.com/stan-smith/fossflow fossflow
 WORKDIR /fossflow
@@ -11,7 +11,7 @@ RUN chmod -R ugo=r dist
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.22.1 AS headcheck
+FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 

@@ -4,7 +4,7 @@ name: opencloud
 
 on:
   pull_request:
-    paths: ['**/opencloud.yml', 'opencloud/src/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/opencloud.yml', 'opencloud/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
     paths: ['**/opencloud.yml', 'opencloud/src/**']

@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Brand
+entries:
+
+  # Brand
+  - id: custom-brand-brand
+    model: authentik_brands.brand
+    identifiers:
+      domain: authentik-default
+    attrs:
+      attributes:
+        settings:
+          enabledFeatures:
+            applicationEdit: false
+            search: false
