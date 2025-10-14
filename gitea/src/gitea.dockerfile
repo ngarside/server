@@ -45,7 +45,6 @@ FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
-COPY --from=git /usr/share/git-core/templates/ /usr/local/share/git-core/templates/
 COPY --from=gitea /var/lib/gitea/gitea /usr/bin/gitea
 ENTRYPOINT ["/usr/bin/gitea"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
