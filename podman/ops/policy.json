@@ -3,7 +3,6 @@
 	"transports": {
 		"docker": {
 			"docker.io/jetbrains/youtrack": [{ "type": "insecureAcceptAnything" }],
-			"ghcr.io/goauthentik/server": [{ "type": "insecureAcceptAnything" }],
 			"ghcr.io/ngarside": [{ "type": "insecureAcceptAnything" }]
 		}
 	}
