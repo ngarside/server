@@ -36,11 +36,8 @@ RUN make
 # https://stackoverflow.com/a/66823636
 RUN mkdir /tmp/cp
 RUN cp -a /git/git-receive-pack /tmp/cp/git-receive-pack
-RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
-# Unclear if these are used - may be unnecessary
-RUN cp -a /git/git-fetch-pack /tmp/cp/git-fetch-pack
-RUN cp -a /git/git-send-pack /tmp/cp/git-send-pack
 RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
+RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
 
 FROM docker.io/busybox:1.37.0-musl
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
