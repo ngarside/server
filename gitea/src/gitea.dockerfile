@@ -5,7 +5,7 @@
 # referenced to support automated dependency updates.
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
-# Files are sometimes copied to the '/tmp/cp' folder to preserve symlinks
+# Files are sometimes copied to a '/tmp/cp*' folder to preserve symlinks
 # when copying between stages.
 # https://stackoverflow.com/a/66823636
 
@@ -20,8 +20,8 @@ RUN apt update
 RUN apt --yes install bash-static
 
 FROM docker.io/busybox:1.37.0-musl AS busybox
-RUN mkdir /tmp/cp
-RUN cp -a /usr/bin/env /tmp/cp/env
+RUN mkdir /tmp/cp-usr
+RUN cp -a /usr/bin/env /tmp/cp-usr/env
 
 FROM docker.io/alpine/git:2.49.1 AS git
 RUN git version | grep -o "[0-9.]*" >> /version
@@ -50,7 +50,7 @@ COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=busybox /bin/ /bin/
-COPY --from=busybox /tmp/cp/ /usr/bin/
+COPY --from=busybox /tmp/cp-usr/ /usr/bin/
 COPY --from=gitea /var/lib/gitea/gitea /usr/bin/gitea
 ENTRYPOINT ["/usr/bin/gitea"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
