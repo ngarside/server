@@ -6,7 +6,7 @@ Requires=authentik_server.container
 
 [Container]
 ContainerName=gitea
-Image=ghcr.io/ngarside/gitea:1.24.6.190
+Image=ghcr.io/ngarside/gitea:1.24.6.195
 Network=gitea.network:ip=10.14.0.2
 NoNewPrivileges=true
 ReadOnly=true

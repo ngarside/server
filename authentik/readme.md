@@ -2,7 +2,8 @@
 
 # <p align=center>Authentik
 
-Scripts for running Authentik via Podman and Systemd.
+A mirror of the official Authentik container images, and associated scripts for
+running them via Podman and Systemd.
 
 # <p align=center>References
 
