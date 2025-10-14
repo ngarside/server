@@ -39,6 +39,8 @@ RUN cp -a /git/git-receive-pack /tmp/cp/git-receive-pack
 RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
 RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
 
+FROM docker.io/busybox:1.37.0-musl AS busybox
+
 FROM docker.io/busybox:1.37.0-musl
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
@@ -52,3 +54,6 @@ ENV USER=root
 RUN rm -r /home
 RUN rm -r /tmp
 RUN rm -r /var
+# RUN rm /usr/bin/env
+RUN rm -r /bin
+COPY --from=busybox /bin/ /bin/
