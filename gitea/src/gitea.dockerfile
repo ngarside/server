@@ -35,8 +35,8 @@ RUN make
 # Pattern is required to copy symbolic links to the new image
 # https://stackoverflow.com/a/66823636
 RUN mkdir /tmp/cp
-RUN cp -a /usr/bin/git-receive-pack /tmp/cp/git-receive-pack
-RUN cp -a /usr/bin/git-upload-pack /tmp/cp/git-upload-pack
+RUN cp -a /git/git-receive-pack /tmp/cp/git-receive-pack
+RUN cp -a /git/git-upload-pack /tmp/cp/git-upload-pack
 
 FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
