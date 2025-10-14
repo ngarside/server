@@ -5,6 +5,10 @@
 # referenced to support automated dependency updates.
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
+# Files are sometimes copied to the '/tmp/cp' folder to preserve symlinks
+# when copying between stages.
+# https://stackoverflow.com/a/66823636
+
 FROM docker.io/gitea/gitea:1.24.6-rootless AS gitea
 USER root
 RUN gitea --version | grep -o "[0-9.]*" | head -n 1 >> /version
@@ -16,6 +20,8 @@ RUN apt update
 RUN apt --yes install bash-static
 
 FROM docker.io/busybox:1.37.0-musl AS busybox
+RUN mkdir /tmp/cp
+RUN cp -a /usr/bin/env /tmp/cp/env
 
 FROM docker.io/alpine/git:2.49.1 AS git
 RUN git version | grep -o "[0-9.]*" >> /version
@@ -34,8 +40,6 @@ WORKDIR /git
 RUN make configure
 RUN ./configure CFLAGS=-static
 RUN make
-# Pattern is required to copy symbolic links to the new image
-# https://stackoverflow.com/a/66823636
 RUN mkdir /tmp/cp
 RUN cp -a /git/git-receive-pack /tmp/cp/git-receive-pack
 RUN cp -a /git/git-upload-archive /tmp/cp/git-upload-archive
@@ -45,10 +49,10 @@ FROM scratch
 COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
+COPY --from=busybox /bin/ /bin/
+COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea /var/lib/gitea/gitea /usr/bin/gitea
 ENTRYPOINT ["/usr/bin/gitea"]
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
 ENV HOME=/root
 ENV USER=root
-COPY --from=busybox /bin/ /bin/
-COPY --from=busybox /usr/bin/env /usr/bin/env
