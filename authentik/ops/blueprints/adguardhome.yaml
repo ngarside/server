@@ -10,7 +10,7 @@ entries:
   - id: custom-adguardhome-provider
     model: authentik_providers_proxy.proxyprovider
     identifiers:
-      external_host: !Format [https://adguardhome.%s, !Env MACHINE_DOMAIN_ROOT]
+      external_host: !Format [https://adguardhome.%s, !File /run/secrets/machine_domain_root]
     attrs:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
       client_type: confidential
