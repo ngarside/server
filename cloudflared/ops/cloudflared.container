@@ -3,11 +3,13 @@
 [Container]
 ContainerName=cloudflared
 Exec=tunnel --no-autoupdate run
-Image=ghcr.io/ngarside/cloudflared:2025.10.0.5
+Image=ghcr.io/ngarside/cloudflared:feature_cloudflared-userns
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
 ReadOnly=true
 Secret=cloudflare_tunnel_token,type=env,target=TUNNEL_TOKEN
+UserNS=auto:size=8
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
 Restart=always
