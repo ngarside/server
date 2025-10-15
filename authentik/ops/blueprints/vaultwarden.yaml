@@ -31,7 +31,7 @@ entries:
       client_id: vaultwarden
     attrs:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
-      client_secret: !Env VAULTWARDEN_CLIENT_SECRET
+      client_secret: !File /run/secrets/vaultwarden_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
       name: Vaultwarden Provider
@@ -41,7 +41,7 @@ entries:
         - !KeyOf custom-vaultwarden-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: !Format [https://vaultwarden.%s/auth/oidc.callback, !Env MACHINE_DOMAIN_ROOT]
+          url: !Format [https://vaultwarden.%s/auth/oidc.callback, !File /run/secrets/machine_domain_root]
 
   # Application
   - id: custom-vaultwarden-application

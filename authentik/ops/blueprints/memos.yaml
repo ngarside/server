@@ -40,7 +40,7 @@ entries:
         - !KeyOf custom-memos-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: !Format [https://memos.%s/auth/callback, !Env MACHINE_DOMAIN_ROOT]
+          url: !Format [https://memos.%s/auth/callback, !File /run/secrets/machine_domain_root]
 
   # Application
   - id: custom-memos-application

@@ -31,7 +31,7 @@ entries:
       client_id: outline
     attrs:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
-      client_secret: !Env OUTLINE_CLIENT_SECRET
+      client_secret: !File /run/secrets/outline_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
       name: Outline Provider
@@ -41,7 +41,7 @@ entries:
         - !KeyOf custom-outline-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: !Format [https://outline.%s/auth/oidc.callback, !Env MACHINE_DOMAIN_ROOT]
+          url: !Format [https://outline.%s/auth/oidc.callback, !File /run/secrets/machine_domain_root]
 
   # Application
   - id: custom-outline-application
