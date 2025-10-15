@@ -12,21 +12,21 @@
 		max_size 100mb
 	}
 	tls {
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		dns cloudflare {file./run/secrets/cloudflare_api_token}
 		resolvers 1.1.1.1
 	}
 }
 
-*.{$MACHINE_DOMAIN_ROOT} {
+*.{file./run/secrets/machine_domain_root} {
 	import common
 }
 
-{$MACHINE_DOMAIN_ROOT} {
+{file./run/secrets/machine_domain_root} {
 	import common
 	reverse_proxy 10.8.0.3:9000
 }
 
-adguardhome.{$MACHINE_DOMAIN_ROOT} {
+adguardhome.{file./run/secrets/machine_domain_root} {
 	route {
 		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
 		forward_auth 10.8.0.3:9000 {
@@ -50,7 +50,7 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
-chartdb.{$MACHINE_DOMAIN_ROOT} {
+chartdb.{file./run/secrets/machine_domain_root} {
 	route {
 		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
 		forward_auth 10.8.0.3:9000 {
@@ -74,7 +74,7 @@ chartdb.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
-excalidraw.{$MACHINE_DOMAIN_ROOT} {
+excalidraw.{file./run/secrets/machine_domain_root} {
 	route {
 		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
 		forward_auth 10.8.0.3:9000 {
@@ -98,7 +98,7 @@ excalidraw.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
-fossflow.{$MACHINE_DOMAIN_ROOT} {
+fossflow.{file./run/secrets/machine_domain_root} {
 	route {
 		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
 		forward_auth 10.8.0.3:9000 {
@@ -122,34 +122,34 @@ fossflow.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
-gitea.{$MACHINE_DOMAIN_ROOT} {
+gitea.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.14.0.2
 }
 
-jellyfin.{$MACHINE_DOMAIN_ROOT} {
+jellyfin.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.11.0.2:8096
 }
 
-memos.{$MACHINE_DOMAIN_ROOT} {
+memos.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.6.0.2
 }
 
-opencloud.{$MACHINE_DOMAIN_ROOT} {
+opencloud.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.17.0.2:9200
 }
 
-outline.{$MACHINE_DOMAIN_ROOT} {
+outline.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.10.0.2:8080
 }
 
-penpot.{$MACHINE_DOMAIN_ROOT} {
+penpot.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.3.0.9:8080
 }
 
-vaultwarden.{$MACHINE_DOMAIN_ROOT} {
+vaultwarden.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.12.0.2
 }
 
-youtrack.{$MACHINE_DOMAIN_ROOT} {
+youtrack.{file./run/secrets/machine_domain_root} {
 	reverse_proxy 10.9.0.2:8080
 }
