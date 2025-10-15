@@ -28,8 +28,8 @@
 
 adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
+		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
+		forward_auth 10.8.0.3 {
 			uri /outpost.goauthentik.io/auth/caddy
 			copy_headers {
 				X-Authentik-Email
@@ -52,8 +52,8 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 
 chartdb.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
+		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
+		forward_auth 10.8.0.3 {
 			uri /outpost.goauthentik.io/auth/caddy
 			copy_headers {
 				X-Authentik-Email
@@ -76,8 +76,8 @@ chartdb.{$MACHINE_DOMAIN_ROOT} {
 
 excalidraw.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
+		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
+		forward_auth 10.8.0.3 {
 			uri /outpost.goauthentik.io/auth/caddy
 			copy_headers {
 				X-Authentik-Email
@@ -100,8 +100,8 @@ excalidraw.{$MACHINE_DOMAIN_ROOT} {
 
 fossflow.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
+		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
+		forward_auth 10.8.0.3 {
 			uri /outpost.goauthentik.io/auth/caddy
 			copy_headers {
 				X-Authentik-Email
