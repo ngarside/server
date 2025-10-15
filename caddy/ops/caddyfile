@@ -151,5 +151,5 @@ vaultwarden.{$MACHINE_DOMAIN_ROOT} {
 }
 
 youtrack.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.9.0.2:8080
+	reverse_proxy 10.9.0.2
 }

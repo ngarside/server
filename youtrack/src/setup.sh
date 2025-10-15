@@ -29,4 +29,4 @@ podman run \
 	--tty \
 	--volume /var/data/youtrack/config:/opt/youtrack/conf:U,Z \
 	"$IMAGE" \
-	configure --base-url "https://youtrack.${ROOT}"
+	configure --base-url "https://youtrack.${ROOT}" --listen-port 80
