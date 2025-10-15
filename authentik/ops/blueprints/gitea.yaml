@@ -31,7 +31,7 @@ entries:
       client_id: gitea
     attrs:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
-      client_secret: !Env GITEA_CLIENT_SECRET !File /run/secrets/machine_domain_root
+      client_secret: !File /run/secrets/gitea_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
       name: Gitea Provider
