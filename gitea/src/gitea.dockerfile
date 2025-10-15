@@ -32,6 +32,12 @@ FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
+FROM docker.io/alpine:3.22.2 AS local
+COPY gitea/src/configuration.sh /usr/bin/configuration
+COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
+RUN chmod +x /usr/bin/configuration
+RUN chmod +x /usr/bin/entrypoint
+
 FROM docker.io/debian:13.1 AS build
 COPY --from=git /version /version
 ENV NO_OPENSSL=1
