@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/cloudflare/cloudflared:2025.9.1 AS cloudflared
+FROM docker.io/cloudflare/cloudflared:2025.10.0 AS cloudflared
 
 FROM docker.io/alpine:3.22.1 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
