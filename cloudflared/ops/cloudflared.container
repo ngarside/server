@@ -8,6 +8,8 @@ Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
 ReadOnly=true
 Secret=cloudflare_tunnel_token,type=env,target=TUNNEL_TOKEN
+UserNS=auto:size=8
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
 Restart=always
