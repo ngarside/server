@@ -5,7 +5,6 @@ ContainerName=youtrack
 Image=docker.io/jetbrains/youtrack:2025.2.100871
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true
-Volume=/var/data/youtrack/backups:/opt/youtrack/backups:U,Z
 Volume=/var/data/youtrack/config:/opt/youtrack/conf:U,Z
 Volume=/var/data/youtrack/data:/opt/youtrack/data:U,Z
 Volume=/var/data/youtrack/logs:/opt/youtrack/logs:U,Z
@@ -13,7 +12,6 @@ Volume=/var/data/youtrack/logs:/opt/youtrack/logs:U,Z
 [Service]
 Restart=always
 TimeoutStartSec=9000
-ExecStartPre=mkdir --parents /var/data/youtrack/backups
 ExecStartPre=mkdir --parents /var/data/youtrack/config
 ExecStartPre=mkdir --parents /var/data/youtrack/data
 ExecStartPre=mkdir --parents /var/data/youtrack/logs
