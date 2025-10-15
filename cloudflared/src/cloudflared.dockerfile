@@ -7,8 +7,8 @@ RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
 FROM scratch
-COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=cloudflared /usr/local/bin/cloudflared /usr/bin/cloudflared
+COPY --from=headcheck /headcheck /usr/bin/headcheck
 ENTRYPOINT ["/usr/bin/cloudflared", "--no-autoupdate"]
 EXPOSE 80
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
