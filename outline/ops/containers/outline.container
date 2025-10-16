@@ -46,8 +46,8 @@ Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 Restart=always
 TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/outline/data
-ExecStartPre=bash -c "openssl rand -hex 32 | podman secret create --ignore outline_common_secret -"
-ExecStartPre=bash -c "openssl rand -hex 32 | podman secret create --ignore outline_cron_secret -"
+ExecStartPre=bash -c "openssl rand -hex 32 | tr -d '\n' | podman secret create --ignore outline_common_secret -"
+ExecStartPre=bash -c "openssl rand -hex 32 | tr -d '\n' | podman secret create --ignore outline_cron_secret -"
 
 [Install]
 WantedBy=default.target
