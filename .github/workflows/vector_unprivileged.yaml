@@ -4,15 +4,15 @@ name: vector_unprivileged
 
 on:
   pull_request:
-    paths: ['**/vector.yml', 'vector/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/vector.yaml', 'vector/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/vector.yml', 'vector/src/**']
+    paths: ['**/vector.yaml', 'vector/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: vector-unprivileged

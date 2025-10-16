@@ -4,15 +4,15 @@ name: adguardhome
 
 on:
   pull_request:
-    paths: ['**/adguardhome.yml', 'adguardhome/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/adguardhome.yaml', 'adguardhome/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/adguardhome.yml', 'adguardhome/src/**']
+    paths: ['**/adguardhome.yaml', 'adguardhome/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: adguardhome

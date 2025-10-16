@@ -152,7 +152,7 @@ even if one did the consequences would be minimal.
 {
 	"automerge": true,
 	"automergeStrategy": "squash",
-	"matchFileNames": [".github/workflows/*.yml"]
+	"matchFileNames": [".github/workflows/*.yaml"]
 }
 ```
 

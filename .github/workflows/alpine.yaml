@@ -4,15 +4,15 @@ name: alpine
 
 on:
   pull_request:
-    paths: ['**/alpine.yml', 'alpine/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/alpine.yaml', 'alpine/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/alpine.yml', 'alpine/src/**']
+    paths: ['**/alpine.yaml', 'alpine/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: alpine

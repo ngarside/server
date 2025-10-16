@@ -4,15 +4,15 @@ name: postgres
 
 on:
   pull_request:
-    paths: ['**/postgres.yml', 'postgres/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/postgres.yaml', 'postgres/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/postgres.yml', 'postgres/src/**']
+    paths: ['**/postgres.yaml', 'postgres/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: postgres

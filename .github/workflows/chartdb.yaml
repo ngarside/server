@@ -4,15 +4,15 @@ name: chartdb
 
 on:
   pull_request:
-    paths: ['**/chartdb.yml', 'chartdb/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/chartdb.yaml', 'chartdb/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/chartdb.yml', 'chartdb/src/**']
+    paths: ['**/chartdb.yaml', 'chartdb/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: chartdb
