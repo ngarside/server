@@ -80,7 +80,7 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchFileNames": [".github/workflows/*.yml"]
+			"matchFileNames": [".github/workflows/*.yaml"]
 		}
 	]
 }

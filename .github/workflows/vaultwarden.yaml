@@ -4,15 +4,15 @@ name: vaultwarden
 
 on:
   pull_request:
-    paths: ['**/vaultwarden.yml', 'vaultwarden/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/vaultwarden.yaml', 'vaultwarden/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/vaultwarden.yml', 'vaultwarden/src/**']
+    paths: ['**/vaultwarden.yaml', 'vaultwarden/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: vaultwarden

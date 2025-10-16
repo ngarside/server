@@ -4,15 +4,15 @@ name: valkey
 
 on:
   pull_request:
-    paths: ['**/valkey.yml', 'valkey/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/valkey.yaml', 'valkey/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/valkey.yml', 'valkey/src/**']
+    paths: ['**/valkey.yaml', 'valkey/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: valkey

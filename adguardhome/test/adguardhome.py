@@ -11,7 +11,7 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
-	open(os.path.join(etc.name, 'config.yml'), 'w').close()
+	open(os.path.join(etc.name, 'config.yaml'), 'w').close()
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',

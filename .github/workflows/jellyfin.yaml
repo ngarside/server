@@ -4,15 +4,15 @@ name: jellyfin
 
 on:
   pull_request:
-    paths: ['**/jellyfin.yml', 'jellyfin/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/jellyfin.yaml', 'jellyfin/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/jellyfin.yml', 'jellyfin/src/**']
+    paths: ['**/jellyfin.yaml', 'jellyfin/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: jellyfin

@@ -4,15 +4,15 @@ name: caddy
 
 on:
   pull_request:
-    paths: ['**/caddy.yml', 'caddy/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/caddy.yaml', 'caddy/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/caddy.yml', 'caddy/src/**']
+    paths: ['**/caddy.yaml', 'caddy/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: caddy

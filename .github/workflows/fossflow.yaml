@@ -4,15 +4,15 @@ name: fossflow
 
 on:
   pull_request:
-    paths: ['**/fossflow.yml', 'fossflow/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/fossflow.yaml', 'fossflow/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/fossflow.yml', 'fossflow/src/**']
+    paths: ['**/fossflow.yaml', 'fossflow/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: fossflow
