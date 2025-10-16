@@ -12,7 +12,7 @@
 		max_size 100mb
 	}
 	tls {
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		dns cloudflare {file./run/secrets/cloudflare_api_token}
 		resolvers 1.1.1.1
 	}
 }
