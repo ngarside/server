@@ -6,7 +6,8 @@ Image=docker.io/jetbrains/youtrack:2025.2.100871
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true
 ReadOnly=true
-Tmpfs=/opt/youtrack/temp:mode=1777
+Tmpfs=/opt/youtrack/temp:mode
+UserNS=auto
 Volume=/var/data/youtrack/config:/opt/youtrack/conf:U,Z
 Volume=/var/data/youtrack/data:/opt/youtrack/data:U,Z
 Volume=/var/data/youtrack/logs:/opt/youtrack/logs:U,Z
