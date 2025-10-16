@@ -3,7 +3,7 @@
 [Container]
 ContainerName=youtrack
 Image=docker.io/jetbrains/youtrack:2025.2.100871
-Mount=type=tmpfs,destination=/opt/youtrack/temp,noswap
+Mount=type=tmpfs,destination=/opt/youtrack/temp
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true
 ReadOnly=true
