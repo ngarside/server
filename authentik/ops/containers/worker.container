@@ -14,7 +14,7 @@ Environment=AUTHENTIK_EMAIL__FROM=noreply@usani.uk
 Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
 Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
 Environment=AUTHENTIK_EMAIL__USERNAME=file:///run/secrets/mailjet_smtp_username
-Environment=AUTHENTIK_SECRET_KEY=4ecdPuxom7t70Z5ZN4gveo0hZDeDwAyz1TBn8tSiwlApsFmOqUNWX/r6TkF+ZgsAdD82NOwWweSfN3hc
+Environment=AUTHENTIK_SECRET_KEY=file:///run/secrets/authentik_internal_secret
 Environment=AUTHENTIK_REDIS__HOST=10.7.0.2
 Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__PASSWORD=file:///run/secrets/authentik_postgres_password
@@ -24,6 +24,7 @@ Exec=worker
 Image=ghcr.io/ngarside/authentik:2025.8.4.2
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
+Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret
 Secret=machine_domain_root
