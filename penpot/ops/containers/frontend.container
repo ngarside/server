@@ -14,7 +14,7 @@ Environment="PENPOT_FLAGS=disable-registration disable-secure-session-cookies en
 Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
 Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
 Environment=PENPOT_PUBLIC_URI=https://penpot.usani.uk
-Image=ghcr.io/ngarside/penpot-frontend:2.10.0.37
+Image=ghcr.io/ngarside/penpot-frontend:2.10.1.6
 Network=penpot_external.network:ip=10.3.0.9
 NoNewPrivileges=true
 Volume=/var/data/penpot/assets:/opt/data/assets:z
