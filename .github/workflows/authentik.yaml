@@ -4,15 +4,15 @@ name: authentik
 
 on:
   pull_request:
-    paths: ['**/authentik.yml', 'authentik/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/authentik.yaml', 'authentik/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/authentik.yml', 'authentik/src/**']
+    paths: ['**/authentik.yaml', 'authentik/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: authentik

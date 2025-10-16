@@ -4,15 +4,15 @@ name: cloudflared
 
 on:
   pull_request:
-    paths: ['**/cloudflared.yml', 'cloudflared/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/cloudflared.yaml', 'cloudflared/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/cloudflared.yml', 'cloudflared/src/**']
+    paths: ['**/cloudflared.yaml', 'cloudflared/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: cloudflared

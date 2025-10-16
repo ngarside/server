@@ -4,15 +4,15 @@ name: opencloud
 
 on:
   pull_request:
-    paths: ['**/opencloud.yml', 'opencloud/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/opencloud.yaml', 'opencloud/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/opencloud.yml', 'opencloud/src/**']
+    paths: ['**/opencloud.yaml', 'opencloud/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: opencloud

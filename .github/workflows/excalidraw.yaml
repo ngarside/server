@@ -4,15 +4,15 @@ name: excalidraw
 
 on:
   pull_request:
-    paths: ['**/excalidraw.yml', 'excalidraw/[st]*/**', 'pyproject.toml', 'scripts/**']
+    paths: ['**/excalidraw.yaml', 'excalidraw/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/excalidraw.yml', 'excalidraw/src/**']
+    paths: ['**/excalidraw.yaml', 'excalidraw/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
-    uses: ./.github/workflows/container_build.yml
+    uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
       name: excalidraw
