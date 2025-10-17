@@ -10,14 +10,16 @@ dnf --assumeyes remove \
 	adwaita-sans-fonts \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
+	bash-completion \
 	bluez \
+	cloud-utils-growpart \
+	console-login-helper-messages \
+	console-login-helper-messages-profile \
+	console-login-helper-messages-issuegen \
 	nano \
 	nano-default-editor \
 	flatpak-session-helper \
 	fonts-filesystem \
-	console-login-helper-messages \
-	console-login-helper-messages-profile \
-	console-login-helper-messages-issuegen \
 	NetworkManager-cloud-setup \
 	NetworkManager-tui \
 	ntfs* \
