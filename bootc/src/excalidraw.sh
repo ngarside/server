@@ -4,5 +4,4 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /git/excalidraw/ops/excalidraw.container /etc/containers/systemd/users/1001/excalidraw.container
-cp /git/excalidraw/ops/excalidraw.network /etc/containers/systemd/users/1001/excalidraw.network
+cp /git/excalidraw/ops/* /etc/containers/systemd/users/1001/

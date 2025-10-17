@@ -4,5 +4,4 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /git/youtrack/ops/youtrack.container /etc/containers/systemd/users/1001/youtrack.container
-cp /git/youtrack/ops/youtrack.network /etc/containers/systemd/users/1001/youtrack.network
+cp /git/youtrack/ops/* /etc/containers/systemd/users/1001/
