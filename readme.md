@@ -1,14 +1,31 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-# <p align=center>Server
+![Server](media/header.webp)
 
 <p align=center>
-	<img src=https://img.shields.io/github/license/ngarside/server?style=for-the-badge>
+	<img src=https://img.shields.io/github/last-commit/ngarside/server?color=red&style=for-the-badge>
 	&nbsp;
-	<img src=https://img.shields.io/github/languages/top/ngarside/server?style=for-the-badge>
+	<img src=https://img.shields.io/github/license/ngarside/server?color=brightgreen&style=for-the-badge>
+	&nbsp;
+	<img src=https://img.shields.io/github/languages/top/ngarside/server?color=blue&style=for-the-badge>
 </p>
+<br>
 
 The GitOps codebase for my home server.
+
+The server is a simple, single node container host. It is based on Fedora Bootc and uses Podman
+Quadlet for orchestration.
+
+# <p align=center>Map
+
+This repo is structured as a monorepo and contains various related projects:
+
+- Build, test and orchestration scripts for various containers
+- Build scripts for the Bootc base image
+- Python helper scripts, primarily for use within CI/CD
+- Build scripts for an auto-install ISO image
+
+See the readme file in each top-level folder for further information on individual projects.
 
 # <p align=center>Security
 
@@ -20,3 +37,9 @@ partially hardened.
 # <p align=center>License
 
 This is free and unencumbered software released into the public domain.
+
+Some files are vendored from other projects and have different licenses.
+Check the individual file headers for more details.
+
+The [header image](media/header.webp) is licensed from the
+[Lightsaber Collection](https://unsplash.com/photos/T-IN5o3kxyA).
