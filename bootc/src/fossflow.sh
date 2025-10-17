@@ -4,5 +4,4 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /git/fossflow/ops/fossflow.container /etc/containers/systemd/users/1001/fossflow.container
-cp /git/fossflow/ops/fossflow.network /etc/containers/systemd/users/1001/fossflow.network
+cp /git/fossflow/ops/* /etc/containers/systemd/users/1001/
