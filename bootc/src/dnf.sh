@@ -28,6 +28,7 @@ dnf --assumeyes remove \
 	python3 \
 	python3-libs \
 	rpm-ostree* \
+	samba* \
 	sudo-python-plugin \
 	toolbox \
 	nvidia-gpu-firmware
