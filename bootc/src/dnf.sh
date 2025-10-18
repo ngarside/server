@@ -28,6 +28,7 @@ dnf --assumeyes remove \
 	NetworkManager-cloud-setup \
 	NetworkManager-tui \
 	ntfs* \
+	openldap \
 	qcom-wwan-firmware \
 	qemu-user-static* \
 	python-pip-wheel \
