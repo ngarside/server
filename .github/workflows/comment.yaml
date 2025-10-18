@@ -29,5 +29,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'To rebase a bootc host onto this branch run: `sudo bootc switch --apply ghcr.io/ngarside/server:$TAG`'
+              body: 'To rebase a bootc host onto this branch run: `sudo bootc switch --apply ghcr.io/ngarside/server:{{ TAG }}`'
             })
