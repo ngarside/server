@@ -26,6 +26,7 @@ dnf --assumeyes remove \
 	mt7xxx-firmware \
 	nano \
 	nano-default-editor \
+	nilfs* \
 	nxpwireless-firmware \
 	flatpak-session-helper \
 	fonts-filesystem \
