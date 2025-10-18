@@ -53,8 +53,8 @@ jobs:
 
       - name: Run checks
         run: >-
-          podman run --volume .:/target:ro docker.io/aquasec/trivy
-          repo --scanners misconfig /target
+          podman run --volume .:/target:ro --workdir /target
+          docker.io/aquasec/trivy repo --scanners misconfig .
 
   yamllint:
     runs-on: ubuntu-latest
