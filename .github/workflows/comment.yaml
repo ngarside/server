@@ -25,7 +25,6 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            const image = `ghcr.io/ngarside/server:${process.env.TAG}`
             github.rest.issues.createComment({
               body: `
                 Rebase a bootc host onto this branch:
@@ -40,7 +39,7 @@ jobs:
                 sudo bootc update --apply
                 \`\`\`
 
-                The `--apply` option will automatically reboot; omit if you want to manually reboot.
+                The \`--apply\` option will automatically reboot; omit if you want to manually reboot.
               `,
               issue_number: context.issue.number,
               owner: context.repo.owner,
