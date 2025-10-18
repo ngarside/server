@@ -23,6 +23,7 @@ dnf --assumeyes remove \
 	exfatprogs \
 	f2fs* \
 	fedora-repos-archive \
+	logrotate \
 	mt7xxx-firmware \
 	nano \
 	nano-default-editor \
