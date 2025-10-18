@@ -9,12 +9,10 @@
 	&nbsp;
 	<img src=https://img.shields.io/github/languages/top/ngarside/server?color=blue&style=for-the-badge>
 </p>
-<br>
 
-The GitOps codebase for my home server.
-
-The server is a simple, single node container host. It is based on Fedora Bootc and uses Podman
-Quadlet for orchestration.
+This repo contains the entire codebase used to configure and run my home server.
+The server itself is a simple, single node container host.
+It is based on Fedora Bootc and uses Podman Quadlet for orchestration.
 
 # <p align=center>Map
 
