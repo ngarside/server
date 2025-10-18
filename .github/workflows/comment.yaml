@@ -28,19 +28,19 @@ jobs:
             const image = `ghcr.io/ngarside/server:${process.env.TAG}`
             github.rest.issues.createComment({
               body: `
-                To rebase a bootc host onto this branch run:
+                Rebase a bootc host onto this branch:
 
                 \`\`\`ruby
                 sudo bootc switch --apply ghcr.io/ngarside/server:${process.env.TAG}
                 \`\`\`
 
-                To update a bootc host which is already based on an earlier version of this branch run:
+                Update a bootc host which is already based on an earlier version of this branch:
 
                 \`\`\`ruby
                 sudo bootc update --apply
                 \`\`\`
 
-                Note that the `--apply` option will force an immediate reboot; omit it if you want to manually reboot later.
+                The `--apply` option will automatically reboot; omit if you want to manually reboot.
               `,
               issue_number: context.issue.number,
               owner: context.repo.owner,
