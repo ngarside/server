@@ -20,6 +20,7 @@ dnf --assumeyes remove \
 	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
 	dosfs* \
+	exfatprogs \
 	f2fs* \
 	fedora-repos-archive \
 	mt7xxx-firmware \
