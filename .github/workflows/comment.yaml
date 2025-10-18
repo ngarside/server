@@ -4,6 +4,7 @@ name: comment
 
 on:
   pull_request:
+    branches: [master]
     opened:
 
 jobs:
