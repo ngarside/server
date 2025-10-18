@@ -1,6 +1,6 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-![Server](media/header.webp)
+![Server](docs/media/header.webp)
 
 <p align=center>
 	<img src=https://img.shields.io/github/last-commit/ngarside/server?color=red&style=for-the-badge>
@@ -39,5 +39,5 @@ This is free and unencumbered software released into the public domain.
 Some files are vendored from other projects and have different licenses.
 Check the individual file headers for more details.
 
-The [header image](media/header.webp) is licensed from the
+The [header image](docs/media/header.webp) is licensed from the
 [Lightsaber Collection](https://unsplash.com/photos/T-IN5o3kxyA).
