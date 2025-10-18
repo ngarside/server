@@ -26,22 +26,22 @@ jobs:
         with:
           script: |
             github.rest.issues.createComment({
-              body: `
-                Rebase a bootc host onto this branch:
+            body: `
+            Rebase a bootc host onto this branch:
 
-                \`\`\`ruby
-                sudo bootc switch --apply ghcr.io/ngarside/server:${process.env.TAG}
-                \`\`\`
+            \`\`\`ruby
+            sudo bootc switch --apply ghcr.io/ngarside/server:${process.env.TAG}
+            \`\`\`
 
-                Update a bootc host which is already based on an earlier version of this branch:
+            Update a bootc host which is already based on an earlier version of this branch:
 
-                \`\`\`ruby
-                sudo bootc update --apply
-                \`\`\`
+            \`\`\`ruby
+            sudo bootc update --apply
+            \`\`\`
 
-                The \`--apply\` option will automatically reboot; omit if you want to manually reboot.
-              `,
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+            The \`--apply\` option will automatically reboot; omit if you want to manually reboot.
+            `,
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
             })
