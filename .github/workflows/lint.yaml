@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v5
 
-      - name: check
+      - name: Run checks
         uses: hadolint/hadolint-action@v3.3.0
         with:
           config: .hadolint
@@ -25,31 +25,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v5
 
-      - name: install
+      - name: Install dependencies
         run: pip install uv
 
-      - name: check
+      - name: Run checks
         run: uv run ruff check
 
   shellcheck:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v5
 
-      - name: check
+      - name: Run checks
         run: git ls-files | grep '\.sh$' | xargs shellcheck --external-sources
+
+  trivy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Run checks
+        run: >-
+          podman run --volume .:/target:ro docker.io/aquasec/trivy
+          repo --scanners misconfig /target
 
   yamllint:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v5
 
-      - name: check
+      - name: Run checks
         run: yamllint .
