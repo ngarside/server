@@ -11,12 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     permissions: {pull-requests: write}
     steps:
-      - uses: actions/github-script@v8
+
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install dependencies
+        run: pip install uv
+
+      - name: Generate tag
+        run: echo "TAG=$(uv run scripts/src/tagify.py .)" >> $GITHUB_ENV
+
+      - name: Write comment
+        uses: actions/github-script@v8
         with:
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
+              body: 'To rebase a bootc host onto this branch run: `sudo bootc switch --apply ghcr.io/ngarside/server:$TAG`'
             })
