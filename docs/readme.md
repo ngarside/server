@@ -1,8 +1,8 @@
 <!-- This is free and unencumbered software released into the public domain -->
 
-# <p align=center>Architecture Decision Records
+# <p align=center>Documentation
 
-Historical archive of architecture decisions.
+Miscellaneous project documentation. Notably this includes architecture decision records.
 
 # <p align=center>References
 
