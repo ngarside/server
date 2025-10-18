@@ -1,5 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
+name: comment
+
 on:
   issues:
     types: [opened]
