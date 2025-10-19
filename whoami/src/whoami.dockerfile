@@ -11,4 +11,4 @@ COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=whoami /whoami /usr/bin/whoami
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/whoami"]
-HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/health"]
