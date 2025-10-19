@@ -3,8 +3,6 @@
 
 set -euo pipefail
 
-mkdir --parents /home/containers/.config/systemd/user
-cp /git/bootc/ops/podman/prune.service /var/home/containers/.config/systemd/user/podman_prune.service
-
 cp /git/bootc/ops/podman/policy.json /etc/containers/policy.json
+cp /git/bootc/ops/podman/prune.service /usr/lib/systemd/system/podman_prune.service
 cp /git/bootc/ops/podman/storage.conf /etc/containers/storage.conf
