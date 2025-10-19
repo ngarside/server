@@ -9,7 +9,6 @@
 
 [Service]
 ExecStart=/usr/bin/podman system prune --external
-Group=containers
 Type=oneshot
 User=containers
 
