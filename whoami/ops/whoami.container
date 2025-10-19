@@ -6,7 +6,7 @@ Image=ghcr.io/ngarside/whoami:1.11.0.2
 Network=whoami.network:ip=10.20.0.2
 NoNewPrivileges=true
 ReadOnly=true
-UserNS=auto:size=1
+UserNS=auto:size=8
 
 [Service]
 Restart=always
