@@ -9,6 +9,7 @@ ContainerName=gitea
 Image=ghcr.io/ngarside/gitea:1.24.6.195
 Network=gitea.network:ip=10.14.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=gitea_global_secret
 Secret=gitea_internal_secret

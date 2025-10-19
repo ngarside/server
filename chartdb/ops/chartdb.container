@@ -5,6 +5,7 @@ ContainerName=chartdb
 Image=ghcr.io/ngarside/chartdb:1.16.0.17
 Network=chartdb.network:ip=10.16.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 

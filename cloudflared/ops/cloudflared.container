@@ -6,6 +6,7 @@ Exec=tunnel run --token-file /run/secrets/cloudflare_tunnel_token
 Image=ghcr.io/ngarside/cloudflared:2025.10.0.8
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=cloudflare_tunnel_token
 UserNS=auto:size=8

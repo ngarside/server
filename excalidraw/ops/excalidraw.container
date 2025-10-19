@@ -5,6 +5,7 @@ ContainerName=excalidraw
 Image=ghcr.io/ngarside/excalidraw:0.0.0.25
 Network=excalidraw.network:ip=10.18.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 

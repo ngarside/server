@@ -7,6 +7,7 @@ Environment=PROXY_TLS=false
 Image=ghcr.io/ngarside/opencloud:3.5.0.23
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro

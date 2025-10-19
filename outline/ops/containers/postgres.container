@@ -8,6 +8,7 @@ Environment=POSTGRES_USER=outline
 Image=ghcr.io/ngarside/postgres:18.0.131
 Network=outline_internal.network:ip=10.19.0.3
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=outline_postgres_password
 StopSignal=SIGINT

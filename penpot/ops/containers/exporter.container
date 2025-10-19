@@ -12,6 +12,7 @@ Image=ghcr.io/ngarside/penpot-exporter:2.10.1.42
 Network=penpot_internal.network:ip=10.4.0.4
 Network=penpot_external.network:ip=10.3.0.7
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto
 

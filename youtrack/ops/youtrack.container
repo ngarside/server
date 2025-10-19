@@ -5,6 +5,7 @@ ContainerName=youtrack
 Image=docker.io/jetbrains/youtrack:2025.2.100871
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 Tmpfs=/opt/youtrack/temp:mode=1777
 UserNS=auto
