@@ -1,20 +1,5 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"customManagers": [
-		{
-			"autoReplaceStringTemplate": "{{{indentation}}}Image={{{depName}}}{{#if newValue}}:{{{newValue}}}{{/if}}{{#if newDigest}}@{{{newDigest}}}{{/if}}",
-			"customType": "regex",
-			"datasourceTemplate": "docker",
-			"managerFilePatterns": [
-				"/.*\\.container$/"
-			],
-			"matchStrings": [
-				"(?<indentation>\\n\\s*)Image\\s*=\\s*(?<depName>[a-zA-Z0-9/._-]+)(?::(?<currentValue>[a-zA-Z0-9._-]+))?(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
-			],
-			"matchStringsStrategy": "any",
-			"versioningTemplate": "docker"
-		}
-	],
 	"extends": [
 		"config:recommended"
 	],
