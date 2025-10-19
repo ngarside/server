@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: whoami
+
+on:
+  pull_request:
+    paths: ['**/whoami.yaml', 'whoami/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/whoami.yaml', 'whoami/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: whoami
+      path: whoami/src/whoami.dockerfile
