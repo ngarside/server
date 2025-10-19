@@ -4,7 +4,7 @@
 
 Containers are run using transient storage for their metadata.
 
-```sh
+```toml
 # /etc/containers/storage.conf
 
 [storage]
