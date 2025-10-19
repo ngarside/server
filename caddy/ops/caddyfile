@@ -88,7 +88,7 @@ memos.{$MACHINE_DOMAIN_ROOT} {
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.17.0.2:9200
+	reverse_proxy 10.17.0.2
 }
 
 outline.{$MACHINE_DOMAIN_ROOT} {
