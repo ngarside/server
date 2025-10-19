@@ -30,13 +30,13 @@ jobs:
             body: `
             Rebase a bootc host onto this branch:
 
-            \`\`\`ruby
+            \`\`\`sh
             sudo bootc switch --apply ghcr.io/ngarside/server:${process.env.TAG}
             \`\`\`
 
             Update a bootc host which is already based on an earlier version of this branch:
 
-            \`\`\`ruby
+            \`\`\`sh
             sudo bootc update --apply
             \`\`\`
 
