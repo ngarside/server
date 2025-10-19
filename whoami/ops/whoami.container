@@ -1,0 +1,16 @@
+# This is free and unencumbered software released into the public domain.
+
+[Container]
+ContainerName=whoami
+Image=ghcr.io/ngarside/whoami:1.11.0.2
+Network=whoami.network:ip=10.20.0.2
+NoNewPrivileges=true
+ReadOnly=true
+UserNS=auto:size=8
+
+[Service]
+Restart=always
+TimeoutStartSec=9000
+
+[Install]
+WantedBy=default.target
