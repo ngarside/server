@@ -24,6 +24,7 @@ Exec=worker
 Image=ghcr.io/ngarside/authentik:2025.8.4.4
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret

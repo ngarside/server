@@ -17,6 +17,7 @@ Environment=PENPOT_PUBLIC_URI=https://penpot.usani.uk
 Image=ghcr.io/ngarside/penpot-frontend:2.10.1.6
 Network=penpot_external.network:ip=10.3.0.9
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
