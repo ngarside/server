@@ -4,3 +4,4 @@
 set -euo pipefail
 
 cp /git/bootc/ops/podman/policy.json /etc/containers/policy.json
+cp /git/bootc/ops/podman/storage.conf /etc/containers/storage.conf
