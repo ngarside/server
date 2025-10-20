@@ -46,6 +46,7 @@ dnf --assumeyes remove \
 	sudo-python-plugin \
 	tiwilink-firmware \
 	toolbox \
-	nvidia-gpu-firmware
+	nvidia-gpu-firmware \
+	xkeyboard-config
 
 dnf clean all
