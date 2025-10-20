@@ -32,6 +32,7 @@ dnf --assumeyes remove \
 	nxpwireless-firmware \
 	flatpak-session-helper \
 	fonts-filesystem \
+	gsettings-desktop-schemas \
 	NetworkManager-cloud-setup \
 	NetworkManager-tui \
 	ntfs* \
