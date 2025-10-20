@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: fossflow
+
+on:
+  pull_request:
+    paths: ['**/fossflow.yaml', 'fossflow/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/fossflow.yaml', 'fossflow/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: fossflow
+      path: fossflow/src/fossflow.dockerfile

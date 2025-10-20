@@ -1,0 +1,16 @@
+# This is free and unencumbered software released into the public domain.
+
+# When running containers using transient storage, orphaned layers will be left
+# on disk after a reboot. It is therefore necessary to manually clean up old
+# layers on startup.
+# https://docs.podman.io/en/stable/markdown/podman-system-prune.1.html#external
+
+[Unit]
+
+[Service]
+ExecStart=/usr/bin/podman system prune --external
+Type=oneshot
+User=containers
+
+[Install]
+WantedBy=default.target

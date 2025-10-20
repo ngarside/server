@@ -5,6 +5,7 @@ ContainerName=fossflow
 Image=ghcr.io/ngarside/fossflow:0.0.0.193
 Network=fossflow.network:ip=10.1.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 

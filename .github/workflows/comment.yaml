@@ -1,0 +1,48 @@
+# This is free and unencumbered software released into the public domain.
+
+name: comment
+
+on:
+  pull_request:
+    branches: [master]
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    permissions: {pull-requests: write}
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install dependencies
+        run: pip install uv
+
+      - name: Generate tag
+        run: echo "TAG=$(uv run scripts/src/tagify.py .)" >> $GITHUB_ENV
+
+      - name: Write comment
+        uses: actions/github-script@v8
+        with:
+          script: |
+            github.rest.issues.createComment({
+            body: `
+            Rebase a bootc host onto this branch:
+
+            \`\`\`sh
+            sudo bootc switch --apply ghcr.io/ngarside/server:${process.env.TAG}
+            \`\`\`
+
+            Update a bootc host which is already based on an earlier version of this branch:
+
+            \`\`\`sh
+            sudo bootc update --apply
+            \`\`\`
+
+            The \`--apply\` option will automatically reboot; omit if you want to manually reboot.
+            `,
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            })

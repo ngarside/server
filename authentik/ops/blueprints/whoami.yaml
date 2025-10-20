@@ -1,0 +1,43 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - WhoAmI
+entries:
+
+  # Provider
+  - id: custom-whoami-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://whoami.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: WhoAmI Provider
+
+  # Application
+  - id: custom-whoami-application
+    model: authentik_core.application
+    identifiers:
+      slug: whoami
+    attrs:
+      icon: whoami.png
+      name: WhoAmI
+      provider: !KeyOf custom-whoami-provider
+
+  # Group
+  - id: custom-whoami-group
+    model: authentik_core.group
+    identifiers:
+      name: WhoAmI Group
+
+  # Binding
+  - id: custom-whoami-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-whoami-group
+      order: 0
+      target: !KeyOf custom-whoami-application

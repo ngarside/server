@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: vector_privileged
+
+on:
+  pull_request:
+    paths: ['**/vector.yaml', 'vector/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/vector.yaml', 'vector/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: vector-privileged
+      path: vector/src/privileged.dockerfile
