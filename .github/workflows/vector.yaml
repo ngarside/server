@@ -18,7 +18,6 @@ jobs:
       name: vector-privileged
       path: vector/src/privileged.dockerfile
 
-jobs:
   vector_unprivileged:
     uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
