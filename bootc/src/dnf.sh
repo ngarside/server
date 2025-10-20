@@ -23,6 +23,7 @@ dnf --assumeyes remove \
 	exfatprogs \
 	f2fs* \
 	fedora-repos-archive \
+	hwdata \
 	logrotate \
 	mt7xxx-firmware \
 	nano \
