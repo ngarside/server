@@ -47,6 +47,11 @@ dnf --assumeyes remove \
 	tiwilink-firmware \
 	toolbox \
 	nvidia-gpu-firmware \
-	xkeyboard-config
+	xkeyboard-config \
+	bind-utils \
+	slang \
+	newt \
+	libjcat \
+	json-glib
 
 dnf clean all
