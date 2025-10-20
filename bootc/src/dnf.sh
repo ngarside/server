@@ -51,6 +51,7 @@ dnf --assumeyes remove \
 	bind-utils \
 	slang \
 	newt \
-	libjcat
+	libjcat \
+	json-glib
 
 dnf clean all
