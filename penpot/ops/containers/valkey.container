@@ -3,6 +3,7 @@
 [Container]
 ContainerName=penpot_valkey
 Image=ghcr.io/ngarside/valkey:8.1.4.147
+Memory=8g
 Network=penpot_internal.network:ip=10.4.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
