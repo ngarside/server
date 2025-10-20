@@ -3,6 +3,7 @@
 [Container]
 ContainerName=adguardhome
 Image=ghcr.io/ngarside/adguardhome:0.107.67.340
+Memory=8g
 Network=adguardhome.network:ip=10.2.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
