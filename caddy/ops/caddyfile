@@ -39,15 +39,15 @@
 }
 
 * {
+	import common
+
 	@root host {file./run/secrets/machine_domain_root}
 	handle @root {
-		import common
 		reverse_proxy 10.8.0.3
 	}
 
 	@adguardhome host adguardhome.{file./run/secrets/machine_domain_root}
 	handle @adguardhome {
-		import common
 		route {
 			import authentik_forward_auth
 			reverse_proxy 10.2.0.2
@@ -56,7 +56,6 @@
 
 	@chartdb host chartdb.{file./run/secrets/machine_domain_root}
 	handle @chartdb {
-		import common
 		route {
 			import authentik_forward_auth
 			reverse_proxy 10.16.0.2
@@ -65,7 +64,6 @@
 
 	@excalidraw host excalidraw.{file./run/secrets/machine_domain_root}
 	handle @excalidraw {
-		import common
 		route {
 			import authentik_forward_auth
 			reverse_proxy 10.18.0.2
@@ -74,7 +72,6 @@
 
 	@fossflow host fossflow.{file./run/secrets/machine_domain_root}
 	handle @fossflow {
-		import common
 		route {
 			import authentik_forward_auth
 			reverse_proxy 10.1.0.2
@@ -83,49 +80,41 @@
 
 	@gitea host gitea.{file./run/secrets/machine_domain_root}
 	handle @gitea {
-		import common
 		reverse_proxy 10.14.0.2
 	}
 
 	@jellyfin host jellyfin.{file./run/secrets/machine_domain_root}
 	handle @jellyfin {
-		import common
 		reverse_proxy 10.11.0.2:8096
 	}
 
 	@memos host memos.{file./run/secrets/machine_domain_root}
 	handle @memos {
-		import common
 		reverse_proxy 10.6.0.2
 	}
 
 	@opencloud host opencloud.{file./run/secrets/machine_domain_root}
 	handle @opencloud {
-		import common
 		reverse_proxy 10.17.0.2
 	}
 
 	@outline host outline.{file./run/secrets/machine_domain_root}
 	handle @outline {
-		import common
 		reverse_proxy 10.10.0.2
 	}
 
 	@penpot host penpot.{file./run/secrets/machine_domain_root}
 	handle @penpot {
-		import common
 		reverse_proxy 10.3.0.9:8080
 	}
 
 	@vaultwarden host vaultwarden.{file./run/secrets/machine_domain_root}
 	handle @vaultwarden {
-		import common
 		reverse_proxy 10.12.0.2
 	}
 
 	@whoami host whoami.{file./run/secrets/machine_domain_root}
 	handle @whoami {
-		import common
 		route {
 			import authentik_forward_auth
 			reverse_proxy 10.20.0.2
@@ -134,7 +123,6 @@
 
 	@youtrack host youtrack.{file./run/secrets/machine_domain_root}
 	handle @youtrack {
-		import common
 		reverse_proxy 10.9.0.2:8080
 	}
 }
