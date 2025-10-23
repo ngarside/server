@@ -1,7 +1,7 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
 :80 {
-	@foo host usani.uk
+	@foo host {file./workspaces/Server/caddy/test/root}
 	handle @foo {
 		respond 202
 	}
