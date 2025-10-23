@@ -1,8 +1,5 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
-* {
-	@memos host memos.{file./workspaces/Server/caddy/test/root}
-	handle @memos {
-		respond 202
-	}
+:80 {
+	respond 200
 }
