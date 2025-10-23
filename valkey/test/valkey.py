@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, random, string, subprocess, time, valkey
+# This uses the Redis package, as opposed to the Valkey package, to ensure
+# compatibility as most applications are currently developed against Redis, not
+# Valkey.
+
+import os, pytest, random, redis, string, subprocess, time
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
@@ -18,7 +22,7 @@ def fixture():
 	subprocess.run(['podman', 'rm', '--force', name])
 
 def test_bytes():
-	session = valkey.Valkey(port=port)
+	session = redis.Redis(port=port)
 	session.set('foo', 'bar')
 	actual = session.get('foo')
 	assert actual == b'bar'
