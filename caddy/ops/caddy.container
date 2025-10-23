@@ -23,7 +23,7 @@ Network=whoami.network:ip=10.20.0.3
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
-Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
+Secret=machine_domain_root
 Secret=cloudflare_api_token
 UserNS=auto:size=8
 Volume=/etc/caddy:/etc/caddy:ro
