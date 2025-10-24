@@ -20,7 +20,7 @@ RUN apt-get --no-install-recommends --yes install bash-static
 
 FROM docker.io/busybox:1.37.0-musl AS busybox
 RUN mkdir /tmp/cp
-RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename {})"' \;
+RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename $1)"' shell {} \;
 
 FROM docker.io/alpine/git:2.49.1 AS git
 SHELL ["/bin/ash", "-c"]
