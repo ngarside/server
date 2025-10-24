@@ -9,7 +9,7 @@
 # https://stackoverflow.com/a/66823636
 
 FROM docker.io/gitea/gitea:1.24.6 AS gitea
-SHELL ["/bin/ash", "-c"]
+SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | head -n 1 >> /version
 RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
 RUN chmod +x gitea
@@ -40,7 +40,8 @@ FROM docker.io/debian:13.1 AS build
 COPY --from=git /version /version
 ENV NO_OPENSSL=1
 RUN apt-get update
-RUN apt-get --no-install-recommends --yes install autoconf build-essential ca-certificates gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
+RUN apt-get --no-install-recommends --yes install autoconf build-essential ca-certificates gettext \
+	git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
 WORKDIR /git
 RUN make configure
