@@ -5,4 +5,4 @@
 # before calling the original entrypoint.
 
 /usr/bin/configuration &
-/usr/bin/gitea "$@"
+/usr/bin/gitea --config /etc/gitea/app.ini "$@"
