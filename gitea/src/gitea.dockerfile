@@ -58,7 +58,7 @@ COPY --from=build /git/git /usr/bin/git
 COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=busybox /bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
-COPY --from=gitea /var/lib/gitea/gitea /usr/bin/gitea
+COPY --from=gitea /gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
 ENTRYPOINT ["/usr/bin/entrypoint"]
