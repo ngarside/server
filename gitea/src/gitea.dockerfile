@@ -23,7 +23,7 @@ RUN mkdir /tmp/cp
 RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename $1)"' shell {} \;
 
 FROM docker.io/alpine/git:2.49.1 AS git
-SHELL ["/bin/ash", "-c"]
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" >> /version
 
 FROM docker.io/alpine:3.22.2 AS headcheck
