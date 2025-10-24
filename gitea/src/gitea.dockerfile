@@ -63,7 +63,8 @@ COPY --from=gitea /gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
 ENTRYPOINT ["/usr/bin/entrypoint"]
+ENV GITEA_APP_INI=/etc/gitea/app.ini
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
-ENV HOME=/root
+ENV HOME=/var/lib/gitea/git
 ENV USER=root
 RUN ln -s /usr/bin /bin
