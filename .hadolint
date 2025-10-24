@@ -6,7 +6,9 @@ ignored:
   - DL3002
 
   # Pinned versions are unable to be updated by Renovate.
+  # https://github.com/hadolint/hadolint/wiki/dl3008
   # https://github.com/hadolint/hadolint/wiki/dl3018
+  - DL3008
   - DL3018
 
   # Incompatible with busybox's implementation of wget.
