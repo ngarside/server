@@ -7,7 +7,7 @@ RETRIES_MAX=60
 RETRIES_CURRENT=1
 while (( RETRIES_CURRENT <= RETRIES_MAX )); do
 	echo "[CONFIG] Sending HTTP request (attempt $RETRIES_CURRENT of $RETRIES_MAX)"
-	STATUS=$(curl --output /dev/null --silent --write-out "%{http_code}" 0.0.0.0)
+	STATUS=$(wget -qSO /dev/null 0.0.0.0 2>&1 | awk '/^  HTTP/{print $2}')
 	echo "[CONFIG] Received $STATUS status code"
 	if (( STATUS >= 200 && STATUS < 400 )); then
 		echo "[CONFIG] Code is successful, exiting loop"
