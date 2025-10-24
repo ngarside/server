@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/adguard/adguardhome:v0.107.67 AS adguardhome
+FROM docker.io/adguard/adguardhome:v0.107.68 AS adguardhome
 RUN chmod ugo=rx /opt/adguardhome/AdGuardHome
 
 FROM docker.io/alpine:3.22.2 AS headcheck
@@ -15,7 +15,7 @@ WORKDIR /opt/adguardhome
 ENTRYPOINT ["/usr/bin/adguardhome"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
 CMD [ \
-	"--config", "/etc/adguardhome/config.yml", \
+	"--config", "/etc/adguardhome/config.yaml", \
 	"--no-check-update", \
 	"--web-addr", "0.0.0.0:80", \
 	"--work-dir", "/opt/adguardhome" \

@@ -3,10 +3,13 @@
 [Container]
 ContainerName=opencloud
 Environment=OC_URL=https://opencloud.usani.uk
+Environment=PROXY_HTTP_ADDR=0.0.0.0:80
 Environment=PROXY_TLS=false
 Image=ghcr.io/ngarside/opencloud:3.5.0.23
+Memory=8g
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro

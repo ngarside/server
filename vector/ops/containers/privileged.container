@@ -4,8 +4,10 @@
 ContainerName=vector_privileged
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/vector-privileged:0.50.0.53
+Memory=8g
 Network=vector.network:ip=10.15.0.3
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 SecurityLabelDisable=true
 UserNS=auto

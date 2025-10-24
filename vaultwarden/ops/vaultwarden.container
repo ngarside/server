@@ -3,8 +3,10 @@
 [Container]
 ContainerName=vaultwarden
 Image=ghcr.io/ngarside/vaultwarden:1.34.3.19
+Memory=8g
 Network=vaultwarden.network:ip=10.12.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/var/data/vaultwarden/data:/data:U,Z

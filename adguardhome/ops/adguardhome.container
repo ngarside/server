@@ -2,9 +2,11 @@
 
 [Container]
 ContainerName=adguardhome
-Image=ghcr.io/ngarside/adguardhome:0.107.67.340
+Image=ghcr.io/ngarside/adguardhome:0.107.68.12
+Memory=8g
 Network=adguardhome.network:ip=10.2.0.2
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
 ReadOnly=true

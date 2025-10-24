@@ -8,24 +8,31 @@ Requires=authentik_valkey.container
 
 [Container]
 ContainerName=authentik_server
-Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
 Environment=AUTHENTIK_EMAIL__FROM=noreply@usani.uk
-Environment=AUTHENTIK_SECRET_KEY=4ecdPuxom7t70Z5ZN4gveo0hZDeDwAyz1TBn8tSiwlApsFmOqUNWX/r6TkF+ZgsAdD82NOwWweSfN3hc
+Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
+Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
+Environment=AUTHENTIK_EMAIL__USERNAME=file:///run/secrets/mailjet_smtp_username
+Environment=AUTHENTIK_LISTEN__HTTP=0.0.0.0:80
+Environment=AUTHENTIK_SECRET_KEY=file:///run/secrets/authentik_internal_secret
 Environment=AUTHENTIK_REDIS__HOST=10.7.0.2
 Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
+Environment=AUTHENTIK_POSTGRESQL__PASSWORD=file:///run/secrets/authentik_postgres_password
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
 Exec=server
-Image=ghcr.io/ngarside/authentik:2025.8.4.2
+Image=ghcr.io/ngarside/authentik:2025.8.4.4
+Memory=8g
 Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
 NoNewPrivileges=true
+PodmanArgs=--cpus=1
 ReadOnly=true
-Secret=authentik_postgres_password,type=env,target=AUTHENTIK_POSTGRESQL__PASSWORD
+Secret=authentik_internal_secret
+Secret=authentik_postgres_password
 Secret=gitea_oidc_secret
 Secret=machine_domain_root
-Secret=mailjet_smtp_password,type=env,target=AUTHENTIK_EMAIL__PASSWORD
-Secret=mailjet_smtp_username,type=env,target=AUTHENTIK_EMAIL__USERNAME
+Secret=mailjet_smtp_password
+Secret=mailjet_smtp_username
 Secret=outline_oidc_secret
 Secret=penpot_oidc_secret
 Secret=vaultwarden_oidc_secret
@@ -37,6 +44,7 @@ Volume=/etc/authentik/media:/media/public:ro
 [Service]
 Restart=always
 TimeoutStartSec=9000
+ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore authentik_internal_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore gitea_oidc_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore outline_oidc_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore penpot_oidc_secret -"

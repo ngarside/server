@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: caddy
+
+on:
+  pull_request:
+    paths: ['**/caddy.yaml', 'caddy/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/caddy.yaml', 'caddy/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: caddy
+      path: caddy/src/caddy.dockerfile

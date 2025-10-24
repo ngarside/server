@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: gitea
+
+on:
+  pull_request:
+    paths: ['**/gitea.yaml', 'gitea/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/gitea.yaml', 'gitea/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: gitea
+      path: gitea/src/gitea.dockerfile

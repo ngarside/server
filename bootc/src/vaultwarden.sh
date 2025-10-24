@@ -4,5 +4,4 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /git/vaultwarden/ops/vaultwarden.container /etc/containers/systemd/users/1001/vaultwarden.container
-cp /git/vaultwarden/ops/vaultwarden.network /etc/containers/systemd/users/1001/vaultwarden.network
+cp /git/vaultwarden/ops/* /etc/containers/systemd/users/1001/

@@ -12,8 +12,29 @@
 		max_size 100mb
 	}
 	tls {
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		dns cloudflare {file./run/secrets/cloudflare_api_token}
 		resolvers 1.1.1.1
+	}
+}
+
+(authentik_forward_auth) {
+	reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
+	forward_auth 10.8.0.3 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers {
+			X-Authentik-Email
+			X-Authentik-Entitlements
+			X-Authentik-Groups
+			X-Authentik-Jwt
+			X-Authentik-Meta-App
+			X-Authentik-Meta-Jwks
+			X-Authentik-Meta-Outpost
+			X-Authentik-Meta-Provider
+			X-Authentik-Meta-Version
+			X-Authentik-Name
+			X-Authentik-Uid
+			X-Authentik-Username
+		}
 	}
 }
 
@@ -23,101 +44,33 @@
 
 {$MACHINE_DOMAIN_ROOT} {
 	import common
-	reverse_proxy 10.8.0.3:9000
+	reverse_proxy 10.8.0.3
 }
 
 adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
-			uri /outpost.goauthentik.io/auth/caddy
-			copy_headers {
-				X-Authentik-Email
-				X-Authentik-Entitlements
-				X-Authentik-Groups
-				X-Authentik-Jwt
-				X-Authentik-Meta-App
-				X-Authentik-Meta-Jwks
-				X-Authentik-Meta-Outpost
-				X-Authentik-Meta-Provider
-				X-Authentik-Meta-Version
-				X-Authentik-Name
-				X-Authentik-Uid
-				X-Authentik-Username
-			}
-		}
+		import authentik_forward_auth
 		reverse_proxy 10.2.0.2
 	}
 }
 
 chartdb.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
-			uri /outpost.goauthentik.io/auth/caddy
-			copy_headers {
-				X-Authentik-Email
-				X-Authentik-Entitlements
-				X-Authentik-Groups
-				X-Authentik-Jwt
-				X-Authentik-Meta-App
-				X-Authentik-Meta-Jwks
-				X-Authentik-Meta-Outpost
-				X-Authentik-Meta-Provider
-				X-Authentik-Meta-Version
-				X-Authentik-Name
-				X-Authentik-Uid
-				X-Authentik-Username
-			}
-		}
+		import authentik_forward_auth
 		reverse_proxy 10.16.0.2
 	}
 }
 
 excalidraw.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
-			uri /outpost.goauthentik.io/auth/caddy
-			copy_headers {
-				X-Authentik-Email
-				X-Authentik-Entitlements
-				X-Authentik-Groups
-				X-Authentik-Jwt
-				X-Authentik-Meta-App
-				X-Authentik-Meta-Jwks
-				X-Authentik-Meta-Outpost
-				X-Authentik-Meta-Provider
-				X-Authentik-Meta-Version
-				X-Authentik-Name
-				X-Authentik-Uid
-				X-Authentik-Username
-			}
-		}
+		import authentik_forward_auth
 		reverse_proxy 10.18.0.2
 	}
 }
 
 fossflow.{$MACHINE_DOMAIN_ROOT} {
 	route {
-		reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
-		forward_auth 10.8.0.3:9000 {
-			uri /outpost.goauthentik.io/auth/caddy
-			copy_headers {
-				X-Authentik-Email
-				X-Authentik-Entitlements
-				X-Authentik-Groups
-				X-Authentik-Jwt
-				X-Authentik-Meta-App
-				X-Authentik-Meta-Jwks
-				X-Authentik-Meta-Outpost
-				X-Authentik-Meta-Provider
-				X-Authentik-Meta-Version
-				X-Authentik-Name
-				X-Authentik-Uid
-				X-Authentik-Username
-			}
-		}
+		import authentik_forward_auth
 		reverse_proxy 10.1.0.2
 	}
 }
@@ -135,11 +88,11 @@ memos.{$MACHINE_DOMAIN_ROOT} {
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.17.0.2:9200
+	reverse_proxy 10.17.0.2
 }
 
 outline.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.10.0.2:8080
+	reverse_proxy 10.10.0.2
 }
 
 penpot.{$MACHINE_DOMAIN_ROOT} {
@@ -152,4 +105,11 @@ vaultwarden.{$MACHINE_DOMAIN_ROOT} {
 
 youtrack.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.9.0.2:8080
+}
+
+whoami.{$MACHINE_DOMAIN_ROOT} {
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.20.0.2
+	}
 }
