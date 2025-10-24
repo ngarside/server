@@ -7,7 +7,7 @@ Scripts to build an installable ISO based on the custom [bootc](../bootc) contai
 # <p align=center>References
 
 - [github.com/osbuild/bootc-image-builder](https://github.com/osbuild/bootc-image-builder)
-- [osbuild.org/](https://osbuild.org)
+- [osbuild.org](https://osbuild.org)
 
 # <p align=center>License
 
