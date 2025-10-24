@@ -15,8 +15,8 @@ RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /versi
 RUN chmod +x gitea
 
 FROM docker.io/debian:13.1 AS bash
-RUN apt update
-RUN apt --yes install bash-static
+RUN apt-get update
+RUN apt-get --yes install bash-static
 
 FROM docker.io/busybox:1.37.0-musl AS busybox
 RUN mkdir /tmp/cp
@@ -39,8 +39,8 @@ RUN chmod +x /usr/bin/entrypoint
 FROM docker.io/debian:13.1 AS build
 COPY --from=git /version /version
 ENV NO_OPENSSL=1
-RUN apt update
-RUN apt --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
+RUN apt-get update
+RUN apt-get --yes install autoconf build-essential gettext git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
 WORKDIR /git
 RUN make configure
