@@ -9,7 +9,7 @@
 # https://stackoverflow.com/a/66823636
 
 FROM docker.io/gitea/gitea:1.24.6 AS gitea
-SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
+SHELL ["/usr/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } >> /version
 RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
 RUN chmod +x gitea
@@ -23,7 +23,7 @@ RUN mkdir /tmp/cp
 RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename $1)"' shell {} \;
 
 FROM docker.io/alpine/git:2.49.1 AS git
-SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
+SHELL ["/usr/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" >> /version
 
 FROM docker.io/alpine:3.22.2 AS headcheck
