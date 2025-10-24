@@ -43,6 +43,7 @@ dnf --assumeyes remove \
 	python3-libs \
 	rpm-ostree* \
 	samba* \
+	sg3_utils* \
 	sudo-python-plugin \
 	tiwilink-firmware \
 	toolbox \
