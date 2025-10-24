@@ -3,7 +3,6 @@
 # This file downloads the Gitea release as it is statically compiled, whereas
 # the Docker release is dynamically compiled. The Docker image is still
 # referenced to support automated dependency updates.
-# https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
 # Files are sometimes copied to a '/tmp/cp' folder to preserve symlinks
 # when copying between stages.
