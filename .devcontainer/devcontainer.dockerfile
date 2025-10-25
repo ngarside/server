@@ -6,6 +6,7 @@ FROM quay.io/fedora/fedora:43
 RUN << EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
 		caddy fuse-overlayfs git go-task podman python3-pip
+	# dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
 EOF
 
@@ -20,8 +21,9 @@ EOF
 # - https://github.com/containers/image_build/tree/main/podman
 # - https://redhat.com/en/blog/podman-inside-container
 RUN << EOF
-	echo "root:10000:5000" > /etc/subgid
-	echo "root:10000:5000" > /etc/subuid
+	echo "dev:10000:5000" > /etc/subgid
+	echo "dev:10000:5000" > /etc/subuid
+	rpm --restore shadow-utils
 	cat > /etc/containers/containers.conf <<- 'INR'
 		[containers]
 		cgroupns = "host"

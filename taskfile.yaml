@@ -12,7 +12,7 @@ tasks:
 
   build:
     cmd: >-
-      podman build
+      podman --storage-opt ignore_chown_errors=true build
       --format docker
       --file {{.service}}/src/{{.service}}.dockerfile
       --tag ghcr.io/ngarside/{{.service}}
