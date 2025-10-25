@@ -45,4 +45,5 @@ RUN << EOF
 	INR
 EOF
 
+# Finalise setup.
 USER dev
