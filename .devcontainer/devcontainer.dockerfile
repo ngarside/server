@@ -34,6 +34,6 @@ VOLUME /var/lib/containers
 
 # Setup rootless user.
 RUN << EOF
-	useradd dev
+	useradd --groups wheel dev
 EOF
 USER dev
