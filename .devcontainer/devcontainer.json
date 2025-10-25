@@ -3,10 +3,6 @@
 	"build": {
 		"dockerfile": "devcontainer.dockerfile"
 	},
-	"capAdd": [
-		"mknod",
-		"sys_admin"
-	],
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -18,6 +14,9 @@
 			]
 		}
 	},
+	"runArgs": [
+		"--device=/dev/fuse"
+	],
 	"securityOpt": [
 		"label=nested"
 	]
