@@ -3,9 +3,6 @@
 	"build": {
 		"dockerfile": "devcontainer.dockerfile"
 	},
-	"capAdd": [
-		"sys_admin"
-	],
 	"customizations": {
 		"vscode": {
 			"extensions": [
