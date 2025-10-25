@@ -15,8 +15,7 @@
 		}
 	},
 	"runArgs": [
-		"--device",
-		"/dev/fuse"
+		"--device=/dev/fuse"
 	],
 	"securityOpt": [
 		"label=nested"
