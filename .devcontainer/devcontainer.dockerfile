@@ -45,6 +45,5 @@ RUN << EOF
 		volumes = ["/proc:/proc"]
 	INR
 EOF
-VOLUME /var/lib/containers
 
 USER dev
