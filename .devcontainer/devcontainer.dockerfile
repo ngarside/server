@@ -14,8 +14,8 @@ EOF
 RUN << EOF
 	useradd --groups wheel dev
 	echo "dev:10000:5000" | tee /etc/subgid /etc/subuid
-	echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/dev
-	chmod 0440 /etc/sudoers.d/dev
+	echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudo
+	chmod 0440 /etc/sudoers.d/sudo
 EOF
 
 # Allow running podman within the container.
