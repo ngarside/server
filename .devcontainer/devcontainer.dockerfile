@@ -13,7 +13,9 @@ EOF
 # Setup rootless user.
 RUN << EOF
 	useradd --groups wheel dev
-	echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/dev
+	echo "dev:10000:5000" > /etc/subgid
+	echo "dev:10000:5000" > /etc/subuid
+	echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/dev
 	chmod 0440 /etc/sudoers.d/dev
 EOF
 
@@ -21,8 +23,6 @@ EOF
 # - https://github.com/containers/image_build/tree/main/podman
 # - https://redhat.com/en/blog/podman-inside-container
 RUN << EOF
-	echo "dev:10000:5000" > /etc/subgid
-	echo "dev:10000:5000" > /etc/subuid
 	rpm --restore shadow-utils
 	cat > /etc/containers/containers.conf <<- 'INR'
 		[containers]
