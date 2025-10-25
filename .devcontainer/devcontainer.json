@@ -4,7 +4,6 @@
 		"dockerfile": "devcontainer.dockerfile"
 	},
 	"capAdd": [
-		"mknod",
 		"sys_admin"
 	],
 	"customizations": {
