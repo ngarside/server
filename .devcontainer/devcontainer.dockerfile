@@ -6,7 +6,7 @@ FROM quay.io/fedora/fedora:43
 RUN << EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
 		caddy fuse-overlayfs git go-task podman python3-pip
-	# dnf clean all
+	dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
 EOF
 
