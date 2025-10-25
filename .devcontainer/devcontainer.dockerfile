@@ -35,5 +35,7 @@ VOLUME /var/lib/containers
 # Setup rootless user.
 RUN << EOF
 	useradd --groups wheel dev
+	echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/dev
+	chmod 0440 /etc/sudoers.d/dev
 EOF
 USER dev
