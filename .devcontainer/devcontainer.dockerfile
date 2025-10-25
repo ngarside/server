@@ -36,3 +36,4 @@ VOLUME /var/lib/containers
 RUN << EOF
 	useradd dev
 EOF
+USER dev
