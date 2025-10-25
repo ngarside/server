@@ -40,8 +40,13 @@ RUN << EOF
 	sudo -u dev mkdir --parents /home/dev/.config/containers
 	cat > /home/dev/.config/containers/containers.conf <<- 'INR'
 		[containers]
-		default_sysctls = []
 		volumes = ["/proc:/proc"]
+	INR
+	cat > /home/dev/.config/containers/storage.conf <<- 'INR'
+		[storage]
+		driver = "overlay"
+		[storage.options.overlay]
+		ignore_chown_errors = "true"
 	INR
 EOF
 
