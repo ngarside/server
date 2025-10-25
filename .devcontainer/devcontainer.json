@@ -14,11 +14,11 @@
 			]
 		}
 	},
-	"securityOpt": [
-		"label=nested"
-	],
 	"runArgs": [
 		"--device",
 		"/dev/fuse"
+	],
+	"securityOpt": [
+		"label=nested"
 	]
 }
