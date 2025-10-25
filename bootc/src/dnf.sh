@@ -11,6 +11,7 @@ dnf --assumeyes remove \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
 	atheros-firmware \
+	avahi \
 	bash-completion \
 	bind-utils \
 	bluez \
