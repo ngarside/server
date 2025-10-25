@@ -31,3 +31,8 @@ RUN << EOF
 	INR
 EOF
 VOLUME /var/lib/containers
+
+# Setup rootless user.
+RUN << EOF
+	useradd dev
+EOF
