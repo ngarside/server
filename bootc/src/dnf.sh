@@ -8,51 +8,52 @@ dnf --assumeyes install restic
 dnf --assumeyes remove \
 	adwaita-mono-fonts \
 	adwaita-sans-fonts \
-	atheros-firmware \
 	amd-gpu-firmware \
 	amd-ucode-firmware \
+	atheros-firmware \
 	bash-completion \
+	bind-utils \
 	bluez \
 	brcmfmac-firmware \
 	cirrus-audio-firmware \
 	cloud-utils-growpart \
 	console-login-helper-messages \
-	console-login-helper-messages-profile \
 	console-login-helper-messages-issuegen \
+	console-login-helper-messages-profile \
 	dosfs* \
 	exfatprogs \
 	f2fs* \
 	fedora-repos-archive \
+	flatpak-session-helper \
+	fonts-filesystem \
+	gawk-all-langpacks \
+	gsettings-desktop-schemas \
 	hwdata \
+	json-glib \
+	libjcat \
 	logrotate \
 	mt7xxx-firmware \
 	nano \
 	nano-default-editor \
-	nilfs* \
-	nxpwireless-firmware \
-	flatpak-session-helper \
-	fonts-filesystem \
-	gsettings-desktop-schemas \
 	NetworkManager-cloud-setup \
 	NetworkManager-tui \
+	newt \
+	nilfs* \
 	ntfs* \
-	qcom-wwan-firmware \
-	qemu-user-static* \
+	nvidia-gpu-firmware \
+	nxpwireless-firmware \
 	python-pip-wheel \
 	python3 \
 	python3-libs \
+	qcom-wwan-firmware \
+	qemu-user-static* \
 	rpm-ostree* \
 	samba* \
 	sg3_utils* \
+	slang \
 	sudo-python-plugin \
 	tiwilink-firmware \
 	toolbox \
-	nvidia-gpu-firmware \
-	xkeyboard-config \
-	bind-utils \
-	slang \
-	newt \
-	libjcat \
-	json-glib
+	xkeyboard-config
 
 dnf clean all
