@@ -25,6 +25,7 @@ dnf --assumeyes remove \
 	exfatprogs \
 	f2fs* \
 	fedora-repos-archive \
+	flashrom \
 	flatpak-session-helper \
 	fonts-filesystem \
 	gawk-all-langpacks \
