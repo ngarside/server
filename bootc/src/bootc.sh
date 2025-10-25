@@ -9,7 +9,7 @@ cp /git/bootc/ops/kernel/vconsole.conf /etc/vconsole.conf
 
 cp /git/bootc/ops/kernel/sysctl.conf /etc/sysctl.d/0-server.conf
 
-cp /git/bootc/ops/kernel/kargs.toml /usr/lib/bootc/kargs.d/kargs.toml
+# cp /git/bootc/ops/kernel/kargs.toml /usr/lib/bootc/kargs.d/kargs.toml
 
 cp /git/bootc/ops/users/subuid.txt /etc/subuid
 
