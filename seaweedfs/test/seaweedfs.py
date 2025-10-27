@@ -3,28 +3,32 @@
 
 import contextlib, os, psycopg, pytest, random, string, subprocess, time, io, boto3
 
+BUCKET_NAME = "my-bucket"
+
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	global session
 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1025, 65536)
+	port = 8333
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', name, '--publish',
 		f'{port}:8333', '--pull', 'never', f'ghcr.io/ngarside/seaweedfs:{tag}',
 		'server', '-s3',
 	])
-	# for _ in range(100):
-	# 	try:
-	# 		session = psycopg.connect(
-	# 			host='localhost',
-	# 			port=port,
-	# 			user='postgres',
-	# 			password='postgres',
-	# 		)
-	# 	except:
-	# 		time.sleep(0.1)
-	time.sleep(10)
+	for _ in range(100):
+		try:
+			s3_client = boto3.client(
+				"s3",
+				aws_access_key_id="",
+				aws_secret_access_key="",
+				endpoint_url=f'http://localhost:{port}',
+			)
+			s3_client.create_bucket(Bucket=BUCKET_NAME)
+		except:
+			time.sleep(1)
+	# time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', name])
 
