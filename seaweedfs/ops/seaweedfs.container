@@ -1,0 +1,22 @@
+# This is free and unencumbered software released into the public domain.
+
+[Container]
+ContainerName=seaweedfs
+Exec=server -dir=/data -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
+Image=ghcr.io/ngarside/seaweedfs:0.25.2.12
+Memory=8g
+Network=seaweedfs.network:ip=10.21.0.2
+NoNewPrivileges=true
+PodmanArgs=--cpus=1
+ReadOnly=true
+UserNS=auto:size=8
+Volume=/etc/seaweedfs:/etc/seaweedfs:ro
+Volume=/var/data/seaweedfs/data:/data:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=9000
+ExecStartPre=mkdir --parents /var/data/seaweedfs/data
+
+[Install]
+WantedBy=default.target
