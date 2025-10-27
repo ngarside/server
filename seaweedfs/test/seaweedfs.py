@@ -1,57 +1,51 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import boto3, os, pytest, random, string, subprocess, time
+import boto3, os, pytest, random, subprocess, time
 
-BUCKET_NAME = "my-bucket"
+BUCKET_NAME = 'my-bucket'
+
+name, port = random.sample(range(1025, 65536), 2)
+port = 8333
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
-	global session
-	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
-	port = random.randrange(1025, 65536)
-	port = 8333
+	global client
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', name, '--publish',
+		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port}:8333', '--pull', 'never', f'ghcr.io/ngarside/seaweedfs:{tag}',
 		'server', '-s3',
 	])
 	for _ in range(100):
 		try:
-			s3_client = boto3.client(
-				"s3",
-				aws_access_key_id="",
-				aws_secret_access_key="",
+			client = boto3.client(
+				's3',
+				aws_access_key_id='',
+				aws_secret_access_key='',
 				endpoint_url=f'http://localhost:{port}',
 			)
-			s3_client.create_bucket(Bucket=BUCKET_NAME)
+			client.create_bucket(Bucket=BUCKET_NAME)
 		except:
 			time.sleep(1)
 	yield
-	subprocess.run(['podman', 'rm', '--force', name])
+	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
 def test_bucket_list():
-	s3_client = boto3.client(
-		"s3",
-		aws_access_key_id="",
-		aws_secret_access_key="",
-		endpoint_url="http://localhost:8333",
-	)
-	paginator = s3_client.get_paginator("list_buckets")
+	paginator = client.get_paginator('list_buckets')
 	response_iterator = paginator.paginate(
 		PaginationConfig={
-			"PageSize": 50,  # Adjust PageSize as needed.
-			"StartingToken": None,
+			'PageSize': 50,
+			'StartingToken': None,
 		}
 	)
 
 	buckets_found = False
 	for page in response_iterator:
-		if "Buckets" in page and page["Buckets"]:
+		if 'Buckets' in page and page['Buckets']:
 			buckets_found = True
-			for bucket in page["Buckets"]:
-				print(f"\t{bucket['Name']}")
+			for bucket in page['Buckets']:
+				print(f'\t{bucket['Name']}')
 
 	if not buckets_found:
-		print("No buckets found!")
+		print('No buckets found!')
