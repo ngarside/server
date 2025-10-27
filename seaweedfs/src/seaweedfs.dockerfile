@@ -7,13 +7,14 @@
 FROM docker.io/chrislusf/seaweedfs:3.99 AS seaweedfs
 
 FROM docker.io/curlimages/curl:8.16.0 AS curl
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
-RUN apk add grep
+RUN apk --no-cache add grep
 RUN curl --version | grep -oP '(?<=curl )\S+' >> /version
 
 FROM docker.io/alpine:3.22.2 AS healthcheck
 COPY --from=curl /version /version
-RUN apk add build-base
+RUN apk --no-cache add build-base
 RUN wget https://curl.se/download/curl-$(cat /version).tar.gz
 RUN mkdir curl
 RUN tar xzf curl-$(cat /version).tar.gz --directory /curl --strip-components 1
