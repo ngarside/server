@@ -3,38 +3,32 @@
 
 import contextlib, os, psycopg, pytest, random, string, subprocess, time, io, boto3
 
-# @pytest.fixture(autouse=True, scope='session')
-# def fixture():
-# 	global session
-# 	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
-# 	port = random.randrange(1025, 65536)
-# 	tag = os.getenv('TAG') or 'latest'
-# 	subprocess.run([
-# 		'podman', 'run', '--detach', '--env', 'POSTGRES_DB=postgres', '--env',
-# 		'POSTGRES_PASSWORD=postgres', '--env', 'POSTGRES_USER=postgres',
-# 		'--name', name, '--publish', f'{port}:5432', '--pull',
-# 		'never', f'ghcr.io/ngarside/seaweedfs:{tag}', 'server', '-s3',
-# 	])
-# 	for _ in range(100):
-# 		try:
-# 			session = psycopg.connect(
-# 				host='localhost',
-# 				port=port,
-# 				user='postgres',
-# 				password='postgres',
-# 			)
-# 		except:
-# 			time.sleep(0.1)
-# 	yield
-# 	subprocess.run(['podman', 'rm', '--force', name])
+@pytest.fixture(autouse=True, scope='session')
+def fixture():
+	global session
+	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
+	port = random.randrange(1025, 65536)
+	tag = os.getenv('TAG') or 'latest'
+	subprocess.run([
+		'podman', 'run', '--detach', '--name', name, '--publish',
+		f'{port}:8333', '--pull', 'never', f'ghcr.io/ngarside/seaweedfs:{tag}',
+		'server', '-s3',
+	])
+	# for _ in range(100):
+	# 	try:
+	# 		session = psycopg.connect(
+	# 			host='localhost',
+	# 			port=port,
+	# 			user='postgres',
+	# 			password='postgres',
+	# 		)
+	# 	except:
+	# 		time.sleep(0.1)
+	time.sleep(10)
+	yield
+	subprocess.run(['podman', 'rm', '--force', name])
 
-# def test_select():
-# 	with contextlib.closing(session) as conn:
-# 		with conn.cursor() as cur:
-# 			cur.execute('select 1')
-# 			assert cur.fetchone()[0] == 1
-
-if __name__ == "__main__":
+def test_bucket_list():
 	s3_client = boto3.client(
 		"s3",
 		aws_access_key_id="",
