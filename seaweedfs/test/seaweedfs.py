@@ -6,9 +6,7 @@ import boto3, os, pytest, random, subprocess, time
 name, port = random.sample(range(1025, 65536), 2)
 
 client = boto3.client(
-	's3',
-	aws_access_key_id='',
-	aws_secret_access_key='',
+	's3', aws_access_key_id='', aws_secret_access_key='',
 	endpoint_url=f'http://localhost:{port}',
 )
 
