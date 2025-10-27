@@ -17,7 +17,7 @@ def fixture():
 		f'{port}:8333', '--pull', 'never', f'ghcr.io/ngarside/seaweedfs:{tag}',
 		'server', '-s3',
 	])
-	for _ in range(100):
+	for _ in range(10):
 		try:
 			client = boto3.client(
 				's3',
