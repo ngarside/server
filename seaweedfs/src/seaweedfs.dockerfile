@@ -16,5 +16,5 @@ COPY --from=curl /curl /usr/bin/curl
 COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
-HEALTHCHECK CMD ["/usr/bin/curl", "http://0.0.0.0/status"]
+HEALTHCHECK CMD ["/usr/bin/curl", "--silent", "http://0.0.0.0/healthz"]
 VOLUME ["/tmp"]
