@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import contextlib, os, psycopg, pytest, random, string, subprocess, time, io, boto3
+import boto3, os, pytest, random, string, subprocess, time
 
 BUCKET_NAME = "my-bucket"
 
@@ -28,7 +28,6 @@ def fixture():
 			s3_client.create_bucket(Bucket=BUCKET_NAME)
 		except:
 			time.sleep(1)
-	# time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', name])
 
