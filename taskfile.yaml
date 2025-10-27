@@ -26,7 +26,7 @@ tasks:
   install:
     cmds:
       - pip install uv
-      - uv pip install --requirements pyproject.toml --system
+      - uv pip install --requirements pyproject.toml
     desc: Install development dependencies
     silent: true
 
@@ -52,7 +52,7 @@ tasks:
   run:
     cmd: >-
       podman run
-      --interactive --rm --tty
+      --interactive --publish-all --rm --tty
       --volume /etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
       ghcr.io/ngarside/{{.service}}
       {{.CLI_ARGS}}
