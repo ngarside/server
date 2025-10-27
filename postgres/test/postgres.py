@@ -23,6 +23,7 @@ def fixture():
 				user='postgres',
 				password='postgres',
 			)
+			break
 		except:
 			time.sleep(0.1)
 	yield
