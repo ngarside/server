@@ -2,17 +2,24 @@
 
 FROM docker.io/chrislusf/seaweedfs:3.99 AS seaweedfs
 
-FROM docker.io/alpine:3.22.2 AS curl
+FROM docker.io/curlimages/curl:8.16.0 AS curl
+USER root
+RUN apk add grep
+RUN curl --version | grep -oP '(?<=curl )\S+' >> /version
+
+FROM docker.io/alpine:3.22.2 AS healthcheck
+COPY --from=curl /version /version
 RUN apk add build-base
-RUN wget https://curl.se/download/curl-8.16.0.tar.gz
-RUN tar xzf curl-8.16.0.tar.gz
-WORKDIR /curl-8.16.0
+RUN wget https://curl.se/download/curl-$(cat /version).tar.gz
+RUN tar xzf curl-$(cat /version).tar.gz
+RUN mv /curl-$(cat /version) /curl
+WORKDIR /curl
 RUN LDFLAGS="-static" ./configure --enable-static --without-libpsl --without-ssl
 RUN make -j $(nproc) LDFLAGS="-static -all-static"
-RUN cp /curl-8.16.0/src/curl /curl
+RUN cp /curl/src/curl /curl
 
 FROM scratch
-COPY --from=curl /curl /usr/bin/curl
+COPY --from=healthcheck /curl /usr/bin/curl
 COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
