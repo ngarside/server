@@ -16,10 +16,9 @@ RUN mv /curl-$(cat /version) /curl
 WORKDIR /curl
 RUN LDFLAGS="-static" ./configure --enable-static --without-libpsl --without-ssl
 RUN make -j $(nproc) LDFLAGS="-static -all-static"
-RUN cp /curl/src/curl /curl
 
 FROM scratch
-COPY --from=healthcheck /curl /usr/bin/curl
+COPY --from=healthcheck /curl/src/curl /usr/bin/curl
 COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
