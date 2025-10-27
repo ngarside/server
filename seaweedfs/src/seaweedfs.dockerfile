@@ -20,7 +20,7 @@ RUN mkdir curl
 RUN tar xzf "curl-$(cat /version).tar.gz" --directory /curl --strip-components 1
 WORKDIR /curl
 RUN LDFLAGS="-static" ./configure --enable-static --without-libpsl --without-ssl
-RUN make -j $(nproc) LDFLAGS="-static -all-static"
+RUN make -j "$(nproc)" LDFLAGS="-static -all-static"
 RUN strip src/curl
 
 FROM scratch
