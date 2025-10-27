@@ -14,8 +14,8 @@ def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port}:8333', '--pull', 'never', '--read-only',
-		f'ghcr.io/ngarside/seaweedfs:{tag}', 'server', '-s3',
+		f'{port}:80', '--pull', 'never', '--read-only',
+		f'ghcr.io/ngarside/seaweedfs:{tag}', 'server', '-s3', '-s3.port=80',
 	])
 	for _ in range(10):
 		try:

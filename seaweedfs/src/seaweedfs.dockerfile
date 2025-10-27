@@ -4,6 +4,6 @@ FROM docker.io/chrislusf/seaweedfs:3.99 AS seaweedfs
 
 FROM scratch
 COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
-EXPOSE 8333
+EXPOSE 80
 ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
 VOLUME ["/tmp"]
