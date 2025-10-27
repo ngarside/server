@@ -3,8 +3,6 @@
 
 import boto3, os, pytest, random, subprocess, time
 
-BUCKET_NAME = 'my-bucket'
-
 name, port = random.sample(range(1025, 65536), 2)
 port = 8333
 
@@ -25,7 +23,7 @@ def fixture():
 	])
 	for _ in range(10):
 		try:
-			client.create_bucket(Bucket=BUCKET_NAME)
+			client.create_bucket(Bucket='test')
 			break
 		except:
 			time.sleep(1)
@@ -34,4 +32,4 @@ def fixture():
 
 def test_bucket_list():
 	bucket = client.list_buckets()['Buckets'][0]
-	assert bucket['Name'] == BUCKET_NAME
+	assert bucket['Name'] == 'test'
