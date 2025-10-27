@@ -4,7 +4,6 @@
 import boto3, os, pytest, random, subprocess, time
 
 name, port = random.sample(range(1025, 65536), 2)
-port = 8333
 
 client = boto3.client(
 	's3',
