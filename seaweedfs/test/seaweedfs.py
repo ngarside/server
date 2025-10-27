@@ -33,20 +33,5 @@ def fixture():
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
 def test_bucket_list():
-	paginator = client.get_paginator('list_buckets')
-	response_iterator = paginator.paginate(
-		PaginationConfig={
-			'PageSize': 50,
-			'StartingToken': None,
-		}
-	)
-
-	buckets_found = False
-	for page in response_iterator:
-		if 'Buckets' in page and page['Buckets']:
-			buckets_found = True
-			for bucket in page['Buckets']:
-				print(f'\t{bucket['Name']}')
-
-	if not buckets_found:
-		print('No buckets found!')
+	bucket = client.list_buckets()['Buckets'][0]
+	assert bucket['Name'] == BUCKET_NAME
