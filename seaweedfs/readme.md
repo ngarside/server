@@ -2,7 +2,7 @@
 
 # <p align=center>SeaweedFS
 
-A mirror of the official SeaweedFS container image.
+A hardened SeaweedFS container image.
 
 # <p align=center>References
 
