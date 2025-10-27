@@ -26,7 +26,7 @@ tasks:
   install:
     cmds:
       - pip install uv
-      - uv pip install --requirements pyproject.toml --system
+      - uv pip install --requirements pyproject.toml
     desc: Install development dependencies
     silent: true
 
