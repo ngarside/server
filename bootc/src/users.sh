@@ -3,8 +3,8 @@
 
 set -euo pipefail
 
-groupadd core
-adduser core --gid core --groups wheel
+groupadd nathan
+adduser nathan --gid nathan --groups wheel
 
 groupadd containers
 adduser containers --gid containers --groups systemd-journal
