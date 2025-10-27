@@ -2,7 +2,8 @@
 
 # <p align=center>SeaweedFS
 
-A hardened SeaweedFS container image.
+A hardened container image and associated scripts for running SeaweedFS via
+Podman and Systemd.
 
 # <p align=center>References
 
