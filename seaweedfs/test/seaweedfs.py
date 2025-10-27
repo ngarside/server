@@ -34,27 +34,12 @@ import contextlib, os, psycopg, pytest, random, string, subprocess, time, io, bo
 # 			cur.execute('select 1')
 # 			assert cur.fetchone()[0] == 1
 
-BUCKET_NAME = "your-bucket-name"
-OBJECT_KEY = "example/test_file.bin"
-
-# def upload_bytes(data: bytes):
-# 	s3 = boto3.client("s3")
-# 	file_obj = io.BytesIO(data)
-# 	s3.upload_fileobj(file_obj, BUCKET_NAME, OBJECT_KEY)
-# 	print(f"Uploaded {len(data)} bytes to s3://{BUCKET_NAME}/{OBJECT_KEY}")
-
-ENDPOINT_URL = "http://localhost:8333"  # SeaweedFS S3 API endpoint
-ACCESS_KEY = "your-access-key"           # configured in SeaweedFS (default: usually empty)
-SECRET_KEY = "your-secret-key"           # configured in SeaweedFS (default: usually empty)
-BUCKET_NAME = "my-bucket"
-OBJECT_KEY = "example/in_memory_test.bin"
-
 if __name__ == "__main__":
 	s3_client = boto3.client(
 		"s3",
-		endpoint_url=ENDPOINT_URL,
-		aws_access_key_id=ACCESS_KEY,
-		aws_secret_access_key=SECRET_KEY,
+		aws_access_key_id="",
+		aws_secret_access_key="",
+		endpoint_url="http://localhost:8333",
 	)
 	paginator = s3_client.get_paginator("list_buckets")
 	response_iterator = paginator.paginate(
@@ -73,11 +58,3 @@ if __name__ == "__main__":
 
 	if not buckets_found:
 		print("No buckets found!")
-
-	# Example byte array
-	# example_data = b"Hello, S3 in-memory upload and download!"
-
-	# upload_bytes(example_data)
-
-	# # downloaded_data = download_bytes()
-	# # print("Downloaded content:", downloaded_data.decode())
