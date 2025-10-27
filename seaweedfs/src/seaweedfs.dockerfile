@@ -6,7 +6,18 @@ FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
+FROM docker.io/alpine:3.22.2 AS curl
+RUN apk add build-base
+RUN wget https://curl.se/download/curl-8.16.0.tar.gz
+RUN tar xzf curl-8.16.0.tar.gz
+WORKDIR /curl-8.16.0
+RUN export CC=clang
+RUN LDFLAGS="-static" PKG_CONFIG="pkg-config --static" ./configure --enable-static --without-libpsl --without-ssl
+RUN make -j $(nproc) LDFLAGS="-static -all-static"
+RUN cp /curl-8.16.0/src/curl /curl
+
 FROM scratch
+COPY --from=curl /curl /usr/bin/curl
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
 EXPOSE 80
