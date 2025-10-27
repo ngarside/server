@@ -18,4 +18,4 @@ IP=$(virsh net-dhcp-leases default | grep --only-matching "192[^/]*")
 sudo -u "$SUDO_USER" ssh \
 	-o StrictHostKeyChecking=no \
 	-o UserKnownHostsFile=/dev/null \
-	"nathan@$IP" 2> /dev/null
+	"$SUDO_USER@$IP" 2> /dev/null
