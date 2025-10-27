@@ -11,8 +11,8 @@ FROM docker.io/alpine:3.22.2 AS healthcheck
 COPY --from=curl /version /version
 RUN apk add build-base
 RUN wget https://curl.se/download/curl-$(cat /version).tar.gz
-RUN tar xzf curl-$(cat /version).tar.gz
-RUN mv /curl-$(cat /version) /curl
+RUN mkdir curl
+RUN tar xzf curl-$(cat /version).tar.gz --directory /curl --strip-components 1
 WORKDIR /curl
 RUN LDFLAGS="-static" ./configure --enable-static --without-libpsl --without-ssl
 RUN make -j $(nproc) LDFLAGS="-static -all-static"
