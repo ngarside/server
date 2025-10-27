@@ -26,6 +26,7 @@ def fixture():
 				endpoint_url=f'http://localhost:{port}',
 			)
 			client.create_bucket(Bucket=BUCKET_NAME)
+			break
 		except:
 			time.sleep(1)
 	yield
