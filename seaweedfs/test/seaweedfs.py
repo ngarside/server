@@ -29,3 +29,7 @@ def fixture():
 def test_bucket_list():
 	bucket = client.list_buckets()['Buckets'][0]
 	assert bucket['Name'] == 'test'
+
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
+	assert status.returncode == 0
