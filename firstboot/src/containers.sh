@@ -28,5 +28,8 @@ echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
 # Outline.
 echo -n 'SECRETDATA' | podman secret create outline_oidc_uri -
 
+# Penpot.
+echo -n 'SECRETDATA' | podman secret create penpot_oidc_uri -
+
 # Physical / Virtual Machine.
 echo -n 'SECRETDATA' | podman secret create machine_domain_root -
