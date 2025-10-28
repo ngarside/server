@@ -25,5 +25,8 @@ echo -n 'SECRETDATA' | podman secret create mailjet_address_noreply -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
 
+# Outline.
+echo -n 'SECRETDATA' | podman secret create outline_oidc_uri -
+
 # Physical / Virtual Machine.
 echo -n 'SECRETDATA' | podman secret create machine_domain_root -
