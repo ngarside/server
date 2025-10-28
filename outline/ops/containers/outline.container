@@ -10,7 +10,6 @@ Requires=outline_valkey.container
 
 [Container]
 ContainerName=outline
-Environment=URL=https://outline.usani.uk
 Environment=PORT=80
 Environment=DATABASE_HOST=10.19.0.3
 Environment=DATABASE_NAME=outline
@@ -20,10 +19,8 @@ Environment=REDIS_URL=redis://10.19.0.4:6379
 Environment=FILE_STORAGE=local
 Environment=FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
 Environment=OIDC_CLIENT_ID=outline
-Environment=OIDC_ISSUER_URL=https://usani.uk/application/o/outline
 Environment=OIDC_DISPLAY_NAME=Authentik
 Environment=SMTP_SERVICE=Mailjet
-Environment=SMTP_FROM_EMAIL=noreply@usani.uk
 Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=debug
 Environment=DEFAULT_LANGUAGE=en_GB
@@ -34,12 +31,15 @@ Network=outline_internal.network:ip=10.19.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
+Secret=mailjet_address_noreply,type=env,target=SMTP_FROM_EMAIL
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
 Secret=mailjet_smtp_username,type=env,target=SMTP_USERNAME
 Secret=outline_common_secret,type=env,target=SECRET_KEY
 Secret=outline_cron_secret,type=env,target=UTILS_SECRET
 Secret=outline_oidc_secret,type=env,target=OIDC_CLIENT_SECRET
+Secret=outline_oidc_uri,type=env,target=OIDC_ISSUER_URL
 Secret=outline_postgres_password,type=env,target=DATABASE_PASSWORD
+Secret=outline_public_uri,type=env,target=URL
 User=root
 UserNS=auto:size=256
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z

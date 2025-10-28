@@ -6,7 +6,6 @@ Requires=penpot_valkey.container
 
 [Container]
 ContainerName=penpot_exporter
-Environment=PENPOT_PUBLIC_URI=https://penpot.usani.uk
 Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Image=ghcr.io/ngarside/penpot-exporter:2.10.1.42
 Memory=8g
@@ -15,6 +14,7 @@ Network=penpot_external.network:ip=10.3.0.7
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
+Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
 UserNS=auto
 
 [Service]
