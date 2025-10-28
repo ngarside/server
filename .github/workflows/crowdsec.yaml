@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: crowdsec
+
+on:
+  pull_request:
+    paths: ['**/crowdsec.yaml', 'crowdsec/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/crowdsec.yaml', 'crowdsec/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: crowdsec
+      path: crowdsec/src/crowdsec.dockerfile
