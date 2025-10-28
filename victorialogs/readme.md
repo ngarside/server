@@ -2,7 +2,7 @@
 
 # <p align=center>Victoria Logs
 
-A mirror of the official Victoria Logs container image.
+A hardened Victoria Logs container image.
 
 # <p align=center>References
 
