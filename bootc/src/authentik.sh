@@ -11,7 +11,6 @@ cp --recursive /git/authentik/ops/logos /etc/authentik/media
 
 cp /git/authentik/ops/containers/postgres.container /etc/containers/systemd/users/1001/authentik_postgres.container
 cp /git/authentik/ops/containers/server.container /etc/containers/systemd/users/1001/authentik_server.container
-cp /git/authentik/ops/containers/valkey.container /etc/containers/systemd/users/1001/authentik_valkey.container
 cp /git/authentik/ops/containers/worker.container /etc/containers/systemd/users/1001/authentik_worker.container
 
 cp /git/authentik/ops/networks/external.network /etc/containers/systemd/users/1001/authentik_external.network
