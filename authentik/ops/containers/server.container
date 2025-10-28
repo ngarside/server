@@ -2,9 +2,7 @@
 
 [Unit]
 After=authentik_postgres.container
-After=authentik_valkey.container
 Requires=authentik_postgres.container
-Requires=authentik_valkey.container
 
 [Container]
 ContainerName=authentik_server
@@ -14,7 +12,6 @@ Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
 Environment=AUTHENTIK_EMAIL__USERNAME=file:///run/secrets/mailjet_smtp_username
 Environment=AUTHENTIK_LISTEN__HTTP=0.0.0.0:80
 Environment=AUTHENTIK_SECRET_KEY=file:///run/secrets/authentik_internal_secret
-Environment=AUTHENTIK_REDIS__HOST=10.7.0.2
 Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__PASSWORD=file:///run/secrets/authentik_postgres_password
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
