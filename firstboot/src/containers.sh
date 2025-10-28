@@ -30,6 +30,7 @@ echo -n 'SECRETDATA' | podman secret create opencloud_public_uri -
 
 # Outline.
 echo -n 'SECRETDATA' | podman secret create outline_oidc_uri -
+echo -n 'SECRETDATA' | podman secret create outline_public_uri -
 
 # Penpot.
 echo -n 'SECRETDATA' | podman secret create penpot_oidc_uri -

@@ -10,7 +10,6 @@ Requires=outline_valkey.container
 
 [Container]
 ContainerName=outline
-Environment=URL=https://outline.usani.uk
 Environment=PORT=80
 Environment=DATABASE_HOST=10.19.0.3
 Environment=DATABASE_NAME=outline
@@ -40,6 +39,7 @@ Secret=outline_cron_secret,type=env,target=UTILS_SECRET
 Secret=outline_oidc_secret,type=env,target=OIDC_CLIENT_SECRET
 Secret=outline_oidc_uri,type=env,target=OIDC_ISSUER_URL
 Secret=outline_postgres_password,type=env,target=DATABASE_PASSWORD
+Secret=outline_public_uri,type=env,target=URL
 User=root
 UserNS=auto:size=256
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
