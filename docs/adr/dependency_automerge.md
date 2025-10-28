@@ -15,8 +15,8 @@ Documenting the rationale for which dependencies are automatically merged.
 	"matchCurrentVersion": "!/^0/",
 	"matchFileNames": [
 		"**/*.container",
-		"!**/authentik_server.container",
-		"!**/authentik_worker.container",
+		"!authentik/**/server.container",
+		"!authentik/**/worker.container",
 		"!**/cloudflared.container",
 		"!**/youtrack.container"
 	],
@@ -60,8 +60,8 @@ versions `< 1.0.0`.
 	"automerge": true,
 	"automergeStrategy": "squash",
 	"matchFileNames": [
-		"**/authentik_server.container",
-		"**/authentik_worker.container",
+		"authentik/**/server.container",
+		"authentik/**/worker.container",
 		"**/cloudflared.container",
 		"**/youtrack.container"
 	],
