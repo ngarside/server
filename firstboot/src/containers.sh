@@ -21,6 +21,7 @@ echo -n 'SECRETDATA' | podman secret create grafana_prometheus_uri -
 echo -n 'SECRETDATA' | podman secret create grafana_prometheus_username -
 
 # Mailjet.
+echo -n 'SECRETDATA' | podman secret create mailjet_address_noreply -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
 

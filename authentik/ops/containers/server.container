@@ -6,7 +6,7 @@ Requires=authentik_postgres.container
 
 [Container]
 ContainerName=authentik_server
-Environment=AUTHENTIK_EMAIL__FROM=noreply@usani.uk
+Environment=AUTHENTIK_EMAIL__FROM=file:///run/secrets/mailjet_address_noreply
 Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
 Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
 Environment=AUTHENTIK_EMAIL__USERNAME=file:///run/secrets/mailjet_smtp_username
@@ -28,6 +28,7 @@ Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret
 Secret=machine_domain_root
+Secret=mailjet_address_noreply
 Secret=mailjet_smtp_password
 Secret=mailjet_smtp_username
 Secret=outline_oidc_secret
