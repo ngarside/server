@@ -15,6 +15,7 @@ ENV GF_PATHS_LOGS=/var/log/grafana
 ENV GF_PATHS_PLUGINS=/var/lib/grafana/plugins
 ENV GF_PATHS_PROVISIONING=/etc/grafana/provisioning
 EXPOSE 3000
+VOLUME /tmp
 
 # FROM scratch
 # COPY --from=grafana /usr/share/grafana/bin/grafana /usr/bin/grafana
