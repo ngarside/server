@@ -15,7 +15,6 @@ Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
 Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
 Environment=PENPOT_DATABASE_URI=postgresql://10.4.0.3/penpot
 Environment=PENPOT_DATABASE_USERNAME=penpot
-Environment=PENPOT_PUBLIC_URI=https://penpot.usani.uk
 Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Environment=PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
 Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
@@ -30,6 +29,7 @@ ReadOnly=true
 Secret=penpot_oidc_secret,type=env,target=PENPOT_OIDC_CLIENT_SECRET
 Secret=penpot_oidc_uri,type=env,target=PENPOT_OIDC_BASE_URI
 Secret=penpot_postgres_password,type=env,target=PENPOT_DATABASE_PASSWORD
+Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]

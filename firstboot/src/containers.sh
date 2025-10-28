@@ -30,6 +30,7 @@ echo -n 'SECRETDATA' | podman secret create outline_oidc_uri -
 
 # Penpot.
 echo -n 'SECRETDATA' | podman secret create penpot_oidc_uri -
+echo -n 'SECRETDATA' | podman secret create penpot_public_uri -
 
 # Physical / Virtual Machine.
 echo -n 'SECRETDATA' | podman secret create machine_domain_root -
