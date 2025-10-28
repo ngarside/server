@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+name: grafana
+
+on:
+  pull_request:
+    paths: ['**/grafana.yaml', 'grafana/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['**/grafana.yaml', 'grafana/src/**']
+  workflow_dispatch:
+
+jobs:
+  container_build:
+    uses: ./.github/workflows/container_build.yaml
+    permissions: {contents: read, packages: write}
+    with:
+      name: grafana
+      path: grafana/src/grafana.dockerfile
