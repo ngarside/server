@@ -25,6 +25,9 @@ echo -n 'SECRETDATA' | podman secret create mailjet_address_noreply -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
 echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
 
+# Open Cloud.
+echo -n 'SECRETDATA' | podman secret create opencloud_public_uri -
+
 # Outline.
 echo -n 'SECRETDATA' | podman secret create outline_oidc_uri -
 
