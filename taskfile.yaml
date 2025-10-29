@@ -23,7 +23,11 @@ tasks:
         https://*) protocol=https ;;
         *) protocol=ssh ;;
       esac
-      gh auth login --git-protocol $protocol --hostname github.com {{.CLI_ARGS}}
+      gh auth login \
+        --git-protocol $protocol \
+        --hostname github.com \
+        --scopes read:packages \
+        {{.CLI_ARGS}}
     desc: Authenticate with the GitHub CLI
     silent: true
 
