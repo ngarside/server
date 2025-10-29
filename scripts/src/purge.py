@@ -93,7 +93,7 @@ if __name__ == '__main__':
 			print('\tPackage does not belong to any repository; skipping')
 			continue
 		if container.repository != 'ngarside/server':
-			print('\tNot under parent repository; skipping')
+			print('\tPackage belongs to another repository; skipping')
 			continue
 		versions = [to_version(v) for v in github_get(f'{container.url}/versions')]
 		if len(versions) == 1:
