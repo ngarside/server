@@ -1,8 +1,20 @@
 # This is free and unencumbered software released into the public domain.
 
 version: 3
-set:
-  - pipefail
+set: [pipefail]
+vars:
+  service:
+    sh: |
+      # If the 'service' variable has been set manually then use it as is.
+      if [ -n '{{.service}}' ]; then
+        echo '{{.service}}'
+
+      # If we're in a child directory then use the directory's name.
+      elif [ "$PWD" = "$(dirname '{{.USER_WORKING_DIR}}')" ]; then
+        echo "$(basename '{{.USER_WORKING_DIR}}')"
+
+      # Otherwise default to nothing and let the precondition catch it.
+      fi
 tasks:
 
   default:
