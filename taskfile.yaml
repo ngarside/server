@@ -1,8 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 version: 3
-set:
-  - pipefail
+set: [pipefail]
 tasks:
 
   default:
