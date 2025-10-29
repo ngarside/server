@@ -49,6 +49,13 @@ tasks:
         msg: task build service=<service>
     silent: true
 
+  clear:
+    cmds:
+      - podman kill --all
+      - podman image rm --all --force
+    desc: Kill all running containers and delete all local images
+    silent: true
+
   install:
     cmds:
       - pip install uv
