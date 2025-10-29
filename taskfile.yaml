@@ -26,7 +26,7 @@ tasks:
       gh auth login \
         --git-protocol $protocol \
         --hostname github.com \
-        --scopes read:packages \
+        --scopes delete:packages,read:packages \
         {{.CLI_ARGS}}
     desc: Authenticate with the GitHub CLI
     silent: true
@@ -76,7 +76,9 @@ tasks:
     silent: true
 
   purge:
-    cmd: python3 scripts/src/purge.py
+    cmd: |
+      export GITHUB_TOKEN=$(gh auth token)
+      python3 scripts/src/purge.py
     desc: Delete all unused container images from the GitHub registry
     silent: true
 
