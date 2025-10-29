@@ -58,7 +58,7 @@ tasks:
 
   pull:
     cmd: |
-      versions=$(gh api users/ngarside/packages/container/gitea/versions)
+      versions=$(gh api users/ngarside/packages/container/{{.service}}/versions)
       echo "$versions" | jq --raw-output '
         sort_by(.created_at)
         | map(select(.metadata.container.tags
