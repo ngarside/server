@@ -17,8 +17,8 @@ import dataclasses, datetime, dotenv, os, re, requests, slugify
 @dataclasses.dataclass
 class Container():
 	name: str
-	repository: str
-	versions: list[Version]
+	repository: str | None
+	url: str
 
 @dataclasses.dataclass
 class Version:
@@ -52,6 +52,12 @@ def is_semantic(tag):
 	match = re.match(r'^\d+(\.\d+)*$', tag)
 	return match is not None
 
+def to_container(container):
+	name = container['name']
+	repository = container['repository'].get('full_name') if 'repository' in container else None
+	url = container['url']
+	return Container(name, repository, url)
+
 def to_version(version):
 	hash = version['name'].split(':')[1][:7]
 	id = version['id']
@@ -75,22 +81,21 @@ if __name__ == '__main__':
 	print('\tRetrieving data from GitHub')
 	branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
 	branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
-	containers = github_get('https://api.github.com/users/ngarside/packages?package_type=container')
+	containers = [to_container(c) for c in github_get('https://api.github.com/users/ngarside/packages?package_type=container')]
 
 	print('\nDetected branches:')
 	for branch in branch_tags:
 		print(f'\t{branch}')
 
 	for container in containers:
-		print(f'\nProcessing {container['name']}:')
-		if 'repository' not in container:
+		print(f'\nProcessing {container.name}:')
+		if container.repository is None:
 			print('\tPackage does not belong to any repository; skipping')
 			continue
-		repository = container['repository']['full_name']
-		if repository != 'ngarside/server':
+		if container.repository != 'ngarside/server':
 			print('\tNot under parent repository; skipping')
 			continue
-		versions = [to_version(v) for v in github_get(f'{container['url']}/versions')]
+		versions = [to_version(v) for v in github_get(f'{container.url}/versions')]
 		if len(versions) == 1:
 			print('\tPackage only has one version; skipping')
 			continue
@@ -107,7 +112,7 @@ if __name__ == '__main__':
 					print('del  | missing branch', end='')
 				elif len(version.tags) == 0:
 					print('del  | untagged      ', end='')
-				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version.id}')
+				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container.name}/versions/{version.id}')
 			print(f' | {version.tags}')
 
 	print('\nPurging completed')
