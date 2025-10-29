@@ -17,6 +17,11 @@ vars:
       fi
 tasks:
 
+  auth:
+    cmd: gh auth login {{.CLI_ARGS}}
+    desc: Authenticates with the GitHub CLI
+    silent: true
+
   default:
     cmd: task --list-all
     desc: List all tasks
