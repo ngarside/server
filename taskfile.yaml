@@ -56,6 +56,16 @@ tasks:
     desc: Install development dependencies
     silent: true
 
+  pull:
+    cmd: |
+      gh api users/ngarside/packages/container/gitea/versions | jq --raw-output 'sort_by(.created_at) | map(select(.metadata.container.tags | any(test("^[\\d\\.]+$")))) | last | .metadata.container.tags | map(select(test("^[\\d\\.]+$"))) | first'
+      podman pull ghcr.io/ngarside/{{.service}}
+    desc: Pull the latest container for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task rebuild service=<service>
+    silent: true
+
   purge:
     cmd: python3 scripts/src/purge.py
     desc: Delete all unused container images from the GitHub registry
