@@ -39,12 +39,12 @@ def ensure_success(response):
 
 def github_delete(url):
 	headers = { 'Authorization': f'Bearer {token}' }
-	response = requests.delete(url, headers=headers)
+	response = requests.delete(f'https://api.github.com/{url}', headers=headers)
 	ensure_success(response)
 
 def github_get(url):
 	headers = { 'Authorization': f'Bearer {token}' }
-	response = requests.get(url, headers=headers)
+	response = requests.get(f'https://api.github.com/{url}', headers=headers)
 	ensure_success(response)
 	return response.json()
 
@@ -55,7 +55,7 @@ def is_semantic(tag):
 def to_container(container):
 	name = container['name']
 	repository = container['repository'].get('full_name') if 'repository' in container else None
-	url = container['url']
+	url = container['url'][len("https://api.github.com/"):]
 	return Container(name, repository, url)
 
 def to_version(version):
@@ -79,9 +79,9 @@ if __name__ == '__main__':
 		exit(1)
 
 	print('\tRetrieving data from GitHub')
-	branch_full = github_get('https://api.github.com/repos/ngarside/server/branches')
+	branch_full = github_get('repos/ngarside/server/branches')
 	branch_tags = [slugify.sanitize(branch['name']) for branch in branch_full]
-	containers = [to_container(c) for c in github_get('https://api.github.com/users/ngarside/packages?package_type=container')]
+	containers = [to_container(c) for c in github_get('users/ngarside/packages?package_type=container')]
 
 	print('\nDetected branches:')
 	for branch in branch_tags:
@@ -112,7 +112,7 @@ if __name__ == '__main__':
 					print('del  | missing branch', end='')
 				elif len(version.tags) == 0:
 					print('del  | untagged      ', end='')
-				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container.name}/versions/{version.id}')
+				github_delete(f'users/ngarside/packages/container/{container.name}/versions/{version.id}')
 			print(f' | {version.tags}')
 
 	print('\nPurging completed')
