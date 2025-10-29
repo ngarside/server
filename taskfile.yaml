@@ -58,7 +58,8 @@ tasks:
 
   pull:
     cmd: |
-      gh api users/ngarside/packages/container/gitea/versions | jq --raw-output '
+      versions=$(gh api users/ngarside/packages/container/gitea/versions)
+      echo "$versions" | jq --raw-output '
         sort_by(.created_at)
         | map(select(.metadata.container.tags
         | any(test("^[\\d\\.]+$"))))
