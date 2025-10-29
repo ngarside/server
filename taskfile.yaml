@@ -18,8 +18,13 @@ vars:
 tasks:
 
   auth:
-    cmd: gh auth login {{.CLI_ARGS}}
-    desc: Authenticates with the GitHub CLI
+    cmd: |
+      case "$(git remote get-url origin)" in
+        https://*) protocol=https ;;
+        *) protocol=ssh ;;
+      esac
+      gh auth login --git-protocol $protocol --hostname github.com {{.CLI_ARGS}}
+    desc: Authenticate with the GitHub CLI
     silent: true
 
   default:
