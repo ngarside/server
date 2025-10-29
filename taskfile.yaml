@@ -23,7 +23,11 @@ tasks:
         https://*) protocol=https ;;
         *) protocol=ssh ;;
       esac
-      gh auth login --git-protocol $protocol --hostname github.com {{.CLI_ARGS}}
+      gh auth login \
+        --git-protocol $protocol \
+        --hostname github.com \
+        --scopes read:packages \
+        {{.CLI_ARGS}}
     desc: Authenticate with the GitHub CLI
     silent: true
 
@@ -50,6 +54,25 @@ tasks:
       - pip install uv
       - uv pip install --requirements pyproject.toml
     desc: Install development dependencies
+    silent: true
+
+  pull:
+    cmd: |
+      versions=$(gh api users/ngarside/packages/container/{{.service}}/versions)
+      tag=$(echo "$versions" | jq --raw-output '
+        sort_by(.created_at)
+        | [.[].metadata.container.tags[]]
+        | map(select(test("^[\\d\\.]+$")))
+        | last
+      ')
+      image="ghcr.io/ngarside/{{.service}}:$tag"
+      podman pull "$image"
+      podman tag "$image" "ghcr.io/ngarside/{{.service}}:latest"
+      podman image rm "$image"
+    desc: Pull the latest container image for the given service
+    preconditions:
+      - sh: test -n '{{.service}}'
+        msg: task rebuild service=<service>
     silent: true
 
   purge:

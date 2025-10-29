@@ -5,7 +5,7 @@ FROM quay.io/fedora/fedora:43
 # Install dependencies.
 RUN << EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
-		caddy fuse-overlayfs git gh go-task podman python3-pip
+		caddy fuse-overlayfs git gh go-task jq podman python3-pip
 	dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
 EOF
