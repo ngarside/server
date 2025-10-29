@@ -61,8 +61,7 @@ tasks:
       versions=$(gh api users/ngarside/packages/container/{{.service}}/versions)
       tag=$(echo "$versions" | jq --raw-output '
         sort_by(.created_at)
-        | map(select(.metadata.container.tags
-        | any(test("^[\\d\\.]+$"))))
+        | map(select(.metadata.container.tags | any(test("^[\\d\\.]+$"))))
         | last
         | .metadata.container.tags
         | map(select(test("^[\\d\\.]+$")))
