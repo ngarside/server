@@ -90,25 +90,24 @@ if __name__ == '__main__':
 		if repository != 'ngarside/server':
 			print('\tNot under parent repository; skipping')
 			continue
-		versions = github_get(f'{container['url']}/versions')
+		versions = [to_version(v) for v in github_get(f'{container['url']}/versions')]
 		if len(versions) == 1:
 			print('\tPackage only has one version; skipping')
 			continue
 		for version in versions:
-			v2 = to_version(version)
-			print(f'\t{v2.hash} | ', end='')
-			if any(is_semantic(tag) for tag in v2.tags) and v2.updated > cutoff:
+			print(f'\t{version.hash} | ', end='')
+			if any(is_semantic(tag) for tag in version.tags) and version.updated > cutoff:
 				print('keep | recent semver ', end='')
-			elif any(tag in branch_tags for tag in v2.tags):
+			elif any(tag in branch_tags for tag in version.tags):
 				print('keep | active branch ', end='')
 			else:
-				if any(is_semantic(tag) for tag in v2.tags):
+				if any(is_semantic(tag) for tag in version.tags):
 					print('del  | legacy semver ', end='')
-				elif len(v2.tags) > 0:
+				elif len(version.tags) > 0:
 					print('del  | missing branch', end='')
-				elif len(v2.tags) == 0:
+				elif len(version.tags) == 0:
 					print('del  | untagged      ', end='')
-				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{v2.id}')
-			print(f' | {v2.tags}')
+				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version.id}')
+			print(f' | {version.tags}')
 
 	print('\nPurging completed')
