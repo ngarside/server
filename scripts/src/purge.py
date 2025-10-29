@@ -12,7 +12,20 @@
 
 # Run with 'python purge.py'
 
-import datetime, dotenv, os, re, requests, slugify
+import dataclasses, datetime, dotenv, os, re, requests, slugify
+
+@dataclasses.dataclass
+class Container():
+	name: str
+	repository: str
+	versions: list[Version]
+
+@dataclasses.dataclass
+class Version:
+	hash: str
+	id: str
+	tags: list[str]
+	updated: datetime.datetime
 
 def ensure_success(response):
 	if response.status_code < 300:
@@ -38,6 +51,13 @@ def github_get(url):
 def is_semantic(tag):
 	match = re.match(r'^\d+(\.\d+)*$', tag)
 	return match is not None
+
+def to_version(version):
+	hash = version['name'].split(':')[1][:7]
+	id = version['id']
+	tags = version['metadata']['container']['tags']
+	updated = datetime.datetime.fromisoformat(version['updated_at'])
+	return Version(hash, id, tags, updated)
 
 if __name__ == '__main__':
 	print('Initiating purge of GitHub containers')
@@ -75,22 +95,20 @@ if __name__ == '__main__':
 			print('\tPackage only has one version; skipping')
 			continue
 		for version in versions:
-			sha = version['name'].split(':')[1][:7]
-			print(f'\t{sha} | ', end='')
-			updated = datetime.datetime.fromisoformat(version['updated_at'])
-			tags = version['metadata']['container']['tags']
-			if any(is_semantic(tag) for tag in tags) and updated > cutoff:
+			v2 = to_version(version)
+			print(f'\t{v2.hash} | ', end='')
+			if any(is_semantic(tag) for tag in v2.tags) and v2.updated > cutoff:
 				print('keep | recent semver ', end='')
-			elif any(tag in branch_tags for tag in tags):
+			elif any(tag in branch_tags for tag in v2.tags):
 				print('keep | active branch ', end='')
 			else:
-				if any(is_semantic(tag) for tag in tags):
+				if any(is_semantic(tag) for tag in v2.tags):
 					print('del  | legacy semver ', end='')
-				elif len(tags) > 0:
+				elif len(v2.tags) > 0:
 					print('del  | missing branch', end='')
-				elif len(tags) == 0:
+				elif len(v2.tags) == 0:
 					print('del  | untagged      ', end='')
-				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{version['id']}')
-			print(f' | {tags}')
+				github_delete(f'https://api.github.com/users/ngarside/packages/container/{container['name']}/versions/{v2.id}')
+			print(f' | {v2.tags}')
 
 	print('\nPurging completed')
