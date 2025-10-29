@@ -17,6 +17,16 @@ vars:
       fi
 tasks:
 
+  auth:
+    cmd: |
+      case "$(git remote get-url origin)" in
+        https://*) protocol=https ;;
+        *) protocol=ssh ;;
+      esac
+      gh auth login --git-protocol $protocol --hostname github.com {{.CLI_ARGS}}
+    desc: Authenticate with the GitHub CLI
+    silent: true
+
   default:
     cmd: task --list-all
     desc: List all tasks
