@@ -21,6 +21,25 @@ tasks:
       - sh: test -n '{{.service}}'
         msg: task build service=<service>
     silent: true
+    vars:
+      service:
+        sh: |
+          # If the 'service' variable has been set manually then use it as is:
+          if [ -n '{{.service}}' ]
+          then
+            echo '{{.service}}'
+            exit
+          fi
+
+          # If we're in a child directory then use the directory's name:
+          if [ "$PWD" = "$(dirname '{{.USER_WORKING_DIR}}')" ]
+          then
+            echo "$(basename '{{.USER_WORKING_DIR}}')"
+            exit
+          fi
+
+          # Otherwise default to nothing and let the precondition catch it:
+          echo ''
 
   install:
     cmds:
