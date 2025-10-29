@@ -59,7 +59,7 @@ tasks:
   pull:
     cmd: |
       versions=$(gh api users/ngarside/packages/container/{{.service}}/versions)
-      echo "$versions" | jq --raw-output '
+      tag=$(echo "$versions" | jq --raw-output '
         sort_by(.created_at)
         | map(select(.metadata.container.tags
         | any(test("^[\\d\\.]+$"))))
@@ -67,8 +67,8 @@ tasks:
         | .metadata.container.tags
         | map(select(test("^[\\d\\.]+$")))
         | first
-      '
-      podman pull ghcr.io/ngarside/{{.service}}
+      ')
+      podman pull "ghcr.io/ngarside/{{.service}}:$tag"
     desc: Pull the latest container for the given service
     preconditions:
       - sh: test -n '{{.service}}'
