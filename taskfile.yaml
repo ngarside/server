@@ -68,7 +68,10 @@ tasks:
         | map(select(test("^[\\d\\.]+$")))
         | first
       ')
-      podman pull "ghcr.io/ngarside/{{.service}}:$tag"
+      image="ghcr.io/ngarside/{{.service}}:$tag"
+      podman pull "$image"
+      podman tag "$image" "ghcr.io/ngarside/{{.service}}:latest"
+      podman image rm "$image"
     desc: Pull the latest container for the given service
     preconditions:
       - sh: test -n '{{.service}}'
