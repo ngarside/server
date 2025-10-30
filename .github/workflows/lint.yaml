@@ -32,6 +32,7 @@ jobs:
         run: >-
           podman run --volume .:/target:ro --workdir /target
           docker.io/renovate/renovate renovate-config-validator
+          --strict renovate.json $(echo renovate/presets/*.json5)
 
   ruff:
     runs-on: ubuntu-latest
