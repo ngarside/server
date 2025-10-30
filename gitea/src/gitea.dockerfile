@@ -18,12 +18,11 @@ RUN chmod +x gitea
 # RUN apt-get update
 # RUN apt-get --no-install-recommends --yes install bash-static
 
-FROM docker.io/debian:13.1 AS busybox2
-RUN apk add alpine-sdk
-RUN apk add linux-headers
+FROM docker.io/alpine:3.22.2 AS busybox2
+RUN apk --no-cache add alpine-sdk linux-headers
 RUN wget -O busybox.tar.gz https://github.com/mirror/busybox/archive/refs/tags/1_36_1.tar.gz
 RUN tar -xvzf busybox.tar.gz
-RUN cd busybox-1_36_1
+WORKDIR /busybox-1_36_1
 RUN make defconfig
 RUN sed -i 's/^CONFIG_BASH_IS_NONE=y$/# CONFIG_BASH_IS_NONE is not set/' .config
 RUN sed -i 's/^CONFIG_FEATURE_TC_INGRESS=y/# CONFIG_FEATURE_TC_INGRESS is not set/' .config
@@ -35,6 +34,7 @@ RUN make -j "$(nproc)"
 FROM docker.io/busybox:1.37.0-musl AS busybox
 RUN mkdir /tmp/cp
 RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename $1)"' shell {} \;
+RUN ln -s /usr/bin/busybox /tmp/cp/bash
 
 FROM docker.io/alpine/git:2.49.1 AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
@@ -68,7 +68,7 @@ RUN chmod +x /usr/bin/entrypoint
 
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
-COPY --from=bash /usr/bin/bash-static /usr/bin/bash
+# COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 # COPY --from=build /git/git /usr/bin/git
 # COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=busybox2 /busybox-1_36_1/busybox /usr/bin/busybox
