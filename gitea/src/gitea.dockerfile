@@ -14,7 +14,7 @@ RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } >> /ver
 RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
 RUN chmod +x gitea
 
-FROM docker.io/alpine:3.22.2 AS busybox2
+FROM docker.io/alpine:3.22.2 AS busybox
 RUN apk --no-cache add alpine-sdk linux-headers
 RUN wget -O busybox.tar.gz https://github.com/mirror/busybox/archive/refs/tags/1_36_1.tar.gz
 RUN tar -xvzf busybox.tar.gz
@@ -27,7 +27,7 @@ RUN sed -i 's/^# CONFIG_BASH_IS_ASH is not set.*$/CONFIG_BASH_IS_ASH=y/' .config
 RUN sed -i 's/^# CONFIG_STATIC is not set.*$/CONFIG_STATIC=y/' .config
 RUN make -j "$(nproc)"
 
-FROM docker.io/busybox:1.37.0-musl AS busybox
+FROM docker.io/busybox:1.37.0-musl AS links
 RUN mkdir /tmp/cp
 RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename $1)"' shell {} \;
 RUN ln -s /usr/bin/busybox /tmp/cp/bash
@@ -66,8 +66,8 @@ FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 # COPY --from=build /git/git /usr/bin/git
 # COPY --from=build /tmp/cp/ /usr/bin/
-COPY --from=busybox2 /busybox-1_36_1/busybox /usr/bin/busybox
-COPY --from=busybox /tmp/cp/ /usr/bin/
+COPY --from=busybox /busybox-1_36_1/busybox /usr/bin/busybox
+COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea /gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
