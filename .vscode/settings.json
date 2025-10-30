@@ -4,6 +4,7 @@
 		"*.container": "ini",
 		"*.env": "properties",
 		"*.hadolint": "yaml",
+		"*.json5": "jsonc",
 		"*.network": "ini",
 		"*.service": "ini",
 		"*.timer": "ini",
