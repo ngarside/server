@@ -15,10 +15,19 @@
 		{
 			"customType": "regex",
 			"datasourceTemplate": "docker",
-			"depNameTemplate": "penpotapp/backend",
+			"depNameTemplate": "docker.io/penpotapp/backend",
 			"managerFilePatterns": ["**/*.dockerfile"],
 			"matchStrings": [
 				"FROM docker.io/penpotapp/[^:]+:(?<currentValue>[\\w\\.-]+)"
+			]
+		},
+		{
+			"customType": "regex",
+			"datasourceTemplate": "docker",
+			"depNameTemplate": "ghcr.io/ngarside/penpot-backend",
+			"managerFilePatterns": ["**/*.container"],
+			"matchStrings": [
+				"Image=ghcr.io/ngarside/penpot-[^:]+:(?<currentValue>[\\w\\.-]+)"
 			]
 		}
 	],
@@ -27,6 +36,11 @@
 			"enabled": false,
 			"matchManagers": ["dockerfile"],
 			"matchPackageNames": ["docker.io/penpotapp/*"]
+		},
+		{
+			"enabled": false,
+			"matchManagers": ["quadlet"],
+			"matchPackageNames": ["ghcr.io/ngarside/penpot*"]
 		}
 	]
 }
