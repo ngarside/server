@@ -18,7 +18,7 @@
 			"depNameTemplate": "docker.io/penpotapp/backend",
 			"managerFilePatterns": ["**/*.dockerfile"],
 			"matchStrings": [
-				"FROM docker.io/penpotapp/[^:]+:(?<currentValue>[\\w\\.-]+)"
+				"\\n\\s*FROM\\s*docker.io/penpotapp/[^:]+:(?<currentValue>[\\w\\.-]+)"
 			]
 		},
 		{
@@ -27,7 +27,7 @@
 			"depNameTemplate": "ghcr.io/ngarside/penpot-backend",
 			"managerFilePatterns": ["**/*.container"],
 			"matchStrings": [
-				"Image=ghcr.io/ngarside/penpot-[^:]+:(?<currentValue>[\\w\\.-]+)"
+				"\\n\\s*Image\\s*=\\s*ghcr.io/ngarside/penpot-[^:]+:(?<currentValue>[\\w\\.-]+)"
 			]
 		}
 	],
