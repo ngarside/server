@@ -15,10 +15,12 @@ RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /versi
 RUN chmod +x gitea
 
 FROM docker.io/alpine:3.22.2 AS busybox
-RUN apk --no-cache add alpine-sdk linux-headers
-RUN wget -O busybox.tar.gz https://github.com/mirror/busybox/archive/refs/tags/1_36_1.tar.gz
-RUN tar -xvzf busybox.tar.gz
-WORKDIR /busybox-1_36_1
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
+RUN apk --no-cache add alpine-sdk grep linux-headers
+RUN busybox | { head -n 1; cat >/dev/null; } | grep --only-matching --perl-regexp '(?<=v)[\d\.]+' | sed 's/\./_/g' >> /version
+RUN echo "$(cat /version)"
+RUN git clone https://git.busybox.net/busybox --branch "$(cat /version)" --depth 1
+WORKDIR /busybox
 RUN make defconfig
 RUN sed -i 's/^CONFIG_BASH_IS_NONE=y$/# CONFIG_BASH_IS_NONE is not set/' .config
 RUN sed -i 's/^CONFIG_FEATURE_TC_INGRESS=y/# CONFIG_FEATURE_TC_INGRESS is not set/' .config
@@ -66,7 +68,7 @@ FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 # COPY --from=build /git/git /usr/bin/git
 # COPY --from=build /tmp/cp/ /usr/bin/
-COPY --from=busybox /busybox-1_36_1/busybox /usr/bin/busybox
+COPY --from=busybox /busybox/busybox /usr/bin/busybox
 COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea /gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
