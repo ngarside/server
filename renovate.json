@@ -2,6 +2,7 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": [
 		"config:recommended",
+		"ngarside/server//renovate/presets/fedora.json5",
 		"ngarside/server//renovate/presets/lock.json5",
 		"ngarside/server//renovate/presets/penpot.json5"
 	],
@@ -44,17 +45,6 @@
 				"**/*.dockerfile",
 				"!**/bootc.dockerfile"
 			]
-		},
-		{
-			"automerge": true,
-			"automergeStrategy": "squash",
-			"matchFileNames": ["**/bootc.dockerfile"],
-			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
-		},
-		{
-			"enabled": false,
-			"matchFileNames": ["**/bootc.dockerfile", "**/devcontainer.dockerfile"],
-			"matchUpdateTypes": ["major"]
 		},
 		{
 			"automerge": true,

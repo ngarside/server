@@ -1,0 +1,38 @@
+/*
+	This is free and unencumbered software released into the public domain.
+
+	This preset controls the update behaviour of images inheriting from Fedora.
+	This is requires as Fedora's image versioning is non-standard:
+
+	- Only major versions are tagged
+	- Stable and pre-release versions are not distinguished
+
+	To correctly handle this behaviour, this preset:
+
+	- Enables auto-merge for non-major updates (in practice digest only)
+	- Disables all behaviour for major updates
+
+	This requires that major Fedora updates be performed manually, which is a
+	reasonable tradeoff given the significance of such updates.
+
+	- https://quay.io/organization/fedora
+*/
+
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"packageRules": [
+		{
+			"enabled": false,
+			"matchManagers": ["dockerfile"],
+			"matchPackageNames": ["quay.io/fedora/*"],
+			"matchUpdateTypes": ["major"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchManagers": ["dockerfile"],
+			"matchPackageNames": ["quay.io/fedora/*"],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		}
+	]
+}
