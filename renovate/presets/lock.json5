@@ -1,0 +1,14 @@
+/*
+	This is free and unencumbered software released into the public domain.
+
+	This preset enables automated lock file updates.
+
+	- https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
+*/
+
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"lockFileMaintenance": {
+		"enabled": true
+	}
+}
