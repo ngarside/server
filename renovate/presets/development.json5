@@ -1,0 +1,30 @@
+/*
+	This is free and unencumbered software released into the public domain.
+
+	This preset enables auto-merge for all development dependencies (that is,
+	dependencies which are only used as part of IaC and are not run directly
+	on the server).
+
+	These consist of Python modules and GitHub Actions steps. Both of these are
+	extensively tested - modules by unit tests, and steps by simply being run.
+
+	There is therefore very little risk of an incompatible update being
+	merged, and even if one was the consequences would be minimal.
+
+	Note that this does not include the development container due to Fedora's
+	versioning strategy - see 'fedora.json5' for details.
+*/
+
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"packageRules": [
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchFileNames": [
+				".github/workflows/*",
+				"pyproject.toml"
+			]
+		}
+	]
+}
