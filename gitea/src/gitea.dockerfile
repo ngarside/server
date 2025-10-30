@@ -48,26 +48,26 @@ COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/configuration
 RUN chmod +x /usr/bin/entrypoint
 
-# FROM docker.io/debian:13.1 AS build
-# COPY --from=git /version /version
-# ENV NO_OPENSSL=1
-# RUN apt-get update
-# RUN apt-get --no-install-recommends --yes install autoconf build-essential ca-certificates gettext \
-# 	git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
-# RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
-# WORKDIR /git
-# RUN make configure
-# RUN ./configure CFLAGS=-static
-# RUN make
-# RUN mkdir /tmp/cp
-# RUN ln --symbolic /usr/bin/git /tmp/cp/git-receive-pack
-# RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-archive
-# RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-pack
+FROM docker.io/debian:13.1 AS build
+COPY --from=git /version /version
+ENV NO_OPENSSL=1
+RUN apt-get update
+RUN apt-get --no-install-recommends --yes install autoconf build-essential ca-certificates gettext \
+	git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
+RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
+WORKDIR /git
+RUN make configure
+RUN ./configure CFLAGS=-static
+RUN make
+RUN mkdir /tmp/cp
+RUN ln --symbolic /usr/bin/git /tmp/cp/git-receive-pack
+RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-archive
+RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-pack
 
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
-# COPY --from=build /git/git /usr/bin/git
-# COPY --from=build /tmp/cp/ /usr/bin/
+COPY --from=build /git/git /usr/bin/git
+COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=busybox /busybox/busybox /usr/bin/busybox
 COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea /gitea /usr/bin/gitea
