@@ -1,19 +1,8 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"customManagers": [
-		{
-			"customType": "regex",
-			"datasourceTemplate": "docker",
-			"depNameTemplate": "penpotapp/backend",
-			"description": "Synchronise Penpot base images to 'penpotapp/backend'",
-			"managerFilePatterns": ["**/*.dockerfile"],
-			"matchStrings": [
-				"FROM docker.io/penpotapp/[^:]+:(?<currentValue>[\\w\\.-]+)"
-			]
-		}
-	],
 	"extends": [
-		"config:recommended"
+		"config:recommended",
+		"ngarside/server:renovate/presets/penpot.json5"
 	],
 	"lockFileMaintenance": {
 		"enabled": true
@@ -78,12 +67,6 @@
 			"automerge": true,
 			"automergeStrategy": "squash",
 			"matchFileNames": [".github/workflows/*.yaml"]
-		},
-		{
-			"enabled": false,
-			"matchFileNames": ["**/*.dockerfile"],
-			"matchManagers": ["dockerfile"],
-			"matchPackageNames": ["docker.io/penpotapp/*"]
 		}
 	]
 }
