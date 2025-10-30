@@ -5,7 +5,7 @@
 			"customType": "regex",
 			"datasourceTemplate": "docker",
 			"depNameTemplate": "penpotapp/backend",
-			"managerFilePatterns": ["/^penpot/**/.*\\.dockerfile$/"],
+			"managerFilePatterns": ["/^penpot/.*?\\.dockerfile$/"],
 			"matchStrings": [
 				"FROM docker.io/penpotapp/[^:]+:(?<currentValue>[\\w\\.-]+)"
 			]
