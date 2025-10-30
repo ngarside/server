@@ -17,7 +17,7 @@ RUN chmod +x gitea
 FROM docker.io/alpine:3.22.2 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
-RUN busybox | { head -n 1; cat >/dev/null; } | grep --only-matching --perl-regexp '(?<=v)[\d\.]+' | sed 's/\./_/g' >> /version
+RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' >> /version
 RUN echo "$(cat /version)"
 RUN git clone https://git.busybox.net/busybox --branch "$(cat /version)" --depth 1
 WORKDIR /busybox
