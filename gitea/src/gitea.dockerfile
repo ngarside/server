@@ -14,10 +14,6 @@ RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } >> /ver
 RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
 RUN chmod +x gitea
 
-# FROM docker.io/debian:13.1 AS bash
-# RUN apt-get update
-# RUN apt-get --no-install-recommends --yes install bash-static
-
 FROM docker.io/alpine:3.22.2 AS busybox2
 RUN apk --no-cache add alpine-sdk linux-headers
 RUN wget -O busybox.tar.gz https://github.com/mirror/busybox/archive/refs/tags/1_36_1.tar.gz
@@ -68,7 +64,6 @@ RUN chmod +x /usr/bin/entrypoint
 
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
-# COPY --from=bash /usr/bin/bash-static /usr/bin/bash
 # COPY --from=build /git/git /usr/bin/git
 # COPY --from=build /tmp/cp/ /usr/bin/
 COPY --from=busybox2 /busybox-1_36_1/busybox /usr/bin/busybox
