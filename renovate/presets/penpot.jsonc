@@ -1,0 +1,32 @@
+/*
+	This is free and unencumbered software released into the public domain.
+
+	This preset synchronises the version of all Penpot base images to the
+	'penpotapp/backend' image. This is necessary to ensure that all running
+	Penpot containers are of the same version, which prevents conflicts
+	between incompatible versions.
+
+	- https://hub.docker.com/r/penpotapp/backend
+*/
+
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"customManagers": [
+		{
+			"customType": "regex",
+			"datasourceTemplate": "docker",
+			"depNameTemplate": "penpotapp/backend",
+			"managerFilePatterns": ["**/*.dockerfile"],
+			"matchStrings": [
+				"FROM docker.io/penpotapp/[^:]+:(?<currentValue>[\\w\\.-]+)"
+			]
+		}
+	],
+	"packageRules": [
+		{
+			"enabled": false,
+			"matchManagers": ["dockerfile"],
+			"matchPackageNames": ["docker.io/penpotapp/*"]
+		}
+	]
+}
