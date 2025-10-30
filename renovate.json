@@ -78,6 +78,12 @@
 			"automerge": true,
 			"automergeStrategy": "squash",
 			"matchFileNames": [".github/workflows/*.yaml"]
+		},
+		{
+			"enabled": false,
+			"matchFileNames": ["**/*.dockerfile"],
+			"matchManagers": ["dockerfile"],
+			"matchPackageNames": ["docker.io/penpotapp/*"]
 		}
 	]
 }
