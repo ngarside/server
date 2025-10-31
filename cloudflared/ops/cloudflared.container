@@ -3,7 +3,7 @@
 [Container]
 ContainerName=cloudflared
 Exec=tunnel run --token-file /run/secrets/cloudflare_tunnel_token
-Image=ghcr.io/ngarside/cloudflared:2025.10.0.8
+Image=ghcr.io/ngarside/cloudflared:2025.10.1.28
 Memory=8g
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
