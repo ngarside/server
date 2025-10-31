@@ -13,4 +13,4 @@ fi
 
 # Stop the virtual machine -----------------------------------------------------
 
-virsh shutdown Server
+virsh --connect qemu:///system shutdown Server

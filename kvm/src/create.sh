@@ -35,4 +35,4 @@ qemu-nbd --disconnect /dev/nbd0
 
 CONFIG="$(dirname "${BASH_SOURCE[0]}")/config.xml"
 
-virsh define "$CONFIG"
+virsh --connect qemu:///system define "$CONFIG"

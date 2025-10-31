@@ -13,4 +13,4 @@ fi
 
 # Start the virtual machine ----------------------------------------------------
 
-virsh start Server
+virsh --connect qemu:///system start Server

@@ -13,7 +13,7 @@ fi
 
 # Connect to the virtual machine -----------------------------------------------
 
-IP=$(virsh net-dhcp-leases default | grep --only-matching "192[^/]*")
+IP=$(virsh --connect qemu:///system net-dhcp-leases default | grep --only-matching "192[^/]*")
 
 sudo -u "$SUDO_USER" ssh \
 	-o StrictHostKeyChecking=no \
