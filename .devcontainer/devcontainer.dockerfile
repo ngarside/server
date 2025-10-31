@@ -1,17 +1,21 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora:43
+# Build customised caddy install.
+FROM docker.io/caddy:2.10.2-builder-alpine AS caddy
+RUN xcaddy build --with github.com/caddy-dns/cloudflare
 
 # Install dependencies.
-RUN << EOF
+FROM quay.io/fedora/fedora:43
+COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
+RUN <<EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
-		caddy fuse-overlayfs git gh go-task jq podman python3-pip
+		fuse-overlayfs git gh go-task jq openssl podman python3-pip
 	dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
 EOF
 
 # Setup rootless user.
-RUN << EOF
+RUN <<EOF
 	useradd --groups wheel dev
 	echo "dev:10000:5000" | tee /etc/subgid /etc/subuid
 	echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudo
@@ -21,7 +25,7 @@ EOF
 # Allow running podman within the container.
 # - https://github.com/containers/image_build/tree/main/podman
 # - https://redhat.com/en/blog/podman-inside-container
-RUN << EOF
+RUN <<EOF
 	rpm --restore shadow-utils
 	cat > /etc/containers/containers.conf <<- 'INR'
 		[containers]
