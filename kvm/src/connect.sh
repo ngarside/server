@@ -4,15 +4,6 @@
 
 set -euo pipefail
 
-# Ensure running as root -------------------------------------------------------
-
-if [[ "$USER" != "root" ]]; then
-	echo "Script must be run as superuser; exiting"
-	exit 1
-fi
-
-# Connect to the virtual machine -----------------------------------------------
-
 IP=$(virsh --connect qemu:///system net-dhcp-leases default | grep --only-matching "192[^/]*")
 
 sudo -u "$SUDO_USER" ssh \
