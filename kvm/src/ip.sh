@@ -6,4 +6,4 @@ set -euo pipefail
 
 IP=$(virsh --connect qemu:///system net-dhcp-leases default | grep --only-matching "192[^/]*")
 
-echo $IP
+echo "$IP"
