@@ -1,13 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
 (common) {
-	header {
-		Content-Security-Policy: default-src 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
-		Cross-Origin-Opener-Policy: same-origin
-		Cross-Origin-Resource-Policy: same-origin
-		X-Content-Type-Options: nosniff
-		X-Frame-Options SAMEORIGIN
-	}
 	request_body {
 		max_size 100mb
 	}
