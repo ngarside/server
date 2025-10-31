@@ -20,9 +20,12 @@ jobs:
           env: MACHINE_DOMAIN_ROOT=example.com
           push: never
           runCmd: |
+            shopt -s globstar
             sudo mkdir /run/secrets
             openssl rand -hex 20 | sudo tee /run/secrets/cloudflare_api_token
-            caddy validate --config caddy/ops/caddyfile
+            for file in **/*caddyfile; do
+              caddy validate --config "$file" || exit
+            done
 
   hadolint:
     runs-on: ubuntu-latest
