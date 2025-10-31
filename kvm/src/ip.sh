@@ -13,4 +13,6 @@ fi
 
 # Find & print the virtual machine's IP ----------------------------------------
 
-virsh --connect qemu:///system net-dhcp-leases default | grep --color none --only-matching "192[^/]*"
+IP=$(virsh --connect qemu:///system net-dhcp-leases default | grep --only-matching "192[^/]*")
+
+echo $IP
