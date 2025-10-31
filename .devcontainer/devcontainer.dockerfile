@@ -1,11 +1,15 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora:43
+# Build customised caddy install.
+FROM docker.io/caddy:2.10.2-builder-alpine AS caddy
+RUN xcaddy build --with github.com/caddy-dns/cloudflare
 
 # Install dependencies.
+FROM quay.io/fedora/fedora:43
+COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 RUN << EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
-		caddy fuse-overlayfs git gh go-task jq podman python3-pip
+		fuse-overlayfs git gh go-task jq openssl podman python3-pip
 	dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
 EOF
