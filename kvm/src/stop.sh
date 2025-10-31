@@ -4,13 +4,4 @@
 
 set -euo pipefail
 
-# Ensure running as root -------------------------------------------------------
-
-if [[ "$USER" != "root" ]]; then
-	echo "Script must be run as superuser; exiting"
-	exit 1
-fi
-
-# Stop the virtual machine -----------------------------------------------------
-
-virsh shutdown Server
+virsh --connect qemu:///system shutdown Server

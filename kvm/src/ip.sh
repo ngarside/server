@@ -4,13 +4,6 @@
 
 set -euo pipefail
 
-# Ensure running as root -------------------------------------------------------
+IP=$(virsh --connect qemu:///system net-dhcp-leases default | grep --only-matching "192[^/]*")
 
-if [[ "$USER" != "root" ]]; then
-	echo "Script must be run as superuser; exiting"
-	exit 1
-fi
-
-# Find & print the virtual machine's IP ----------------------------------------
-
-virsh net-dhcp-leases default | grep --color none --only-matching "192[^/]*"
+echo "$IP"
