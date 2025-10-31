@@ -1,5 +1,15 @@
 # This is free and unencumbered software released into the public domain.
 
+(common) {
+	request_body {
+		max_size 100mb
+	}
+	tls {
+		dns cloudflare {file./run/secrets/cloudflare_api_token}
+		resolvers 1.1.1.1
+	}
+}
+
 (authentik_forward_auth) {
 	reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
 	forward_auth 10.8.0.3 {
@@ -21,14 +31,12 @@
 	}
 }
 
-*.{$MACHINE_DOMAIN_ROOT} {$MACHINE_DOMAIN_ROOT} {
-	tls {
-		dns cloudflare {file./run/secrets/cloudflare_api_token}
-		resolvers 1.1.1.1
-	}
+*.{$MACHINE_DOMAIN_ROOT} {
+	import common
 }
 
 {$MACHINE_DOMAIN_ROOT} {
+	import common
 	reverse_proxy 10.8.0.3
 }
 
