@@ -7,7 +7,7 @@ RUN xcaddy build --with github.com/caddy-dns/cloudflare
 # Install dependencies.
 FROM quay.io/fedora/fedora:43
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
-RUN << EOF
+RUN <<EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
 		fuse-overlayfs git gh go-task jq openssl podman python3-pip
 	dnf clean all
@@ -15,7 +15,7 @@ RUN << EOF
 EOF
 
 # Setup rootless user.
-RUN << EOF
+RUN <<EOF
 	useradd --groups wheel dev
 	echo "dev:10000:5000" | tee /etc/subgid /etc/subuid
 	echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudo
@@ -25,7 +25,7 @@ EOF
 # Allow running podman within the container.
 # - https://github.com/containers/image_build/tree/main/podman
 # - https://redhat.com/en/blog/podman-inside-container
-RUN << EOF
+RUN <<EOF
 	rpm --restore shadow-utils
 	cat > /etc/containers/containers.conf <<- 'INR'
 		[containers]
