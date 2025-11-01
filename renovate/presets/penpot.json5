@@ -33,6 +33,11 @@
 	],
 	"packageRules": [
 		{
+			"commitMessageTopic": "{{{depName}}} tag",
+			"matchManagers": ["custom"],
+			"matchDepNames": ["docker.io/penpotapp/backend", "ghcr.io/ngarside/penpot-backend"]
+		},
+		{
 			"enabled": false,
 			"matchManagers": ["dockerfile"],
 			"matchPackageNames": ["docker.io/penpotapp/*"]
