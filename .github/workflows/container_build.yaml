@@ -5,9 +5,6 @@ name: container_build
 on:
   workflow_call:
     inputs:
-      name:
-        required: true
-        type: string
       path:
         required: true
         type: string

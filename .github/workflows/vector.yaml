@@ -15,12 +15,10 @@ jobs:
     uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
-      name: vector-privileged
       path: vector/src/privileged.dockerfile
 
   vector_unprivileged:
     uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
     with:
-      name: vector-unprivileged
       path: vector/src/unprivileged.dockerfile
