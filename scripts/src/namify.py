@@ -10,21 +10,25 @@
 
 import pathlib, sys
 
+def assemble(path):
+	# Parse the provided path.
+	path = pathlib.Path(path)
+	image = path.stem
+	service = path.parts[0]
+
+	# If the image and service match then use the short syntax.
+	if image == service:
+		return f'ghcr.io/ngarside/{image}'
+
+	# Otherwise use the full syntax.
+	return f'ghcr.io/ngarside/{service}-{image}'
+
 if __name__ == '__main__':
 	# Assert CLI argument usage.
 	if len(sys.argv) != 2:
 		print('Usage: python tagify.py <path>')
 		sys.exit(2)
 
-	# Parse the provided path.
-	path = pathlib.Path(sys.argv[1])
-	image = path.stem
-	service = path.parts[0]
-
-	# If the image and service match then use the short syntax.
-	if image == service:
-		print(f'ghcr.io/ngarside/{image}')
-		sys.exit(0)
-
-	# Otherwise use the full syntax.
-	print(f'ghcr.io/ngarside/{service}-{image}')
+	# Build and print the path.
+	name = assemble(sys.argv[1])
+	print(name)
