@@ -7,13 +7,11 @@ on:
     paths: ['**/valkey.yaml', 'valkey/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/valkey.yaml', 'valkey/src/**']
+    paths: ['valkey/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: valkey
-      path: valkey/src/valkey.dockerfile
+    with: { path: valkey/src/valkey.dockerfile }

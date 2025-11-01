@@ -7,13 +7,11 @@ on:
     paths: ['**/adguardhome.yaml', 'adguardhome/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/adguardhome.yaml', 'adguardhome/src/**']
+    paths: ['adguardhome/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: adguardhome
-      path: adguardhome/src/adguardhome.dockerfile
+    with: { path: adguardhome/src/adguardhome.dockerfile }

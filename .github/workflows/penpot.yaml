@@ -7,27 +7,21 @@ on:
     paths: ['**/penpot.yaml', 'penpot/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/penpot.yaml', 'penpot/src/**']
+    paths: ['penpot/src/**']
   workflow_dispatch:
 
 jobs:
   penpot_backend:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: penpot-backend
-      path: penpot/src/backend.dockerfile
+    with: { path: penpot/src/backend.dockerfile }
 
   penpot_exporter:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: penpot-exporter
-      path: penpot/src/exporter.dockerfile
+    with: { path: penpot/src/exporter.dockerfile }
 
   penpot_frontend:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: penpot-frontend
-      path: penpot/src/frontend.dockerfile
+    with: { path: penpot/src/frontend.dockerfile }

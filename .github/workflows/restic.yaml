@@ -7,13 +7,11 @@ on:
     paths: ['**/restic.yaml', 'restic/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/restic.yaml', 'restic/src/**']
+    paths: ['restic/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: restic
-      path: restic/src/restic.dockerfile
+    with: { path: restic/src/restic.dockerfile }

@@ -7,13 +7,11 @@ on:
     paths: ['**/excalidraw.yaml', 'excalidraw/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/excalidraw.yaml', 'excalidraw/src/**']
+    paths: ['excalidraw/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: excalidraw
-      path: excalidraw/src/excalidraw.dockerfile
+    with: { path: excalidraw/src/excalidraw.dockerfile }

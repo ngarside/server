@@ -7,13 +7,11 @@ on:
     paths: ['**/vaultwarden.yaml', 'vaultwarden/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/vaultwarden.yaml', 'vaultwarden/src/**']
+    paths: ['vaultwarden/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: vaultwarden
-      path: vaultwarden/src/vaultwarden.dockerfile
+    with: { path: vaultwarden/src/vaultwarden.dockerfile }

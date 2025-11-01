@@ -7,13 +7,11 @@ on:
     paths: ['**/authentik.yaml', 'authentik/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/authentik.yaml', 'authentik/src/**']
+    paths: ['authentik/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: authentik
-      path: authentik/src/authentik.dockerfile
+    with: { path: authentik/src/authentik.dockerfile }

@@ -7,13 +7,11 @@ on:
     paths: ['**/victoriametrics.yaml', 'victoriametrics/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/victoriametrics.yaml', 'victoriametrics/src/**']
+    paths: ['victoriametrics/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: victoriametrics
-      path: victoriametrics/src/victoriametrics.dockerfile
+    with: { path: victoriametrics/src/victoriametrics.dockerfile }

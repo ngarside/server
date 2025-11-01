@@ -7,13 +7,11 @@ on:
     paths: ['**/chartdb.yaml', 'chartdb/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/chartdb.yaml', 'chartdb/src/**']
+    paths: ['chartdb/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: chartdb
-      path: chartdb/src/chartdb.dockerfile
+    with: { path: chartdb/src/chartdb.dockerfile }

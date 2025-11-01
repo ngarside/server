@@ -7,13 +7,11 @@ on:
     paths: ['**/crowdsec.yaml', 'crowdsec/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/crowdsec.yaml', 'crowdsec/src/**']
+    paths: ['crowdsec/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: crowdsec
-      path: crowdsec/src/crowdsec.dockerfile
+    with: { path: crowdsec/src/crowdsec.dockerfile }

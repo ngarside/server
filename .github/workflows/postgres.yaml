@@ -7,13 +7,11 @@ on:
     paths: ['**/postgres.yaml', 'postgres/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/postgres.yaml', 'postgres/src/**']
+    paths: ['postgres/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: postgres
-      path: postgres/src/postgres.dockerfile
+    with: { path: postgres/src/postgres.dockerfile }

@@ -7,13 +7,11 @@ on:
     paths: ['**/cloudflared.yaml', 'cloudflared/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/cloudflared.yaml', 'cloudflared/src/**']
+    paths: ['cloudflared/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: cloudflared
-      path: cloudflared/src/cloudflared.dockerfile
+    with: { path: cloudflared/src/cloudflared.dockerfile }

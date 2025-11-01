@@ -7,13 +7,11 @@ on:
     paths: ['**/seaweedfs.yaml', 'seaweedfs/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/seaweedfs.yaml', 'seaweedfs/src/**']
+    paths: ['seaweedfs/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: seaweedfs
-      path: seaweedfs/src/seaweedfs.dockerfile
+    with: { path: seaweedfs/src/seaweedfs.dockerfile }

@@ -7,13 +7,11 @@ on:
     paths: ['**/gitea.yaml', 'gitea/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/gitea.yaml', 'gitea/src/**']
+    paths: ['gitea/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: gitea
-      path: gitea/src/gitea.dockerfile
+    with: { path: gitea/src/gitea.dockerfile }

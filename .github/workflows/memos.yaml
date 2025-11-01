@@ -7,13 +7,11 @@ on:
     paths: ['**/memos.yaml', 'memos/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/memos.yaml', 'memos/src/**']
+    paths: ['memos/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: memos
-      path: memos/src/memos.dockerfile
+    with: { path: memos/src/memos.dockerfile }

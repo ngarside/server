@@ -7,13 +7,11 @@ on:
     paths: ['**/outline.yaml', 'outline/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/outline.yaml', 'outline/src/**']
+    paths: ['outline/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: outline
-      path: outline/src/outline.dockerfile
+    with: { path: outline/src/outline.dockerfile }

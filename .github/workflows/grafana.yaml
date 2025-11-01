@@ -7,13 +7,11 @@ on:
     paths: ['**/grafana.yaml', 'grafana/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/grafana.yaml', 'grafana/src/**']
+    paths: ['grafana/src/**']
   workflow_dispatch:
 
 jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: { contents: read, packages: write }
-    with:
-      name: grafana
-      path: grafana/src/grafana.dockerfile
+    with: { path: grafana/src/grafana.dockerfile }
