@@ -14,12 +14,11 @@ jobs:
       contents: read
     steps:
 
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v5
 
-      - name: pipenv
+      - name: Install dependencies
         run: pip install uv
 
-      - name: test
-        run: uv run pytest
-        working-directory: scripts
+      - name: Run tests
+        run: uv run pytest -rA scripts
