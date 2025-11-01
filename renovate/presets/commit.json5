@@ -9,7 +9,7 @@
 	"packageRules": [
 		{
 			"commitMessageTopic": "{{{depName}}} tag",
-			"matchManagers": ["dockerfile", "quadlet"]
+			"matchManagers": ["docker"]
 		}
 	]
 }
