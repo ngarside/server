@@ -20,6 +20,7 @@ Network=chartdb.network:ip=10.16.0.3
 Network=opencloud.network:ip=10.17.0.3
 Network=excalidraw.network:ip=10.18.0.3
 Network=whoami.network:ip=10.20.0.3
+Network=grafana.network:ip=10.22.0.3
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true

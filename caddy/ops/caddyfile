@@ -72,6 +72,10 @@ gitea.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.14.0.2
 }
 
+grafana.{$MACHINE_DOMAIN_ROOT} {
+	reverse_proxy 10.22.0.2
+}
+
 jellyfin.{$MACHINE_DOMAIN_ROOT} {
 	reverse_proxy 10.11.0.2:8096
 }
