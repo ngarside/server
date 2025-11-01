@@ -35,7 +35,7 @@
 		{
 			"commitMessageTopic": "{{{depName}}} tag",
 			"matchDepNames": ["docker.io/penpotapp/backend", "ghcr.io/ngarside/penpot-backend"],
-			"matchManagers": ["regex"]
+			"matchManagers": ["custom.regex"]
 		},
 		{
 			"enabled": false,
