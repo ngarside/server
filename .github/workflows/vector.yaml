@@ -7,7 +7,7 @@ on:
     paths: ['**/vector.yaml', 'vector/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/vector.yaml', 'vector/src/**']
+    paths: ['vector/src/**']
   workflow_dispatch:
 
 jobs:

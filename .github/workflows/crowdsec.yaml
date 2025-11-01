@@ -7,7 +7,7 @@ on:
     paths: ['**/crowdsec.yaml', 'crowdsec/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/crowdsec.yaml', 'crowdsec/src/**']
+    paths: ['crowdsec/src/**']
   workflow_dispatch:
 
 jobs:

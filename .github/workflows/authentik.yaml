@@ -7,7 +7,7 @@ on:
     paths: ['**/authentik.yaml', 'authentik/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/authentik.yaml', 'authentik/src/**']
+    paths: ['authentik/src/**']
   workflow_dispatch:
 
 jobs:

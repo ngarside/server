@@ -7,7 +7,7 @@ on:
     paths: ['**/caddy.yaml', 'caddy/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/caddy.yaml', 'caddy/src/**']
+    paths: ['caddy/src/**']
   workflow_dispatch:
 
 jobs:

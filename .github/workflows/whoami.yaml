@@ -7,7 +7,7 @@ on:
     paths: ['**/whoami.yaml', 'whoami/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/whoami.yaml', 'whoami/src/**']
+    paths: ['whoami/src/**']
   workflow_dispatch:
 
 jobs:

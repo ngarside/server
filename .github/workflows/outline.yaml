@@ -7,7 +7,7 @@ on:
     paths: ['**/outline.yaml', 'outline/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/outline.yaml', 'outline/src/**']
+    paths: ['outline/src/**']
   workflow_dispatch:
 
 jobs:

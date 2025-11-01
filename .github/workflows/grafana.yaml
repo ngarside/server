@@ -7,7 +7,7 @@ on:
     paths: ['**/grafana.yaml', 'grafana/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/grafana.yaml', 'grafana/src/**']
+    paths: ['grafana/src/**']
   workflow_dispatch:
 
 jobs:

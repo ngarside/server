@@ -7,7 +7,7 @@ on:
     paths: ['**/opencloud.yaml', 'opencloud/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/opencloud.yaml', 'opencloud/src/**']
+    paths: ['opencloud/src/**']
   workflow_dispatch:
 
 jobs:

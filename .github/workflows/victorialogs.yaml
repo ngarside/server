@@ -7,7 +7,7 @@ on:
     paths: ['**/victorialogs.yaml', 'victorialogs/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/victorialogs.yaml', 'victorialogs/src/**']
+    paths: ['victorialogs/src/**']
   workflow_dispatch:
 
 jobs:

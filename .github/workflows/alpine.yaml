@@ -7,7 +7,7 @@ on:
     paths: ['**/alpine.yaml', 'alpine/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/alpine.yaml', 'alpine/src/**']
+    paths: ['alpine/src/**']
   workflow_dispatch:
 
 jobs:

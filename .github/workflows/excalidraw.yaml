@@ -7,7 +7,7 @@ on:
     paths: ['**/excalidraw.yaml', 'excalidraw/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/excalidraw.yaml', 'excalidraw/src/**']
+    paths: ['excalidraw/src/**']
   workflow_dispatch:
 
 jobs:

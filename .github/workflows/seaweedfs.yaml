@@ -7,7 +7,7 @@ on:
     paths: ['**/seaweedfs.yaml', 'seaweedfs/[st]*/**', 'pyproject.toml', 'scripts/**']
   push:
     branches: [master]
-    paths: ['**/seaweedfs.yaml', 'seaweedfs/src/**']
+    paths: ['seaweedfs/src/**']
   workflow_dispatch:
 
 jobs:
