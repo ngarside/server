@@ -8,8 +8,8 @@ sys.path.append(str(Path(__file__).parent.parent / 'src'))
 import pytest, namify
 
 @pytest.mark.parametrize('input, expected', [
-	('service/src/service.dockerfile', 'ghcr.io/ngarside/service'), # Shared name.
-	('service/src/image.dockerfile', 'ghcr.io/ngarside/service-image'), # Different names.
+	('service/src/service.dockerfile', 'service'), # Shared name.
+	('service/src/image.dockerfile', 'service-image'), # Different names.
 ])
 
 def test_sanitize(input, expected):

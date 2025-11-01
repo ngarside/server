@@ -18,10 +18,10 @@ def assemble(path):
 
 	# If the image and service match then use the short syntax.
 	if image == service:
-		return f'ghcr.io/ngarside/{image}'
+		return image
 
 	# Otherwise use the full syntax.
-	return f'ghcr.io/ngarside/{service}-{image}'
+	return f'{service}-{image}'
 
 if __name__ == '__main__':
 	# Assert CLI argument usage.
