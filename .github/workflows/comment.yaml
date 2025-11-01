@@ -31,7 +31,7 @@ jobs:
             Rebase a bootc host onto this branch:
 
             \`\`\`sh
-            sudo bootc switch --apply ghcr.io/ngarside/server:${process.env.TAG}
+            sudo bootc switch --apply ghcr.io/ngarside/bootc:${process.env.TAG}
             \`\`\`
 
             Update a bootc host which is already based on an earlier version of this branch:
