@@ -14,4 +14,4 @@ jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
-    with: { path: victoriametrics/src/victoriametrics.dockerfile)
+    with: {path: victoriametrics/src/victoriametrics.dockerfile}
