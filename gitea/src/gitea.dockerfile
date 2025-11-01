@@ -47,21 +47,18 @@ COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/configuration
 RUN chmod +x /usr/bin/entrypoint
 
-FROM docker.io/debian:13.1 AS build
+FROM docker.io/alpine:3.22.2 AS build
 COPY --from=git /version /version
-ENV NO_OPENSSL=1
-RUN apt-get update
-RUN apt-get --no-install-recommends --yes install autoconf build-essential ca-certificates gettext \
-	git libcurl4-openssl-dev libexpat1-dev libssl-dev tcl libzstd-dev zlib1g-dev zstd
+RUN apk --no-cache add alpine-sdk autoconf tcl-dev zlib-dev zlib-static
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
 WORKDIR /git
 RUN make configure
 RUN ./configure CFLAGS=-static
-RUN make
+RUN MAKEFLAGS="-j $(nproc)" make
 RUN mkdir /tmp/cp
-RUN ln --symbolic /usr/bin/git /tmp/cp/git-receive-pack
-RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-archive
-RUN ln --symbolic /usr/bin/git /tmp/cp/git-upload-pack
+RUN ln -s /usr/bin/git /tmp/cp/git-receive-pack
+RUN ln -s /usr/bin/git /tmp/cp/git-upload-archive
+RUN ln -s /usr/bin/git /tmp/cp/git-upload-pack
 
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
