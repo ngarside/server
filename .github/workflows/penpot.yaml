@@ -13,21 +13,21 @@ on:
 jobs:
   penpot_backend:
     uses: ./.github/workflows/container_build.yaml
-    permissions: {contents: read, packages: write}
+    permissions: { contents: read, packages: write }
     with:
       name: penpot-backend
       path: penpot/src/backend.dockerfile
 
   penpot_exporter:
     uses: ./.github/workflows/container_build.yaml
-    permissions: {contents: read, packages: write}
+    permissions: { contents: read, packages: write }
     with:
       name: penpot-exporter
       path: penpot/src/exporter.dockerfile
 
   penpot_frontend:
     uses: ./.github/workflows/container_build.yaml
-    permissions: {contents: read, packages: write}
+    permissions: { contents: read, packages: write }
     with:
       name: penpot-frontend
       path: penpot/src/frontend.dockerfile

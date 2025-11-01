@@ -1,8 +1,15 @@
 # This is free and unencumbered software released into the public domain.
 
 extends: default
-
 rules:
+
+  # Include a single space inside braces to better match the styles of other languages.
+  braces:
+    max-spaces-inside: 1
+    max-spaces-inside-empty: 1
+    min-spaces-inside: 1
+    min-spaces-inside-empty: 1
+
   # Document start lines serve no purpose given how this project uses YAML.
   document-start: disable
 
