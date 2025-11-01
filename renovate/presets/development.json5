@@ -21,10 +21,7 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchFileNames": [
-				".github/workflows/*",
-				"pyproject.toml"
-			]
+			"matchFileNames": [".github/workflows/*", "pyproject.toml"]
 		}
 	]
 }

@@ -23,14 +23,14 @@
 	"packageRules": [
 		{
 			"enabled": false,
-			"matchManagers": ["dockerfile"],
+			"matchManagers": ["docker"],
 			"matchPackageNames": ["quay.io/fedora/*"],
 			"matchUpdateTypes": ["major"]
 		},
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchManagers": ["dockerfile"],
+			"matchManagers": ["docker"],
 			"matchPackageNames": ["quay.io/fedora/*"],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		}

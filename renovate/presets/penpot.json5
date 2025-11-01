@@ -34,13 +34,8 @@
 	"packageRules": [
 		{
 			"enabled": false,
-			"matchManagers": ["dockerfile"],
-			"matchPackageNames": ["docker.io/penpotapp/*"]
-		},
-		{
-			"enabled": false,
-			"matchManagers": ["quadlet"],
-			"matchPackageNames": ["ghcr.io/ngarside/penpot*"]
+			"matchManagers": ["docker"],
+			"matchPackageNames": ["docker.io/penpotapp/*", "ghcr.io/ngarside/penpot*"]
 		}
 	]
 }
