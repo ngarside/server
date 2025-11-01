@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-name: container_build
+name: build
 
 on:
   workflow_call:
