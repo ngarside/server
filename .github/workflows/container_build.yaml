@@ -27,13 +27,16 @@ jobs:
       - name: Calculate root path
         run: echo "ROOT=$(echo "${{ inputs.path }}" | cut --delimiter / --fields 1)" >> $GITHUB_ENV
 
+      - name: Generate name
+        run: echo "NAME=$(uv run scripts/src/namify.py '${{ inputs.path }}')" >> $GITHUB_ENV
+
       - name: Generate tag
         run: echo "TAG=$(uv run scripts/src/tagify.py '${{ inputs.path }}')" >> $GITHUB_ENV
 
       - name: Build container
         run: >
           podman build --file "${{ inputs.path }}" --format docker
-          --tag ghcr.io/ngarside/${{ inputs.name }}:$TAG .
+          --tag ghcr.io/ngarside/$NAME:$TAG .
 
       - name: Run tests
         run: uv run pytest -rA $ROOT
@@ -44,4 +47,4 @@ jobs:
           --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push container to registry
-        run: podman push ghcr.io/ngarside/${{ inputs.name }}:$TAG
+        run: podman push ghcr.io/ngarside/$NAME:$TAG
