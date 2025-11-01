@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=outline_valkey
-Image=ghcr.io/ngarside/valkey:9.0.0.13
+Image=ghcr.io/ngarside/valkey:9.0.0.36
 Memory=8g
 Network=outline_internal.network:ip=10.19.0.4
 NoNewPrivileges=true
