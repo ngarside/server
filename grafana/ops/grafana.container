@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+
+[Container]
+ContainerName=grafana
+Image=ghcr.io/ngarside/grafana:12.2.1.18
+Memory=8g
+Network=grafana.network:ip=10.22.0.2
+NoNewPrivileges=true
+PodmanArgs=--cpus=1
+UserNS=auto:size=8
+
+[Service]
+Restart=always
+TimeoutStartSec=9000
+
+[Install]
+WantedBy=default.target
