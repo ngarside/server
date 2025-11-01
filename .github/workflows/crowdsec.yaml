@@ -14,5 +14,4 @@ jobs:
   container_build:
     uses: ./.github/workflows/container_build.yaml
     permissions: {contents: read, packages: write}
-    with:
-      path: crowdsec/src/crowdsec.dockerfile
+    with: { path: crowdsec/src/crowdsec.dockerfile)
