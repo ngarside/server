@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # This is free and unencumbered software released into the public domain.
 
+set -euo pipefail
+
 # Wait for Gitea server to initialise --------------------------------------------------------------
 echo "[CONFIG] Waiting for Gitea server to initialise"
 RETRIES_MAX=60
