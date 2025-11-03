@@ -4,7 +4,7 @@
 # - https://github.com/moparisthebest/static-curl/blob/master/build.sh
 # - https://github.com/moparisthebest/static-curl/blob/master/LICENSE.txt
 
-FROM docker.io/chrislusf/seaweedfs:3.99 AS seaweedfs
+FROM docker.io/chrislusf/seaweedfs:4.00 AS seaweedfs
 
 FROM docker.io/curlimages/curl:8.16.0 AS curl
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
