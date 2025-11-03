@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=jellyfin
-Image=ghcr.io/ngarside/jellyfin:10.11.1.35
+Image=ghcr.io/ngarside/jellyfin:10.11.2.39
 Memory=8g
 Network=jellyfin.network:ip=10.11.0.2
 NoNewPrivileges=true
