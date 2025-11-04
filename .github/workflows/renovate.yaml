@@ -19,7 +19,7 @@ jobs:
         uses: actions/create-github-app-token@v2
         id: token
         with:
-          app-id: 2234524
+          app-id: 2235149
           private-key: ${{ secrets.RENOVATE_PRIVATEKEY }}
 
       - name: Run renovate
