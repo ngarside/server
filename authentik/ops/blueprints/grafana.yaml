@@ -1,0 +1,68 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Grafana
+entries:
+
+  # Scope - Email
+  - id: custom-grafana-scopes-email
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: email
+
+  # Scope - OpenID
+  - id: custom-grafana-scopes-openid
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: openid
+
+  # Scope - Profile
+  - id: custom-grafana-scopes-profile
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: profile
+
+  # Provider
+  - id: custom-grafana-provider
+    model: authentik_providers_oauth2.oauth2provider
+    identifiers:
+      client_id: grafana
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_secret: !File /run/secrets/grafana_oidc_secret
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      name: Grafana Provider
+      property_mappings:
+        - !KeyOf custom-grafana-scopes-email
+        - !KeyOf custom-grafana-scopes-openid
+        - !KeyOf custom-grafana-scopes-profile
+      redirect_uris:
+        - matching_mode: strict
+          url: !Format [https://grafana.%s/auth/oidc.callback, !File /run/secrets/machine_domain_root]
+
+  # Application
+  - id: custom-grafana-application
+    model: authentik_core.application
+    identifiers:
+      slug: grafana
+    attrs:
+      icon: grafana.png
+      name: Grafana
+      provider: !KeyOf custom-grafana-provider
+
+  # Group
+  - id: custom-grafana-group
+    model: authentik_core.group
+    identifiers:
+      name: Grafana Group
+
+  # Binding
+  - id: custom-grafana-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-grafana-group
+      order: 0
+      target: !KeyOf custom-grafana-application
