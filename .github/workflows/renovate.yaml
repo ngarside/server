@@ -24,8 +24,6 @@ jobs:
 
       - name: Run renovate
         uses: renovatebot/github-action@v43.0.20
-        env:
-          LOG_LEVEL: debug
         with:
           configurationFile: renovate/runner/config.js
           token: ${{ steps.token.outputs.token }}
