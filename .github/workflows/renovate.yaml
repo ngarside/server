@@ -18,4 +18,5 @@ jobs:
       - name: Renovate
         uses: renovatebot/github-action@v43.0.20
         with:
+          configurationFile: renovate/runner/config.js
           token: ${{ secrets.RENOVATE_WORKFLOW }}
