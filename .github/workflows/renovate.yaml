@@ -24,5 +24,8 @@ jobs:
 
       - name: Run renovate
         uses: renovatebot/github-action@v43.0.20
+        env:
+          RENOVATE_AUTODISCOVER: true
+          RENOVATE_AUTODISCOVER_FILTER: ngarside/server
         with:
           token: ${{ steps.token.outputs.token }}
