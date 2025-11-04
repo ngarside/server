@@ -15,8 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Renovate
+      - name: Generate token
+        uses: actions/create-github-app-token@v2
+        id: token
+        with:
+          app-id: 2234524
+          private-key: ${{ secrets.RENOVATE_PRIVATEKEY }}
+
+      - name: Run renovate
         uses: renovatebot/github-action@v43.0.20
         with:
           configurationFile: renovate/runner/config.js
-          token: ${{ secrets.RENOVATE_WORKFLOW }}
+          token: ${{ steps.token.outputs.token }}
