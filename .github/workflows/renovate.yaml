@@ -1,0 +1,34 @@
+# This is free and unencumbered software released into the public domain.
+
+name: renovate
+
+on:
+  pull_request:
+    paths: ['**renovate**']
+  schedule:
+    - cron: '15,45 * * * *'
+  workflow_dispatch:
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Generate token
+        uses: actions/create-github-app-token@v2
+        id: token
+        with:
+          app-id: 2235149
+          private-key: ${{ secrets.RENOVATE_PRIVATEKEY }}
+
+      - name: Run renovate
+        uses: renovatebot/github-action@v43.0.20
+        env:
+          RENOVATE_AUTODISCOVER: true
+          RENOVATE_AUTODISCOVER_FILTER: ngarside/server
+          RENOVATE_DRY_RUN: ${{ github.ref_name == 'master' && 'false' || 'true' }}
+        with:
+          token: ${{ steps.token.outputs.token }}
