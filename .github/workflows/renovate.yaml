@@ -5,6 +5,8 @@ name: renovate
 on:
   pull_request:
     paths: ['**renovate**']
+  schedule:
+    - cron: '15,45 * * * *'
   workflow_dispatch:
 
 jobs:
