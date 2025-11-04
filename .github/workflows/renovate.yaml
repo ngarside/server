@@ -25,5 +25,4 @@ jobs:
       - name: Run renovate
         uses: renovatebot/github-action@v43.0.20
         with:
-          configurationFile: renovate/runner/config.js
           token: ${{ steps.token.outputs.token }}
