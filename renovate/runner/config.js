@@ -3,4 +3,5 @@
 module.exports = {
 	gitAuthor: 'renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>',
 	repositories: ['ngarside/server'],
+	username: 'renovate[bot]',
 };
