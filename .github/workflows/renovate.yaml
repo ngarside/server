@@ -29,5 +29,6 @@ jobs:
         env:
           RENOVATE_AUTODISCOVER: true
           RENOVATE_AUTODISCOVER_FILTER: ngarside/server
+          RENOVATE_DRY_RUN: ${{ github.ref_name == 'master' && 'false' || 'true' }}
         with:
           token: ${{ steps.token.outputs.token }}
