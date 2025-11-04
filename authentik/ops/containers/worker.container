@@ -27,6 +27,7 @@ PodmanArgs=--cpus=1
 Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret
+Secret=grafana_oidc_secret
 Secret=machine_domain_root
 Secret=mailjet_address_noreply
 Secret=mailjet_smtp_password

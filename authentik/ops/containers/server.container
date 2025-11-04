@@ -28,6 +28,7 @@ ReadOnly=true
 Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret
+Secret=grafana_oidc_secret
 Secret=machine_domain_root
 Secret=mailjet_address_noreply
 Secret=mailjet_smtp_password
@@ -45,6 +46,7 @@ Restart=always
 TimeoutStartSec=9000
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore authentik_internal_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore gitea_oidc_secret -"
+ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore grafana_oidc_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore outline_oidc_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore penpot_oidc_secret -"
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore vaultwarden_oidc_secret -"
