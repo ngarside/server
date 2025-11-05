@@ -6,7 +6,7 @@
 
 FROM docker.io/chrislusf/seaweedfs:4.00 AS seaweedfs
 
-FROM docker.io/curlimages/curl:8.16.0 AS curl
+FROM docker.io/curlimages/curl:8.17.0 AS curl
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN apk --no-cache add grep
