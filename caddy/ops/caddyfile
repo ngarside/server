@@ -1,6 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 (common) {
+	log
 	request_body {
 		max_size 100mb
 	}
