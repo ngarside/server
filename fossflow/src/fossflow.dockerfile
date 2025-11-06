@@ -11,10 +11,10 @@ RUN unzip /linux_x64.zip
 
 FROM scratch
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
-COPY --from=fossflow /usr/share/nginx/html /srv
+COPY --from=fossflow /usr/share/nginx/html /usr/share/fossflow
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 EXPOSE 80
-WORKDIR /srv
+WORKDIR /usr/share/fossflow
 ENTRYPOINT ["/usr/bin/caddy"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
 CMD ["file-server"]

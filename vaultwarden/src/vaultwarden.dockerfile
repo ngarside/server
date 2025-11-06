@@ -10,11 +10,11 @@ RUN unzip /linux_x64.zip
 FROM scratch
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=vaultwarden /vaultwarden /usr/bin/vaultwarden
-COPY --from=vaultwarden /web-vault /srv
+COPY --from=vaultwarden /web-vault /usr/share/vaultwarden
 ENTRYPOINT ["/usr/bin/vaultwarden"]
 ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=80
 ENV ROCKET_PROFILE="release"
-ENV WEB_VAULT_FOLDER=/srv
+ENV WEB_VAULT_FOLDER=/usr/share/vaultwarden
 EXPOSE 80
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/alive"]

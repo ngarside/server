@@ -11,11 +11,11 @@ RUN unzip /linux_x64.zip
 
 FROM scratch
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
-COPY --from=chartdb /usr/share/nginx/html /srv
+COPY --from=chartdb /usr/share/nginx/html /usr/share/chartdb
 COPY --from=headcheck /headcheck /usr/bin/headcheck
-COPY /chartdb/src/config.js /srv/config.js
+COPY /chartdb/src/config.js /usr/share/chartdb/config.js
 EXPOSE 80
-WORKDIR /srv
+WORKDIR /usr/share/chartdb
 ENTRYPOINT ["/usr/bin/caddy"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
 CMD ["file-server"]
