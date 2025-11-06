@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=chartdb
-Image=ghcr.io/ngarside/chartdb:1.17.0.34
+Image=ghcr.io/ngarside/chartdb:1.17.0.46
 Memory=8g
 Network=chartdb.network:ip=10.16.0.2
 NoNewPrivileges=true
