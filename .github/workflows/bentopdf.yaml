@@ -1,0 +1,17 @@
+# This is free and unencumbered software released into the public domain.
+
+name: bentopdf
+
+on:
+  pull_request:
+    paths: ['**/bentopdf.yaml', 'bentopdf/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['bentopdf/src/**']
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yaml
+    permissions: { contents: read, packages: write }
+    with: { path: bentopdf/src/bentopdf.dockerfile }
