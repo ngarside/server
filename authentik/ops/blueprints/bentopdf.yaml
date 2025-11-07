@@ -1,0 +1,43 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - BentoPDF
+entries:
+
+  # Provider
+  - id: custom-bentopdf-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://bentopdf.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: BentoPDF Provider
+
+  # Application
+  - id: custom-bentopdf-application
+    model: authentik_core.application
+    identifiers:
+      slug: bentopdf
+    attrs:
+      icon: bentopdf.png
+      name: BentoPDF
+      provider: !KeyOf custom-bentopdf-provider
+
+  # Group
+  - id: custom-bentopdf-group
+    model: authentik_core.group
+    identifiers:
+      name: BentoPDF Group
+
+  # Binding
+  - id: custom-bentopdf-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-bentopdf-group
+      order: 0
+      target: !KeyOf custom-bentopdf-application

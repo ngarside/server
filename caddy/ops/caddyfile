@@ -48,6 +48,13 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
+bentopdf.{$MACHINE_DOMAIN_ROOT} {
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.23.0.2
+	}
+}
+
 chartdb.{$MACHINE_DOMAIN_ROOT} {
 	route {
 		import authentik_forward_auth

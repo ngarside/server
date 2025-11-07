@@ -14,6 +14,7 @@ entries:
     attrs:
       providers:
         - !Find [authentik_providers_proxy.proxyprovider, [name, AdGuard Home Provider]]
+        - !Find [authentik_providers_proxy.proxyprovider, [name, BentoPDF Provider]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, ChartDB Provider]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Excalidraw Provider]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Fossflow Provider]]
