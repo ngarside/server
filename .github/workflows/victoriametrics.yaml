@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  victoriametrics:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: victoriametrics/src/victoriametrics.dockerfile }

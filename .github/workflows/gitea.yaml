@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  server:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: gitea/src/server.dockerfile }

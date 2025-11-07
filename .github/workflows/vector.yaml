@@ -11,12 +11,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  vector_privileged:
+  privileged:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: vector/src/privileged.dockerfile }
 
-  vector_unprivileged:
+  unprivileged:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: vector/src/unprivileged.dockerfile }

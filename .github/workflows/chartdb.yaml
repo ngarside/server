@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  chartdb:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: chartdb/src/chartdb.dockerfile }
