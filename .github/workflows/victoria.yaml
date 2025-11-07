@@ -1,0 +1,22 @@
+# This is free and unencumbered software released into the public domain.
+
+name: victoria
+
+on:
+  pull_request:
+    paths: ['**/victoria.yaml', 'victoria/[st]*/**', 'pyproject.toml', 'scripts/**']
+  push:
+    branches: [master]
+    paths: ['victoria/src/**']
+  workflow_dispatch:
+
+jobs:
+  logs:
+    uses: ./.github/workflows/build.yaml
+    permissions: { contents: read, packages: write }
+    with: { path: victoria/src/logs.dockerfile }
+
+  metrics:
+    uses: ./.github/workflows/build.yaml
+    permissions: { contents: read, packages: write }
+    with: { path: victoria/src/metrics.dockerfile }
