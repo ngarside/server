@@ -26,7 +26,7 @@ def assemble(path):
 if __name__ == '__main__':
 	# Assert CLI argument usage.
 	if len(sys.argv) != 2:
-		print('Usage: python tagify.py <path>')
+		print('Usage: python namify.py <path>')
 		sys.exit(2)
 
 	# Build and print the path.
