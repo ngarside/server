@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  opencloud:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: opencloud/src/opencloud.dockerfile }

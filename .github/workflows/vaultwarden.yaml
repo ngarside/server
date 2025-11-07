@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  vaultwarden:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: vaultwarden/src/vaultwarden.dockerfile }

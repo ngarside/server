@@ -11,17 +11,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  penpot_backend:
+  backend:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: penpot/src/backend.dockerfile }
 
-  penpot_exporter:
+  exporter:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: penpot/src/exporter.dockerfile }
 
-  penpot_frontend:
+  frontend:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
     with: { path: penpot/src/frontend.dockerfile }
