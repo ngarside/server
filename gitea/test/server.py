@@ -14,7 +14,7 @@ def fixture():
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port}:3000', '--pull', 'never', '--read-only',
-		f'ghcr.io/ngarside/gitea:{tag}',
+		f'ghcr.io/ngarside/gitea-server:{tag}',
 	])
 	time.sleep(10)
 	yield
