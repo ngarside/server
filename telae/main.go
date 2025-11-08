@@ -39,9 +39,8 @@ func read(path string) string {
 }
 
 func main() {
-	path := os.Args[0]
-	path = "/home/nathan/Projects/Server/telae/sample.tmpl"
-	template2 := read(path)
-	out := format(template2)
+	source := os.Args[1]
+	template := read(source)
+	out := format(template)
 	fmt.Println(out)
 }
