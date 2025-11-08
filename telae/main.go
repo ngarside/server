@@ -3,27 +3,29 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"strings"
 	"text/template"
 )
 
-func format(template2 string) {
+func format(template2 string) string {
 	functions := template.FuncMap{"read": read}
 
 	t, err := template.New("sample.tmpl").Funcs(functions).Parse(template2)
 	if err != nil {
-		log.Print(err)
-		return
+		panic(err)
 	}
 
-	err = t.Execute(os.Stdout, os.Args)
+	var res bytes.Buffer
+	err = t.Execute(&res, os.Args)
 	if err != nil {
-		log.Print(err)
-		return
+		panic(err)
 	}
+
+	return res.String()
 }
 
 func read(path string) string {
@@ -40,5 +42,6 @@ func main() {
 	path := os.Args[0]
 	path = "/home/nathan/Projects/Server/telae/sample.tmpl"
 	template2 := read(path)
-	format(template2)
+	out := format(template2)
+	fmt.Println(out)
 }
