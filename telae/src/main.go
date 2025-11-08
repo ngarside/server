@@ -36,7 +36,7 @@ func copyPermissions(source string, target string) {
 }
 
 // Executes the given template and returns the result.
-func format(text string) string {
+func executeTemplate(text string) string {
 	functions := template.FuncMap{"read": readFile}
 	tmpl := template.Must(template.New("").Funcs(functions).Parse(text))
 
@@ -84,7 +84,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	result := format(string(template))
+	result := executeTemplate(string(template))
 
 	// Write the processed template.
 	target := os.Args[2]
