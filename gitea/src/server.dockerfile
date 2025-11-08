@@ -60,7 +60,7 @@ RUN ln -s /usr/bin/git /tmp/cp/git-receive-pack
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-archive
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-pack
 
-FROM docker.io/golang:1.25.3-alpine AS telae
+FROM docker.io/golang:1.25.4-alpine AS telae
 COPY telae /telae
 WORKDIR /telae
 RUN go build src/main.go
