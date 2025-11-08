@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
 	"text/template"
@@ -50,6 +51,17 @@ func format(text string) string {
 
 // Reads the file at the given path and returns its contents as a string.
 func read(path string) string {
+	if !filepath.IsAbs(path) {
+		dir := filepath.Dir(os.Args[1])
+		if !filepath.IsAbs(dir) {
+			abs, err := filepath.Abs(dir)
+			if err == nil {
+				dir = abs
+			}
+		}
+		path = filepath.Join(dir, path)
+	}
+
 	buffer, err := os.ReadFile(path)
 	if err != nil {
 		panic(err)
