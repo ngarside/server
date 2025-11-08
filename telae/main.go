@@ -5,6 +5,7 @@ package main
 import (
 	"bytes"
 	"os"
+	"syscall"
 	"text/template"
 )
 
@@ -46,7 +47,17 @@ func main() {
 		panic(err)
 	}
 
+	stat, ok := info.Sys().(*syscall.Stat_t)
+	if !ok {
+		panic("Unable to stat source file")
+	}
+
 	template := read(source)
 	result := format(template)
 	os.WriteFile(target, []byte(result), info.Mode().Perm())
+
+	err = os.Chown(target, int(stat.Uid), int(stat.Gid))
+	if err != nil {
+		panic(err)
+	}
 }
