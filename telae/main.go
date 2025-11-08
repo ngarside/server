@@ -4,6 +4,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"os"
 	"syscall"
 	"text/template"
@@ -37,12 +38,23 @@ func read(path string) string {
 // Processes the template at 'args[1]' and writes it to 'args[2]'.
 func main() {
 	if len(os.Args) != 3 {
-		panic("Usage: telae <source> <target>")
+		fmt.Println("Usage: telae <source> <target>")
+		os.Exit(1)
 	}
+
 	source := os.Args[1]
 	target := os.Args[2]
 
+	template := read(source)
+	result := format(template)
+	os.WriteFile(target, []byte(result), 0600)
+
 	info, err := os.Stat(source)
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.Chmod(target, info.Mode())
 	if err != nil {
 		panic(err)
 	}
@@ -50,15 +62,6 @@ func main() {
 	stat, ok := info.Sys().(*syscall.Stat_t)
 	if !ok {
 		panic("Unable to stat source file")
-	}
-
-	template := read(source)
-	result := format(template)
-	os.WriteFile(target, []byte(result), info.Mode())
-
-	err = os.Chmod(target, info.Mode())
-	if err != nil {
-		panic(err)
 	}
 
 	err = os.Chown(target, int(stat.Uid), int(stat.Gid))
