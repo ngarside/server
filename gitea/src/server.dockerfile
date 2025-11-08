@@ -60,6 +60,11 @@ RUN ln -s /usr/bin/git /tmp/cp/git-receive-pack
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-archive
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-pack
 
+FROM docker.io/golang:1.25.3-alpine AS telae
+COPY telae /telae
+WORKDIR /telae
+RUN go build src/main.go
+
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 COPY --from=build /git/git /usr/bin/git
@@ -69,6 +74,7 @@ COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea /gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
+COPY --from=telae /telae/main /usr/bin/telae
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
