@@ -9,7 +9,7 @@ FROM quay.io/fedora/fedora:43
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 RUN <<EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
-		fuse-overlayfs git gh go-task jq openssl optipng podman python3-pip
+		fuse-overlayfs git gh golang go-task jq openssl optipng podman python3-pip
 	dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
 EOF
