@@ -54,7 +54,7 @@ func main() {
 
 	template := read(source)
 	result := format(template)
-	os.WriteFile(target, []byte(result), info.Mode().Perm())
+	os.WriteFile(target, []byte(result), info.Mode())
 
 	err = os.Chown(target, int(stat.Uid), int(stat.Gid))
 	if err != nil {
