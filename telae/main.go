@@ -5,22 +5,22 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
-	"strings"
 	"text/template"
 )
 
+const help = `
+	This program formats a go-style template file and outputs the result.
+`
+
+// Executes the given template and returns the result.
 func format(template2 string) string {
 	functions := template.FuncMap{"read": read}
 
-	t, err := template.New("").Funcs(functions).Parse(template2)
-	if err != nil {
-		panic(err)
-	}
+	t := template.Must(template.New("").Funcs(functions).Parse(template2))
 
 	var res bytes.Buffer
-	err = t.Execute(&res, os.Args)
+	err := t.Execute(&res, os.Args)
 	if err != nil {
 		panic(err)
 	}
@@ -28,14 +28,14 @@ func format(template2 string) string {
 	return res.String()
 }
 
+// Reads the file at the given path as a string.
 func read(path string) string {
-	bytes, err := ioutil.ReadFile(path)
+	buffer, err := os.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
 
-	trimmed := strings.TrimSpace(string(bytes))
-	return trimmed
+	return string(buffer)
 }
 
 func main() {
