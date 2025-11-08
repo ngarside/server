@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"strings"
 	"syscall"
 	"text/template"
 )
@@ -54,7 +55,7 @@ func read(path string) string {
 		panic(err)
 	}
 
-	return string(buffer)
+	return strings.TrimSpace(string(buffer))
 }
 
 // Processes the template at 'args[1]' and writes it to 'args[2]'.
