@@ -56,6 +56,11 @@ func main() {
 	result := format(template)
 	os.WriteFile(target, []byte(result), info.Mode())
 
+	err = os.Chmod(target, info.Mode())
+	if err != nil {
+		panic(err)
+	}
+
 	err = os.Chown(target, int(stat.Uid), int(stat.Gid))
 	if err != nil {
 		panic(err)
