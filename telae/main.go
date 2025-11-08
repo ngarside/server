@@ -40,7 +40,13 @@ func read(path string) string {
 func main() {
 	source := os.Args[1]
 	target := os.Args[2]
+
+	info, err := os.Stat(source)
+	if err != nil {
+		panic(err)
+	}
+
 	template := read(source)
 	result := format(template)
-	os.WriteFile(target, []byte(result), 0644)
+	os.WriteFile(target, []byte(result), info.Mode().Perm())
 }
