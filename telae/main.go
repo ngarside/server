@@ -4,7 +4,6 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"os"
 	"text/template"
 )
@@ -40,7 +39,8 @@ func read(path string) string {
 
 func main() {
 	source := os.Args[1]
+	target := os.Args[2]
 	template := read(source)
-	out := format(template)
-	fmt.Println(out)
+	result := format(template)
+	os.WriteFile(target, []byte(result), 0644)
 }
