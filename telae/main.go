@@ -1,0 +1,40 @@
+package main
+
+import (
+	"io/ioutil"
+	"log"
+	"os"
+	"strings"
+	"text/template"
+)
+
+func read(path string) string {
+	bytes, err := ioutil.ReadFile(path)
+	if err != nil {
+		log.Fatal(err)
+		return ""
+	}
+	// trim trailing whitespace
+	trimmed := strings.TrimSpace(string(bytes))
+	return trimmed
+}
+
+func main() {
+	functions := template.FuncMap{
+		"read": read,
+	}
+
+	path := os.Args[0]
+	path = "/home/nathan/Projects/Server/telae/sample.txt"
+	t, err := template.New("sample.txt").Funcs(functions).ParseFiles(path)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+
+	err = t.Execute(os.Stdout, os.Args)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+}

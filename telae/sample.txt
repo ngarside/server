@@ -1,0 +1,3 @@
+one
+{{ read "/home/nathan/Projects/Server/telae/secret.txt" }}
+three
