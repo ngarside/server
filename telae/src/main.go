@@ -37,7 +37,7 @@ func copyPermissions(source string, target string) {
 
 // Executes the given template and returns the result.
 func format(text string) string {
-	functions := template.FuncMap{"read": read}
+	functions := template.FuncMap{"read": readFile}
 	tmpl := template.Must(template.New("").Funcs(functions).Parse(text))
 
 	var res bytes.Buffer
@@ -50,7 +50,7 @@ func format(text string) string {
 }
 
 // Reads the file at the given path and returns its contents as a string.
-func read(path string) string {
+func readFile(path string) string {
 	if !filepath.IsAbs(path) {
 		dir := filepath.Dir(os.Args[1])
 		if !filepath.IsAbs(dir) {
