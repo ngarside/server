@@ -8,11 +8,6 @@
 # when copying between stages.
 # https://stackoverflow.com/a/66823636
 
-FROM docker.io/golang:1.25.3-alpine AS telae
-COPY telae /telae
-WORKDIR /telae
-RUN go build src/main.go
-
 FROM docker.io/gitea/gitea:1.25.1 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } >> /version
@@ -64,6 +59,11 @@ RUN mkdir /tmp/cp
 RUN ln -s /usr/bin/git /tmp/cp/git-receive-pack
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-archive
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-pack
+
+FROM docker.io/golang:1.25.3-alpine AS telae
+COPY telae /telae
+WORKDIR /telae
+RUN go build src/main.go
 
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
