@@ -28,7 +28,7 @@ func format(template2 string) string {
 	return res.String()
 }
 
-// Reads the file at the given path as a string.
+// Reads the file at the given path and returns its contents as a string.
 func read(path string) string {
 	buffer, err := os.ReadFile(path)
 	if err != nil {
