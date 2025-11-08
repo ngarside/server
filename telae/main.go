@@ -13,9 +13,7 @@ import (
 func format(template2 string) {
 	functions := template.FuncMap{"read": read}
 
-	path := os.Args[0]
-	path = "/home/nathan/Projects/Server/telae/sample.tmpl"
-	t, err := template.New("sample.tmpl").Funcs(functions).ParseFiles(path)
+	t, err := template.New("sample.tmpl").Funcs(functions).Parse(template2)
 	if err != nil {
 		log.Print(err)
 		return
@@ -41,5 +39,6 @@ func read(path string) string {
 func main() {
 	path := os.Args[0]
 	path = "/home/nathan/Projects/Server/telae/sample.tmpl"
-	format(path)
+	template2 := read(path)
+	format(template2)
 }
