@@ -19,7 +19,7 @@ Secret=gitea_lfs_secret
 Secret=gitea_oidc_secret
 Secret=machine_domain_root
 UserNS=auto:size=8
-Volume=/etc/gitea:/etc/gitea:ro
+Volume=/etc/gitea:/etc/gitea:U,Z
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/gitea/db:/opt/db:U,Z
 Volume=/var/data/gitea/git:/opt/git:U,Z
