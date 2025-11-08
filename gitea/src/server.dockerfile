@@ -8,6 +8,11 @@
 # when copying between stages.
 # https://stackoverflow.com/a/66823636
 
+FROM docker.io/golang:1.25.3-alpine AS telae
+COPY telae /telae
+WORKDIR /telae
+RUN go build src/main.go
+
 FROM docker.io/gitea/gitea:1.25.1 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } >> /version
@@ -69,6 +74,7 @@ COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea /gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
+COPY --from=telae /telae/main /usr/bin/telae
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
