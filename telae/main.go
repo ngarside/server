@@ -9,10 +9,6 @@ import (
 	"text/template"
 )
 
-const help = `
-	This program formats a go-style template file and outputs the result.
-`
-
 // Executes the given template and returns the result.
 func format(template2 string) string {
 	functions := template.FuncMap{"read": read}
@@ -38,6 +34,7 @@ func read(path string) string {
 	return string(buffer)
 }
 
+// Processes the template at 'args[1]' and writes it to 'args[2]'.
 func main() {
 	if len(os.Args) != 3 {
 		panic("Usage: telae <source> <target>")
