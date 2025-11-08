@@ -7,4 +7,4 @@
 set -euo pipefail
 
 /usr/bin/configuration &
-/usr/bin/gitea --config /etc/gitea/app.ini "$@"
+/usr/bin/gitea --config /etc/gitea/gitea.ini "$@"
