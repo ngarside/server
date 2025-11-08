@@ -89,5 +89,5 @@ func main() {
 	// Write the processed template.
 	target := os.Args[2]
 	os.WriteFile(target, []byte(result), 0600)
-	copyPermissions(source, target)
+	// copyPermissions(source, target)
 }
