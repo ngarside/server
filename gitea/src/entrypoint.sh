@@ -7,5 +7,5 @@
 set -euo pipefail
 
 /usr/bin/configuration &
-/usr/bin/telae /etc/gitea/tmpl/gitea.tmpl /etc/gitea/conf/gitea.ini
-/usr/bin/gitea --config /etc/gitea/conf/gitea.ini "$@"
+/usr/bin/telae /etc/gitea/gitea.tmpl /tmp/gitea.ini
+/usr/bin/gitea --config /tmp/gitea.ini "$@"
