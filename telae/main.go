@@ -39,7 +39,7 @@ func read(path string) string {
 }
 
 func main() {
-	if len(os.Args) != 2 {
+	if len(os.Args) != 3 {
 		panic("Usage: telae <source> <target>")
 	}
 	source := os.Args[1]
