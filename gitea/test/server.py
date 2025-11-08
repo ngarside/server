@@ -10,10 +10,12 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
+	dir = os.path.dirname(os.path.realpath(__file__))
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port}:3000', '--pull', 'never', '--read-only',
+		f'{port}:3000', '--pull', 'never', '--read-only', '--volume',
+		f'{dir}/server.tmpl:/etc/gitea/gitea.tmpl:ro',
 		f'ghcr.io/ngarside/gitea-server:{tag}',
 	])
 	time.sleep(10)
