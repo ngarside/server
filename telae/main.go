@@ -10,45 +10,8 @@ import (
 	"text/template"
 )
 
-// Executes the given template and returns the result.
-func format(template2 string) string {
-	functions := template.FuncMap{"read": read}
-
-	t := template.Must(template.New("").Funcs(functions).Parse(template2))
-
-	var res bytes.Buffer
-	err := t.Execute(&res, os.Args)
-	if err != nil {
-		panic(err)
-	}
-
-	return res.String()
-}
-
-// Reads the file at the given path and returns its contents as a string.
-func read(path string) string {
-	buffer, err := os.ReadFile(path)
-	if err != nil {
-		panic(err)
-	}
-
-	return string(buffer)
-}
-
-// Processes the template at 'args[1]' and writes it to 'args[2]'.
-func main() {
-	if len(os.Args) != 3 {
-		fmt.Println("Usage: telae <source> <target>")
-		os.Exit(1)
-	}
-
-	source := os.Args[1]
-	target := os.Args[2]
-
-	template := read(source)
-	result := format(template)
-	os.WriteFile(target, []byte(result), 0600)
-
+// Copies the ownership and permissions to/from the given files.
+func copyPermissions(source string, target string) {
 	info, err := os.Stat(source)
 	if err != nil {
 		panic(err)
@@ -68,4 +31,47 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+// Executes the given template and returns the result.
+func format(text string) string {
+	functions := template.FuncMap{"read": read}
+	tmpl := template.Must(template.New("").Funcs(functions).Parse(text))
+
+	var res bytes.Buffer
+	err := tmpl.Execute(&res, os.Args)
+	if err != nil {
+		panic(err)
+	}
+
+	return res.String()
+}
+
+// Reads the file at the given path and returns its contents as a string.
+func read(path string) string {
+	buffer, err := os.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(buffer)
+}
+
+// Processes the template at 'args[1]' and writes it to 'args[2]'.
+func main() {
+	// Assert the correct usage.
+	if len(os.Args) != 3 {
+		fmt.Println("Usage: telae <source> <target>")
+		os.Exit(1)
+	}
+
+	// Read and process the template file.
+	source := os.Args[1]
+	template := read(source)
+	result := format(template)
+
+	// Write the processed template.
+	target := os.Args[2]
+	os.WriteFile(target, []byte(result), 0600)
+	copyPermissions(source, target)
 }
