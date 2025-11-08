@@ -22,7 +22,7 @@ Environment=OIDC_CLIENT_ID=outline
 Environment=OIDC_DISPLAY_NAME=Authentik
 Environment=SMTP_SERVICE=Mailjet
 Environment=COLLABORATION_URL=
-Environment=LOG_LEVEL=debug
+Environment=LOG_LEVEL=silly
 Environment=DEFAULT_LANGUAGE=en_GB
 Image=ghcr.io/ngarside/outline:1.0.1.36
 Memory=8g
