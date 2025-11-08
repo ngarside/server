@@ -1,3 +1,5 @@
+// This is free and unencumbered software released into the public domain.
+
 package main
 
 import (
@@ -8,21 +10,8 @@ import (
 	"text/template"
 )
 
-func read(path string) string {
-	bytes, err := ioutil.ReadFile(path)
-	if err != nil {
-		log.Fatal(err)
-		return ""
-	}
-	// trim trailing whitespace
-	trimmed := strings.TrimSpace(string(bytes))
-	return trimmed
-}
-
-func main() {
-	functions := template.FuncMap{
-		"read": read,
-	}
+func format(template2 string) {
+	functions := template.FuncMap{"read": read}
 
 	path := os.Args[0]
 	path = "/home/nathan/Projects/Server/telae/sample.txt"
@@ -37,4 +26,20 @@ func main() {
 		log.Print(err)
 		return
 	}
+}
+
+func read(path string) string {
+	bytes, err := ioutil.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+
+	trimmed := strings.TrimSpace(string(bytes))
+	return trimmed
+}
+
+func main() {
+	path := os.Args[0]
+	path = "/home/nathan/Projects/Server/telae/sample.txt"
+	format(path)
 }
