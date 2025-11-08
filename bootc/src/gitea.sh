@@ -8,4 +8,4 @@ cp /git/gitea/ops/gitea.container /etc/containers/systemd/users/1001/gitea.conta
 cp /git/gitea/ops/gitea.network /etc/containers/systemd/users/1001/gitea.network
 
 mkdir --parents /etc/gitea
-cp /git/gitea/ops/gitea.ini /etc/gitea/app.ini
+cp /git/gitea/ops/gitea.tmpl /etc/gitea/gitea.tmpl
