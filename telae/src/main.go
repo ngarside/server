@@ -68,8 +68,11 @@ func main() {
 
 	// Read and process the template file.
 	source := os.Args[1]
-	template := read(source)
-	result := format(template)
+	template, err := os.ReadFile(source)
+	if err != nil {
+		panic(err)
+	}
+	result := format(string(template))
 
 	// Write the processed template.
 	target := os.Args[2]
