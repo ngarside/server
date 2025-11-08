@@ -14,7 +14,7 @@ import (
 func format(template2 string) string {
 	functions := template.FuncMap{"read": read}
 
-	t, err := template.New("sample.tmpl").Funcs(functions).Parse(template2)
+	t, err := template.New("").Funcs(functions).Parse(template2)
 	if err != nil {
 		panic(err)
 	}
