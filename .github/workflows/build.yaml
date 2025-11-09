@@ -45,3 +45,11 @@ jobs:
 
       - name: Push container to registry
         run: podman push ghcr.io/ngarside/$NAME:$TAG
+
+      - name: Tag latest version
+        if: ${{ github.ref_name == 'master' }}
+        run: podman tag ghcr.io/ngarside/$NAME:$TAG ghcr.io/ngarside/$NAME:latest
+
+      - name: Push latest to registry
+        if: ${{ github.ref_name == 'master' }}
+        run: podman push ghcr.io/ngarside/$NAME:latest
