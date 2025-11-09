@@ -6,6 +6,6 @@
 
 set -eu
 
-/usr/bin/configuration &
 /usr/bin/telae /etc/gitea/gitea.tmpl /tmp/gitea.ini
+/usr/bin/configuration &
 /usr/bin/gitea --config /tmp/gitea.ini "$@"
