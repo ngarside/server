@@ -12,6 +12,12 @@ entries:
     identifiers:
       scope_name: email
 
+  # Scope - Offline Access
+  - id: custom-outline-scopes-offline_access
+    model: authentik_providers_oauth2.scopemapping
+    identifiers:
+      scope_name: offline_access
+
   # Scope - OpenID
   - id: custom-outline-scopes-openid
     model: authentik_providers_oauth2.scopemapping
@@ -37,6 +43,7 @@ entries:
       name: Outline Provider
       property_mappings:
         - !KeyOf custom-outline-scopes-email
+        - !KeyOf custom-outline-scopes-offline_access
         - !KeyOf custom-outline-scopes-openid
         - !KeyOf custom-outline-scopes-profile
       redirect_uris:
