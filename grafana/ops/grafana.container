@@ -17,6 +17,7 @@ Secret=machine_domain_root
 Tmpfs=/tmp:mode=1777
 UserNS=auto:size=8
 Volume=/etc/grafana:/etc/grafana:ro
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/grafana/data:/var/lib/grafana:U,Z
 
 [Service]
