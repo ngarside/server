@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+[Container]
+ContainerName=victoria_logs
+GroupAdd=keep-groups
+Image=ghcr.io/ngarside/victoria-logs:1.36.1.2
+Memory=8g
+Network=victoria_logs.network:ip=10.24.0.3
+NoNewPrivileges=true
+PodmanArgs=--cpus=1
+ReadOnly=true
+UserNS=auto
+
+[Service]
+Restart=always
+TimeoutStartSec=9000
+
+[Install]
+WantedBy=default.target
