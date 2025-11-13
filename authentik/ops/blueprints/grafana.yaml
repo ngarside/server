@@ -34,6 +34,8 @@ entries:
       client_secret: !File /run/secrets/grafana_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      logout_method: frontchannel
+      logout_uri: !Format [https://grafana.%s/logout, !File /run/secrets/machine_domain_root]
       name: Grafana Provider
       property_mappings:
         - !KeyOf custom-grafana-scopes-email
@@ -41,7 +43,7 @@ entries:
         - !KeyOf custom-grafana-scopes-profile
       redirect_uris:
         - matching_mode: strict
-          url: !Format [https://grafana.%s/auth/oidc.callback, !File /run/secrets/machine_domain_root]
+          url: !Format [https://grafana.%s/login/generic_oauth, !File /run/secrets/machine_domain_root]
 
   # Application
   - id: custom-grafana-application
