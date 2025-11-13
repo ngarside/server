@@ -1,5 +1,9 @@
 # This is free and unencumbered software released into the public domain.
 
+[Unit]
+After=authentik_server.container
+Requires=authentik_server.container
+
 [Container]
 ContainerName=grafana
 Image=ghcr.io/ngarside/grafana:12.2.1.45
@@ -7,11 +11,18 @@ Memory=8g
 Network=grafana.network:ip=10.22.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
+ReadOnly=true
+Secret=grafana_oidc_secret
+Secret=machine_domain_root
+Tmpfs=/tmp:mode=1777
 UserNS=auto:size=8
+Volume=/etc/grafana:/etc/grafana:ro
+Volume=/var/data/grafana/data:/var/lib/grafana:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=9000
+ExecStartPre=mkdir --parents /var/data/grafana/data
 
 [Install]
 WantedBy=default.target
