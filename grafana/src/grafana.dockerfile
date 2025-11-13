@@ -8,6 +8,6 @@ COPY --from=grafana /usr/share/grafana/conf /usr/share/grafana/conf
 COPY --from=grafana /usr/share/grafana/public /usr/share/grafana/public
 ENTRYPOINT ["/usr/bin/grafana"]
 ENV GF_SERVER_HTTP_PORT=80
-CMD ["server", "--homepath", "/usr/share/grafana"]
+CMD ["server", "--config", "/etc/grafana/grafana.ini", "--homepath", "/usr/share/grafana"]
 EXPOSE 80
-VOLUME /tmp
+VOLUME ["/etc/grafana", "/tmp"]
