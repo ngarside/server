@@ -11,4 +11,4 @@ ENV GF_PATHS_DATA=/var/lib/grafana
 ENV GF_SERVER_HTTP_PORT=80
 CMD ["server", "--config", "/etc/grafana/grafana.ini", "--homepath", "/usr/share/grafana"]
 EXPOSE 80
-VOLUME ["/etc/grafana", "/var/lib/grafana", "/tmp"]
+VOLUME ["/etc/grafana", "/tmp", "/var/lib/grafana"]
