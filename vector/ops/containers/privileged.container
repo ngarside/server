@@ -3,7 +3,7 @@
 [Container]
 ContainerName=vector_privileged
 GroupAdd=keep-groups
-Image=ghcr.io/ngarside/vector-privileged:0.51.0.37
+Image=ghcr.io/ngarside/vector-privileged:0.51.1.57
 Memory=8g
 Network=vector.network:ip=10.15.0.3
 NoNewPrivileges=true
