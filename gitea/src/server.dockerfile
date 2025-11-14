@@ -47,7 +47,7 @@ COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/configuration
 RUN chmod +x /usr/bin/entrypoint
 
-FROM docker.io/alpine:3.22.2 AS build
+FROM docker.io/alpine:3.22.2 AS git-build
 COPY --from=git /version /version
 RUN apk --no-cache add alpine-sdk autoconf tcl-dev zlib-dev zlib-static
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
@@ -67,8 +67,8 @@ RUN go build src/main.go
 
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
-COPY --from=build /git/git /usr/bin/git
-COPY --from=build /tmp/cp/ /usr/bin/
+COPY --from=git-build /git/git /usr/bin/git
+COPY --from=git-build /tmp/cp/ /usr/bin/
 COPY --from=busybox /busybox/busybox /usr/bin/busybox
 COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea /gitea /usr/bin/gitea
