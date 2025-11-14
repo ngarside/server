@@ -10,11 +10,10 @@ RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
 
 FROM golang:1.24-alpine as build
 COPY --from=seaweedfs /version /version
-RUN apk add git g++ fuse
+RUN apk --no-cache add git g++ fuse
 RUN mkdir -p /go/src/github.com/seaweedfs/
-RUN git clone https://github.com/seaweedfs/seaweedfs /seaweedfs \
-  --branch "$(cat /version)" --depth 1
-WORKDIR /seaweedfs/weed
+RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
+WORKDIR /go/seaweedfs/weed
 RUN go install -ldflags '-extldflags -static'
 
 # FROM docker.io/curlimages/curl:8.17.0 AS curl
