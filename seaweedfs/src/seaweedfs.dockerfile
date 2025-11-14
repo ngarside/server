@@ -5,6 +5,19 @@
 # - https://github.com/moparisthebest/static-curl/blob/master/LICENSE.txt
 
 FROM docker.io/chrislusf/seaweedfs:4.00 AS seaweedfs
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
+USER root
+RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
+
+FROM golang:1.24-alpine as build
+COPY --from=seaweedfs /version /version
+RUN apk --no-cache add build-base git
+RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
+WORKDIR /go/seaweedfs/weed
+COPY /seaweedfs/src/credentials.patch /tmp/credentials.patch
+RUN patch s3api/auth_credentials.go < /tmp/credentials.patch
+RUN go install -ldflags '-extldflags -static'
+RUN strip /go/bin/weed
 
 FROM docker.io/curlimages/curl:8.17.0 AS curl
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
@@ -24,8 +37,8 @@ RUN make -j "$(nproc)" LDFLAGS="-static -all-static"
 RUN strip src/curl
 
 FROM scratch
+COPY --from=build /go/bin/weed /usr/bin/weed
 COPY --from=healthcheck /curl/src/curl /usr/bin/curl
-COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
 HEALTHCHECK CMD ["/usr/bin/curl", "--silent", "http://0.0.0.0/healthz"]
