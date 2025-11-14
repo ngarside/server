@@ -12,10 +12,10 @@ FROM golang:1.24-alpine as build
 COPY --from=seaweedfs /version /version
 RUN apk add git g++ fuse
 RUN mkdir -p /go/src/github.com/seaweedfs/
-RUN git clone https://github.com/seaweedfs/seaweedfs /go/src/github.com/seaweedfs/seaweedfs \
+RUN git clone https://github.com/seaweedfs/seaweedfs /seaweedfs \
   --branch "$(cat /version)" --depth 1
-RUN cd /go/src/github.com/seaweedfs/seaweedfs/weed \
-  && export LDFLAGS="-X github.com/seaweedfs/seaweedfs/weed/util/version.COMMIT=$(git rev-parse --short HEAD)" \
+WORKDIR /seaweedfs/weed
+RUN export LDFLAGS="-X github.com/seaweedfs/seaweedfs/weed/util/version.COMMIT=$(git rev-parse --short HEAD)" \
   && CGO_ENABLED=0 go install -ldflags "-extldflags -static ${LDFLAGS}"
 
 # FROM docker.io/curlimages/curl:8.17.0 AS curl
