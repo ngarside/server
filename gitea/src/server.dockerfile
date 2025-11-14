@@ -10,14 +10,14 @@
 
 FROM docker.io/gitea/gitea:1.25.1 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
-RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } >> /version
+RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
 RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
 RUN chmod +x gitea
 
 FROM docker.io/alpine:3.22.2 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
-RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' >> /version
+RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' > /version
 RUN git clone https://git.busybox.net/busybox --branch "$(cat /version)" --depth 1
 WORKDIR /busybox
 RUN make defconfig
@@ -35,7 +35,7 @@ RUN ln -s /usr/bin/busybox /tmp/cp/bash
 
 FROM docker.io/alpine/git:2.49.1 AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
-RUN git version | grep -o "[0-9.]*" >> /version
+RUN git version | grep -o "[0-9.]*" > /version
 
 FROM docker.io/alpine:3.22.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip

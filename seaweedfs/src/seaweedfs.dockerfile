@@ -10,7 +10,7 @@ FROM docker.io/curlimages/curl:8.17.0 AS curl
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN apk --no-cache add grep
-RUN curl --version | grep -oP '(?<=curl )\S+' >> /version
+RUN curl --version | grep -oP '(?<=curl )\S+' > /version
 
 FROM docker.io/alpine:3.22.2 AS healthcheck
 COPY --from=curl /version /version
