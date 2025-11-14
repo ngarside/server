@@ -17,7 +17,7 @@
 +	if err != nil {
 +		log.Fatal("Unable to read file at ROOT_URL %q: %s", rootUrlPath, err)
 +	}
-+	AppURL := fmt.Printf("https://gitea.%s", strings.TrimSpace(string(data)))
++	AppURL := fmt.Printf("https://gitea.%s", strings.TrimSpace(string(rootUrl)))
 +
  	PublicURLDetection = sec.Key("PUBLIC_URL_DETECTION").MustString(PublicURLLegacy)
  	if PublicURLDetection != PublicURLAuto && PublicURLDetection != PublicURLLegacy {
