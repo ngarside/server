@@ -10,10 +10,12 @@ NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto
+Volume=/var/data/victoria/metrics:/var/lib/victoriametrics:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=9000
+ExecStartPre=mkdir --parents /var/data/victoria/metrics
 
 [Install]
 WantedBy=default.target
