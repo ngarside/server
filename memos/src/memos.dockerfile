@@ -12,4 +12,4 @@ COPY --from=memos /usr/local/memos/memos /usr/bin/memos
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 ENTRYPOINT ["/usr/bin/memos"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
-CMD ["--data", "/opt/memos", "--mode", "prod", "--port", "80"]
+CMD ["--data", "/var/lib/memos", "--mode", "prod", "--port", "80"]
