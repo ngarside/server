@@ -77,7 +77,6 @@ COPY --from=links /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
-COPY --from=telae /telae/main /usr/bin/telae
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
