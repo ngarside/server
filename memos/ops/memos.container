@@ -9,7 +9,7 @@ NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
-Volume=/var/data/memos/opt:/opt/memos:U,Z
+Volume=/var/data/memos/opt:/var/lib/memos:U,Z
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
