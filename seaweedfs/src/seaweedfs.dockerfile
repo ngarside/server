@@ -36,8 +36,8 @@ RUN export LDFLAGS="-X github.com/seaweedfs/seaweedfs/weed/util/version.COMMIT=$
 # RUN strip src/curl
 
 # FROM scratch
+# COPY --from=build /go/bin/weed /usr/bin/weed
 # COPY --from=healthcheck /curl/src/curl /usr/bin/curl
-# COPY --from=seaweedfs /usr/bin/weed /usr/bin/weed
 # EXPOSE 80
 # ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
 # HEALTHCHECK CMD ["/usr/bin/curl", "--silent", "http://0.0.0.0/healthz"]
