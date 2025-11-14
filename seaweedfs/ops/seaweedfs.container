@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=seaweedfs
-Exec=server -dir=/data -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
+Exec=server -dir=/var/lib/seaweedfs -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
 Image=ghcr.io/ngarside/seaweedfs:4.00.51
 Memory=8g
 Network=seaweedfs.network:ip=10.21.0.2
@@ -11,7 +11,7 @@ PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/seaweedfs:/etc/seaweedfs:ro
-Volume=/var/data/seaweedfs/data:/data:U,Z
+Volume=/var/data/seaweedfs/data:/var/lib/seaweedfs:U,Z
 
 [Service]
 Restart=always
