@@ -17,7 +17,10 @@ COPY --from=gitea /version /version
 RUN apk --no-cache add build-base git pnpm
 RUN git clone https://github.com/go-gitea/gitea --branch "v$(cat /version)" --depth 1
 WORKDIR /go/gitea
+COPY /gitea/src/server.patch /tmp/server.patch
+RUN patch modules/setting/server.go < /tmp/server.patch
 RUN LDFLAGS='-extldflags -static' TAGS='bindata sqlite sqlite_unlock_notify' make build -j "$(nproc)"
+RUN strip /go/gitea/gitea
 
 FROM docker.io/alpine:3.22.2 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
