@@ -1,0 +1,33 @@
+# This is free and unencumbered software released into the public domain.
+
+# This patches the 'ROOT_URL' configuration value so that it provides a path to a file
+# containing the actual root URL, which is then formatted as 'https://gitea.%s'.
+
+--- server.go
++++ server.go
+
+@@ -5,6 +5,7 @@
+ 
+ import (
+ 	"encoding/base64"
++	"fmt"
+ 	"net"
+ 	"net/url"
+ 	"os"
+
+@@ -286,6 +286,15 @@
+ 
+ 	defaultAppURL := string(Protocol) + "://" + Domain + ":" + HTTPPort
+ 	AppURL = sec.Key("ROOT_URL").MustString(defaultAppURL)
++
++	if _, err := os.Stat(AppURL); err == nil {
++		rootUrl, err := os.ReadFile(AppURL)
++		if err != nil {
++			log.Fatal("Unable to read file at ROOT_URL %q: %s", AppURL, err)
++		}
++		AppURL = fmt.Sprintf("https://gitea.%s", strings.TrimSpace(string(rootUrl)))
++	}
++
+ 	PublicURLDetection = sec.Key("PUBLIC_URL_DETECTION").MustString(PublicURLLegacy)
+ 	if PublicURLDetection != PublicURLAuto && PublicURLDetection != PublicURLLegacy {
+ 		log.Fatal("Invalid PUBLIC_URL_DETECTION value: %s", PublicURLDetection)

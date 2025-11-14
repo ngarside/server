@@ -11,8 +11,16 @@
 FROM docker.io/gitea/gitea:1.25.1 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
-RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
-RUN chmod +x gitea
+
+FROM golang:1.25.4-alpine as gitea-build
+COPY --from=gitea /version /version
+RUN apk --no-cache add build-base git pnpm
+RUN git clone https://github.com/go-gitea/gitea --branch "v$(cat /version)" --depth 1
+WORKDIR /go/gitea
+COPY /gitea/src/server.patch /tmp/server.patch
+RUN patch modules/setting/server.go < /tmp/server.patch
+RUN LDFLAGS='-extldflags -static' TAGS='bindata sqlite sqlite_unlock_notify' make build -j "$(nproc)"
+RUN strip /go/gitea/gitea
 
 FROM docker.io/alpine:3.22.2 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
@@ -47,7 +55,7 @@ COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/configuration
 RUN chmod +x /usr/bin/entrypoint
 
-FROM docker.io/alpine:3.22.2 AS build
+FROM docker.io/alpine:3.22.2 AS git-build
 COPY --from=git /version /version
 RUN apk --no-cache add alpine-sdk autoconf tcl-dev zlib-dev zlib-static
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
@@ -60,21 +68,15 @@ RUN ln -s /usr/bin/git /tmp/cp/git-receive-pack
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-archive
 RUN ln -s /usr/bin/git /tmp/cp/git-upload-pack
 
-FROM docker.io/golang:1.25.4-alpine AS telae
-COPY telae /telae
-WORKDIR /telae
-RUN go build src/main.go
-
 FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
-COPY --from=build /git/git /usr/bin/git
-COPY --from=build /tmp/cp/ /usr/bin/
+COPY --from=git-build /git/git /usr/bin/git
+COPY --from=git-build /tmp/cp/ /usr/bin/
 COPY --from=busybox /busybox/busybox /usr/bin/busybox
 COPY --from=links /tmp/cp/ /usr/bin/
-COPY --from=gitea /gitea /usr/bin/gitea
+COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
-COPY --from=telae /telae/main /usr/bin/telae
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
