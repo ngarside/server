@@ -17,27 +17,27 @@ WORKDIR /go/seaweedfs/weed
 RUN go install -ldflags '-extldflags -static'
 RUN strip /go/bin/weed
 
-# FROM docker.io/curlimages/curl:8.17.0 AS curl
-# SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
-# USER root
-# RUN apk --no-cache add grep
-# RUN curl --version | grep -oP '(?<=curl )\S+' > /version
+FROM docker.io/curlimages/curl:8.17.0 AS curl
+SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
+USER root
+RUN apk --no-cache add grep
+RUN curl --version | grep -oP '(?<=curl )\S+' > /version
 
-# FROM docker.io/alpine:3.22.2 AS healthcheck
-# COPY --from=curl /version /version
-# RUN apk --no-cache add build-base
-# RUN wget "https://curl.se/download/curl-$(cat /version).tar.gz"
-# RUN mkdir curl
-# RUN tar xzf "curl-$(cat /version).tar.gz" --directory /curl --strip-components 1
-# WORKDIR /curl
-# RUN LDFLAGS="-static" ./configure --enable-static --without-libpsl --without-ssl
-# RUN make -j "$(nproc)" LDFLAGS="-static -all-static"
-# RUN strip src/curl
+FROM docker.io/alpine:3.22.2 AS healthcheck
+COPY --from=curl /version /version
+RUN apk --no-cache add build-base
+RUN wget "https://curl.se/download/curl-$(cat /version).tar.gz"
+RUN mkdir curl
+RUN tar xzf "curl-$(cat /version).tar.gz" --directory /curl --strip-components 1
+WORKDIR /curl
+RUN LDFLAGS="-static" ./configure --enable-static --without-libpsl --without-ssl
+RUN make -j "$(nproc)" LDFLAGS="-static -all-static"
+RUN strip src/curl
 
-# FROM scratch
-# COPY --from=build /go/bin/weed /usr/bin/weed
-# COPY --from=healthcheck /curl/src/curl /usr/bin/curl
-# EXPOSE 80
-# ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
-# HEALTHCHECK CMD ["/usr/bin/curl", "--silent", "http://0.0.0.0/healthz"]
-# VOLUME ["/tmp"]
+FROM scratch
+COPY --from=build /go/bin/weed /usr/bin/weed
+COPY --from=healthcheck /curl/src/curl /usr/bin/curl
+EXPOSE 80
+ENTRYPOINT ["/usr/bin/weed", "-logtostderr=true"]
+HEALTHCHECK CMD ["/usr/bin/curl", "--silent", "http://0.0.0.0/healthz"]
+VOLUME ["/tmp"]
