@@ -15,8 +15,8 @@ WORKDIR /opt/adguardhome
 ENTRYPOINT ["/usr/bin/adguardhome"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0"]
 CMD [ \
-	"--config", "/etc/adguardhome/config.yaml", \
+	"--config", "/etc/adguardhome/adguardhome.yaml", \
 	"--no-check-update", \
 	"--web-addr", "0.0.0.0:80", \
-	"--work-dir", "/opt/adguardhome" \
+	"--work-dir", "/var/lib/adguardhome" \
 ]
