@@ -5,7 +5,7 @@ ContainerName=outline_postgres
 Environment=POSTGRES_DB=outline
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/outline_postgres_password
 Environment=POSTGRES_USER=outline
-Image=ghcr.io/ngarside/postgres:18.0.131
+Image=ghcr.io/ngarside/postgres:18.1.63
 Memory=8g
 Network=outline_internal.network:ip=10.19.0.3
 NoNewPrivileges=true
