@@ -14,7 +14,7 @@ def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port}:80', '--pull', 'never', '--volume', f'{dir}:/opt/memos',
+		f'{port}:80', '--pull', 'never', '--volume', f'{dir}:/var/lib/memos',
 		f'ghcr.io/ngarside/memos:{tag}',
 	])
 	time.sleep(0.1)
