@@ -3,7 +3,7 @@
 
 import dns.resolver, os, pytest, random, requests, subprocess, tempfile
 
-etc, opt = [tempfile.TemporaryDirectory() for _ in range(2)]
+etc, lib = [tempfile.TemporaryDirectory() for _ in range(2)]
 name, port_admin, port_dns = random.sample(range(1025, 65536), 3)
 
 session = requests.Session()
@@ -11,14 +11,14 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
-	open(os.path.join(etc.name, 'config.yaml'), 'w').close()
+	open(os.path.join(etc.name, 'adguardhome.yaml'), 'w').close()
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port_admin}:80', '--publish', f'{port_dns}:53', '--publish',
 		f'{port_dns}:53/udp', '--pull', 'never', '--read-only', '--volume',
 		f'{etc.name}:/etc/adguardhome', '--volume',
-		f'{opt.name}:/opt/adguardhome', f'ghcr.io/ngarside/adguardhome:{tag}',
+		f'{lib.name}:/var/lib/adguardhome', f'ghcr.io/ngarside/adguardhome:{tag}',
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
