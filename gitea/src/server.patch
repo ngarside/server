@@ -15,18 +15,18 @@
  	"net/url"
  	"os"
 
-@@ -284,8 +285,13 @@
- 	PerWriteTimeout = sec.Key("PER_WRITE_TIMEOUT").MustDuration(PerWriteTimeout)
- 	PerWritePerKbTimeout = sec.Key("PER_WRITE_PER_KB_TIMEOUT").MustDuration(PerWritePerKbTimeout)
+@@ -286,6 +286,15 @@
  
--	defaultAppURL := string(Protocol) + "://" + Domain + ":" + HTTPPort
--	AppURL = sec.Key("ROOT_URL").MustString(defaultAppURL)
-+	rootUrlPath := sec.Key("ROOT_URL").MustString("")
-+	rootUrl, err := os.ReadFile(rootUrlPath)
-+	if err != nil {
-+		log.Fatal("Unable to read file at ROOT_URL %q: %s", rootUrlPath, err)
+ 	defaultAppURL := string(Protocol) + "://" + Domain + ":" + HTTPPort
+ 	AppURL = sec.Key("ROOT_URL").MustString(defaultAppURL)
++
++	if _, err := os.Stat(AppURL); err == nil {
++		rootUrl, err := os.ReadFile(AppURL)
++		if err != nil {
++			log.Fatal("Unable to read file at ROOT_URL %q: %s", AppURL, err)
++		}
++		AppURL = fmt.Sprintf("https://gitea.%s", strings.TrimSpace(string(rootUrl)))
 +	}
-+	AppURL := fmt.Sprintf("https://gitea.%s", strings.TrimSpace(string(rootUrl)))
 +
  	PublicURLDetection = sec.Key("PUBLIC_URL_DETECTION").MustString(PublicURLLegacy)
  	if PublicURLDetection != PublicURLAuto && PublicURLDetection != PublicURLLegacy {
