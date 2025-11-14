@@ -15,6 +15,7 @@ RUN mkdir -p /go/src/github.com/seaweedfs/
 RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
 WORKDIR /go/seaweedfs/weed
 RUN go install -ldflags '-extldflags -static'
+RUN strip /go/bin/weed
 
 # FROM docker.io/curlimages/curl:8.17.0 AS curl
 # SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
