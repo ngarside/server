@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=adguardhome
-Image=ghcr.io/ngarside/adguardhome:0.107.69.40
+Image=ghcr.io/ngarside/adguardhome:0.107.69.73
 Memory=8g
 Network=adguardhome.network:ip=10.2.0.2
 NoNewPrivileges=true
@@ -13,7 +13,7 @@ ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/adguardhome/etc:/etc/adguardhome:U,Z
-Volume=/var/data/adguardhome/opt:/opt/adguardhome:U,Z
+Volume=/var/data/adguardhome/opt:/var/lib/adguardhome:U,Z
 
 [Service]
 Restart=always
