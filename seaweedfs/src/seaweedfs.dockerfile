@@ -15,6 +15,7 @@ RUN apk --no-cache add git g++ fuse
 RUN mkdir -p /go/src/github.com/seaweedfs/
 RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
 WORKDIR /go/seaweedfs/weed
+COPY /seaweedfs/src/credentials.patch /tmp/credentials.patch
 RUN go install -ldflags '-extldflags -static'
 RUN strip /go/bin/weed
 
