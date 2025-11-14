@@ -11,8 +11,13 @@
 FROM docker.io/gitea/gitea:1.25.1 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
-RUN wget -O gitea "https://dl.gitea.com/gitea/$(cat /version)/gitea-$(cat /version)-linux-amd64"
-RUN chmod +x gitea
+
+FROM golang:1.25.4-alpine as gitea-build
+COPY --from=gitea /version /version
+RUN apk --no-cache add build-base git pnpm
+RUN git clone https://github.com/go-gitea/gitea --branch "v$(cat /version)" --depth 1
+WORKDIR /go/gitea
+RUN LDFLAGS='-extldflags -static' TAGS='bindata sqlite sqlite_unlock_notify' make build -j "$(nproc)"
 
 FROM docker.io/alpine:3.22.2 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
@@ -71,7 +76,7 @@ COPY --from=git-build /git/git /usr/bin/git
 COPY --from=git-build /tmp/cp/ /usr/bin/
 COPY --from=busybox /busybox/busybox /usr/bin/busybox
 COPY --from=links /tmp/cp/ /usr/bin/
-COPY --from=gitea /gitea /usr/bin/gitea
+COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
 COPY --from=telae /telae/main /usr/bin/telae
