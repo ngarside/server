@@ -2,14 +2,14 @@
 
 [Container]
 ContainerName=memos
-Image=ghcr.io/ngarside/memos:0.25.2.34
+Image=ghcr.io/ngarside/memos:0.25.2.65
 Memory=8g
 Network=memos.network:ip=10.6.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
-Volume=/var/data/memos/opt:/opt/memos:U,Z
+Volume=/var/data/memos/opt:/var/lib/memos:U,Z
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
