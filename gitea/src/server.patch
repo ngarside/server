@@ -6,7 +6,16 @@
 --- server.go
 +++ server.go
 
-@@ -284,8 +284,13 @@
+@@ -5,6 +5,7 @@
+ 
+ import (
+ 	"encoding/base64"
++	"fmt"
+ 	"net"
+ 	"net/url"
+ 	"os"
+
+@@ -284,8 +285,13 @@
  	PerWriteTimeout = sec.Key("PER_WRITE_TIMEOUT").MustDuration(PerWriteTimeout)
  	PerWritePerKbTimeout = sec.Key("PER_WRITE_PER_KB_TIMEOUT").MustDuration(PerWritePerKbTimeout)
  
