@@ -2,7 +2,7 @@
 
 [project]
 dependencies = [
-	"boto3==1.40.74",
+	"boto3==1.40.75",
 	"dnspython==2.8.0",
 	"psycopg[binary]==3.2.12",
 	"pytest==9.0.1",
