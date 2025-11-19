@@ -4,7 +4,7 @@
 import sys, textwrap
 
 help = '''
-	This tool transforms an image specifier into the path of its pytest file.
+	This tool transforms an image specifier into the tag of its built image.
 	Run with 'python specifier_to_imagetag.py <specifier>'.
 
 	| Specifier     | Standard Output                  |
