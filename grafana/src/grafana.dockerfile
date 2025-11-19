@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/grafana/grafana:12.2.1 AS grafana
+FROM docker.io/grafana/grafana:12.2.2 AS grafana
 
 FROM scratch
 COPY --from=grafana /usr/share/grafana/bin/grafana /usr/bin/grafana
