@@ -19,7 +19,7 @@ Environment=AUTHENTIK_POSTGRESQL__PASSWORD=file:///run/secrets/authentik_postgre
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
 Exec=worker
-Image=ghcr.io/ngarside/authentik:2025.10.1.39
+Image=ghcr.io/ngarside/authentik:2025.10.2.72
 Memory=8g
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
