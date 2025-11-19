@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import sys, textwrap
-
-help = '''
+'''
 	This tool transforms an image specifier into the tag of its built image.
 	Run with 'python specifier_to_imagetag.py <specifier>'.
 
@@ -12,6 +10,8 @@ help = '''
 	| service       | ghcr.io/ngarside/service         |
 	| service/image | ghcr.io/ngarside/service-image   |
 '''
+
+import sys
 
 def specifier_to_imagetag(spec: str) -> str:
 	parts = spec.split('/')
@@ -36,6 +36,6 @@ if __name__ == '__main__':
 		spec = (sys.argv + [''])[1]
 		print(specifier_to_imagetag(spec))
 	except Exception as ex:
-		print(textwrap.dedent(help[1:]))
+		print(__doc__[1:])
 		print(f'Error: {str(ex)}', file=sys.stderr)
 		sys.exit(1)

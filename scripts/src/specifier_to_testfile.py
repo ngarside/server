@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import sys, textwrap
-
-help = '''
+'''
 	This tool transforms an image specifier into the path of its pytest file.
 	Run with 'python specifier_to_testfile.py <specifier>'.
 
@@ -12,6 +10,8 @@ help = '''
 	| service       | service/test/service.py |
 	| service/image | service/test/image.py   |
 '''
+
+import sys
 
 def specifier_to_testfile(spec: str) -> str:
 	parts = spec.split('/')
@@ -36,6 +36,6 @@ if __name__ == '__main__':
 		spec = (sys.argv + [''])[1]
 		print(specifier_to_testfile(spec))
 	except Exception as ex:
-		print(textwrap.dedent(help[1:]))
+		print(__doc__[1:])
 		print(f'Error: {str(ex)}', file=sys.stderr)
 		sys.exit(1)
