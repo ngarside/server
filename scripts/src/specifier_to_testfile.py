@@ -16,17 +16,17 @@ import sys
 def specifier_to_testfile(spec: str) -> str:
 	parts = spec.split('/')
 
-	# Specifier is an empty string.
-	if len(parts) == 1 and not parts[0]:
-		raise ValueError('Missing specifier')
-
 	# Specifier is in the format 'service'.
-	elif len(parts) == 1 and parts[0]:
+	if len(parts) == 1 and parts[0]:
 		return f'{parts[0]}/test/{parts[0]}.py'
 
 	# Specifier is in the format 'service/image'.
 	elif len(parts) == 2 and all(part for part in parts):
 		return f'{parts[0]}/test/{parts[1]}.py'
+
+	# Specifier is an empty string.
+	elif len(parts) == 1 and not parts[0]:
+		raise ValueError('Missing specifier')
 
 	# Specifier is in an unsupported format.
 	raise ValueError(f'Invalid specifier <{spec}>')
