@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install uv
 
-      - name: Generate test path
+      - name: Generate image path
         run: echo "IMAGE=$(uv run scripts/src/specifier_to_dockerfile.py '${{ inputs.specifier }}')" >> $GITHUB_ENV
 
       - name: Generate test path
