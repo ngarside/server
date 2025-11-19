@@ -16,7 +16,7 @@ help = '''
 def specifier_to_dockerfile(spec: str) -> str:
 	parts = spec.split('/')
 
-	# The specifier is an empty string.
+	# Specifier is an empty string.
 	if len(parts) == 1 and not parts[0]:
 		raise ValueError('Missing specifier')
 
