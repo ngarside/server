@@ -2,14 +2,14 @@
 # This is free and unencumbered software released into the public domain.
 
 # This tool transforms an image specifier into the path of its dockerfile.
-# Run with 'python specifier_to_dockerfile.py <specifier>'
+# Run with 'python specifier_to_dockerfile.py <specifier>'.
 
 # | Specifier     | Standard Output                |
 # | ------------- | ------------------------------ |
 # | service       | service/src/service.dockerfile |
 # | service/image | service/src/image.dockerfile   |
 
-import argparse, sys
+import sys
 
 def specifier_to_dockerfile(spec: str) -> str:
 	parts = spec.split('/')
@@ -23,24 +23,15 @@ def specifier_to_dockerfile(spec: str) -> str:
 		return f'{parts[0]}/src/{parts[1]}.dockerfile'
 
 	# Specifier is in an unsupported format.
-	raise ValueError(
-		f'Invalid specifier <{spec}> - expected format is <service> or <service/image>'
-	)
+	raise ValueError(f'Invalid specifier <{spec}>')
 
 if __name__ == '__main__':
-	parser = argparse.ArgumentParser(
-		description='Transforms an image specifier into the path of its dockerfile'
-	)
-	parser.add_argument(
-		'spec',
-		help='Service specification: <service> or <service/image>',
-	)
-	args = parser.parse_args()
+	if len(sys.argv) != 2:
+		print('Usage: python specifier_to_dockerfile.py <specifier>', file=sys.stderr)
+		sys.exit(2)
 
 	try:
-		result = specifier_to_dockerfile(args.spec)
-	except ValueError as exc:
-		print(str(exc))
+		print(specifier_to_dockerfile(sys.argv[1]))
+	except ValueError as ex:
+		print(str(ex), file=sys.stderr)
 		sys.exit(1)
-
-	print(result)
