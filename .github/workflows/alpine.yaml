@@ -14,4 +14,4 @@ jobs:
   alpine:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: alpine/src/alpine.dockerfile }
+    with: { specifier: alpine }

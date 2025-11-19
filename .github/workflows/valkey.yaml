@@ -14,4 +14,4 @@ jobs:
   valkey:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: valkey/src/valkey.dockerfile }
+    with: { specifier: valkey }

@@ -14,4 +14,4 @@ jobs:
   memos:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: memos/src/memos.dockerfile }
+    with: { specifier: memos }

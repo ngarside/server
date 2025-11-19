@@ -14,9 +14,9 @@ jobs:
   privileged:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: vector/src/privileged.dockerfile }
+    with: { specifier: vector/privileged }
 
   unprivileged:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: vector/src/unprivileged.dockerfile }
+    with: { specifier: vector/unprivileged }

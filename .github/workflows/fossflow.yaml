@@ -14,4 +14,4 @@ jobs:
   fossflow:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: fossflow/src/fossflow.dockerfile }
+    with: { specifier: fossflow }

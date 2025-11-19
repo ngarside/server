@@ -14,4 +14,4 @@ jobs:
   excalidraw:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: excalidraw/src/excalidraw.dockerfile }
+    with: { specifier: excalidraw }

@@ -14,9 +14,9 @@ jobs:
   logs:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: victoria/src/logs.dockerfile }
+    with: { specifier: victoria/logs }
 
   metrics:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: victoria/src/metrics.dockerfile }
+    with: { specifier: victoria/metrics }

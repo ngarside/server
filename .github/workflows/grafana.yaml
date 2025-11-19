@@ -14,4 +14,4 @@ jobs:
   grafana:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: grafana/src/grafana.dockerfile }
+    with: { specifier: grafana }

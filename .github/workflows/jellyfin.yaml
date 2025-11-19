@@ -14,4 +14,4 @@ jobs:
   jellyfin:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: jellyfin/src/jellyfin.dockerfile }
+    with: { specifier: jellyfin }

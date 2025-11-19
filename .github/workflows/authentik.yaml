@@ -14,4 +14,4 @@ jobs:
   authentik:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: authentik/src/authentik.dockerfile }
+    with: { specifier: authentik }
