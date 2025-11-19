@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora-bootc:43@sha256:ca5b507b79d8b3818a2512a9e377b0f7bb0350e160d2b65fa2c2b6c199628615
+FROM quay.io/fedora/fedora-bootc:43@sha256:658d1dc7924f192dcaa5e1d9c6f86d3c4667f41d9dede5e553a9cac24306d3d2
 SHELL ["/bin/bash", "-c"]
 RUN --mount=target=/git set -euo pipefail && \
 	for file in /git/bootc/src/*.sh; do bash "$file" || exit; done && \
