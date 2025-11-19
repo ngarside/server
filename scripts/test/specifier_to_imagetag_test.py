@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import sys
+import pytest, sys
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent / 'src'))
