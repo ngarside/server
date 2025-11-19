@@ -35,7 +35,7 @@ jobs:
 
       - name: Build container
         run: >
-          podman build --file "$PATH" --format docker
+          podman build --file "$IMAGE" --format docker
           --tag ghcr.io/ngarside/$NAME:$TAG .
 
       - name: Run tests
