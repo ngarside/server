@@ -16,6 +16,22 @@ vars:
 
       # Otherwise default to nothing and let the precondition catch it.
       fi
+  image:
+    sh: |
+      # If the 'image' variable has been set manually then use it as is.
+      if [ -n '{{.image}}' ]; then
+        echo '{{.image}}'
+
+      # If the 'service' variable has been set manually then default to it.
+      elif [ -n '{{.service}}' ]; then
+        echo '{{.service}}'
+
+      # If we're in a child directory then use the directory's name.
+      elif [ "$PWD" = "$(dirname '{{.USER_WORKING_DIR}}')" ]; then
+        echo "$(basename '{{.USER_WORKING_DIR}}')"
+
+      # Otherwise default to nothing and let the precondition catch it.
+      fi
 tasks:
 
   auth:
@@ -41,13 +57,13 @@ tasks:
     cmd: >-
       podman build
       --format docker
-      --file {{.service}}/src/{{.service}}.dockerfile
-      --tag ghcr.io/ngarside/{{.service}}
+      --file {{.service}}/src/{{.image}}.dockerfile
+      --tag ghcr.io/ngarside/{{.service}}-{{.image}}
       $PWD
     desc: Build the container for the given service
     preconditions:
-      - sh: test -n '{{.service}}'
-        msg: task build service=<service>
+      - sh: test -n '{{.service}}' || test -n '{{.image}}'
+        msg: task build service=<service> [image=<image>]
     silent: true
 
   clear:
@@ -66,21 +82,21 @@ tasks:
 
   pull:
     cmd: |
-      versions=$(gh api users/ngarside/packages/container/{{.service}}/versions)
+      versions=$(gh api users/ngarside/packages/container/{{.service}}-{{.image}}/versions)
       tag=$(echo "$versions" | jq --raw-output '
         sort_by(.created_at)
         | [.[].metadata.container.tags[]]
         | map(select(test("^[\\d\\.]+$")))
         | last
       ')
-      image="ghcr.io/ngarside/{{.service}}:$tag"
+      image="ghcr.io/ngarside/{{.service}}-{{.image}}:$tag"
       podman pull "$image"
-      podman tag "$image" "ghcr.io/ngarside/{{.service}}:latest"
+      podman tag "$image" "ghcr.io/ngarside/{{.service}}-{{.image}}:latest"
       podman image rm "$image"
     desc: Pull the latest container image for the given service
     preconditions:
-      - sh: test -n '{{.service}}'
-        msg: task rebuild service=<service>
+      - sh: test -n '{{.service}}' || test -n '{{.image}}'
+        msg: task build service=<service> [image=<image>]
     silent: true
 
   purge:
@@ -94,14 +110,14 @@ tasks:
     cmd: >-
       podman build
       --format docker
-      --file {{.service}}/src/{{.service}}.dockerfile
+      --file {{.service}}/src/{{.image}}.dockerfile
       --no-cache
-      --tag ghcr.io/ngarside/{{.service}}
+      --tag ghcr.io/ngarside/{{.service}}-{{.image}}
       $PWD
     desc: Build the container for the given service (without cache)
     preconditions:
-      - sh: test -n '{{.service}}'
-        msg: task rebuild service=<service>
+      - sh: test -n '{{.service}}' || test -n '{{.image}}'
+        msg: task build service=<service> [image=<image>]
     silent: true
 
   run:
@@ -109,18 +125,18 @@ tasks:
       podman run
       --interactive --publish-all --rm --tty
       --volume /etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
-      ghcr.io/ngarside/{{.service}}
+      ghcr.io/ngarside/{{.service}}-{{.image}}
       {{.CLI_ARGS}}
     desc: Run the container for the given service
     preconditions:
-      - sh: test -n '{{.service}}'
-        msg: task run service=<service> [-- args]
+      - sh: test -n '{{.service}}' || test -n '{{.image}}'
+        msg: task build service=<service> [image=<image>] [-- args]
     silent: true
 
   test:
-    cmd: uv run --locked pytest -rA {{.service}}
+    cmd: uv run --locked pytest -rA {{.service}}/test/{{.image}}.py
     desc: Run tests for the given service
     preconditions:
-      - sh: test -n '{{.service}}'
-        msg: task test service=<service>
+      - sh: test -n '{{.service}}' || test -n '{{.image}}'
+        msg: task build service=<service> [image=<image>]
     silent: true
