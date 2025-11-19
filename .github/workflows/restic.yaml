@@ -14,4 +14,4 @@ jobs:
   restic:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: restic/src/restic.dockerfile }
+    with: { specifier: restic }

@@ -5,7 +5,7 @@ name: build
 on:
   workflow_call:
     inputs:
-      path:
+      specifier:
         required: true
         type: string
 
@@ -22,17 +22,20 @@ jobs:
         run: pip install uv
 
       - name: Generate test path
-        run: echo "TEST=$(uv run scripts/src/testify.py '${{ inputs.path }}')" >> $GITHUB_ENV
+        run: echo "PATH=$(uv run scripts/src/specifier_to_dockerfile.py '${{ inputs.specifier }}')" >> $GITHUB_ENV
+
+      - name: Generate test path
+        run: echo "TEST=$(uv run scripts/src/testify.py '$PATH')" >> $GITHUB_ENV
 
       - name: Generate name
-        run: echo "NAME=$(uv run scripts/src/namify.py '${{ inputs.path }}')" >> $GITHUB_ENV
+        run: echo "NAME=$(uv run scripts/src/namify.py '$PATH')" >> $GITHUB_ENV
 
       - name: Generate tag
-        run: echo "TAG=$(uv run scripts/src/tagify.py '${{ inputs.path }}')" >> $GITHUB_ENV
+        run: echo "TAG=$(uv run scripts/src/tagify.py '$PATH')" >> $GITHUB_ENV
 
       - name: Build container
         run: >
-          podman build --file "${{ inputs.path }}" --format docker
+          podman build --file "$PATH" --format docker
           --tag ghcr.io/ngarside/$NAME:$TAG .
 
       - name: Run tests

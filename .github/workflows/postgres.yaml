@@ -14,4 +14,4 @@ jobs:
   postgres:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: postgres/src/postgres.dockerfile }
+    with: { specifier: postgres }

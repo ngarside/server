@@ -14,4 +14,4 @@ jobs:
   adguardhome:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: adguardhome/src/adguardhome.dockerfile }
+    with: { specifier: adguardhome }

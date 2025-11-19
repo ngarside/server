@@ -14,4 +14,4 @@ jobs:
   outline:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
-    with: { path: outline/src/outline.dockerfile }
+    with: { specifier: outline }
