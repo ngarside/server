@@ -25,10 +25,10 @@ jobs:
         run: echo "IMAGE=$(uv run scripts/src/specifier_to_dockerfile.py '${{ inputs.specifier }}')" >> $GITHUB_ENV
 
       - name: Generate test path
-        run: echo "TEST=$(uv run scripts/src/testify.py '$IMAGE')" >> $GITHUB_ENV
+        run: echo "TEST=$(uv run scripts/src/specifier_to_testfile.py '${{ inputs.specifier }}')" >> $GITHUB_ENV
 
-      - name: Generate name
-        run: echo "NAME=$(uv run scripts/src/namify.py '$IMAGE')" >> $GITHUB_ENV
+      - name: Generate image name
+        run: echo "NAME=$(uv run scripts/src/specifier_to_imagename.py '${{ inputs.specifier }}')" >> $GITHUB_ENV
 
       - name: Generate tag
         run: echo "TAG=$(uv run scripts/src/tagify.py '$IMAGE')" >> $GITHUB_ENV
@@ -36,7 +36,7 @@ jobs:
       - name: Build container
         run: >
           podman build --file "$IMAGE" --format docker
-          --tag ghcr.io/ngarside/$NAME:$TAG .
+          --tag $NAME:$TAG .
 
       - name: Run tests
         run: uv run pytest -rA $TEST
@@ -47,12 +47,12 @@ jobs:
           --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push container to registry
-        run: podman push ghcr.io/ngarside/$NAME:$TAG
+        run: podman push $NAME:$TAG
 
       - name: Tag latest version
         if: ${{ github.ref_name == 'master' }}
-        run: podman tag ghcr.io/ngarside/$NAME:$TAG ghcr.io/ngarside/$NAME:latest
+        run: podman tag $NAME:$TAG $NAME:latest
 
       - name: Push latest to registry
         if: ${{ github.ref_name == 'master' }}
-        run: podman push ghcr.io/ngarside/$NAME:latest
+        run: podman push $NAME:latest
