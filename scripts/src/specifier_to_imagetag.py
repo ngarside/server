@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+# This is free and unencumbered software released into the public domain.
+
+import sys, textwrap
+
+help = '''
+	This tool transforms an image specifier into the path of its pytest file.
+	Run with 'python specifier_to_imagetag.py <specifier>'.
+
+	| Specifier     | Standard Output                  |
+	| ------------- | -------------------------------- |
+	| service       | ghcr.io/ngarside/service         |
+	| service/image | ghcr.io/ngarside/service-image   |
+'''
+
+def specifier_to_imagetag(spec: str) -> str:
+	parts = spec.split('/')
+
+	# Specifier is an empty string.
+	if len(parts) == 1 and not parts[0]:
+		raise ValueError('Missing specifier')
+
+	# Specifier is in the format 'service'.
+	elif len(parts) == 1 and parts[0]:
+		return f'ghcr.io/ngarside/{parts[0]}'
+
+	# Specifier is in the format 'service/image'.
+	elif len(parts) == 2 and all(part for part in parts):
+		return f'ghcr.io/ngarside/{parts[0]}-{parts[1]}'
+
+	# Specifier is in an unsupported format.
+	raise ValueError(f'Invalid specifier <{spec}>')
+
+if __name__ == '__main__':
+	try:
+		spec = (sys.argv + [''])[1]
+		print(specifier_to_imagetag(spec))
+	except Exception as ex:
+		print(textwrap.dedent(help[1:]))
+		print(f'Error: {str(ex)}', file=sys.stderr)
+		sys.exit(1)
