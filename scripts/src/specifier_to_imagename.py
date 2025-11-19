@@ -2,8 +2,8 @@
 # This is free and unencumbered software released into the public domain.
 
 '''
-	This tool transforms an image specifier into the tag of its built image.
-	Run with 'python specifier_to_imagetag.py <specifier>'.
+	This tool transforms an image specifier into the name of its built image.
+	Run with 'python specifier_to_imagename.py <specifier>'.
 
 	| Specifier     | Standard Output                  |
 	| ------------- | -------------------------------- |
@@ -13,7 +13,7 @@
 
 import sys
 
-def specifier_to_imagetag(spec: str) -> str:
+def specifier_to_imagename(spec: str) -> str:
 	parts = spec.split('/')
 
 	# Specifier is in the format 'service'.
@@ -34,7 +34,7 @@ def specifier_to_imagetag(spec: str) -> str:
 if __name__ == '__main__':
 	try:
 		spec = (sys.argv + [''])[1]
-		print(specifier_to_imagetag(spec))
+		print(specifier_to_imagename(spec))
 	except Exception as ex:
 		print(__doc__[1:])
 		print(f'Error: {str(ex)}', file=sys.stderr)

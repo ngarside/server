@@ -5,20 +5,20 @@ import pytest, sys
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent / 'src'))
-import specifier_to_imagetag
+import specifier_to_imagename
 
 def test_empty():
 	with pytest.raises(ValueError):
-		specifier_to_imagetag.specifier_to_imagetag('')
+		specifier_to_imagename.specifier_to_imagename('')
 
 def test_extra_part():
 	with pytest.raises(ValueError):
-		specifier_to_imagetag.specifier_to_imagetag('service/image/component')
+		specifier_to_imagename.specifier_to_imagename('service/image/component')
 
 def test_with_image():
-	actual = specifier_to_imagetag.specifier_to_imagetag('service/image')
+	actual = specifier_to_imagename.specifier_to_imagename('service/image')
 	assert actual == 'ghcr.io/ngarside/service-image'
 
 def test_without_image():
-	actual = specifier_to_imagetag.specifier_to_imagetag('service')
+	actual = specifier_to_imagename.specifier_to_imagename('service')
 	assert actual == 'ghcr.io/ngarside/service'
