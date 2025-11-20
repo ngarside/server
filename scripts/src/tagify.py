@@ -33,9 +33,9 @@ if __name__ == '__main__':
 
 	# If the current branch is not the default branch, then return
 	# the ref name, sanitized using 'slugify.py'.
-	if ref != 'master':
-		print(slugify.sanitize(ref))
-		sys.exit(0)
+	# if ref != 'master':
+	# 	print(slugify.sanitize(ref))
+	# 	sys.exit(0)
 
 	# Otherwise return the semantic version.
 	with open(sys.argv[1], 'r') as file:
