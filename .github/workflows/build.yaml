@@ -31,7 +31,7 @@ jobs:
         run: echo "NAME=$(uv run scripts/src/specifier_to_imagename.py '${{ inputs.specifier }}')" >> $GITHUB_ENV
 
       - name: Generate tag
-        run: echo "TAG=$(uv run scripts/src/tagify.py '$IMAGE')" >> $GITHUB_ENV
+        run: echo "TAG=$(uv run scripts/src/tagify.py $IMAGE)" >> $GITHUB_ENV
 
       - name: Build container
         run: >
