@@ -1,7 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 # Excalidraw is rolling release, meaning that it doesn't have versioned images.
 
-FROM docker.io/excalidraw/excalidraw:latest@sha256:67c6b93d6155fac09d30759ea5f28e5ce01b4e865a783fb418c878806bf5397d AS excalidraw
+FROM docker.io/excalidraw/excalidraw:latest@sha256:72a9834950460fd6a6c108a71605ac50a97963a455ec28acfbcf2385d3c42373 AS excalidraw
 
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
