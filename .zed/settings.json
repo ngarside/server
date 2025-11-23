@@ -1,0 +1,7 @@
+{
+	"file_types": {
+		"JSONC": ["*.json5"],
+		"INI": ["*.env"],
+		"YAML": ["*.hadolint", "*.yamllint"]
+	}
+}
