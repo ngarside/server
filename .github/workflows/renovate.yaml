@@ -30,7 +30,7 @@ jobs:
           private-key: ${{ secrets.RENOVATE_PRIVATEKEY }}
 
       - name: Run renovate
-        uses: renovatebot/github-action@v44.0.3
+        uses: renovatebot/github-action@v44.0.4
         env:
           RENOVATE_AUTODISCOVER: true
           RENOVATE_AUTODISCOVER_FILTER: ngarside/server
