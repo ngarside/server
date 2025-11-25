@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM ghcr.io/chartdb/chartdb:1.17.0 AS chartdb
+FROM ghcr.io/chartdb/chartdb:1.18.1 AS chartdb
 
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
