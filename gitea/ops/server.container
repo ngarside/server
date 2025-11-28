@@ -8,7 +8,7 @@ Requires=authentik_server.container
 ContainerName=gitea
 Image=ghcr.io/ngarside/gitea-server:1.25.2.148
 Memory=8g
-Network=gitea.network:ip=10.14.0.2
+Network=gitea_server.network:ip=10.14.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
@@ -20,7 +20,7 @@ Secret=gitea_oidc_secret
 Secret=machine_domain_root
 Tmpfs=/tmp:mode=1777
 UserNS=auto:size=8
-Volume=/etc/gitea:/etc/gitea:ro
+Volume=/etc/gitea/server:/etc/gitea:ro
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/gitea/db:/opt/db:U,Z
 Volume=/var/data/gitea/git:/opt/git:U,Z

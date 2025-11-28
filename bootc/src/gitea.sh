@@ -4,8 +4,8 @@
 set -euo pipefail
 
 mkdir --parents /etc/containers/systemd/users/1001
-cp /git/gitea/ops/gitea.container /etc/containers/systemd/users/1001/gitea.container
-cp /git/gitea/ops/gitea.network /etc/containers/systemd/users/1001/gitea.network
+cp /git/gitea/ops/server.container /etc/containers/systemd/users/1001/gitea_server.container
+cp /git/gitea/ops/server.network /etc/containers/systemd/users/1001/gitea_server.network
 
-mkdir --parents /etc/gitea
-cp /git/gitea/ops/gitea.ini /etc/gitea/gitea.ini
+mkdir --parents /etc/gitea/server
+cp /git/gitea/ops/server.ini /etc/gitea/server/gitea.ini
