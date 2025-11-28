@@ -35,11 +35,9 @@ RUN sed -i 's/^CONFIG_TC=y$/# CONFIG_TC is not set/' .config
 RUN sed -i 's/^# CONFIG_BASH_IS_ASH is not set.*$/CONFIG_BASH_IS_ASH=y/' .config
 RUN sed -i 's/^# CONFIG_STATIC is not set.*$/CONFIG_STATIC=y/' .config
 RUN make -j "$(nproc)"
-
-FROM docker.io/busybox:1.37.0-musl AS links
 RUN mkdir /tmp/cp
-RUN find /bin ! -name busybox -exec sh -c 'ln -s /usr/bin/busybox "/tmp/cp/$(basename $1)"' shell {} \;
-RUN ln -s /usr/bin/busybox /tmp/cp/bash
+RUN cp /busybox/busybox /usr/bin/busybox
+RUN /usr/bin/busybox --install -s /tmp/cp
 
 FROM docker.io/alpine/git:2.49.1 AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
@@ -72,8 +70,8 @@ FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 COPY --from=git-build /git/git /usr/bin/git
 COPY --from=git-build /tmp/cp/ /usr/bin/
-COPY --from=busybox /busybox/busybox /usr/bin/busybox
-COPY --from=links /tmp/cp/ /usr/bin/
+COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
+COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
 COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
