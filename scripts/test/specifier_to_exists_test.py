@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, sys, tempfile
-from pathlib import Path
+import os, pathlib, pytest, sys, tempfile
 
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
+sys.path.append(str(pathlib.Path(__file__).parent.parent / 'src'))
 import specifier_to_exists
 
 def test_empty():
