@@ -1,10 +1,10 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import pathlib, sys
+import pathlib, pytest, sys
 
 sys.path.append(str(pathlib.Path(__file__).parent.parent / 'src'))
-import pytest, tagify
+import tagify
 
 @pytest.mark.parametrize('input, expected', [
 	# Simple reference.
