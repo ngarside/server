@@ -13,7 +13,7 @@ def test_empty():
 def test_exists_with_image():
 	with tempfile.TemporaryDirectory() as root:
 		os.chdir(root)
-		dockerfile = Path(root) / 'service' / 'src' / 'image.dockerfile'
+		dockerfile = pathlib.Path(root) / 'service' / 'src' / 'image.dockerfile'
 		dockerfile.parent.mkdir(parents=True)
 		dockerfile.touch()
 		actual = specifier_to_exists.specifier_to_exists('service/image')
@@ -22,7 +22,7 @@ def test_exists_with_image():
 def test_exists_without_image():
 	with tempfile.TemporaryDirectory() as root:
 		os.chdir(root)
-		dockerfile = Path(root) / 'service' / 'src' / 'service.dockerfile'
+		dockerfile = pathlib.Path(root) / 'service' / 'src' / 'service.dockerfile'
 		dockerfile.parent.mkdir(parents=True)
 		dockerfile.touch()
 		actual = specifier_to_exists.specifier_to_exists('service')
