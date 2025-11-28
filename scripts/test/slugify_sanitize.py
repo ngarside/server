@@ -1,11 +1,10 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import sys
-from pathlib import Path
+import pathlib, pytest, sys
 
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-import pytest, slugify
+sys.path.append(str(pathlib.Path(__file__).parent.parent / 'src'))
+import slugify
 
 @pytest.mark.parametrize('input, expected', [
 	('master', 'master'), # Normal branch name.
