@@ -8,7 +8,7 @@ Requires=authentik_server.container
 ContainerName=gitea
 Image=ghcr.io/ngarside/gitea-server:1.25.2.142
 Memory=8g
-Network=gitea.network:ip=10.14.0.2
+Network=gitea_server.network:ip=10.14.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
