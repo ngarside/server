@@ -11,6 +11,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  runner:
+    uses: ./.github/workflows/build.yaml
+    permissions: { contents: read, packages: write }
+    with: { specifier: gitea/runner }
+
   server:
     uses: ./.github/workflows/build.yaml
     permissions: { contents: read, packages: write }
