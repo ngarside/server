@@ -6,6 +6,7 @@ Requires=authentik_server.container
 
 [Container]
 ContainerName=gitea
+Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
 Image=ghcr.io/ngarside/gitea-server:1.25.2.148
 Memory=8g
 Network=gitea_server.network:ip=10.14.0.2
@@ -17,6 +18,7 @@ Secret=gitea_internal_secret
 Secret=gitea_jwt_secret
 Secret=gitea_lfs_secret
 Secret=gitea_oidc_secret
+Secret=gitea_runner_token
 Secret=machine_domain_root
 Tmpfs=/tmp:mode=1777
 UserNS=auto:size=8
@@ -38,6 +40,7 @@ ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wr
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_internal_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_jwt_secret -"
 ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_lfs_secret -"
+ExecStartPre=bash -c "dd bs=32 count=1 if=/dev/urandom status=none | base64 --wrap 0 | tr +/ -_ | tr --delete = | podman secret create --ignore gitea_runner_token -"
 
 [Install]
 WantedBy=default.target
