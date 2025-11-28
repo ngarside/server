@@ -5,7 +5,7 @@ After=authentik_server.container
 Requires=authentik_server.container
 
 [Container]
-ContainerName=gitea
+ContainerName=gitea_server
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
 Image=ghcr.io/ngarside/gitea-server:1.25.2.148
 Memory=8g
