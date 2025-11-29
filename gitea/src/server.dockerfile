@@ -48,9 +48,7 @@ RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
 FROM docker.io/alpine:3.22.2 AS local
-COPY gitea/src/configuration.sh /usr/bin/configuration
-COPY gitea/src/entrypoint.sh /usr/bin/entrypoint
-RUN chmod +x /usr/bin/configuration
+COPY gitea/src/server.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/entrypoint
 
 FROM docker.io/alpine:3.22.2 AS git-build
@@ -73,7 +71,6 @@ COPY --from=git-build /tmp/cp/ /usr/bin/
 COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
-COPY --from=local /usr/bin/configuration /usr/bin/configuration
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
