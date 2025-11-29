@@ -1,7 +1,12 @@
 #!/usr/bin/env sh
 # This is free and unencumbered software released into the public domain.
 
-set -eu
+set -emu
+
+# Run Gitea server in background -------------------------------------------------------------------
+echo "[CONFIG] Starting Gitea server in background"
+/usr/bin/gitea --config /etc/gitea/gitea.ini "$@" &
+GITEA_JOB=%1
 
 # Wait for Gitea server to initialise --------------------------------------------------------------
 echo "[CONFIG] Waiting for Gitea server to initialise"
@@ -25,8 +30,8 @@ while [ "$RETRIES_CURRENT" -le "$RETRIES_MAX" ]; do
 done
 
 if [ "$RETRIES_CURRENT" -gt "$RETRIES_MAX" ]; then
-	echo "[CONFIG] Exceeded maximum retry count, aborting script"
-	exit 1
+	echo "[CONFIG] Exceeded maximum retry count, bringing Gitea server to foreground"
+	fg $GITEA_JOB
 fi
 
 echo "[CONFIG] Finished waiting for initialisation"
@@ -71,3 +76,7 @@ gitea \
 	--provider openidConnect \
 	--secret "$GITEA_OIDC_SECRET"
 echo "[CONFIG] OIDC command completed, see above for output"
+
+# Bring Gitea server process to the foreground -----------------------------------------------------
+echo "[CONFIG] Bringing Gitea server to foreground"
+fg $GITEA_JOB
