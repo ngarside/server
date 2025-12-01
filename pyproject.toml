@@ -4,7 +4,7 @@
 dependencies = [
 	"boto3==1.42.0",
 	"dnspython==2.8.0",
-	"psycopg[binary]==3.2.13",
+	"psycopg[binary]==3.3.0",
 	"pytest==9.0.1",
 	"python-dotenv==1.2.1",
 	"redis==7.1.0",
