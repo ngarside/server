@@ -3,7 +3,7 @@
 [Container]
 ContainerName=seaweedfs
 Exec=server -dir=/var/lib/seaweedfs -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
-Image=ghcr.io/ngarside/seaweedfs:4.00.79
+Image=ghcr.io/ngarside/seaweedfs:4.00.146
 Memory=8g
 Network=seaweedfs.network:ip=10.21.0.2
 NoNewPrivileges=true
