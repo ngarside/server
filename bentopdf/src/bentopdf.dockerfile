@@ -5,7 +5,7 @@ FROM ghcr.io/alam00000/bentopdf-simple:v1.10.1 AS bentopdf
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.22.2 AS headcheck
+FROM docker.io/alpine:3.23.0 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
