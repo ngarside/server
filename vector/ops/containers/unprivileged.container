@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=vector_unprivileged
-Image=ghcr.io/ngarside/vector-unprivileged:0.51.1.57
+Image=ghcr.io/ngarside/vector-unprivileged:0.51.1.100
 Memory=8g
 Network=vector.network:ip=10.15.0.2
 NoNewPrivileges=true
