@@ -1,6 +1,6 @@
 ﻿# This is free and unencumbered software released into the public domain.
 
-FROM docker.io/timberio/vector:0.51.1-distroless-static AS vector
+FROM docker.io/timberio/vector:0.52.0-distroless-static AS vector
 
 FROM docker.io/alpine:3.23.0 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
