@@ -2,7 +2,7 @@
 
 FROM docker.io/gitea/act_runner:0.2.13 AS runner
 
-FROM docker.io/alpine:3.23.0 AS busybox
+FROM docker.io/alpine:3.23.2 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
 RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' > /version

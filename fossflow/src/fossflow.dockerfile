@@ -5,7 +5,7 @@ FROM docker.io/stnsmith/fossflow:latest@sha256:891e3b2296e5cf3ee8d319ea0d6b8ea03
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.0 AS headcheck
+FROM docker.io/alpine:3.23.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 

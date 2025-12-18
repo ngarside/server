@@ -6,7 +6,7 @@ FROM docker.io/excalidraw/excalidraw:latest@sha256:95d528cb4f8d18e0fbdc42ae3d09b
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.0 AS headcheck
+FROM docker.io/alpine:3.23.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
