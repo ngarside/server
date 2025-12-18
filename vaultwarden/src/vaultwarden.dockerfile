@@ -3,7 +3,7 @@
 FROM docker.io/vaultwarden/server:1.34.3-alpine AS vaultwarden
 RUN chmod ugo=rx /vaultwarden
 
-FROM docker.io/alpine:3.23.0 AS headcheck
+FROM docker.io/alpine:3.23.2 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 

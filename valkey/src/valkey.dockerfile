@@ -8,7 +8,7 @@ FROM docker.io/valkey/valkey:9.0.1 AS valkey
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 RUN valkey-server --version | grep --only-matching --perl-regexp '(?<=v=)\S*' > /version
 
-FROM docker.io/alpine:3.23.0 AS build
+FROM docker.io/alpine:3.23.2 AS build
 RUN apk --no-cache add ca-certificates git build-base pkgconf
 RUN git clone https://github.com/valkey-io/valkey
 WORKDIR /valkey
