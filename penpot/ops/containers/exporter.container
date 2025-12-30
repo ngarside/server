@@ -7,7 +7,7 @@ Requires=penpot_valkey.container
 [Container]
 ContainerName=penpot_exporter
 Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
-Image=ghcr.io/ngarside/penpot-exporter:2.12.0.137
+Image=ghcr.io/ngarside/penpot-exporter:2.12.1.140
 Memory=8g
 Network=penpot_internal.network:ip=10.4.0.4
 Network=penpot_external.network:ip=10.3.0.7
