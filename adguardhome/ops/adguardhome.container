@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=adguardhome
-Image=ghcr.io/ngarside/adguardhome:0.107.71.121
+Image=ghcr.io/ngarside/adguardhome:0.107.71.138
 Memory=8g
 Network=adguardhome.network:ip=10.2.0.2
 NoNewPrivileges=true
