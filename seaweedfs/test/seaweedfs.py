@@ -26,9 +26,12 @@ def fixture():
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
-def test_bucket_list():
-	bucket = client.list_buckets()['Buckets'][0]
-	assert bucket['Name'] == 'test'
+def test_file_touch():
+	client.put_object(
+		Body=b'',
+		Bucket='test',
+		Key='empty.txt',
+	)
 
 def test_healthcheck():
 	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
