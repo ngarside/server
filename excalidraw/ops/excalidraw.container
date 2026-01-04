@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=excalidraw
-Image=ghcr.io/ngarside/excalidraw:0.0.0.142
+Image=ghcr.io/ngarside/excalidraw:0.0.0.162
 Memory=8g
 Network=excalidraw.network:ip=10.18.0.2
 NoNewPrivileges=true
