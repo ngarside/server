@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/vaultwarden/server:1.35.1-alpine AS vaultwarden
+FROM docker.io/vaultwarden/server:1.35.2-alpine AS vaultwarden
 RUN chmod ugo=rx /vaultwarden
 
 FROM docker.io/alpine:3.23.2 AS headcheck
