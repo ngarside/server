@@ -9,7 +9,8 @@ name = random.randrange(1025, 65536)
 def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--pull', 'never', '--read-only', f'ghcr.io/ngarside/alpine:{tag}', 'sleep', '10s',
+		'podman', 'run', '--detach', '--name', f'{name}', '--pull', 'never',
+		'--read-only', f'ghcr.io/ngarside/alpine:{tag}', 'sleep', '10s',
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
