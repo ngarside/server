@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import os, pytest, subprocess
+import os, pytest, random, subprocess
 
-name = range(1025, 65536)
+name = random.randrange(1025, 65536)
 
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
