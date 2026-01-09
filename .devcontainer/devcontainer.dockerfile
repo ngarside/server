@@ -11,7 +11,7 @@ FROM quay.io/fedora/fedora:43@sha256:3a17720ba4dadff3500b9d614f5d35e2bd54f5f00e2
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 RUN <<EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
-		diffutils fuse-overlayfs git gh golang go-task \
+		diffutils fuse-overlayfs git gh go-task \
 		jq openssl optipng patch podman python3-pip
 	dnf clean all
 	mv /usr/bin/go-task /usr/bin/task
