@@ -2,7 +2,7 @@
 	This is free and unencumbered software released into the public domain.
 
 	This preset controls the update behaviour of images inheriting from Fedora.
-	This is requires as Fedora's image versioning is non-standard:
+	This is required as Fedora's image versioning is non-standard:
 
 	- Only major versions are tagged
 	- Stable and pre-release versions are not distinguished
