@@ -71,6 +71,7 @@ COPY --from=git-build /tmp/cp/ /usr/bin/
 COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
+COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
@@ -80,4 +81,5 @@ ENV GITEA_WORK_DIR=/var/lib/gitea
 ENV HOME=/var/lib/gitea/git
 ENV TMPDIR=/tmp/gitea
 ENV USER=root
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/api/healthz"]
 RUN ln -s /usr/bin /bin
