@@ -13,9 +13,9 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	with open(os.path.join(secrets.name, 'gitea_oidc_secret'), 'w') as oidc:
-		oidc.write("")
+		oidc.write('')
 	with open(os.path.join(secrets.name, 'machine_domain_root'), 'w') as domain:
-		domain.write("localhost")
+		domain.write('localhost')
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
