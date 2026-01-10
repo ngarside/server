@@ -5,7 +5,7 @@ set -emu
 
 # Run Gitea server in background -------------------------------------------------------------------
 echo "[CONFIG] Starting Gitea server in background"
-/usr/bin/gitea --config /etc/gitea/gitea.ini "$@" &
+/usr/bin/gitea web --config /etc/gitea/gitea.ini --port 80 "$@" &
 GITEA_JOB=%1
 
 # Wait for Gitea server to initialise --------------------------------------------------------------
@@ -74,7 +74,8 @@ gitea \
 	--key gitea \
 	--name Authentik \
 	--provider openidConnect \
-	--secret "$GITEA_OIDC_SECRET"
+	--secret "$GITEA_OIDC_SECRET" \
+	|| true
 echo "[CONFIG] OIDC command completed, see above for output"
 
 # Bring Gitea server process to the foreground -----------------------------------------------------
