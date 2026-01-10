@@ -5,7 +5,7 @@ set -emu
 
 # Run Gitea server in background -------------------------------------------------------------------
 echo "[CONFIG] Starting Gitea server in background"
-/usr/bin/gitea --config /etc/gitea/gitea.ini "$@" &
+/usr/bin/gitea --config /etc/gitea/gitea.ini --port 80 "$@" &
 GITEA_JOB=%1
 
 # Wait for Gitea server to initialise --------------------------------------------------------------
