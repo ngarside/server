@@ -27,8 +27,8 @@ RUN curl --version | grep -oP '(?<=curl )\S+' > /version
 
 FROM docker.io/alpine:3.23.2 AS healthcheck
 COPY --from=curl /version /version
-RUN apk --no-cache add build-base
-RUN wget "https://curl.se/download/curl-$(cat /version).tar.gz"
+RUN apk --no-cache add build-base curl
+RUN curl --remote-name "https://curl.se/download/curl-$(cat /version).tar.gz"
 RUN mkdir curl
 RUN tar xzf "curl-$(cat /version).tar.gz" --directory /curl --strip-components 1
 WORKDIR /curl
