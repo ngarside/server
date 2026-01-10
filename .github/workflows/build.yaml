@@ -38,7 +38,8 @@ jobs:
           podman build --file "$IMAGE" --format docker
           --tag $NAME:$TAG .
 
-      - name: Run tests
+      - name: Run tests (master)
+        if: ${{ github.ref_name == 'master' }}
         run: uv run pytest -rA $TEST
 
       - name: Login to registry
@@ -48,6 +49,10 @@ jobs:
 
       - name: Push container to registry
         run: podman push $NAME:$TAG
+
+      - name: Run tests (non-master)
+        if: ${{ github.ref_name != 'master' }}
+        run: uv run pytest -rA $TEST
 
       - name: Tag latest version
         if: ${{ github.ref_name == 'master' }}
