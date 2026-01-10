@@ -3,10 +3,11 @@
 
 import contextlib, os, psycopg, pytest, random, string, subprocess, time
 
+name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
+
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	global session
-	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1025, 65536)
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
@@ -28,6 +29,10 @@ def fixture():
 			time.sleep(0.1)
 	yield
 	subprocess.run(['podman', 'rm', '--force', name])
+
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', name])
+	assert status.returncode == 0
 
 def test_select():
 	with contextlib.closing(session) as conn:
