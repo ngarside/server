@@ -88,7 +88,7 @@ jobs:
         run: >-
           podman run --volume .:/target:ro --workdir /target
           docker.io/aquasec/trivy repo --disable-telemetry
-          --exit-code --scanners misconfig .
+          --exit-code 1 --scanners misconfig .
 
   yamllint:
     runs-on: ubuntu-latest
