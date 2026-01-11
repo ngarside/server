@@ -17,9 +17,11 @@ mkdir --parents /etc/sudoers.d
 cp /git/bootc/ops/sudo/sudoers.conf /etc/sudoers.d/server
 chmod 0440 /etc/sudoers.d/server
 
-cp /git/bootc/ops/ostree/root.conf /usr/lib/ostree/prepare-root.conf
-KERNEL=$(cd /usr/lib/modules && echo *)
-dracut --force --verbose "/usr/lib/modules/$KERNEL/initramfs.img" "$KERNEL"
+# Temporarily disabled due to boot errors with transient etc
+# enabled when upgrading the kernel from 6.17.7 to 6.18.3.
+# cp /git/bootc/ops/ostree/root.conf /usr/lib/ostree/prepare-root.conf
+# KERNEL=$(cd /usr/lib/modules && echo *)
+# dracut --force --verbose "/usr/lib/modules/$KERNEL/initramfs.img" "$KERNEL"
 
 cp /git/bootc/ops/fstab/data.service /usr/lib/systemd/system/data-chown.service
 
