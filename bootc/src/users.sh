@@ -5,7 +5,7 @@ set -euo pipefail
 
 groupadd nathan
 adduser nathan --gid nathan --groups wheel \
-	--password '$y$j9T$o1VpjHEoG/b3DwCwGivGd0$Yi8Rw9xlaAgNkjPEZFbV5LlLWoJjbwh6TA2Qt66xukA'
+	--password '$y$j9T$OLuRa6z/r.NzsUb0EaGvM/$mut9ROWI86bV1F.iEPxzhI6UjlNr2BDpKxi0d1wC7b1'
 
 groupadd containers
 adduser containers --gid containers --groups systemd-journal
