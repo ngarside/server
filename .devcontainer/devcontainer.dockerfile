@@ -8,6 +8,7 @@ RUN xcaddy build \
 
 # Install dependencies.
 FROM quay.io/fedora/fedora:43@sha256:56afdee8e93ec4573788268997af39f6e821452b67c49c518e4e3175cb6e1fe7
+HEALTHCHECK CMD ["/bin/true"]
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 RUN <<EOF
 	dnf --assumeyes --setopt=install_weak_deps=false install \
