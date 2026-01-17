@@ -74,7 +74,8 @@ gitea \
 	--key gitea \
 	--name Authentik \
 	--provider openidConnect \
-	--secret "$GITEA_OIDC_SECRET"
+	--secret "$GITEA_OIDC_SECRET" \
+	|| true
 echo "[CONFIG] OIDC command completed, see above for output"
 
 # Bring Gitea server process to the foreground -----------------------------------------------------
