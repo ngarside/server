@@ -5,7 +5,11 @@ set -emu
 
 # Register the Gitea runner ------------------------------------------------------------------------
 echo "[CONFIG] Registering runner"
-runner register
+runner register \
+	--instance "$GITEA_INSTANCE_URL" \
+	--no-interactive \
+	--name runner \
+	--token "$(cat "$GITEA_RUNNER_REGISTRATION_TOKEN_FILE")"
 
 # Start the Gitea runner ---------------------------------------------------------------------------
 echo "[CONFIG] Starting runner"
