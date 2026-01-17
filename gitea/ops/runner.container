@@ -16,6 +16,7 @@ ReadOnly=true
 Secret=gitea_public_uri,type=env,target=GITEA_INSTANCE_URL
 Secret=gitea_runner_token
 UserNS=auto:size=8
+Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/run/user/1001/podman/podman.sock:/run/user/1001/podman/podman.sock
 
 [Service]
