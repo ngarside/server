@@ -5,6 +5,7 @@ set -emu
 
 # Register the Gitea runner ------------------------------------------------------------------------
 echo "[CONFIG] Registering runner"
+mkdir --parents /tmp/gitea
 runner --config /etc/gitea/gitea.yaml register \
 	--instance "$GITEA_INSTANCE_URL" \
 	--no-interactive \
