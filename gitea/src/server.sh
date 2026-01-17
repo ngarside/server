@@ -3,6 +3,11 @@
 
 set -emu
 
+# Run Gitea server in foreground -------------------------------------------------------------------
+echo "[CONFIG] Starting Gitea server in foreground"
+/usr/bin/gitea --config /etc/gitea/gitea.ini "$@"
+exit
+
 # Run Gitea server in background -------------------------------------------------------------------
 echo "[CONFIG] Starting Gitea server in background"
 /usr/bin/gitea --config /etc/gitea/gitea.ini "$@" &
