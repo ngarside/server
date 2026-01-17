@@ -5,7 +5,7 @@ set -emu
 
 # Register the Gitea runner ------------------------------------------------------------------------
 echo "[CONFIG] Registering runner"
-runner register \
+runner --config /etc/gitea/gitea.yaml register \
 	--instance "$GITEA_INSTANCE_URL" \
 	--no-interactive \
 	--name runner \
@@ -13,4 +13,4 @@ runner register \
 
 # Start the Gitea runner ---------------------------------------------------------------------------
 echo "[CONFIG] Starting runner"
-runner daemon
+runner --config /etc/gitea/gitea.yaml daemon

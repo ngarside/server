@@ -10,3 +10,6 @@ cp /git/gitea/ops/server.network /etc/containers/systemd/users/1001/gitea_server
 
 mkdir --parents /etc/gitea/server
 cp /git/gitea/ops/server.ini /etc/gitea/server/gitea.ini
+
+mkdir --parents /etc/gitea/runner
+cp /git/gitea/ops/runner.yaml /etc/gitea/runner/gitea.yaml
