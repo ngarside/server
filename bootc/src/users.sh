@@ -14,5 +14,3 @@ touch /var/lib/systemd/linger/containers
 chmod 0644 /var/lib/systemd/linger/containers
 
 find /var/home -maxdepth 2 -type f -name '.bash*' -exec rm {} \;
-
-systemctl --machine containers@ --user enable podman.socket

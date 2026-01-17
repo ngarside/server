@@ -1,0 +1,10 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+
+[Service]
+ExecStart=systemctl --machine containers@ --user start podman.socket
+Type=oneshot
+
+[Install]
+WantedBy=default.target
