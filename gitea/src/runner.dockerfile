@@ -19,9 +19,13 @@ RUN mkdir /tmp/cp
 RUN cp /busybox/busybox /usr/bin/busybox
 RUN /usr/bin/busybox --install -s /tmp/cp
 
+FROM docker.io/alpine:3.23.2 AS local
+COPY gitea/src/runner.sh /usr/bin/entrypoint
+RUN chmod +x /usr/bin/entrypoint
+
 FROM scratch
 COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
+COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
 COPY --from=runner /usr/local/bin/act_runner /usr/bin/runner
-ENTRYPOINT ["/usr/bin/runner"]
-CMD ["daemon"]
+ENTRYPOINT ["/usr/bin/entrypoint"]
