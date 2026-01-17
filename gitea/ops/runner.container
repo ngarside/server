@@ -1,0 +1,26 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+After=gitea_server.container
+Requires=gitea_server.container
+
+[Container]
+ContainerName=gitea_runner
+Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
+Image=ghcr.io/ngarside/gitea-runner:0.2.13.244
+Memory=8g
+Network=gitea_server.network:ip=10.14.0.4
+NoNewPrivileges=true
+PodmanArgs=--cpus=1
+ReadOnly=true
+Secret=gitea_public_uri,type=env,target=GITEA_INSTANCE_URL
+Secret=gitea_runner_token
+UserNS=auto:size=8
+Volume=/run/user/1001/podman/podman.sock:/run/user/1001/podman/podman.sock
+
+[Service]
+Restart=always
+TimeoutStartSec=9000
+
+[Install]
+WantedBy=default.target
