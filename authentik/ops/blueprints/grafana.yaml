@@ -55,16 +55,44 @@ entries:
       name: Grafana
       provider: !KeyOf custom-grafana-provider
 
-  # Group
-  - id: custom-grafana-group
+  # Group - Admins
+  - id: custom-grafana-group-admins
     model: authentik_core.group
     identifiers:
-      name: Grafana Group
+      name: Grafana Admins
 
-  # Binding
-  - id: custom-grafana-binding
+  # Group - Editors
+  - id: custom-grafana-group-editors
+    model: authentik_core.group
+    identifiers:
+      name: Grafana Editors
+
+  # Group - Viewers
+  - id: custom-grafana-group-viewers
+    model: authentik_core.group
+    identifiers:
+      name: Grafana Viewers
+
+  # Binding - Admins
+  - id: custom-grafana-binding-admins
     model: authentik_policies.policybinding
     identifiers:
-      group: !KeyOf custom-grafana-group
+      group: !KeyOf custom-grafana-group-admins
+      order: 0
+      target: !KeyOf custom-grafana-application
+
+  # Binding - Editors
+  - id: custom-grafana-binding-editors
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-grafana-group-editors
+      order: 0
+      target: !KeyOf custom-grafana-application
+
+  # Binding - Viewers
+  - id: custom-grafana-binding-viewers
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-grafana-group-viewers
       order: 0
       target: !KeyOf custom-grafana-application

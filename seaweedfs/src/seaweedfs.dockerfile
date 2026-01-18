@@ -4,12 +4,12 @@
 # - https://github.com/moparisthebest/static-curl/blob/master/build.sh
 # - https://github.com/moparisthebest/static-curl/blob/master/LICENSE.txt
 
-FROM docker.io/chrislusf/seaweedfs:4.05 AS seaweedfs
+FROM docker.io/chrislusf/seaweedfs:4.06 AS seaweedfs
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
 
-FROM golang:1.25.5-alpine as build
+FROM golang:1.25.6-alpine as build
 COPY --from=seaweedfs /version /version
 RUN apk --no-cache add build-base git
 RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
@@ -27,8 +27,8 @@ RUN curl --version | grep -oP '(?<=curl )\S+' > /version
 
 FROM docker.io/alpine:3.23.2 AS healthcheck
 COPY --from=curl /version /version
-RUN apk --no-cache add build-base
-RUN wget "https://curl.se/download/curl-$(cat /version).tar.gz"
+RUN apk --no-cache add build-base curl
+RUN curl --remote-name "https://curl.se/download/curl-$(cat /version).tar.gz"
 RUN mkdir curl
 RUN tar xzf "curl-$(cat /version).tar.gz" --directory /curl --strip-components 1
 WORKDIR /curl
