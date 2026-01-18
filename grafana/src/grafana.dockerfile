@@ -13,6 +13,7 @@ COPY --from=grafana /usr/share/grafana/public /usr/share/grafana/public
 COPY --from=headcheck /headcheck /usr/bin/headcheck
 ENTRYPOINT ["/usr/bin/grafana"]
 ENV GF_PATHS_DATA=/var/lib/grafana
+ENV GF_PATHS_PLUGINS=/var/lib/grafana/plugins
 ENV GF_SERVER_HTTP_PORT=80
 CMD ["server", "--config", "/etc/grafana/grafana.ini", "--homepath", "/usr/share/grafana"]
 HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/api/health"]
