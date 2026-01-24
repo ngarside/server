@@ -10,9 +10,6 @@ set -euo pipefail
 echo -n 'SECRETDATA' | podman secret create cloudflare_api_token -
 echo -n 'SECRETDATA' | podman secret create cloudflare_tunnel_token -
 
-# Gitea.
-echo -n 'SECRETDATA' | podman secret create gitea_public_uri -
-
 # Grafana Cloud - Loki.
 echo -n 'SECRETDATA' | podman secret create grafana_loki_password -
 echo -n 'SECRETDATA' | podman secret create grafana_loki_uri -
