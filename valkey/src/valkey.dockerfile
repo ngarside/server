@@ -15,10 +15,13 @@ WORKDIR /valkey
 COPY --from=valkey /version /version
 RUN git checkout "$(cat /version)"
 RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no BUILD_TLS=no
+RUN chmod ugo=rx /valkey/src/valkey-cli
 RUN chmod ugo=rx /valkey/src/valkey-server
 
 FROM scratch
+COPY --from=build /valkey/src/valkey-cli /usr/bin/valkey-cli
 COPY --from=build /valkey/src/valkey-server /usr/bin/valkey-server
 EXPOSE 6379
 ENTRYPOINT ["/usr/bin/valkey-server"]
+HEALTHCHECK CMD ["valkey-cli", "ping"]
 CMD ["--protected-mode", "no", "--save"]
