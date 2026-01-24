@@ -3,7 +3,7 @@
 [Container]
 ContainerName=victoria_logs
 GroupAdd=keep-groups
-Image=ghcr.io/ngarside/victoria-logs:1.36.1.125
+Image=ghcr.io/ngarside/victoria-logs:1.36.1.127
 Memory=8g
 Network=victoria_logs.network:ip=10.24.0.3
 NoNewPrivileges=true
