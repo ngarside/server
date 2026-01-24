@@ -7,7 +7,7 @@ Requires=authentik_server.container
 [Container]
 ContainerName=gitea_server
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
-Image=ghcr.io/ngarside/gitea-server:1.25.4.255
+Image=ghcr.io/ngarside/gitea-server:1.25.4.263
 Memory=8g
 Network=gitea_server.network:ip=10.14.0.2
 NoNewPrivileges=true
