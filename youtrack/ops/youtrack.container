@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=youtrack
-Image=docker.io/jetbrains/youtrack:2025.3.116116
+Image=docker.io/jetbrains/youtrack:2025.3.118670
 Memory=8g
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true

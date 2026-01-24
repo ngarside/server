@@ -7,14 +7,14 @@ Requires=gitea_server.container
 [Container]
 ContainerName=gitea_runner
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
-Image=ghcr.io/ngarside/gitea-runner:0.2.13.251
+Image=ghcr.io/ngarside/gitea-runner:0.2.13.255
 Memory=8g
 Network=gitea_server.network:ip=10.14.0.4
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
-Secret=gitea_public_uri,type=env,target=GITEA_INSTANCE_URL
 Secret=gitea_runner_token
+Secret=machine_domain_root
 SecurityLabelDisable=true
 Tmpfs=/tmp:mode=1777
 Volume=/etc/gitea/runner:/etc/gitea:ro

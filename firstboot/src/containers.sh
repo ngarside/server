@@ -10,9 +10,6 @@ set -euo pipefail
 echo -n 'SECRETDATA' | podman secret create cloudflare_api_token -
 echo -n 'SECRETDATA' | podman secret create cloudflare_tunnel_token -
 
-# Gitea.
-echo -n 'SECRETDATA' | podman secret create gitea_public_uri -
-
 # Grafana Cloud - Loki.
 echo -n 'SECRETDATA' | podman secret create grafana_loki_password -
 echo -n 'SECRETDATA' | podman secret create grafana_loki_uri -
@@ -22,11 +19,6 @@ echo -n 'SECRETDATA' | podman secret create grafana_loki_username -
 echo -n 'SECRETDATA' | podman secret create grafana_prometheus_password -
 echo -n 'SECRETDATA' | podman secret create grafana_prometheus_uri -
 echo -n 'SECRETDATA' | podman secret create grafana_prometheus_username -
-
-# Mailjet.
-echo -n 'SECRETDATA' | podman secret create mailjet_address_noreply -
-echo -n 'SECRETDATA' | podman secret create mailjet_smtp_password -
-echo -n 'SECRETDATA' | podman secret create mailjet_smtp_username -
 
 # Open Cloud.
 echo -n 'SECRETDATA' | podman secret create opencloud_public_uri -
