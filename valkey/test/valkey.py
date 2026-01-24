@@ -7,10 +7,11 @@
 
 import os, pytest, random, redis, string, subprocess, time
 
+name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
+
 @pytest.fixture(autouse=True, scope='session')
 def fixture():
 	global port
-	name = ''.join([random.choice(string.ascii_letters) for _ in range(6)])
 	port = random.randrange(1025, 65536)
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
@@ -26,3 +27,7 @@ def test_bytes():
 	session.set('foo', 'bar')
 	actual = session.get('foo')
 	assert actual == b'bar'
+
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', name])
+	assert status.returncode == 0
