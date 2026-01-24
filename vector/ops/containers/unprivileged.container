@@ -8,9 +8,6 @@ Network=vector.network:ip=10.15.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
-Secret=grafana_loki_password,type=env,target=GRAFANA_LOKI_PASSWORD
-Secret=grafana_loki_uri,type=env,target=GRAFANA_LOKI_URI
-Secret=grafana_loki_username,type=env,target=GRAFANA_LOKI_USERNAME
 Secret=grafana_prometheus_password,type=env,target=GRAFANA_PROMETHEUS_PASSWORD
 Secret=grafana_prometheus_uri,type=env,target=GRAFANA_PROMETHEUS_URI
 Secret=grafana_prometheus_username,type=env,target=GRAFANA_PROMETHEUS_USERNAME
