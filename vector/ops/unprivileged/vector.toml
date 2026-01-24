@@ -18,7 +18,7 @@ framing.method = "newline_delimited"
 healthcheck.enabled = false
 inputs = ["vector_instance"]
 type = "http"
-uri = "http://10.24.0.3:9428//insert/jsonline?_stream_fields=host,container_name&_msg_field=message&_time_field=timestamp&debug=1"
+uri = "http://10.24.0.3:9428//insert/jsonline?_stream_fields=host,container_name&_msg_field=message&_time_field=timestamp"
 
 [sinks.vector_prometheus]
 auth.password = "$GRAFANA_PROMETHEUS_PASSWORD"
