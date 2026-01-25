@@ -5,6 +5,8 @@ ContainerName=vector_unprivileged
 Image=ghcr.io/ngarside/vector-unprivileged:0.52.0.126
 Memory=8g
 Network=vector.network:ip=10.15.0.2
+Network=victoria_logs.network:ip=10.24.0.4
+Network=victoria_metrics.network:ip=10.25.0.4
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
