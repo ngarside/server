@@ -5,7 +5,7 @@ filesystem.mountpoints.excludes = ["*/proc/sys/fs/binfmt_misc"]
 type = "host_metrics"
 
 [sinks.host_prometheus]
-endpoint = "http://10.25.0.3:9428/api/v1/write"
+endpoint = "http://10.25.0.3:8428/api/v1/write"
 healthcheck.enabled = false
 inputs = ["host_source"]
 type = "prometheus_remote_write"
