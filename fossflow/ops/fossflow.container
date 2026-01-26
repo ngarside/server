@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=fossflow
-Image=ghcr.io/ngarside/fossflow:0.0.0.237
+Image=ghcr.io/ngarside/fossflow:0.0.0.240
 Memory=8g
 Network=fossflow.network:ip=10.1.0.2
 NoNewPrivileges=true
