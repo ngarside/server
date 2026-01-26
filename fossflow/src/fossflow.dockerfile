@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/stnsmith/fossflow:latest@sha256:99b5c688f157de7d858e7929faa1f69b01c1cd781da1b8dce4a5f933f7933807 AS fossflow
+FROM docker.io/stnsmith/fossflow:latest@sha256:3afa469d07b802c97fe9d8556a621baa192e4e785087a8a4bce755f457505cdc AS fossflow
 
 FROM docker.io/caddy:2.10.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
