@@ -7,7 +7,7 @@ Requires=gitea_server.container
 [Container]
 ContainerName=gitea_runner
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
-Image=ghcr.io/ngarside/gitea-runner:0.2.13.263
+Image=ghcr.io/ngarside/gitea-runner:0.2.13.271
 Memory=8g
 Network=gitea_server.network:ip=10.14.0.4
 NoNewPrivileges=true
