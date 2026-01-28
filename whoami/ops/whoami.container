@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=whoami
-Image=ghcr.io/ngarside/whoami:1.11.0.121
+Image=ghcr.io/ngarside/whoami:1.11.0.170
 Memory=8g
 Network=whoami.network:ip=10.20.0.2
 NoNewPrivileges=true
