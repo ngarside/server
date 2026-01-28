@@ -6,7 +6,7 @@ Requires=authentik_server.container
 
 [Container]
 ContainerName=grafana
-Image=ghcr.io/ngarside/grafana:12.3.2.173
+Image=ghcr.io/ngarside/grafana:12.3.2.179
 Memory=8g
 Network=grafana.network:ip=10.22.0.2
 Network=victoria_logs.network:ip=10.24.0.2
