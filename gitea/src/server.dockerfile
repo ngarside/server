@@ -22,7 +22,7 @@ RUN patch modules/setting/server.go < /tmp/server.patch
 RUN LDFLAGS='-extldflags -static' TAGS='bindata sqlite sqlite_unlock_notify' make build -j "$(nproc)"
 RUN strip /go/gitea/gitea
 
-FROM docker.io/alpine:3.23.2 AS busybox
+FROM docker.io/alpine:3.23.3 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
 RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' > /version
@@ -43,15 +43,15 @@ FROM docker.io/alpine/git:v2.52.0 AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" > /version
 
-FROM docker.io/alpine:3.23.2 AS headcheck
+FROM docker.io/alpine:3.23.3 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
-FROM docker.io/alpine:3.23.2 AS local
+FROM docker.io/alpine:3.23.3 AS local
 COPY gitea/src/server.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/entrypoint
 
-FROM docker.io/alpine:3.23.2 AS git-build
+FROM docker.io/alpine:3.23.3 AS git-build
 COPY --from=git /version /version
 RUN apk --no-cache add alpine-sdk autoconf tcl-dev zlib-dev zlib-static
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
