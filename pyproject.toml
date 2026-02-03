@@ -9,7 +9,7 @@ dependencies = [
 	"python-dotenv==1.2.1",
 	"redis==7.1.0",
 	"requests==2.32.5",
-	"ruff==0.14.14",
+	"ruff==0.15.0",
 ]
 dynamic = ["version"]
 name = "server"
