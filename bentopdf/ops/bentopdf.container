@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=bentopdf
-Image=ghcr.io/ngarside/bentopdf:1.16.1.191
+Image=ghcr.io/ngarside/bentopdf:2.2.0.213
 Memory=8g
 Network=bentopdf.network:ip=10.23.0.2
 NoNewPrivileges=true
