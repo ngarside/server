@@ -2,7 +2,7 @@
 
 [Container]
 ContainerName=vaultwarden
-Image=ghcr.io/ngarside/vaultwarden:1.35.2.176
+Image=ghcr.io/ngarside/vaultwarden:1.35.3.202
 Memory=8g
 Network=vaultwarden.network:ip=10.12.0.2
 NoNewPrivileges=true
