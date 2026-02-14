@@ -101,6 +101,8 @@ if __name__ == '__main__':
 			continue
 		for version in versions:
 			print(f'\t{version.hash} | ', end='')
+			if 'latest' in version.tags:
+				print('keep | latest semver ', end='')
 			if any(is_semantic(tag) for tag in version.tags) and version.updated > cutoff:
 				print('keep | recent semver ', end='')
 			elif any(tag in branch_tags for tag in version.tags):
