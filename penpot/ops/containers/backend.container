@@ -19,7 +19,7 @@ Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Environment=PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
 Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
 Environment=PENPOT_OIDC_CLIENT_ID=penpot
-Image=ghcr.io/ngarside/penpot-backend:2.13.2.196
+Image=ghcr.io/ngarside/penpot-backend:2.13.3.240
 Memory=8g
 Network=penpot_internal.network:ip=10.4.0.5
 Network=penpot_external.network:ip=10.3.0.8
