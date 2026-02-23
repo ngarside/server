@@ -2,7 +2,7 @@
 
 FROM ghcr.io/chartdb/chartdb:1.19.0 AS chartdb
 
-FROM docker.io/caddy:2.10.2 AS caddy
+FROM docker.io/caddy:2.11.1 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/alpine:3.23.3 AS headcheck
