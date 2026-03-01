@@ -1,0 +1,12 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+Description=Creates two empty files on boot - this enables recovery from a full root partition
+
+[Service]
+Type=oneshot
+ExecStart=mkdir --parents /var/reserve
+ExecStart=truncate --size 250M /var/reserve/reserve1.bin /var/reserve/reserve2.bin
+
+[Install]
+WantedBy=default.target

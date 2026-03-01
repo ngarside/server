@@ -22,5 +22,7 @@ KERNEL=$(cd /usr/lib/modules && echo *)
 dracut --force --verbose "/usr/lib/modules/$KERNEL/initramfs.img" "$KERNEL"
 
 cp /git/bootc/ops/fstab/data.service /usr/lib/systemd/system/data-chown.service
-
 systemctl enable data-chown.service
+
+cp /git/bootc/ops/reserve/reserve.service /usr/lib/systemd/system/reserve.service
+systemctl enable reserve.service
