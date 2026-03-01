@@ -5,7 +5,7 @@ Description=Creates two empty files on boot - this enables recovery from a full 
 
 [Service]
 Type=oneshot
-ExecStart=mkdir /var/reserve
+ExecStart=mkdir --parents /var/reserve
 ExecStart=truncate --size 250M /var/reserve/reserve1.bin /var/reserve/reserve2.bin
 
 [Install]
