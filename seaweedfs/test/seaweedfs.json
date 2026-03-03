@@ -10,7 +10,7 @@
 			"credentials": [
 				{
 					"accessKey": "abc123",
-					"secretKey": "def456"
+					"secretKey": "/etc/seaweedfs/seaweedfs.key"
 				}
 			]
 		}
