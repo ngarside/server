@@ -17,7 +17,7 @@ def fixture():
 		f'{port}:80', '--pull', 'never', '--volume', f'{dir}:/var/lib/memos',
 		f'ghcr.io/ngarside/memos:{tag}',
 	])
-	time.sleep(0.1)
+	time.sleep(1)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
