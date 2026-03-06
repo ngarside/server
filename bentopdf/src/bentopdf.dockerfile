@@ -2,7 +2,7 @@
 
 FROM ghcr.io/alam00000/bentopdf-simple:2.4.0 AS bentopdf
 
-FROM docker.io/caddy:2.11.1 AS caddy
+FROM docker.io/caddy:2.11.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/alpine:3.23.3 AS headcheck
