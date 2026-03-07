@@ -16,7 +16,7 @@ RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" 
 WORKDIR /go/seaweedfs/weed
 COPY /seaweedfs/src/credentials.patch /tmp/credentials.patch
 RUN patch s3api/auth_credentials.go < /tmp/credentials.patch
-RUN go install -ldflags '-extldflags -static'
+RUN go install -ldflags '-linkmode external -extldflags -static'
 RUN strip /go/bin/weed
 
 FROM docker.io/curlimages/curl:8.18.0 AS curl
