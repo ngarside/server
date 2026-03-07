@@ -4,7 +4,7 @@
 # - https://github.com/moparisthebest/static-curl/blob/master/build.sh
 # - https://github.com/moparisthebest/static-curl/blob/master/LICENSE.txt
 
-FROM docker.io/chrislusf/seaweedfs:4.13 AS seaweedfs
+FROM docker.io/chrislusf/seaweedfs:4.15 AS seaweedfs
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
@@ -16,7 +16,7 @@ RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" 
 WORKDIR /go/seaweedfs/weed
 COPY /seaweedfs/src/credentials.patch /tmp/credentials.patch
 RUN patch s3api/auth_credentials.go < /tmp/credentials.patch
-RUN go install -ldflags '-extldflags -static'
+RUN go install -ldflags '-linkmode external -extldflags -static'
 RUN strip /go/bin/weed
 
 FROM docker.io/curlimages/curl:8.18.0 AS curl
