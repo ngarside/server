@@ -12,7 +12,7 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'{port}:80',
+		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'{port}:9428',
 		'--pull', 'never', f'ghcr.io/ngarside/victoria-logs:{tag}',
 	])
 	yield
