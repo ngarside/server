@@ -1,0 +1,19 @@
+# This is free and unencumbered software released into the public domain.
+
+# When new container versions are pulled, old versions are left on the system.
+# Over time these can build up to the point of filling up the entire root
+# directory, which can make the system inoperable. I is therefore necessary to
+# alleviate this by purging all unused images. This is done a sufficiently long
+# time after boot to ensure that images used by containers which have yet to
+# start are not purged.
+
+[Unit]
+
+[Timer]
+OnBootSec=1h
+OnUnitActiveSec=1h
+Persistent=true
+Unit=prune_images.service
+
+[Install]
+WantedBy=timers.target

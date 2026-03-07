@@ -1,11 +1,11 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/stnsmith/fossflow:latest@sha256:99b5c688f157de7d858e7929faa1f69b01c1cd781da1b8dce4a5f933f7933807 AS fossflow
+FROM docker.io/stnsmith/fossflow:latest@sha256:a344fb844e931d65a74f8d00ded7c869f3070e346b288d4b8fe0437188468027 AS fossflow
 
-FROM docker.io/caddy:2.10.2 AS caddy
+FROM docker.io/caddy:2.11.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.2 AS headcheck
+FROM docker.io/alpine:3.23.3 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 

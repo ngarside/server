@@ -1,0 +1,13 @@
+# This is free and unencumbered software released into the public domain.
+
+# For documentation see the corresponding timer unit file.
+
+[Unit]
+
+[Service]
+ExecStart=/usr/bin/podman image prune --all --force
+Type=oneshot
+User=containers
+
+[Install]
+WantedBy=default.target

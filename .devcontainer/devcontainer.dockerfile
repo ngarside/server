@@ -1,13 +1,13 @@
 # This is free and unencumbered software released into the public domain.
 
 # Build customised caddy install.
-FROM docker.io/caddy:2.10.2-builder-alpine AS caddy
+FROM docker.io/caddy:2.11.2-builder-alpine AS caddy
 RUN xcaddy build \
 	--with github.com/caddy-dns/cloudflare \
 	--with github.com/hslatman/caddy-crowdsec-bouncer/http
 
 # Install dependencies.
-FROM quay.io/fedora/fedora:43@sha256:38f5b4761e72ccd1d3a5ff540d9732b6df3df853b5e35937a669a4a5d5be632b
+FROM quay.io/fedora/fedora:43@sha256:2e8a353c80d70b21567dcda8996a1eca6579d08907ee98f87bde65dce4b20b58
 HEALTHCHECK CMD ["/bin/true"]
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 RUN <<EOF

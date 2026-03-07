@@ -1,4 +1,4 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/alpine:3.23.2
+FROM docker.io/alpine:3.23.3
 HEALTHCHECK CMD ["/bin/true"]

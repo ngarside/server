@@ -1,11 +1,11 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM ghcr.io/chartdb/chartdb:1.19.0 AS chartdb
+FROM ghcr.io/chartdb/chartdb:1.20.0 AS chartdb
 
-FROM docker.io/caddy:2.10.2 AS caddy
+FROM docker.io/caddy:2.11.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.2 AS headcheck
+FROM docker.io/alpine:3.23.3 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
 RUN unzip /linux_x64.zip
 
