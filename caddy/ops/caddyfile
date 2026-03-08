@@ -109,11 +109,17 @@ vaultwarden.{$MACHINE_DOMAIN_ROOT} {
 }
 
 victorialogs.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.24.0.3:9428
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.24.0.3:9428
+	}
 }
 
 victoriametrics.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.25.0.3:8428
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.25.0.3:8428
+	}
 }
 
 youtrack.{$MACHINE_DOMAIN_ROOT} {
