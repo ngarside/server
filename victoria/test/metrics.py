@@ -18,6 +18,10 @@ def fixture():
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
+	assert status.returncode == 0
+
 def test_root():
 	res = session.get(f'http://localhost:{port}')
 	assert res.status_code == 200
