@@ -6,8 +6,8 @@ FROM docker.io/caddy:2.11.2 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/alpine:3.23.3 AS headcheck
-RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
-RUN unzip /linux_x64.zip
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
+RUN unzip /linux-x64.zip
 
 FROM scratch
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
