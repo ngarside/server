@@ -4,8 +4,8 @@ FROM docker.io/adguard/adguardhome:v0.107.73 AS adguardhome
 RUN chmod ugo=rx /opt/adguardhome/AdGuardHome
 
 FROM docker.io/alpine:3.23.3 AS headcheck
-RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
-RUN unzip /linux_x64.zip
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
+RUN unzip /linux-x64.zip
 
 FROM scratch
 COPY --from=adguardhome /opt/adguardhome/AdGuardHome /usr/bin/adguardhome

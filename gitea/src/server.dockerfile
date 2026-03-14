@@ -44,8 +44,8 @@ SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" > /version
 
 FROM docker.io/alpine:3.23.3 AS headcheck
-RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
-RUN unzip /linux_x64.zip
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
+RUN unzip /linux-x64.zip
 
 FROM docker.io/alpine:3.23.3 AS local
 COPY gitea/src/server.sh /usr/bin/entrypoint
