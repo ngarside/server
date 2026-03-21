@@ -68,6 +68,7 @@ FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 COPY --from=git-build /git/git /usr/bin/git
 COPY --from=git-build /tmp/cp/ /usr/bin/
+COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
@@ -80,4 +81,5 @@ ENV GITEA_WORK_DIR=/var/lib/gitea
 ENV HOME=/var/lib/gitea/git
 ENV TMPDIR=/tmp/gitea
 ENV USER=root
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/api/healthz"]
 RUN ln -s /usr/bin /bin
