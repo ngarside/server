@@ -32,6 +32,7 @@ dnf --assumeyes remove \
 	gsettings-desktop-schemas \
 	hwdata \
 	json-glib \
+	libgcc \
 	libjcat \
 	logrotate \
 	mt7xxx-firmware \
