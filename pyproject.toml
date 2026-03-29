@@ -7,7 +7,7 @@ dependencies = [
 	"psycopg[binary]==3.3.3",
 	"pytest==9.0.2",
 	"python-dotenv==1.2.2",
-	"redis==7.3.0",
+	"redis==7.4.0",
 	"requests==2.33.0",
 	"ruff==0.15.8",
 ]
