@@ -2,14 +2,14 @@
 
 [project]
 dependencies = [
-	"boto3==1.42.78",
+	"boto3==1.42.82",
 	"dnspython==2.8.0",
 	"psycopg[binary]==3.3.3",
 	"pytest==9.0.2",
 	"python-dotenv==1.2.2",
 	"redis==7.4.0",
-	"requests==2.33.0",
-	"ruff==0.15.8",
+	"requests==2.33.1",
+	"ruff==0.15.9",
 ]
 dynamic = ["version"]
 name = "server"
