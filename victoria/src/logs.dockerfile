@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/victoriametrics/victoria-logs:v1.48.0 AS victorialogs
+FROM docker.io/victoriametrics/victoria-logs:v1.49.0 AS victorialogs
 
 FROM docker.io/alpine:3.23.3 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
