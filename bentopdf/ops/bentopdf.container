@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=bentopdf
+DropCapability=all
 Image=ghcr.io/ngarside/bentopdf:2.8.2.440
 Memory=8g
 Network=bentopdf.network:ip=10.23.0.2

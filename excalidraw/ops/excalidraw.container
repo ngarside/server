@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=excalidraw
+DropCapability=all
 Image=ghcr.io/ngarside/excalidraw:0.0.0.293
 Memory=8g
 Network=excalidraw.network:ip=10.18.0.2

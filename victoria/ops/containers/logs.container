@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=victoria_logs
+DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/victoria-logs:1.49.0.354
 Memory=8g

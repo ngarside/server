@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=penpot_postgres
+DropCapability=all
 Environment=POSTGRES_DB=penpot
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/penpot_postgres_password

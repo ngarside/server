@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=caddy
+DropCapability=all
 Environment=XDG_CONFIG_HOME=/opt
 Image=ghcr.io/ngarside/caddy:2.11.2.270
 Memory=8g

@@ -10,6 +10,7 @@ Requires=outline_valkey.container
 
 [Container]
 ContainerName=outline
+DropCapability=all
 Environment=PORT=80
 Environment=DATABASE_HOST=10.19.0.3
 Environment=DATABASE_NAME=outline

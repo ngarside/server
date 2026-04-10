@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=outline_postgres
+DropCapability=all
 Environment=POSTGRES_DB=outline
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/outline_postgres_password
 Environment=POSTGRES_USER=outline

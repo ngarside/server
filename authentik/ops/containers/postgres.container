@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=authentik_postgres
+DropCapability=all
 Environment=POSTGRES_DB=authentik
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/authentik_postgres_password
