@@ -2,6 +2,9 @@
 
 [Container]
 AddCapability=CAP_CHOWN
+AddCapability=CAP_FOWNER
+AddCapability=SETGID
+AddCapability=SETUID
 ContainerName=outline_postgres
 DropCapability=all
 Environment=POSTGRES_DB=outline
