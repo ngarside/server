@@ -1,6 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=fossflow
 DropCapability=all
 Image=ghcr.io/ngarside/fossflow:0.0.0.499
