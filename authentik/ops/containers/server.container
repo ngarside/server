@@ -6,7 +6,6 @@ Requires=authentik_postgres.container
 
 [Container]
 ContainerName=authentik_server
-DropCapability=all
 Environment=AUTHENTIK_EMAIL__FROM=file:///run/secrets/mailjet_address_noreply
 Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
 Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
