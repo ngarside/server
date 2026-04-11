@@ -9,6 +9,7 @@ Network=crowdsec.network:ip=10.26.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
+Tmpfs=/etc/crowdsec:mode=1777
 UserNS=auto:size=8
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
 
