@@ -5,6 +5,7 @@ After=authentik_server.container
 Requires=authentik_server.container
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=gitea_server
 DropCapability=all
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token

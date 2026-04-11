@@ -9,6 +9,7 @@ Requires=outline_postgres.container
 Requires=outline_valkey.container
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=outline
 DropCapability=all
 Environment=PORT=80

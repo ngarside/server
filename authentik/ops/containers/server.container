@@ -5,6 +5,7 @@ After=authentik_postgres.container
 Requires=authentik_postgres.container
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=authentik_server
 DropCapability=all
 Environment=AUTHENTIK_EMAIL__FROM=file:///run/secrets/mailjet_address_noreply
