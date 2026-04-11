@@ -1,0 +1,21 @@
+# This is free and unencumbered software released into the public domain.
+
+[Container]
+ContainerName=crowdsec
+DropCapability=all
+Image=ghcr.io/ngarside/crowdsec:1.7.7.329
+Memory=8g
+Network=crowdsec.network:ip=10.26.0.2
+NoNewPrivileges=true
+PodmanArgs=--cpus=1
+ReadOnly=true
+UserNS=auto:size=8
+Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
+
+[Service]
+Restart=always
+TimeoutStartSec=9000
+ExecStartPre=mkdir --parents /var/data/crowdsec/data
+
+[Install]
+WantedBy=default.target
