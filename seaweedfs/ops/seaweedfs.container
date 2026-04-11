@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=seaweedfs
+DropCapability=all
 Exec=server -dir=/var/lib/seaweedfs -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
 Image=ghcr.io/ngarside/seaweedfs:4.19.756
 Memory=8g

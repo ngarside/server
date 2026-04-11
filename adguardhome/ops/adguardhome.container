@@ -1,7 +1,9 @@
 # This is free and unencumbered software released into the public domain.
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=adguardhome
+DropCapability=all
 Image=ghcr.io/ngarside/adguardhome:0.107.73.288
 Memory=8g
 Network=adguardhome.network:ip=10.2.0.2

@@ -8,6 +8,7 @@ Requires=penpot_exporter.container
 
 [Container]
 ContainerName=penpot_frontend
+DropCapability=all
 Environment=PENPOT_BACKEND_URI=http://10.3.0.8:6060
 Environment=PENPOT_EXPORTER_URI=http://10.3.0.7:6061
 Environment="PENPOT_FLAGS=disable-registration disable-secure-session-cookies enable-login-with-oidc enable-oidc-registration"

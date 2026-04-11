@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=victoria_metrics
+DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/victoria-metrics:1.139.0.354
 Memory=8g
