@@ -2,6 +2,7 @@
 
 [Container]
 AddCapability=CAP_CHOWN
+AddCapability=CAP_DAC_READ_SEARCH
 AddCapability=CAP_FOWNER
 AddCapability=CAP_SETGID
 AddCapability=CAP_SETUID
