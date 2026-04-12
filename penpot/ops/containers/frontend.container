@@ -20,6 +20,7 @@ Network=penpot_external.network:ip=10.3.0.9
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
+UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
