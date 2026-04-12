@@ -37,19 +37,19 @@
 		</disk>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
-			<source file="/var/lib/libvirt/images/server-nvme0n1.qcow2" />
+			<source file="/var/lib/libvirt/images/server-nvme0.qcow2" />
 			<target dev="nvme0n1" bus="nvme" />
 			<serial>nvme0n1</serial>
 		</disk>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
-			<source file="/var/lib/libvirt/images/server-nvme1n1.qcow2" />
+			<source file="/var/lib/libvirt/images/server-nvme1.qcow2" />
 			<target dev="nvme1n1" bus="nvme" />
 			<serial>nvme1n1</serial>
 		</disk>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
-			<source file="/var/lib/libvirt/images/server-nvme2n1.qcow2" />
+			<source file="/var/lib/libvirt/images/server-nvme2.qcow2" />
 			<target dev="nvme2n1" bus="nvme" />
 			<serial>nvme2n1</serial>
 		</disk>
