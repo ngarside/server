@@ -26,11 +26,7 @@ parted /dev/nbd0 mklabel gpt
 parted /dev/nbd1 mklabel gpt
 parted /dev/nbd2 mklabel gpt
 
-parted --align optimal /dev/nbd0 mkpart primary 0% 100%
-parted --align optimal /dev/nbd1 mkpart primary 0% 100%
-parted --align optimal /dev/nbd2 mkpart primary 0% 100%
-
-mkfs.btrfs --force --label data /dev/nbd0p1 /dev/nbd1p1 /dev/nbd2p1
+mkfs.btrfs --force --label data /dev/nbd0 /dev/nbd1 /dev/nbd2
 
 qemu-nbd --disconnect /dev/nbd0
 qemu-nbd --disconnect /dev/nbd1
