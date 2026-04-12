@@ -6,11 +6,11 @@ set -euo pipefail
 
 # Create root disk image -------------------------------------------------------
 
-qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 64G
+qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 240G
 
 # Create data disk image -------------------------------------------------------
 
-qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 512G
+qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 2T
 
 modprobe nbd max_part=8
 
