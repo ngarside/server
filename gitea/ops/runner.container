@@ -18,6 +18,7 @@ Secret=gitea_runner_token
 Secret=machine_domain_root
 SecurityLabelDisable=true
 Tmpfs=/tmp:mode=1777
+UserNS=auto
 Volume=/etc/gitea/runner:/etc/gitea:ro
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/run/user/1001/podman/podman.sock:/var/run/docker.sock

@@ -31,6 +31,7 @@ Secret=penpot_oidc_secret,type=env,target=PENPOT_OIDC_CLIENT_SECRET
 Secret=penpot_oidc_uri,type=env,target=PENPOT_OIDC_BASE_URI
 Secret=penpot_postgres_password,type=env,target=PENPOT_DATABASE_PASSWORD
 Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
+UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
