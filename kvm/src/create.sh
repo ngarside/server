@@ -10,11 +10,11 @@ qemu-img create -f qcow2 /var/lib/libvirt/images/server-sda.qcow2 240G
 
 # Create data disk image -------------------------------------------------------
 
-qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 2T
+qemu-img create -f qcow2 /var/lib/libvirt/images/server-nvme0n1.qcow2 2T
 
 modprobe nbd max_part=8
 
-qemu-nbd --connect /dev/nbd0 /var/lib/libvirt/images/server-data.qcow2
+qemu-nbd --connect /dev/nbd0 /var/lib/libvirt/images/server-nvme0n1.qcow2
 
 parted /dev/nbd0 mklabel gpt
 

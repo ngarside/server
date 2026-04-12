@@ -12,4 +12,4 @@ virsh --connect qemu:///system undefine Server
 # Delete the disk images -------------------------------------------------------
 
 rm /var/lib/libvirt/images/server-sda.qcow2
-rm /var/lib/libvirt/images/server-data.qcow2
+rm /var/lib/libvirt/images/server-nvme0n1.qcow2
