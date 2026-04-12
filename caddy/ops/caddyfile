@@ -81,7 +81,10 @@ gitea.{$MACHINE_DOMAIN_ROOT} {
 }
 
 grafana.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.22.0.2
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.22.0.2
+	}
 }
 
 jellyfin.{$MACHINE_DOMAIN_ROOT} {
