@@ -9,7 +9,7 @@ mkdir --parents ./iso/bin
 
 # Pull base image --------------------------------------------------------------
 
-podman pull ghcr.io/ngarside/bootc:feature_kvm
+podman pull ghcr.io/ngarside/bootc:latest
 
 # Build ISO --------------------------------------------------------------------
 
@@ -23,4 +23,4 @@ podman run \
 	quay.io/centos-bootc/bootc-image-builder:latest \
 	--rootfs btrfs \
 	--type iso \
-	ghcr.io/ngarside/bootc:feature_kvm
+	ghcr.io/ngarside/bootc:latest
