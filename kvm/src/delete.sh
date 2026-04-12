@@ -13,3 +13,5 @@ virsh --connect qemu:///system undefine Server
 
 rm /var/lib/libvirt/images/server-sda.qcow2
 rm /var/lib/libvirt/images/server-nvme0n1.qcow2
+rm /var/lib/libvirt/images/server-nvme1n1.qcow2
+rm /var/lib/libvirt/images/server-nvme2n1.qcow2
