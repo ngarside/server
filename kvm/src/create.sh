@@ -6,7 +6,7 @@ set -euo pipefail
 
 # Create root disk image -------------------------------------------------------
 
-qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 240G
+qemu-img create -f qcow2 /var/lib/libvirt/images/server-sda.qcow2 240G
 
 # Create data disk image -------------------------------------------------------
 
