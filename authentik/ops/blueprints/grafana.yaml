@@ -45,7 +45,7 @@ entries:
         - matching_mode: strict
           url: !Format [https://grafana.%s/login/generic_oauth, !File /run/secrets/machine_domain_root]
 
-  # Application
+  # Application - OIDC
   - id: custom-grafana-application
     model: authentik_core.application
     identifiers:
