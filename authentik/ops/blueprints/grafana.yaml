@@ -64,7 +64,7 @@ entries:
       slug: grafana
     attrs:
       icon: grafana.png
-      name: Grafana - OIDC
+      name: Grafana
       provider: !KeyOf custom-grafana-oidc-provider
 
   # Application - Proxy
@@ -74,6 +74,7 @@ entries:
       slug: grafana-proxy
     attrs:
       icon: grafana.png
+      meta_launch_url: blank://blank
       name: Grafana - Proxy
       provider: !KeyOf custom-grafana-proxy-provider
 
