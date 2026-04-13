@@ -73,24 +73,24 @@ entries:
     identifiers:
       name: Grafana Viewers
 
-  # Binding - Admins
-  - id: custom-grafana-binding-admins
+  # Binding - OIDC - Admins
+  - id: custom-grafana-binding-oidc-admins
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-grafana-group-admins
       order: 0
       target: !KeyOf custom-grafana-oidc-application
 
-  # Binding - Editors
-  - id: custom-grafana-binding-editors
+  # Binding - OIDC - Editors
+  - id: custom-grafana-binding-oidc-editors
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-grafana-group-editors
       order: 0
       target: !KeyOf custom-grafana-oidc-application
 
-  # Binding - Viewers
-  - id: custom-grafana-binding-viewers
+  # Binding - OIDC - Viewers
+  - id: custom-grafana-binding-oidc-viewers
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-grafana-group-viewers
