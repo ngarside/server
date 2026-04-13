@@ -67,6 +67,16 @@ entries:
       name: Grafana - OIDC
       provider: !KeyOf custom-grafana-oidc-provider
 
+  # Application - Proxy
+  - id: custom-grafana-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: grafana-proxy
+    attrs:
+      icon: grafana.png
+      name: Grafana - Proxy
+      provider: !KeyOf custom-grafana-proxy-provider
+
   # Group - Admins
   - id: custom-grafana-group-admins
     model: authentik_core.group
