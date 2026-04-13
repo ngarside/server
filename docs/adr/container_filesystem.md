@@ -66,7 +66,7 @@ storage.
 | `/etc`     | Persistent or transient | Read-only or read-write |
 | `/srv`     | Persistent              | Read-write              |
 | `/var/lib` | Persistent              | Read-write              |
-| `/var/log` | Persistent              | Read-only or read-write |
+| `/var/log` | Persistent              | Read-write              |
 | `/tmp`     | Transient               | Read-write              |
 
 # <p align=center>Simple Example - ChartDB
