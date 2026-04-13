@@ -45,6 +45,18 @@ entries:
         - matching_mode: strict
           url: !Format [https://grafana.%s/login/generic_oauth, !File /run/secrets/machine_domain_root]
 
+  # Provider - Proxy
+  - id: custom-grafana-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://grafana.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Grafana Provider - Proxy
+
   # Application - OIDC
   - id: custom-grafana-oidc-application
     model: authentik_core.application
