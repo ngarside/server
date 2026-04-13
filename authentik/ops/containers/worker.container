@@ -7,6 +7,7 @@ Requires=authentik_postgres.container
 Requires=authentik_server.container
 
 [Container]
+AddCapability=CAP_CHOWN
 ContainerName=authentik_worker
 DropCapability=all
 Environment=AUTHENTIK_EMAIL__FROM=file:///run/secrets/mailjet_address_noreply
