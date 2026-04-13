@@ -81,6 +81,14 @@ entries:
       order: 0
       target: !KeyOf custom-grafana-oidc-application
 
+  # Binding - Proxy - Admins
+  - id: custom-grafana-binding-proxy-admins
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-grafana-group-admins
+      order: 0
+      target: !KeyOf custom-grafana-proxy-application
+
   # Binding - OIDC - Editors
   - id: custom-grafana-binding-oidc-editors
     model: authentik_policies.policybinding
@@ -89,6 +97,14 @@ entries:
       order: 0
       target: !KeyOf custom-grafana-oidc-application
 
+  # Binding - Proxy - Editors
+  - id: custom-grafana-binding-proxy-editors
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-grafana-group-editors
+      order: 0
+      target: !KeyOf custom-grafana-proxy-application
+
   # Binding - OIDC - Viewers
   - id: custom-grafana-binding-oidc-viewers
     model: authentik_policies.policybinding
@@ -96,3 +112,11 @@ entries:
       group: !KeyOf custom-grafana-group-viewers
       order: 0
       target: !KeyOf custom-grafana-oidc-application
+
+  # Binding - Proxy - Viewers
+  - id: custom-grafana-binding-proxy-viewers
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-grafana-group-viewers
+      order: 0
+      target: !KeyOf custom-grafana-proxy-application
