@@ -24,8 +24,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-grafana-provider
+  # Provider - OIDC
+  - id: custom-grafana-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: grafana
@@ -53,7 +53,7 @@ entries:
     attrs:
       icon: grafana.png
       name: Grafana
-      provider: !KeyOf custom-grafana-provider
+      provider: !KeyOf custom-grafana-oidc-provider
 
   # Group - Admins
   - id: custom-grafana-group-admins
