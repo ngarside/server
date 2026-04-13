@@ -36,7 +36,7 @@ entries:
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
       logout_method: frontchannel
       logout_uri: !Format [https://grafana.%s/logout, !File /run/secrets/machine_domain_root]
-      name: Grafana Provider - OIDC
+      name: Grafana Provider
       property_mappings:
         - !KeyOf custom-grafana-scopes-email
         - !KeyOf custom-grafana-scopes-openid
