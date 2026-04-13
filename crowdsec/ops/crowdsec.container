@@ -11,6 +11,7 @@ PodmanArgs=--cpus=1
 ReadOnly=true
 Tmpfs=/etc/crowdsec:mode=1777
 UserNS=auto:size=8
+Volume=/var/data/caddy/logs:/var/logs/caddy:ro,z
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
 
 [Service]
