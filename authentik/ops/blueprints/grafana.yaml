@@ -46,7 +46,7 @@ entries:
           url: !Format [https://grafana.%s/login/generic_oauth, !File /run/secrets/machine_domain_root]
 
   # Application - OIDC
-  - id: custom-grafana-application
+  - id: custom-grafana-oidc-application
     model: authentik_core.application
     identifiers:
       slug: grafana
@@ -79,7 +79,7 @@ entries:
     identifiers:
       group: !KeyOf custom-grafana-group-admins
       order: 0
-      target: !KeyOf custom-grafana-application
+      target: !KeyOf custom-grafana-oidc-application
 
   # Binding - Editors
   - id: custom-grafana-binding-editors
@@ -87,7 +87,7 @@ entries:
     identifiers:
       group: !KeyOf custom-grafana-group-editors
       order: 0
-      target: !KeyOf custom-grafana-application
+      target: !KeyOf custom-grafana-oidc-application
 
   # Binding - Viewers
   - id: custom-grafana-binding-viewers
@@ -95,4 +95,4 @@ entries:
     identifiers:
       group: !KeyOf custom-grafana-group-viewers
       order: 0
-      target: !KeyOf custom-grafana-application
+      target: !KeyOf custom-grafana-oidc-application
