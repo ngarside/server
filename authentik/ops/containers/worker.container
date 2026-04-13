@@ -9,6 +9,7 @@ Requires=authentik_server.container
 [Container]
 AddCapability=CAP_CHOWN
 AddCapability=CAP_FOWNER
+AddCapability=CAP_SETGID
 ContainerName=authentik_worker
 DropCapability=all
 Environment=AUTHENTIK_EMAIL__FROM=file:///run/secrets/mailjet_address_noreply
