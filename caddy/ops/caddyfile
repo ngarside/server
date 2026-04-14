@@ -77,7 +77,10 @@ fossflow.{$MACHINE_DOMAIN_ROOT} {
 }
 
 gitea.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.14.0.2
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.14.0.2
+	}
 }
 
 grafana.{$MACHINE_DOMAIN_ROOT} {
