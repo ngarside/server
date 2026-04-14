@@ -40,7 +40,6 @@ Volume=/var/data/caddy/opt:/opt/caddy:U,Z
 [Service]
 Restart=always
 TimeoutStartSec=9000
-ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/caddy/opt
 
 [Install]
