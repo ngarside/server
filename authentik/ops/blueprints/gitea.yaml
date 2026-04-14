@@ -34,7 +34,7 @@ entries:
       client_secret: !File /run/secrets/gitea_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: Gitea Provider
+      name: Gitea Provider - OIDC
       property_mappings:
         - !KeyOf custom-gitea-scopes-email
         - !KeyOf custom-gitea-scopes-openid
