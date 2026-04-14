@@ -34,7 +34,7 @@ Secret=cloudflare_api_token
 UserNS=auto:size=8
 Volume=/etc/caddy:/etc/caddy:ro
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
-Volume=/var/data/caddy/logs:/var/logs/caddy:z
+Volume=/var/data/caddy/logs:/var/log/caddy:z
 Volume=/var/data/caddy/opt:/opt/caddy:U,Z
 
 [Service]

@@ -12,7 +12,7 @@ ReadOnly=true
 Tmpfs=/etc/crowdsec:mode=1777
 UserNS=auto:size=8
 Volume=/etc/crowdsec/crowdsec.yaml:/etc/crowdsec/acquis.d/crowdsec.yaml:ro
-Volume=/var/data/caddy/logs:/var/logs/caddy:ro,z
+Volume=/var/data/caddy/logs:/var/log/caddy:ro,z
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
 
 [Service]
