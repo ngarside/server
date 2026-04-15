@@ -25,7 +25,7 @@ USER root
 RUN apk --no-cache add grep
 RUN curl --version | grep -oP '(?<=curl )\S+' > /version
 
-FROM docker.io/alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS healthcheck
+FROM docker.io/alpine:3.23.4@sha256:c7989ac7a27b473e1795973c98d714f62b4dd0b134594d36880505ce0bfd716b AS healthcheck
 COPY --from=curl /version /version
 RUN apk --no-cache add build-base curl
 RUN curl --remote-name "https://curl.se/download/curl-$(cat /version).tar.gz"
