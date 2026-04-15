@@ -24,8 +24,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-vaultwarden-provider
+  # Provider - OIDC
+  - id: custom-vaultwarden-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: vaultwarden
@@ -34,7 +34,7 @@ entries:
       client_secret: !File /run/secrets/vaultwarden_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: Vaultwarden Provider
+      name: Vaultwarden Provider - OIDC
       property_mappings:
         - !KeyOf custom-vaultwarden-scopes-email
         - !KeyOf custom-vaultwarden-scopes-openid
@@ -43,15 +43,38 @@ entries:
         - matching_mode: strict
           url: !Format [https://vaultwarden.%s/auth/oidc.callback, !File /run/secrets/machine_domain_root]
 
-  # Application
-  - id: custom-vaultwarden-application
+  # Provider - Proxy
+  - id: custom-vaultwarden-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://vaultwarden.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Vaultwarden Provider - Proxy
+
+  # Application - OIDC
+  - id: custom-vaultwarden-oidc-application
     model: authentik_core.application
     identifiers:
       slug: vaultwarden
     attrs:
       icon: vaultwarden.png
       name: Vaultwarden
-      provider: !KeyOf custom-vaultwarden-provider
+      provider: !KeyOf custom-vaultwarden-oidc-provider
+
+  # Application - Proxy
+  - id: custom-vaultwarden-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: vaultwarden-proxy
+    attrs:
+      icon: vaultwarden.png
+      meta_launch_url: blank://blank
+      name: Vaultwarden - Proxy
+      provider: !KeyOf custom-vaultwarden-proxy-provider
 
   # Group
   - id: custom-vaultwarden-group
@@ -59,10 +82,18 @@ entries:
     identifiers:
       name: Vaultwarden Group
 
-  # Binding
-  - id: custom-vaultwarden-binding
+  # Binding - OIDC
+  - id: custom-vaultwarden-oidc-binding
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-vaultwarden-group
       order: 0
-      target: !KeyOf custom-vaultwarden-application
+      target: !KeyOf custom-vaultwarden-oidc-application
+
+  # Binding - Proxy
+  - id: custom-vaultwarden-proxy-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-vaultwarden-group
+      order: 0
+      target: !KeyOf custom-vaultwarden-proxy-application
