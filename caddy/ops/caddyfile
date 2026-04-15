@@ -124,7 +124,10 @@ penpot.{$MACHINE_DOMAIN_ROOT} {
 }
 
 vaultwarden.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.12.0.2
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.12.0.2
+	}
 }
 
 victorialogs.{$MACHINE_DOMAIN_ROOT} {
