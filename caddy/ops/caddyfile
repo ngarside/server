@@ -110,6 +110,7 @@ memos.{$MACHINE_DOMAIN_ROOT} {
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		reverse_proxy /.well-known/* 10.17.0.2
 		import authentik_forward_auth
 		reverse_proxy 10.17.0.2
 	}
