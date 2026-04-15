@@ -95,7 +95,10 @@ grafana.{$MACHINE_DOMAIN_ROOT} {
 }
 
 jellyfin.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.11.0.2:8096
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.11.0.2:8096
+	}
 }
 
 memos.{$MACHINE_DOMAIN_ROOT} {
@@ -106,7 +109,10 @@ memos.{$MACHINE_DOMAIN_ROOT} {
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.17.0.2
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.17.0.2
+	}
 }
 
 outline.{$MACHINE_DOMAIN_ROOT} {
