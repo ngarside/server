@@ -33,7 +33,7 @@ entries:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: YouTrack Provider
+      name: YouTrack Provider - OIDC
       property_mappings:
         - !KeyOf custom-youtrack-scopes-email
         - !KeyOf custom-youtrack-scopes-openid
