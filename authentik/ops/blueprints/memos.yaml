@@ -24,8 +24,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-memos-provider
+  # Provider - OIDC
+  - id: custom-memos-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: memos
@@ -33,7 +33,7 @@ entries:
       authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: Memos Provider
+      name: Memos Provider - OIDC
       property_mappings:
         - !KeyOf custom-memos-scopes-email
         - !KeyOf custom-memos-scopes-openid
@@ -42,15 +42,38 @@ entries:
         - matching_mode: strict
           url: !Format [https://memos.%s/auth/callback, !File /run/secrets/machine_domain_root]
 
-  # Application
-  - id: custom-memos-application
+  # Provider - Proxy
+  - id: custom-memos-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://memos.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Memos Provider - Proxy
+
+  # Application - OIDC
+  - id: custom-memos-oidc-application
     model: authentik_core.application
     identifiers:
       slug: memos
     attrs:
       icon: memos.png
       name: Memos
-      provider: !KeyOf custom-memos-provider
+      provider: !KeyOf custom-memos-oidc-provider
+
+  # Application - Proxy
+  - id: custom-memos-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: memos-proxy
+    attrs:
+      icon: memos.png
+      meta_launch_url: blank://blank
+      name: Memos - Proxy
+      provider: !KeyOf custom-memos-proxy-provider
 
   # Group
   - id: custom-memos-group
@@ -58,10 +81,18 @@ entries:
     identifiers:
       name: Memos Group
 
-  # Binding
-  - id: custom-memos-binding
+  # Binding - OIDC
+  - id: custom-memos-oidc-binding
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-memos-group
       order: 0
-      target: !KeyOf custom-memos-application
+      target: !KeyOf custom-memos-oidc-application
+
+  # Binding - Proxy
+  - id: custom-memos-proxy-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-memos-group
+      order: 0
+      target: !KeyOf custom-memos-proxy-application

@@ -99,7 +99,10 @@ jellyfin.{$MACHINE_DOMAIN_ROOT} {
 }
 
 memos.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.6.0.2
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.6.0.2
+	}
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {

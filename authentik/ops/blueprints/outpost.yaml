@@ -21,6 +21,7 @@ entries:
         - !Find [authentik_providers_proxy.proxyprovider, [name, Gitea Provider - Proxy]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Grafana Provider - Proxy]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Jellyfin Provider]]
+        - !Find [authentik_providers_proxy.proxyprovider, [name, Memos Provider - Proxy]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, OpenCloud Provider]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Victoria Logs Provider]]
         - !Find [authentik_providers_proxy.proxyprovider, [name, Victoria Metrics Provider]]
