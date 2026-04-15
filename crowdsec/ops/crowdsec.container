@@ -3,7 +3,7 @@
 [Container]
 ContainerName=crowdsec
 DropCapability=all
-Image=ghcr.io/ngarside/crowdsec:1.7.7.329
+Image=ghcr.io/ngarside/crowdsec:1.7.7.357
 Memory=8g
 Network=crowdsec.network:ip=10.26.0.2
 NoNewPrivileges=true
