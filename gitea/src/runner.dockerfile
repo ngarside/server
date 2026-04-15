@@ -1,8 +1,8 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/gitea/act_runner:0.4.0 AS runner
+FROM docker.io/gitea/act_runner:0.4.0@sha256:e7364b8252e74d5eb047abe64c98a856da37d9dad848af51e011b249206b36ba AS runner
 
-FROM docker.io/alpine:3.23.3 AS busybox
+FROM docker.io/alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
 RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' > /version
@@ -19,7 +19,7 @@ RUN mkdir /tmp/cp
 RUN cp /busybox/busybox /usr/bin/busybox
 RUN /usr/bin/busybox --install -s /tmp/cp
 
-FROM docker.io/alpine:3.23.3 AS local
+FROM docker.io/alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS local
 COPY gitea/src/runner.sh /usr/bin/entrypoint
 RUN chmod +x /usr/bin/entrypoint
 

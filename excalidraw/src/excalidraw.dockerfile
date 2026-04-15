@@ -3,10 +3,10 @@
 
 FROM docker.io/excalidraw/excalidraw:latest@sha256:3c2513e830bb6e195147c05b34ecf8393d0ba2b1cc86e93b407a5777d6135c6c AS excalidraw
 
-FROM docker.io/caddy:2.11.2 AS caddy
+FROM docker.io/caddy:2.11.2@sha256:2acb10cebb92eea91a40b76691aff73adde9151416facbeab630bbc66d0969ab AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.3 AS headcheck
+FROM docker.io/alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
 RUN unzip /linux-x64.zip
 
