@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/gitea/act_runner:0.3.1 AS runner
+FROM docker.io/gitea/act_runner:0.4.0 AS runner
 
 FROM docker.io/alpine:3.23.3 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
