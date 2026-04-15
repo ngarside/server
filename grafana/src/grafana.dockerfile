@@ -1,8 +1,8 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/grafana/grafana:13.0.0 AS grafana
+FROM docker.io/grafana/grafana:13.0.0@sha256:a03d9e604e4dba58c5e64458a879701f46ef64af1f596058aacfad9aacdcab34 AS grafana
 
-FROM docker.io/alpine:3.23.3 AS headcheck
+FROM docker.io/alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
 RUN unzip /linux-x64.zip
 
