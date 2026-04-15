@@ -24,8 +24,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-youtrack-provider
+  # Provider - OIDC
+  - id: custom-youtrack-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: youtrack
@@ -39,15 +39,38 @@ entries:
         - !KeyOf custom-youtrack-scopes-openid
         - !KeyOf custom-youtrack-scopes-profile
 
-  # Application
-  - id: custom-youtrack-application
+  # Provider - Proxy
+  - id: custom-youtrack-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://youtrack.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: YouTrack Provider - Proxy
+
+  # Application - OIDC
+  - id: custom-youtrack-oidc-application
     model: authentik_core.application
     identifiers:
       slug: youtrack
     attrs:
       icon: youtrack.png
       name: YouTrack
-      provider: !KeyOf custom-youtrack-provider
+      provider: !KeyOf custom-youtrack-oidc-provider
+
+  # Application - Proxy
+  - id: custom-youtrack-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: youtrack-proxy
+    attrs:
+      icon: youtrack.png
+      meta_launch_url: blank://blank
+      name: YouTrack - Proxy
+      provider: !KeyOf custom-youtrack-proxy-provider
 
   # Group
   - id: custom-youtrack-group
@@ -55,10 +78,18 @@ entries:
     identifiers:
       name: YouTrack Group
 
-  # Binding
-  - id: custom-youtrack-binding
+  # Binding - OIDC
+  - id: custom-youtrack-oidc-binding
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-youtrack-group
       order: 0
-      target: !KeyOf custom-youtrack-application
+      target: !KeyOf custom-youtrack-oidc-application
+
+  # Binding - Proxy
+  - id: custom-youtrack-proxy-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-youtrack-group
+      order: 0
+      target: !KeyOf custom-youtrack-proxy-application

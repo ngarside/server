@@ -144,13 +144,16 @@ victoriametrics.{$MACHINE_DOMAIN_ROOT} {
 	}
 }
 
-youtrack.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.9.0.2:8080
-}
-
 whoami.{$MACHINE_DOMAIN_ROOT} {
 	route {
 		import authentik_forward_auth
 		reverse_proxy 10.20.0.2
+	}
+}
+
+youtrack.{$MACHINE_DOMAIN_ROOT} {
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.9.0.2:8080
 	}
 }
