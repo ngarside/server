@@ -117,7 +117,10 @@ outline.{$MACHINE_DOMAIN_ROOT} {
 }
 
 penpot.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.3.0.9:8080
+	route {
+		import authentik_forward_auth
+		reverse_proxy 10.3.0.9:8080
+	}
 }
 
 vaultwarden.{$MACHINE_DOMAIN_ROOT} {
