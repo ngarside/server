@@ -6,7 +6,7 @@
 
 FROM docker.io/timberio/vector:0.54.0-debian@sha256:099732c890b095d5222f59bdc82a0579ae3d48b9e2407f3680586dd8d2f75f64
 
-FROM docker.io/alpine:3.23.4@sha256:c7989ac7a27b473e1795973c98d714f62b4dd0b134594d36880505ce0bfd716b AS headcheck
+FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
 RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
 RUN unzip /linux-x64.zip
 
