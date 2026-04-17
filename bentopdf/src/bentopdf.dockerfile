@@ -2,7 +2,7 @@
 
 FROM ghcr.io/alam00000/bentopdf-simple:2.8.2@sha256:d59a3812cb98c4887672ea73425722ee3dd7010969736c974c6b4ce7ba32c4fb AS bentopdf
 
-FROM docker.io/caddy:2.11.2@sha256:22e1d921a7dd98ea722ebd6819de785fd71abdab7f7fed8a2378e96d29bb923a AS caddy
+FROM docker.io/caddy:2.11.2@sha256:25cdc846626b62d05f6b633b9b40c2c9f6ef89b515dc76133cefd920f7dbe562 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
