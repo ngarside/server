@@ -3,7 +3,7 @@
 [Container]
 ContainerName=vector_unprivileged
 DropCapability=all
-Image=ghcr.io/ngarside/vector-unprivileged:0.54.0.273
+Image=ghcr.io/ngarside/vector-unprivileged:0.54.0.384
 Memory=8g
 Network=vector.network:ip=10.15.0.2
 Network=victoria_logs.network:ip=10.24.0.4
