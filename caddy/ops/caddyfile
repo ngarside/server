@@ -1,7 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 {
 	crowdsec {
-		api_url http://10.26.0.2:8080
+		api_url http://10.26.0.2
 		api_key {file./run/secrets/crowdsec_bouncer_secret}
 	}
 }
