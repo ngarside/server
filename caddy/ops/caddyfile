@@ -49,8 +49,10 @@
 
 {$MACHINE_DOMAIN_ROOT} {
 	import common
-	crowdsec
-	reverse_proxy 10.8.0.3
+	route {
+		crowdsec
+		reverse_proxy 10.8.0.3
+	}
 }
 
 adguardhome.{$MACHINE_DOMAIN_ROOT} {
