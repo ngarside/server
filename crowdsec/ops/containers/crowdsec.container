@@ -1,6 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=crowdsec
 DropCapability=all
 GIDMap=0:8759
