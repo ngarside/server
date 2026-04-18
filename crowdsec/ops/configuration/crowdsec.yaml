@@ -2,4 +2,4 @@
 
 api:
   server:
-    listen_uri: 127.0.0.1
+    listen_uri: 0.0.0.0:80
