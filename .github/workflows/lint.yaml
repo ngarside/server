@@ -21,11 +21,12 @@ jobs:
           push: never
           runCmd: |
             shopt -s globstar
+            export MACHINE_DOMAIN_ROOT=example.com
             sudo mkdir /run/secrets
             openssl rand -hex 20 | sudo tee /run/secrets/cloudflare_api_token
             openssl rand -hex 20 | sudo tee /run/secrets/crowdsec_bouncer_secret
             for file in **/*caddyfile; do
-              sudo caddy validate --config "$file" || exit
+              sudo --preserve-env caddy validate --config "$file" || exit
             done
 
   hadolint:
