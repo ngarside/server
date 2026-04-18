@@ -3,6 +3,7 @@
 [Container]
 ContainerName=crowdsec
 DropCapability=all
+GIDMap=0:8759
 Image=ghcr.io/ngarside/crowdsec:1.7.7.357
 Memory=8g
 Network=crowdsec.network:ip=10.26.0.2
@@ -10,7 +11,7 @@ NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
 Tmpfs=/etc/crowdsec:mode=1777
-UserNS=auto:size=8
+UIDMap=0:8759
 Volume=/etc/crowdsec/crowdsec.yaml:/etc/crowdsec/acquis.d/crowdsec.yaml:ro
 Volume=/var/data/caddy/logs:/var/log/caddy:ro,z
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
