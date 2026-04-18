@@ -10,6 +10,7 @@ Network=crowdsec.network:ip=10.26.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
+Secret=crowdsec_bouncer_secret,type=env,target=BOUNCER_KEY_CADDY
 Tmpfs=/etc/crowdsec:mode=1777
 UIDMap=0:8759
 UserNS=nomap
@@ -22,7 +23,7 @@ Restart=always
 TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/crowdsec/data
-ExecStartPre=bash -c "tr --complement --delete A-Za-z0-9 < /dev/urandom | head --bytes 32 | podman secret create --ignore crowdsec_caddy_secret -"
+ExecStartPre=bash -c "tr --complement --delete A-Za-z0-9 < /dev/urandom | head --bytes 32 | podman secret create --ignore crowdsec_bouncer_secret -"
 
 [Install]
 WantedBy=default.target
