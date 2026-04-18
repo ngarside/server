@@ -23,8 +23,9 @@ jobs:
             shopt -s globstar
             sudo mkdir /run/secrets
             openssl rand -hex 20 | sudo tee /run/secrets/cloudflare_api_token
+            openssl rand -hex 20 | sudo tee /run/secrets/crowdsec_bouncer_secret
             for file in **/*caddyfile; do
-              caddy validate --config "$file" || exit
+              sudo caddy validate --config "$file" || exit
             done
 
   hadolint:
