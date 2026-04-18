@@ -22,6 +22,7 @@ Restart=always
 TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/crowdsec/data
+ExecStartPre=bash -c "tr --complement --delete A-Za-z0-9 < /dev/urandom | head --bytes 32 | podman secret create --ignore crowdsec_caddy_secret -"
 
 [Install]
 WantedBy=default.target
