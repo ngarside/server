@@ -8,6 +8,7 @@ Requires=crowdsec.container
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=caddy
 DropCapability=all
+Environment=HOME=/opt
 Environment=XDG_CONFIG_HOME=/opt
 GIDMap=0:8759
 Image=ghcr.io/ngarside/caddy:2.11.2.394
