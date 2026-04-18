@@ -31,6 +31,7 @@ Network=grafana.network:ip=10.22.0.3
 Network=bentopdf.network:ip=10.23.0.3
 Network=victoria_logs.network:ip=10.24.0.5
 Network=victoria_metrics.network:ip=10.25.0.5
+Network=crowdsec.network:ip=10.26.0.3
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
