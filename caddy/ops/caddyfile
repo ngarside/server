@@ -1,7 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 (common) {
-	log file {
+	log {
 		output file /var/log/caddy/access.log {
 			roll_keep 0
 			roll_size 10MiB
