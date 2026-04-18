@@ -3,3 +3,5 @@
 api:
   server:
     listen_uri: 0.0.0.0:80
+    trusted_ips:
+      - 10.26.0.3
