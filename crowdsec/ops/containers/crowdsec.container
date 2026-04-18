@@ -13,7 +13,8 @@ ReadOnly=true
 Secret=crowdsec_bouncer_secret,type=env,target=BOUNCER_KEY_CADDY
 Tmpfs=/etc/crowdsec:mode=1777
 UIDMap=0:8759
-Volume=/etc/crowdsec/crowdsec.yaml:/etc/crowdsec/acquis.d/crowdsec.yaml:ro
+Volume=/etc/crowdsec/caddy.yaml:/etc/crowdsec/acquis.d/caddy.yaml:ro
+Volume=/etc/crowdsec/crowdsec.yaml:/etc/crowdsec/config.yaml:ro
 Volume=/var/data/caddy/logs:/var/log/caddy:ro,z
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
 
