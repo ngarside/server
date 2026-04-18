@@ -9,7 +9,6 @@ AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=caddy
 DropCapability=all
 Environment=HOME=/opt
-Environment=XDG_CONFIG_HOME=/opt
 GIDMap=0:8759
 Image=ghcr.io/ngarside/caddy:2.11.2.394
 Memory=8g
@@ -51,6 +50,7 @@ TimeoutStartSec=9000
 ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/caddy/opt
 ExecStartPre=podman unshare chown 8759:8759 /var/data/caddy/logs
+ExecStartPre=/bin/sleep 10
 
 [Install]
 WantedBy=default.target
