@@ -15,7 +15,7 @@
  	"net/url"
  	"os"
 
-@@ -286,6 +286,15 @@
+@@ -283,6 +283,15 @@
  
  	defaultAppURL := string(Protocol) + "://" + Domain + ":" + HTTPPort
  	AppURL = sec.Key("ROOT_URL").MustString(defaultAppURL)
