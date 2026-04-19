@@ -29,5 +29,5 @@
 +	}
 +
  	PublicURLDetection = sec.Key("PUBLIC_URL_DETECTION").MustString(PublicURLLegacy)
- 	if PublicURLDetection != PublicURLAuto && PublicURLDetection != PublicURLLegacy {
+ 	if PublicURLDetection != PublicURLAuto && PublicURLDetection != PublicURLLegacy && PublicURLDetection != PublicURLNever {
  		log.Fatal("Invalid PUBLIC_URL_DETECTION value: %s", PublicURLDetection)
