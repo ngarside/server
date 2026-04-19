@@ -1,7 +1,18 @@
 # This is free and unencumbered software released into the public domain.
+{
+	crowdsec {
+		api_url http://10.26.0.2
+		api_key {file./run/secrets/crowdsec_bouncer_secret}
+	}
+}
 
 (common) {
-	log
+	log {
+		output file /var/log/caddy/access.log {
+			roll_keep 0
+			roll_size 10MiB
+		}
+	}
 	request_body {
 		max_size 100mb
 	}
@@ -38,11 +49,15 @@
 
 {$MACHINE_DOMAIN_ROOT} {
 	import common
-	reverse_proxy 10.8.0.3
+	route {
+		crowdsec
+		reverse_proxy 10.8.0.3
+	}
 }
 
 adguardhome.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		crowdsec
 		import authentik_forward_auth
 		reverse_proxy 10.2.0.2
 	}
@@ -50,6 +65,7 @@ adguardhome.{$MACHINE_DOMAIN_ROOT} {
 
 bentopdf.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		crowdsec
 		import authentik_forward_auth
 		reverse_proxy 10.23.0.2
 	}
@@ -57,6 +73,7 @@ bentopdf.{$MACHINE_DOMAIN_ROOT} {
 
 chartdb.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		crowdsec
 		import authentik_forward_auth
 		reverse_proxy 10.16.0.2
 	}
@@ -64,6 +81,7 @@ chartdb.{$MACHINE_DOMAIN_ROOT} {
 
 excalidraw.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		crowdsec
 		import authentik_forward_auth
 		reverse_proxy 10.18.0.2
 	}
@@ -71,50 +89,109 @@ excalidraw.{$MACHINE_DOMAIN_ROOT} {
 
 fossflow.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		crowdsec
 		import authentik_forward_auth
 		reverse_proxy 10.1.0.2
 	}
 }
 
 gitea.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.14.0.2
+	route {
+		@git {
+			path *.git*
+		}
+		crowdsec
+		reverse_proxy @git 10.14.0.2
+		import authentik_forward_auth
+		reverse_proxy 10.14.0.2
+	}
 }
 
 grafana.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.22.0.2
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.22.0.2
+	}
 }
 
 jellyfin.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.11.0.2:8096
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.11.0.2:8096
+	}
 }
 
 memos.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.6.0.2
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.6.0.2
+	}
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.17.0.2
+	route {
+		crowdsec
+		reverse_proxy /.well-known/* 10.17.0.2
+		import authentik_forward_auth
+		reverse_proxy 10.17.0.2
+	}
 }
 
 outline.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.10.0.2
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.10.0.2
+	}
 }
 
 penpot.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.3.0.9:8080
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.3.0.9:8080
+	}
 }
 
 vaultwarden.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.12.0.2
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.12.0.2
+	}
 }
 
-youtrack.{$MACHINE_DOMAIN_ROOT} {
-	reverse_proxy 10.9.0.2:8080
+victorialogs.{$MACHINE_DOMAIN_ROOT} {
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.24.0.3:9428
+	}
+}
+
+victoriametrics.{$MACHINE_DOMAIN_ROOT} {
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.25.0.3:8428
+	}
 }
 
 whoami.{$MACHINE_DOMAIN_ROOT} {
 	route {
+		crowdsec
 		import authentik_forward_auth
 		reverse_proxy 10.20.0.2
+	}
+}
+
+youtrack.{$MACHINE_DOMAIN_ROOT} {
+	route {
+		crowdsec
+		import authentik_forward_auth
+		reverse_proxy 10.9.0.2:8080
 	}
 }

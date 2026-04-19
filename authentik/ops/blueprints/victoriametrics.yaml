@@ -1,0 +1,43 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Victoria Metrics
+entries:
+
+  # Provider
+  - id: custom-victoriametrics-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://victoriametrics.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Victoria Metrics Provider
+
+  # Application
+  - id: custom-victoriametrics-application
+    model: authentik_core.application
+    identifiers:
+      slug: victoriametrics
+    attrs:
+      icon: victoriametrics.png
+      name: Victoria Metrics
+      provider: !KeyOf custom-victoriametrics-provider
+
+  # Group
+  - id: custom-victoriametrics-group
+    model: authentik_core.group
+    identifiers:
+      name: Victoria Metrics Group
+
+  # Binding
+  - id: custom-victoriametrics-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-victoriametrics-group
+      order: 0
+      target: !KeyOf custom-victoriametrics-application

@@ -24,8 +24,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-gitea-provider
+  # Provider - OIDC
+  - id: custom-gitea-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: gitea
@@ -34,7 +34,7 @@ entries:
       client_secret: !File /run/secrets/gitea_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: Gitea Provider
+      name: Gitea Provider - OIDC
       property_mappings:
         - !KeyOf custom-gitea-scopes-email
         - !KeyOf custom-gitea-scopes-openid
@@ -43,15 +43,38 @@ entries:
         - matching_mode: strict
           url: !Format [https://gitea.%s/user/oauth2/Authentik/callback, !File /run/secrets/machine_domain_root]
 
-  # Application
-  - id: custom-gitea-application
+  # Provider - Proxy
+  - id: custom-gitea-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://gitea.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Gitea Provider - Proxy
+
+  # Application - OIDC
+  - id: custom-gitea-oidc-application
     model: authentik_core.application
     identifiers:
       slug: gitea
     attrs:
       icon: gitea.png
       name: Gitea
-      provider: !KeyOf custom-gitea-provider
+      provider: !KeyOf custom-gitea-oidc-provider
+
+  # Application - Proxy
+  - id: custom-gitea-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: gitea-proxy
+    attrs:
+      icon: gitea.png
+      meta_launch_url: blank://blank
+      name: Gitea - Proxy
+      provider: !KeyOf custom-gitea-proxy-provider
 
   # Group
   - id: custom-gitea-group
@@ -59,10 +82,18 @@ entries:
     identifiers:
       name: Gitea Group
 
-  # Binding
-  - id: custom-gitea-binding
+  # Binding - OIDC
+  - id: custom-gitea-oidc-binding
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-gitea-group
       order: 0
-      target: !KeyOf custom-gitea-application
+      target: !KeyOf custom-gitea-oidc-application
+
+  # Binding - Proxy
+  - id: custom-gitea-proxy-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-gitea-group
+      order: 0
+      target: !KeyOf custom-gitea-proxy-application

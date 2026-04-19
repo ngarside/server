@@ -24,8 +24,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-penpot-provider
+  # Provider - OIDC
+  - id: custom-penpot-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: penpot
@@ -34,7 +34,7 @@ entries:
       client_secret: !File /run/secrets/penpot_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: Penpot Provider
+      name: Penpot Provider - OIDC
       property_mappings:
         - !KeyOf custom-penpot-scopes-email
         - !KeyOf custom-penpot-scopes-openid
@@ -43,15 +43,38 @@ entries:
         - matching_mode: strict
           url: !Format [https://penpot.%s/api/auth/oauth/oidc/callback, !File /run/secrets/machine_domain_root]
 
-  # Application
-  - id: custom-penpot-application
+  # Provider - Proxy
+  - id: custom-penpot-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://penpot.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Penpot Provider - Proxy
+
+  # Application - OIDC
+  - id: custom-penpot-oidc-application
     model: authentik_core.application
     identifiers:
       slug: penpot
     attrs:
       icon: penpot.png
       name: Penpot
-      provider: !KeyOf custom-penpot-provider
+      provider: !KeyOf custom-penpot-oidc-provider
+
+  # Application - Proxy
+  - id: custom-penpot-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: penpot-proxy
+    attrs:
+      icon: penpot.png
+      meta_launch_url: blank://blank
+      name: Penpot - Proxy
+      provider: !KeyOf custom-penpot-proxy-provider
 
   # Group
   - id: custom-penpot-group
@@ -59,10 +82,18 @@ entries:
     identifiers:
       name: Penpot Group
 
-  # Binding
-  - id: custom-penpot-binding
+  # Binding - OIDC
+  - id: custom-penpot-oidc-binding
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-penpot-group
       order: 0
-      target: !KeyOf custom-penpot-application
+      target: !KeyOf custom-penpot-oidc-application
+
+  # Binding - Proxy
+  - id: custom-penpot-proxy-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-penpot-group
+      order: 0
+      target: !KeyOf custom-penpot-proxy-application

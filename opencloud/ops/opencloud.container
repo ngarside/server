@@ -1,10 +1,12 @@
 # This is free and unencumbered software released into the public domain.
 
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=opencloud
+DropCapability=all
 Environment=PROXY_HTTP_ADDR=0.0.0.0:80
 Environment=PROXY_TLS=false
-Image=ghcr.io/ngarside/opencloud:5.1.0.340
+Image=ghcr.io/ngarside/opencloud:6.0.0.490
 Memory=8g
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true

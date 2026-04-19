@@ -30,20 +30,32 @@
 		<emulator>/usr/bin/qemu-system-x86_64</emulator>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
-			<source file="/var/lib/libvirt/images/server-root.qcow2" />
-			<target dev="vda" bus="virtio" />
-			<address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0" />
+			<source file="/var/lib/libvirt/images/server-sda.qcow2" />
+			<target dev="sda" bus="sata" />
+			<address type="drive" controller="0" bus="0" target="0" unit="1" />
 			<boot order="2" />
 		</disk>
 		<disk type="file" device="disk">
 			<driver name="qemu" type="qcow2" discard="unmap" />
-			<source file="/var/lib/libvirt/images/server-data.qcow2" />
-			<target dev="vdb" bus="virtio" />
-			<address type="pci" domain="0x0000" bus="0x08" slot="0x00" function="0x0" />
+			<source file="/var/lib/libvirt/images/server-nvme0.qcow2" />
+			<target dev="nvme0n1" bus="nvme" />
+			<serial>nvme0n1</serial>
+		</disk>
+		<disk type="file" device="disk">
+			<driver name="qemu" type="qcow2" discard="unmap" />
+			<source file="/var/lib/libvirt/images/server-nvme1.qcow2" />
+			<target dev="nvme1n1" bus="nvme" />
+			<serial>nvme1n1</serial>
+		</disk>
+		<disk type="file" device="disk">
+			<driver name="qemu" type="qcow2" discard="unmap" />
+			<source file="/var/lib/libvirt/images/server-nvme2.qcow2" />
+			<target dev="nvme2n1" bus="nvme" />
+			<serial>nvme2n1</serial>
 		</disk>
 		<disk type="file" device="cdrom">
 			<driver name="qemu" type="raw" />
-			<target dev="sda" bus="sata" />
+			<target dev="sdb" bus="sata" />
 			<readonly />
 			<address type="drive" controller="0" bus="0" target="0" unit="0" />
 			<boot order="1" />

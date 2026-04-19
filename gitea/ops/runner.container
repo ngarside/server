@@ -6,8 +6,9 @@ Requires=gitea_server.container
 
 [Container]
 ContainerName=gitea_runner
+DropCapability=all
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
-Image=ghcr.io/ngarside/gitea-runner:0.3.0.368
+Image=ghcr.io/ngarside/gitea-runner:0.4.1.550
 Memory=8g
 Network=gitea_server.network:ip=10.14.0.4
 NoNewPrivileges=true
@@ -17,6 +18,7 @@ Secret=gitea_runner_token
 Secret=machine_domain_root
 SecurityLabelDisable=true
 Tmpfs=/tmp:mode=1777
+UserNS=auto
 Volume=/etc/gitea/runner:/etc/gitea:ro
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/run/user/1001/podman/podman.sock:/var/run/docker.sock

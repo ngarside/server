@@ -30,8 +30,8 @@ entries:
     identifiers:
       scope_name: profile
 
-  # Provider
-  - id: custom-outline-provider
+  # Provider - OIDC
+  - id: custom-outline-oidc-provider
     model: authentik_providers_oauth2.oauth2provider
     identifiers:
       client_id: outline
@@ -40,7 +40,7 @@ entries:
       client_secret: !File /run/secrets/outline_oidc_secret
       client_type: confidential
       invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
-      name: Outline Provider
+      name: Outline Provider - OIDC
       property_mappings:
         - !KeyOf custom-outline-scopes-email
         - !KeyOf custom-outline-scopes-offline_access
@@ -50,15 +50,38 @@ entries:
         - matching_mode: strict
           url: !Format [https://outline.%s/auth/oidc.callback, !File /run/secrets/machine_domain_root]
 
-  # Application
-  - id: custom-outline-application
+  # Provider - Proxy
+  - id: custom-outline-proxy-provider
+    model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      external_host: !Format [https://outline.%s, !File /run/secrets/machine_domain_root]
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      client_type: confidential
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+      mode: forward_single
+      name: Outline Provider - Proxy
+
+  # Application - OIDC
+  - id: custom-outline-oidc-application
     model: authentik_core.application
     identifiers:
       slug: outline
     attrs:
       icon: outline.png
       name: Outline
-      provider: !KeyOf custom-outline-provider
+      provider: !KeyOf custom-outline-oidc-provider
+
+  # Application - Proxy
+  - id: custom-outline-proxy-application
+    model: authentik_core.application
+    identifiers:
+      slug: outline-proxy
+    attrs:
+      icon: outline.png
+      meta_launch_url: blank://blank
+      name: Outline - Proxy
+      provider: !KeyOf custom-outline-proxy-provider
 
   # Group
   - id: custom-outline-group
@@ -66,10 +89,18 @@ entries:
     identifiers:
       name: Outline Group
 
-  # Binding
-  - id: custom-outline-binding
+  # Binding - OIDC
+  - id: custom-outline-oidc-binding
     model: authentik_policies.policybinding
     identifiers:
       group: !KeyOf custom-outline-group
       order: 0
-      target: !KeyOf custom-outline-application
+      target: !KeyOf custom-outline-oidc-application
+
+  # Binding - Proxy
+  - id: custom-outline-proxy-binding
+    model: authentik_policies.policybinding
+    identifiers:
+      group: !KeyOf custom-outline-group
+      order: 0
+      target: !KeyOf custom-outline-proxy-application

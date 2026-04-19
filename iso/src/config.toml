@@ -3,8 +3,8 @@
 [customizations.installer.kickstart]
 contents = """
 	autopart --noswap --type=btrfs --nohome
-	clearpart --all --drives=sda,vda --initlabel
-	ignoredisk --only-use=sda,vda
+	clearpart --all --drives=sda --initlabel
+	ignoredisk --only-use=sda
 	reboot --eject
 	rootpw --lock
 	text --non-interactive

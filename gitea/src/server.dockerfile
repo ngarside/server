@@ -8,11 +8,11 @@
 # when copying between stages.
 # https://stackoverflow.com/a/66823636
 
-FROM docker.io/gitea/gitea:1.25.4 AS gitea
+FROM docker.io/gitea/gitea:1.26.0@sha256:af07b88edbb2173d20932f9c75ebcf4e61d7d5c2d6a7ab5cc6b97cba28aea352 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
 
-FROM golang:1.26.1-alpine as gitea-build
+FROM golang:1.26.2-alpine@sha256:f85330846cde1e57ca9ec309382da3b8e6ae3ab943d2739500e08c86393a21b1 as gitea-build
 COPY --from=gitea /version /version
 RUN apk --no-cache add build-base git pnpm
 RUN git clone https://github.com/go-gitea/gitea --branch "v$(cat /version)" --depth 1
@@ -22,7 +22,7 @@ RUN patch modules/setting/server.go < /tmp/server.patch
 RUN LDFLAGS='-extldflags -static' TAGS='bindata sqlite sqlite_unlock_notify' make build -j "$(nproc)"
 RUN strip /go/gitea/gitea
 
-FROM docker.io/alpine:3.23.3 AS busybox
+FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
 RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' > /version
@@ -39,19 +39,20 @@ RUN mkdir /tmp/cp
 RUN cp /busybox/busybox /usr/bin/busybox
 RUN /usr/bin/busybox --install -s /tmp/cp
 
-FROM docker.io/alpine/git:v2.52.0 AS git
+FROM docker.io/alpine/git:2.52.0@sha256:d453f54c83320412aa89c391b076930bd8569bc1012285e8c68ce2d4435826a3 AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" > /version
 
-FROM docker.io/alpine:3.23.3 AS headcheck
-RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux_x64.zip
-RUN unzip /linux_x64.zip
+FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
+RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
+RUN unzip /linux-x64.zip
 
-FROM docker.io/alpine:3.23.3 AS local
+FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS local
 COPY gitea/src/server.sh /usr/bin/entrypoint
+COPY gitea/src/server.ini /etc/gitea/gitea.ini
 RUN chmod +x /usr/bin/entrypoint
 
-FROM docker.io/alpine:3.23.3 AS git-build
+FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS git-build
 COPY --from=git /version /version
 RUN apk --no-cache add alpine-sdk autoconf tcl-dev zlib-dev zlib-static
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1
@@ -68,10 +69,12 @@ FROM scratch
 SHELL ["/usr/bin/bash", "-euo", "pipefail", "-c"]
 COPY --from=git-build /git/git /usr/bin/git
 COPY --from=git-build /tmp/cp/ /usr/bin/
+COPY --from=headcheck /headcheck /usr/bin/headcheck
 COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
+COPY --from=local /etc/gitea/gitea.ini /etc/gitea/gitea.ini
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
@@ -80,4 +83,5 @@ ENV GITEA_WORK_DIR=/var/lib/gitea
 ENV HOME=/var/lib/gitea/git
 ENV TMPDIR=/tmp/gitea
 ENV USER=root
+HEALTHCHECK CMD ["/usr/bin/headcheck", "http://0.0.0.0/api/healthz"]
 RUN ln -s /usr/bin /bin

@@ -2,7 +2,8 @@
 
 [Container]
 ContainerName=vector_unprivileged
-Image=ghcr.io/ngarside/vector-unprivileged:0.53.0.176
+DropCapability=all
+Image=ghcr.io/ngarside/vector-unprivileged:0.54.0.384
 Memory=8g
 Network=vector.network:ip=10.15.0.2
 Network=victoria_logs.network:ip=10.24.0.4
@@ -10,9 +11,6 @@ Network=victoria_metrics.network:ip=10.25.0.4
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
-Secret=grafana_prometheus_password,type=env,target=GRAFANA_PROMETHEUS_PASSWORD
-Secret=grafana_prometheus_uri,type=env,target=GRAFANA_PROMETHEUS_URI
-Secret=grafana_prometheus_username,type=env,target=GRAFANA_PROMETHEUS_USERNAME
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/etc/vector/unprivileged:/etc/vector:ro
