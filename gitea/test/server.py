@@ -13,12 +13,16 @@ def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
-		f'{port}:3000', '--pull', 'never', '--read-only',
+		f'{port}:80', '--pull', 'never', '--read-only',
 		f'ghcr.io/ngarside/gitea-server:{tag}',
 	])
 	time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
+
+def test_healthcheck():
+	status = subprocess.run(['podman', 'healthcheck', 'run', f'{name}'])
+	assert status.returncode == 0
 
 def test_root():
 	response = session.get(f'http://localhost:{port}')
