@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import dns.resolver, os, pytest, random, requests, shutil, subprocess, tempfile, time
+import dns.resolver, os, pytest, random, requests, shutil, subprocess, tempfile
 
 etc, lib = [tempfile.TemporaryDirectory() for _ in range(2)]
 name, port_admin, port_dns = random.sample(range(1025, 65536), 3)
@@ -13,7 +13,10 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 def fixture():
 	dir = os.path.dirname(os.path.realpath(__file__))
 	tag = os.getenv('TAG') or 'latest'
-	shutil.copy(os.path.join(dir, 'adguardhome.yaml'), os.path.join(etc.name, 'adguardhome.yaml'))
+	shutil.copy(
+		os.path.join(dir, 'adguardhome.yaml'),
+		os.path.join(etc.name, 'adguardhome.yaml'),
+	)
 	subprocess.run([
 		'podman', 'run', '--detach', '--name', f'{name}', '--publish',
 		f'{port_admin}:80', '--publish', f'{port_dns}:53', '--publish',
@@ -21,7 +24,6 @@ def fixture():
 		f'{etc.name}:/etc/adguardhome', '--volume',
 		f'{lib.name}:/var/lib/adguardhome', f'ghcr.io/ngarside/adguardhome:{tag}',
 	])
-	time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
