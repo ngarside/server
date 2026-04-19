@@ -1,4 +1,3 @@
 # This is free and unencumbered software released into the public domain.
-# trivy:ignore:ds-0026
 
 FROM docker.io/penpotapp/backend:2.14.3@sha256:2d8f1462ab9573f275e84793595174b61c645f03dd471566d28bd950f1bb03a9
