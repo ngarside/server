@@ -1,9 +1,16 @@
 # This is free and unencumbered software released into the public domain.
 
+[Unit]
+After=crowdsec.container
+Requires=crowdsec.container
+
 [Container]
+AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=caddy
-Environment=XDG_CONFIG_HOME=/opt
-Image=ghcr.io/ngarside/caddy:2.11.2.270
+DropCapability=all
+Environment=HOME=/var/lib/caddy
+GIDMap=0:8759
+Image=ghcr.io/ngarside/caddy:2.11.2.394
 Memory=8g
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
@@ -24,20 +31,26 @@ Network=grafana.network:ip=10.22.0.3
 Network=bentopdf.network:ip=10.23.0.3
 Network=victoria_logs.network:ip=10.24.0.5
 Network=victoria_metrics.network:ip=10.25.0.5
+Network=crowdsec.network:ip=10.26.0.3
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 Secret=cloudflare_api_token
-UserNS=auto:size=8
+Secret=crowdsec_bouncer_secret
+UIDMap=0:8759
 Volume=/etc/caddy:/etc/caddy:ro
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
-Volume=/var/data/caddy/opt:/opt/caddy:U,Z
+Volume=/var/data/caddy/logs:/var/log/caddy:z
+Volume=/var/data/caddy/opt:/var/lib/caddy:U,Z
 
 [Service]
 Restart=always
 TimeoutStartSec=9000
+ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/caddy/opt
+ExecStartPre=podman unshare chown 8759:8759 /var/data/caddy/logs
+ExecStartPre=/bin/sleep 30
 
 [Install]
 WantedBy=default.target

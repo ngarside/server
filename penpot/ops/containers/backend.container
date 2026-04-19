@@ -10,6 +10,7 @@ Requires=penpot_valkey.container
 
 [Container]
 ContainerName=penpot_backend
+DropCapability=all
 Environment="PENPOT_FLAGS=disable-registration disable-secure-session-cookies enable-login-with-oidc enable-oidc-registration"
 Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
 Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
@@ -19,7 +20,7 @@ Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Environment=PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
 Environment=PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
 Environment=PENPOT_OIDC_CLIENT_ID=penpot
-Image=ghcr.io/ngarside/penpot-backend:2.14.1.374
+Image=ghcr.io/ngarside/penpot-backend:2.14.3.406
 Memory=8g
 Network=penpot_internal.network:ip=10.4.0.5
 Network=penpot_external.network:ip=10.3.0.8
@@ -30,6 +31,7 @@ Secret=penpot_oidc_secret,type=env,target=PENPOT_OIDC_CLIENT_SECRET
 Secret=penpot_oidc_uri,type=env,target=PENPOT_OIDC_BASE_URI
 Secret=penpot_postgres_password,type=env,target=PENPOT_DATABASE_PASSWORD
 Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
+UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]

@@ -4,25 +4,33 @@
 
 set -euo pipefail
 
+ROOT="/var/lib/libvirt/images"
+
 # Create root disk image -------------------------------------------------------
 
-qemu-img create -f qcow2 /var/lib/libvirt/images/server-root.qcow2 64G
+qemu-img create --format qcow2 "$ROOT/server-sda.qcow2" 240000000000
 
-# Create data disk image -------------------------------------------------------
+# Create data disk images ------------------------------------------------------
 
-qemu-img create -f qcow2 /var/lib/libvirt/images/server-data.qcow2 512G
+qemu-img create --format qcow2 "$ROOT/server-nvme0.qcow2" 2000000000000
+qemu-img create --format qcow2 "$ROOT/server-nvme1.qcow2" 2000000000000
+qemu-img create --format qcow2 "$ROOT/server-nvme2.qcow2" 2000000000000
 
 modprobe nbd max_part=8
 
-qemu-nbd --connect /dev/nbd0 /var/lib/libvirt/images/server-data.qcow2
+qemu-nbd --connect /dev/nbd0 "$ROOT/server-nvme0.qcow2"
+qemu-nbd --connect /dev/nbd1 "$ROOT/server-nvme1.qcow2"
+qemu-nbd --connect /dev/nbd2 "$ROOT/server-nvme2.qcow2"
 
 parted /dev/nbd0 mklabel gpt
+parted /dev/nbd1 mklabel gpt
+parted /dev/nbd2 mklabel gpt
 
-parted --align optimal /dev/nbd0 mkpart primary 0% 100%
-
-mkfs.btrfs --force --label data /dev/nbd0p1
+mkfs.btrfs --force --label data /dev/nbd0 /dev/nbd1 /dev/nbd2
 
 qemu-nbd --disconnect /dev/nbd0
+qemu-nbd --disconnect /dev/nbd1
+qemu-nbd --disconnect /dev/nbd2
 
 # Create virtual machine -------------------------------------------------------
 
