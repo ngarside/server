@@ -3,3 +3,7 @@
 # Containers are intentionally run as root.
 # https://avd.aquasec.com/misconfig/ds002
 AVD-DS-0002
+
+# Cannot be implemented in all images and cannot be disabled per-file.
+# https://avd.aquasec.com/misconfig/ds0026
+AVD-DS-0026
