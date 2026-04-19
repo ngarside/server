@@ -8,7 +8,7 @@
 # when copying between stages.
 # https://stackoverflow.com/a/66823636
 
-FROM docker.io/gitea/gitea:1.25.5@sha256:f846d26a4fc389c5806a580a765e00bfdd1fd181e6f2060da98ea2669d914472 AS gitea
+FROM docker.io/gitea/gitea:1.26.0@sha256:af07b88edbb2173d20932f9c75ebcf4e61d7d5c2d6a7ab5cc6b97cba28aea352 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
 
