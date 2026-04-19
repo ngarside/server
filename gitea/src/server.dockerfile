@@ -49,6 +49,7 @@ RUN unzip /linux-x64.zip
 
 FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS local
 COPY gitea/src/server.sh /usr/bin/entrypoint
+COPY gitea/src/server.ini /etc/gitea/gitea.ini
 RUN chmod +x /usr/bin/entrypoint
 
 FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS git-build
@@ -73,6 +74,7 @@ COPY --from=busybox /usr/bin/busybox /usr/bin/busybox
 COPY --from=busybox /tmp/cp/ /usr/bin/
 COPY --from=gitea-build /go/gitea/gitea /usr/bin/gitea
 COPY --from=local /usr/bin/entrypoint /usr/bin/entrypoint
+COPY --from=local /etc/gitea/gitea.ini /etc/gitea/gitea.ini
 ENTRYPOINT ["/usr/bin/entrypoint"]
 ENV GITEA_CUSTOM=/var/lib/gitea/custom
 ENV GITEA_I_AM_BEING_UNSAFE_RUNNING_AS_ROOT=true
