@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/env python
 # This is free and unencumbered software released into the public domain.
 
-import dns.resolver, os, pytest, random, requests, subprocess, tempfile
+import dns.resolver, os, pytest, random, requests, subprocess, tempfile, time
 
 etc, lib = [tempfile.TemporaryDirectory() for _ in range(2)]
 name, port_admin, port_dns = random.sample(range(1025, 65536), 3)
@@ -20,6 +20,7 @@ def fixture():
 		f'{etc.name}:/etc/adguardhome', '--volume',
 		f'{lib.name}:/var/lib/adguardhome', f'ghcr.io/ngarside/adguardhome:{tag}',
 	])
+	time.sleep(10)
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
 
