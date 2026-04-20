@@ -4,4 +4,4 @@
 set -euo pipefail
 
 mkdir --parents /etc/tmpfiles.d
-cp /git/bootc/ops/tmpfiles/demo.conf /etc/tmpfiles.d/demo.conf
+cp /git/bootc/ops/tmpfiles/nathan.conf /etc/tmpfiles.d/nathan.conf

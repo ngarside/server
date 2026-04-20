@@ -3,9 +3,6 @@
 
 set -euo pipefail
 
-groupadd nathan
-adduser nathan --gid nathan --groups wheel
-
 groupadd containers
 adduser containers --gid containers --groups systemd-journal
 
@@ -22,4 +19,4 @@ ln --symbolic /usr/lib/systemd/user/podman.socket \
 	/var/home/containers/.config/systemd/user/sockets.target.wants/podman.socket
 
 mkdir --parents /etc/sysusers.d
-cp /git/bootc/ops/users/demo.conf /etc/sysusers.d/demo.conf
+cp /git/bootc/ops/users/nathan.conf /etc/sysusers.d/nathan.conf
