@@ -3,5 +3,4 @@
 
 set -euo pipefail
 
-mkdir --parents /etc/tmpfiles.d
-cp /git/bootc/ops/tmpfiles/nathan.conf /etc/tmpfiles.d/nathan.conf
+cp --recursive /git/bootc/ops/tmpfiles /etc/tmpfiles.d
