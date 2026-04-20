@@ -21,4 +21,4 @@ chown containers:containers /var/home/containers/.config/systemd/user/sockets.ta
 ln --symbolic /usr/lib/systemd/user/podman.socket \
 	/var/home/containers/.config/systemd/user/sockets.target.wants/podman.socket
 
-cp /git/bootc/ops/users/demo.conf /usr/lib/sysusers.d/demo.conf
+cp /git/bootc/ops/users/demo.conf /etc/sysusers.d/demo.conf
