@@ -3,8 +3,8 @@
 
 set -euo pipefail
 
-groupadd containers
-adduser containers --gid containers --groups systemd-journal
+groupadd --gid 1001 containers
+adduser containers --gid containers --groups systemd-journal --uid 1001
 
 mkdir --parents /var/lib/systemd/linger
 touch /var/lib/systemd/linger/containers
