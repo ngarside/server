@@ -1,6 +1,6 @@
 ﻿<!-- This is free and unencumbered software released into the public domain -->
 
-# <p align=center>ChartDB
+# <p align=center>BentoPDF
 
 A hardened container image and associated scripts for running BentoPDF via
 Podman and Systemd.
