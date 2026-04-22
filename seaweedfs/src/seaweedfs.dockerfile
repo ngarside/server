@@ -19,7 +19,7 @@ RUN patch s3api/auth_credentials.go < /tmp/credentials.patch
 RUN go install -ldflags '-linkmode external -extldflags -static'
 RUN strip /go/bin/weed
 
-FROM docker.io/curlimages/curl:8.19.0@sha256:9a6f6a17667960e077f1b153009aaf18ac99a622221084e1938a45a06fff057a AS curl
+FROM docker.io/curlimages/curl:8.19.0@sha256:c03110c736db81bbe1be0296f1f1608c81b954b01626bdfb0a8f84e5bd00ff3c AS curl
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN apk --no-cache add grep
