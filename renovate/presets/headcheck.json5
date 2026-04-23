@@ -16,7 +16,7 @@
 			"depNameTemplate": "pixelatedlabs/headcheck",
 			"managerFilePatterns": ["**/*.dockerfile"],
 			"matchStrings": [
-				"\\n.*headcheck-linux-(?<currentValue>[\\w\\.-]+)-x64.zip"
+				"\\n.*headcheck-linux-(?<currentValue>[\\w\\.-]+)-(arm|x)64.zip"
 			]
 		}
 	],
