@@ -1,10 +1,7 @@
 /*
 	This is free and unencumbered software released into the public domain.
 
-	This preset updates the version of headcheck as it is referenced in
-	dockerfiles.
-
-	- https://github.com/pixelatedlabs/headcheck
+	This preset enables support for GitHub releases.
 */
 
 {
