@@ -16,22 +16,15 @@
 			"depNameTemplate": "pixelatedlabs/headcheck",
 			"managerFilePatterns": ["**/*.dockerfile"],
 			"matchStrings": [
-				"\\n.*headcheck/releases/download/(?<currentValue>[\\w\\.-]+)/"
+				"\\n.*github.com/depName=(?<depName>\\w+/\\w+)/download/(?<currentValue>[\\w\\.-]+)/"
 			]
 		}
 	],
 	"packageRules": [
 		{
 			"commitMessageTopic": "{{{depName}}} tag",
-			"matchDepNames": ["pixelatedlabs/headcheck"],
+			"matchDatasource": ["github-releases"],
 			"matchManagers": ["custom.regex"]
-		},
-		{
-			"automerge": true,
-			"automergeStrategy": "squash",
-			"matchManagers": ["custom.regex"],
-			"matchPackageNames": ["pixelatedlabs/headcheck"],
-			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		}
 	]
 }
