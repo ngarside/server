@@ -16,7 +16,7 @@
 			"depNameTemplate": "pixelatedlabs/headcheck",
 			"managerFilePatterns": ["**/*.dockerfile"],
 			"matchStrings": [
-				"\\n.*github.com/depName=(?<depName>\\w+/\\w+)/download/(?<currentValue>[\\w\\.-]+)/"
+				"\\n.*github.com/depName=(?<depName>\\w+/\\w+)/download/(?<currentValue>[^/]+)"
 			]
 		}
 	],
