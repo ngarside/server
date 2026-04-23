@@ -29,7 +29,7 @@
 		{
 			"automerge": true,
 			"automergeStrategy": "squash",
-			"matchManagers": ["regex"],
+			"matchManagers": ["custom.regex"],
 			"matchPackageNames": ["pixelatedlabs/headcheck"],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
 		}
