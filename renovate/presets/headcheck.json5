@@ -1,0 +1,37 @@
+/*
+	This is free and unencumbered software released into the public domain.
+
+	This preset updates the version of headcheck as it is referenced in
+	dockerfiles.
+
+	- https://github.com/pixelatedlabs/headcheck
+*/
+
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"customManagers": [
+		{
+			"customType": "regex",
+			"datasourceTemplate": "github-releases",
+			"depNameTemplate": "pixelatedlabs/headcheck",
+			"managerFilePatterns": ["**/*.dockerfile"],
+			"matchStrings": [
+				"\\n.*headcheck-linux-(?<currentValue>[\\w\\.-]+)-x64.zip"
+			]
+		}
+	],
+	"packageRules": [
+		{
+			"commitMessageTopic": "{{{depName}}} tag",
+			"matchDepNames": ["pixelatedlabs/headcheck"],
+			"matchManagers": ["custom.regex"]
+		},
+		{
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"matchManagers": ["regex"],
+			"matchPackageNames": ["pixelatedlabs/headcheck"],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		}
+	]
+}
