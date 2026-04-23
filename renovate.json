@@ -5,6 +5,7 @@
 		"ngarside/server//renovate/presets/commit.json5",
 		"ngarside/server//renovate/presets/development.json5",
 		"ngarside/server//renovate/presets/fedora.json5",
+		"ngarside/server//renovate/presets/headcheck.json5",
 		"ngarside/server//renovate/presets/lock.json5",
 		"ngarside/server//renovate/presets/penpot.json5"
 	],
