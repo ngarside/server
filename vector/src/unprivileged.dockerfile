@@ -3,7 +3,7 @@
 FROM docker.io/timberio/vector:0.55.0-distroless-static@sha256:d0e9bcff73d38c408b553683bd230cbc6a204eca399267b40af79f0cd9afc15e AS vector
 
 FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
-RUN wget https://pixelatedlabs.com/headcheck/releases/latest/linux-x64.zip
+RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/2.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 
 FROM scratch
