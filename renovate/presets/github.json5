@@ -23,7 +23,7 @@
 	"packageRules": [
 		{
 			"commitMessageTopic": "{{{depName}}} tag",
-			"matchDatasource": ["github-releases"],
+			"matchDatasources": ["github-releases"],
 			"matchManagers": ["custom.regex"]
 		}
 	]
