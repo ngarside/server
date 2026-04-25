@@ -2,13 +2,13 @@
 
 [Container]
 ContainerName=seaweedfs
+CPUQuota=100%
 DropCapability=all
 Exec=server -dir=/var/lib/seaweedfs -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
 Image=ghcr.io/ngarside/seaweedfs:4.21.797@sha256:dc635d048c66c58d56af29f981a28c190493779e718b69d5adcf968e24b547b9
 Memory=4g
 Network=seaweedfs.network:ip=10.21.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/seaweedfs:/etc/seaweedfs:ro

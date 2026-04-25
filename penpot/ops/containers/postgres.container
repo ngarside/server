@@ -7,6 +7,7 @@ AddCapability=CAP_FOWNER
 AddCapability=CAP_SETGID
 AddCapability=CAP_SETUID
 ContainerName=penpot_postgres
+CPUQuota=100%
 DropCapability=all
 Environment=POSTGRES_DB=penpot
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
@@ -16,7 +17,6 @@ Image=ghcr.io/ngarside/postgres:18.3.403@sha256:bb112fd06ef50ca78f7099151fa5f40f
 Memory=4g
 Network=penpot_internal.network:ip=10.4.0.3
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=penpot_postgres_password
 StopSignal=SIGINT

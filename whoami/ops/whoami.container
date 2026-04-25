@@ -3,12 +3,12 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=whoami
+CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/whoami:1.11.0.389@sha256:1bdc40d42c6ca80ef58c30dabb0ade03fb2265f02cd335af4803224f35d87760
 Memory=512m
 Network=whoami.network:ip=10.20.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 

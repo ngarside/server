@@ -3,6 +3,7 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=opencloud
+CPUQuota=100%
 DropCapability=all
 Environment=PROXY_HTTP_ADDR=0.0.0.0:80
 Environment=PROXY_TLS=false
@@ -10,7 +11,6 @@ Image=ghcr.io/ngarside/opencloud:6.1.0.505@sha256:35e281ed12a719bc8c86100b5d29f5
 Memory=4g
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Secret=opencloud_public_uri,type=env,target=OC_URL

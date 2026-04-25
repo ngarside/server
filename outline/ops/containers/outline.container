@@ -11,6 +11,7 @@ Requires=outline_valkey.container
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=outline
+CPUQuota=100%
 DropCapability=all
 Environment=PORT=80
 Environment=DATABASE_HOST=10.19.0.3
@@ -31,7 +32,6 @@ Memory=4g
 Network=outline_external.network:ip=10.10.0.2
 Network=outline_internal.network:ip=10.19.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=mailjet_address_noreply,type=env,target=SMTP_FROM_EMAIL
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD

@@ -12,6 +12,7 @@ AddCapability=CAP_FOWNER
 AddCapability=CAP_SETGID
 AddCapability=CAP_SETUID
 ContainerName=authentik_worker
+CPUQuota=100%
 DropCapability=all
 Environment=AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true
 Environment=AUTHENTIK_DISABLE_UPDATE_CHECK=true
@@ -31,7 +32,6 @@ Image=ghcr.io/ngarside/authentik:2026.2.2.386@sha256:381b34bc4f4e67af1fa6f549120
 Memory=4g
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret

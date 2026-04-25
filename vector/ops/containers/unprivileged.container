@@ -2,6 +2,7 @@
 
 [Container]
 ContainerName=vector_unprivileged
+CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/vector-unprivileged:0.55.0.399@sha256:fc9b07c4c4fadae697eec602b33275409eb5dff5de86d10b3041a0393e60eeed
 Memory=4g
@@ -9,7 +10,6 @@ Network=vector.network:ip=10.15.0.2
 Network=victoria_logs.network:ip=10.24.0.4
 Network=victoria_metrics.network:ip=10.25.0.4
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro

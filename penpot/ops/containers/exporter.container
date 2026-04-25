@@ -6,6 +6,7 @@ Requires=penpot_valkey.container
 
 [Container]
 ContainerName=penpot_exporter
+CPUQuota=100%
 DropCapability=all
 Environment=PENPOT_REDIS_URI=redis://10.4.0.2/0
 Image=ghcr.io/ngarside/penpot-exporter:2.14.3.406@sha256:6e364bd62bec4c549237fdd9aa308918905654a0df47c4bc576a1347a25aec93
@@ -13,7 +14,6 @@ Memory=4g
 Network=penpot_internal.network:ip=10.4.0.4
 Network=penpot_external.network:ip=10.3.0.7
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
 UserNS=auto

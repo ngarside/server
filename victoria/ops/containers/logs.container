@@ -2,13 +2,13 @@
 
 [Container]
 ContainerName=victoria_logs
+CPUQuota=100%
 DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/victoria-logs:1.50.0.393@sha256:243f5bd2def477c6bb376a4f34ebb2cb022858deb45b56069e200dff7d69eae4
 Memory=4g
 Network=victoria_logs.network:ip=10.24.0.3
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto
 Volume=/var/data/victoria/logs:/var/lib/victorialogs:U,Z

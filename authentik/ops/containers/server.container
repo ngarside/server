@@ -7,6 +7,7 @@ Requires=authentik_postgres.container
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=authentik_server
+CPUQuota=100%
 DropCapability=all
 Environment=AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true
 Environment=AUTHENTIK_DISABLE_UPDATE_CHECK=true
@@ -28,7 +29,6 @@ Memory=4g
 Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=authentik_internal_secret
 Secret=authentik_postgres_password
