@@ -8,7 +8,7 @@ Image=ghcr.io/ngarside/bentopdf:2.8.4.486
 Memory=8g
 Network=bentopdf.network:ip=10.23.0.2
 NoNewPrivileges=true
-PidsLimit=1
+PidsLimit=64
 PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=1
