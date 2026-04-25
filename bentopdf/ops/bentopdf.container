@@ -10,7 +10,7 @@ Network=bentopdf.network:ip=10.23.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
 ReadOnly=true
-UserNS=auto:size=8
+UserNS=auto:size=1
 
 [Service]
 Restart=always
