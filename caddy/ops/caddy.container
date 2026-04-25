@@ -10,7 +10,7 @@ ContainerName=caddy
 DropCapability=all
 Environment=HOME=/var/lib/caddy
 GIDMap=0:8759
-Image=ghcr.io/ngarside/caddy:2.11.2.415@sha256:6ffdc82e1b74e03c0617e753b3795cb9e2c8a2c80b583fdd58e477e9f072d22b
+Image=ghcr.io/ngarside/caddy:2.11.2.421@sha256:b7f28c3a6b4d66f82c2e624884a963d152b62e60631d000fd69fc4d86fcc463f
 Memory=4g
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
