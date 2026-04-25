@@ -8,7 +8,6 @@ Image=ghcr.io/ngarside/adguardhome:0.107.74.472@sha256:2c0e252b9649b5c2c2602ef16
 Memory=4g
 Network=adguardhome.network:ip=10.2.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
 ReadOnly=true
@@ -18,8 +17,9 @@ Volume=/var/data/adguardhome/etc:/etc/adguardhome:U,Z
 Volume=/var/data/adguardhome/opt:/var/lib/adguardhome:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/adguardhome/etc
 ExecStartPre=mkdir --parents /var/data/adguardhome/opt
 

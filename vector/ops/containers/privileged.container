@@ -8,7 +8,6 @@ Image=ghcr.io/ngarside/vector-privileged:0.55.0.399@sha256:a9bf3aba70379ac94ff6d
 Memory=4g
 Network=vector.network:ip=10.15.0.3
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 SecurityLabelDisable=true
 UserNS=auto
@@ -17,8 +16,9 @@ Volume=/var/log/journal:/var/log/journal:ro
 Volume=/var/data/vector/privileged/data:/var/lib/vector:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/vector/privileged/data
 
 [Install]

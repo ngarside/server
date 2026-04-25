@@ -8,13 +8,13 @@ Image=ghcr.io/ngarside/excalidraw:0.0.0.428@sha256:45a0736a65a2cf6d5ba0258427c83
 Memory=512m
 Network=excalidraw.network:ip=10.18.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

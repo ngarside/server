@@ -16,7 +16,6 @@ Image=ghcr.io/ngarside/postgres:18.3.403@sha256:bb112fd06ef50ca78f7099151fa5f40f
 Memory=4g
 Network=penpot_internal.network:ip=10.4.0.3
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=penpot_postgres_password
 StopSignal=SIGINT
@@ -24,8 +23,9 @@ UserNS=auto:size=256
 Volume=/var/data/penpot/postgres:/var/lib/postgresql:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/penpot/postgres
 ExecStartPre=bash -c "dd bs=96 count=1 if=/dev/urandom status=none | base64 --wrap 0 | podman secret create --ignore penpot_postgres_password -"
 

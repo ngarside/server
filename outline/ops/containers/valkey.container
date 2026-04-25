@@ -7,13 +7,13 @@ Image=ghcr.io/ngarside/valkey:9.0.3.388@sha256:325ff3b8f87e34866bba12e98efdec7a3
 Memory=4g
 Network=outline_internal.network:ip=10.19.0.4
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

@@ -14,7 +14,6 @@ Network=grafana.network:ip=10.22.0.2
 Network=victoria_logs.network:ip=10.24.0.2
 Network=victoria_metrics.network:ip=10.25.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=grafana_oidc_secret
 Secret=machine_domain_root
@@ -25,8 +24,9 @@ Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/var/data/grafana/data:/var/lib/grafana:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/grafana/data
 
 [Install]

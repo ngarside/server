@@ -10,7 +10,6 @@ Image=ghcr.io/ngarside/crowdsec:1.7.7.357@sha256:69e9d4bcd99d623cbb7a71c123faf6a
 Memory=4g
 Network=crowdsec.network:ip=10.26.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=crowdsec_bouncer_secret,type=env,target=BOUNCER_KEY_CADDY
 Tmpfs=/etc/crowdsec:mode=1777
@@ -21,8 +20,9 @@ Volume=/var/data/caddy/logs:/var/log/caddy:ro,z
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/crowdsec/data
 ExecStartPre=bash -c "tr --complement --delete A-Za-z0-9 < /dev/urandom | head --bytes 32 | podman secret create --ignore crowdsec_bouncer_secret -"

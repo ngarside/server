@@ -8,14 +8,14 @@ Image=ghcr.io/ngarside/victoria-metrics:1.140.0.393@sha256:55135389fa7348da13e58
 Memory=4g
 Network=victoria_metrics.network:ip=10.25.0.3
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto
 Volume=/var/data/victoria/metrics:/var/lib/victoriametrics:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/victoria/metrics
 
 [Install]

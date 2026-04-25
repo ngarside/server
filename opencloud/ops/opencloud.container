@@ -10,7 +10,6 @@ Image=ghcr.io/ngarside/opencloud:6.1.0.505@sha256:35e281ed12a719bc8c86100b5d29f5
 Memory=4g
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Secret=opencloud_public_uri,type=env,target=OC_URL
@@ -19,8 +18,9 @@ Volume=/var/data/opencloud/config:/etc/opencloud:U,Z
 Volume=/var/data/opencloud/data:/var/lib/opencloud:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/opencloud/config
 ExecStartPre=mkdir --parents /var/data/opencloud/data
 

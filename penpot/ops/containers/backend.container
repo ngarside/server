@@ -25,7 +25,6 @@ Memory=4g
 Network=penpot_internal.network:ip=10.4.0.5
 Network=penpot_external.network:ip=10.3.0.8
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=penpot_oidc_secret,type=env,target=PENPOT_OIDC_CLIENT_SECRET
 Secret=penpot_oidc_uri,type=env,target=PENPOT_OIDC_BASE_URI
@@ -35,8 +34,9 @@ UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/penpot/assets
 ExecStartPre=podman unshare chown --recursive 1001:1001 /var/data/penpot/assets
 

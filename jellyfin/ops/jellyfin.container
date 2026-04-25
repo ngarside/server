@@ -7,7 +7,6 @@ Image=ghcr.io/ngarside/jellyfin:10.11.8.377@sha256:f7bc894a79ced16297ca6fb310e36
 Memory=4g
 Network=jellyfin.network:ip=10.11.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto
 Volume=/var/data/jellyfin/cache:/cache:U,Z
@@ -15,8 +14,9 @@ Volume=/var/data/jellyfin/config:/config:U,Z
 Volume=/var/data/jellyfin/media:/media:U,Z,ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/jellyfin/cache
 ExecStartPre=mkdir --parents /var/data/jellyfin/config
 ExecStartPre=mkdir --parents /var/data/jellyfin/media

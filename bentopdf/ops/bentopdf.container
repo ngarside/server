@@ -9,13 +9,13 @@ Memory=512m
 Network=bentopdf.network:ip=10.23.0.2
 NoNewPrivileges=true
 PidsLimit=64
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

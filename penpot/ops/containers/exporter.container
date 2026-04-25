@@ -13,14 +13,14 @@ Memory=4g
 Network=penpot_internal.network:ip=10.4.0.4
 Network=penpot_external.network:ip=10.3.0.7
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
 UserNS=auto
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

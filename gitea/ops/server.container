@@ -13,7 +13,6 @@ Image=ghcr.io/ngarside/gitea-server:1.26.1.566@sha256:0b591c6af75cbe53e06fd8c7fd
 Memory=4g
 Network=gitea_server.network:ip=10.14.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=gitea_global_secret
 Secret=gitea_internal_secret
@@ -32,8 +31,9 @@ Volume=/var/data/gitea/lfs:/opt/lfs:U,Z
 Volume=/var/data/gitea/work:/var/lib/gitea:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/gitea/db
 ExecStartPre=mkdir --parents /var/data/gitea/git
 ExecStartPre=mkdir --parents /var/data/gitea/lfs

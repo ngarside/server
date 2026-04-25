@@ -12,7 +12,6 @@ Image=ghcr.io/ngarside/gitea-runner:0.4.1.566@sha256:762e36adc7df8235f4b0959eb5b
 Memory=4g
 Network=gitea_server.network:ip=10.14.0.4
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=gitea_runner_token
 Secret=machine_domain_root
@@ -24,8 +23,9 @@ Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 Volume=/run/user/1001/podman/podman.sock:/var/run/docker.sock
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

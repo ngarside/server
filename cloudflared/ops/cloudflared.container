@@ -8,15 +8,15 @@ Image=ghcr.io/ngarside/cloudflared:2026.3.0.371@sha256:0d07ba484fce39b0c54a25a56
 Memory=4g
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=cloudflare_tunnel_token
 UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

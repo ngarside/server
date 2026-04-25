@@ -8,13 +8,13 @@ Image=ghcr.io/ngarside/chartdb:1.20.1.413@sha256:0c333e28cfebe29382d51ad35b1266f
 Memory=512m
 Network=chartdb.network:ip=10.16.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

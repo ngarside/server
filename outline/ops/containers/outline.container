@@ -31,7 +31,6 @@ Memory=4g
 Network=outline_external.network:ip=10.10.0.2
 Network=outline_internal.network:ip=10.19.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Secret=mailjet_address_noreply,type=env,target=SMTP_FROM_EMAIL
 Secret=mailjet_smtp_password,type=env,target=SMTP_PASSWORD
@@ -47,8 +46,9 @@ UserNS=auto:size=256
 Volume=/var/data/outline/data:/var/lib/outline/data:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/outline/data
 ExecStartPre=bash -c "openssl rand -hex 32 | tr -d '\n' | podman secret create --ignore outline_common_secret -"
 ExecStartPre=bash -c "openssl rand -hex 32 | tr -d '\n' | podman secret create --ignore outline_cron_secret -"

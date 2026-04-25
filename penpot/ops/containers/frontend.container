@@ -18,14 +18,14 @@ Image=ghcr.io/ngarside/penpot-frontend:2.14.3.406@sha256:9659991b9b240da645283d6
 Memory=4g
 Network=penpot_external.network:ip=10.3.0.9
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 Secret=penpot_public_uri,type=env,target=PENPOT_PUBLIC_URI
 UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/penpot/assets
 ExecStartPre=podman unshare chown --recursive 1001:1001 /var/data/penpot/assets
 

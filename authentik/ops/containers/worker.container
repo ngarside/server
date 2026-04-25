@@ -31,7 +31,6 @@ Image=ghcr.io/ngarside/authentik:2026.2.2.386@sha256:381b34bc4f4e67af1fa6f549120
 Memory=4g
 Network=authentik_internal.network:ip=10.7.0.5
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 Secret=authentik_internal_secret
 Secret=authentik_postgres_password
 Secret=gitea_oidc_secret
@@ -49,8 +48,9 @@ UserNS=auto
 Volume=/etc/authentik/blueprints:/blueprints/custom:ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

@@ -8,14 +8,14 @@ Image=ghcr.io/ngarside/vaultwarden:1.35.7.408@sha256:5d1bb77a7470fc2091213023e1b
 Memory=4g
 Network=vaultwarden.network:ip=10.12.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 Volume=/var/data/vaultwarden/data:/data:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/vaultwarden/data
 
 [Install]

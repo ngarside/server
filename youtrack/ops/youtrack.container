@@ -7,7 +7,6 @@ Image=docker.io/jetbrains/youtrack:2026.1.12848@sha256:adcf98f6e9b4e1218605dda64
 Memory=4g
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 Tmpfs=/opt/youtrack/temp:mode=1777
 UserNS=auto
@@ -16,8 +15,9 @@ Volume=/var/data/youtrack/data:/opt/youtrack/data:U,Z
 Volume=/var/data/youtrack/logs:/opt/youtrack/logs:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/youtrack/config
 ExecStartPre=mkdir --parents /var/data/youtrack/data
 ExecStartPre=mkdir --parents /var/data/youtrack/logs

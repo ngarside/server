@@ -8,13 +8,13 @@ Image=ghcr.io/ngarside/fossflow:0.0.0.555@sha256:160e5ab6e2d3a448f4830646a3f6bcf
 Memory=512m
 Network=fossflow.network:ip=10.1.0.2
 NoNewPrivileges=true
-PodmanArgs=--cpus=1
 ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target
