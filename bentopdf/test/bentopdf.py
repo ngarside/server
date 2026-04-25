@@ -12,8 +12,9 @@ session.mount('http://', requests.adapters.HTTPAdapter(max_retries=10))
 def fixture():
 	tag = os.getenv('TAG') or 'latest'
 	subprocess.run([
-		'podman', 'run', '--detach', '--name', f'{name}', '--publish', f'{port}:80',
-		'--pull', 'never', f'ghcr.io/ngarside/bentopdf:{tag}',
+		'podman', 'run', '--detach', '--name', f'{name}', '--pids-limit', '64',
+		'--publish', f'{port}:80', '--pull', 'never',
+		f'ghcr.io/ngarside/bentopdf:{tag}',
 	])
 	yield
 	subprocess.run(['podman', 'rm', '--force', f'{name}'])
