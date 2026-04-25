@@ -4,7 +4,7 @@
 ContainerName=cloudflared
 DropCapability=all
 Exec=tunnel run --token-file /run/secrets/cloudflare_tunnel_token
-Image=ghcr.io/ngarside/cloudflared:2026.3.0.371
+Image=ghcr.io/ngarside/cloudflared:2026.3.0.371@sha256:0d07ba484fce39b0c54a25a5659059f16a4daa9b059a9966bcaec0c89ff678e6
 Memory=4g
 Network=cloudflared.network:ip=10.13.0.2
 NoNewPrivileges=true
