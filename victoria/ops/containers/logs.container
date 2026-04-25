@@ -4,7 +4,7 @@
 ContainerName=victoria_logs
 DropCapability=all
 GroupAdd=keep-groups
-Image=ghcr.io/ngarside/victoria-logs:1.50.0.393@sha256:243f5bd2def477c6bb376a4f34ebb2cb022858deb45b56069e200dff7d69eae4
+Image=ghcr.io/ngarside/victoria-logs:1.50.0.399@sha256:abb6902acfab052c47d48cd902a1949d093a30fdc35a81452b239d7dcbf35c0c
 Memory=4g
 Network=victoria_logs.network:ip=10.24.0.3
 NoNewPrivileges=true
