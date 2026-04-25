@@ -9,7 +9,7 @@ ContainerName=gitea_runner
 DropCapability=all
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
 Image=ghcr.io/ngarside/gitea-runner:0.4.1.566
-Memory=8g
+Memory=4g
 Network=gitea_server.network:ip=10.14.0.4
 NoNewPrivileges=true
 PodmanArgs=--cpus=1

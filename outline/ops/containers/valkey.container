@@ -4,7 +4,7 @@
 ContainerName=outline_valkey
 DropCapability=all
 Image=ghcr.io/ngarside/valkey:9.0.3.388
-Memory=8g
+Memory=4g
 Network=outline_internal.network:ip=10.19.0.4
 NoNewPrivileges=true
 PodmanArgs=--cpus=1

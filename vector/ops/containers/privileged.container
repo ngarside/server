@@ -5,7 +5,7 @@ ContainerName=vector_privileged
 DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/vector-privileged:0.55.0.399
-Memory=8g
+Memory=4g
 Network=vector.network:ip=10.15.0.3
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
