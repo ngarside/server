@@ -7,7 +7,7 @@ DropCapability=all
 Environment=COLLECTIONS=crowdsecurity/caddy
 GIDMap=0:8759
 Image=ghcr.io/ngarside/crowdsec:1.7.7.357
-Memory=8g
+Memory=4g
 Network=crowdsec.network:ip=10.26.0.2
 NoNewPrivileges=true
 PodmanArgs=--cpus=1
