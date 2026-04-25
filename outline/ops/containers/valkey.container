@@ -3,7 +3,7 @@
 [Container]
 ContainerName=outline_valkey
 DropCapability=all
-Image=ghcr.io/ngarside/valkey:9.0.3.388
+Image=ghcr.io/ngarside/valkey:9.0.3.388@sha256:325ff3b8f87e34866bba12e98efdec7a367e2f57eb3d4b618d9af3ebf0e08c40
 Memory=4g
 Network=outline_internal.network:ip=10.19.0.4
 NoNewPrivileges=true
