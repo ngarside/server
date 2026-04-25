@@ -8,7 +8,6 @@ Requires=penpot_exporter.container
 
 [Container]
 ContainerName=penpot_frontend
-CPUQuota=100%
 DropCapability=all
 Environment=PENPOT_BACKEND_URI=http://10.3.0.8:6060
 Environment=PENPOT_EXPORTER_URI=http://10.3.0.7:6061
@@ -24,8 +23,9 @@ UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/penpot/assets
 ExecStartPre=podman unshare chown --recursive 1001:1001 /var/data/penpot/assets
 

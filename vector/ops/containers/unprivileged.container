@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=vector_unprivileged
-CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/vector-unprivileged:0.55.0.399@sha256:fc9b07c4c4fadae697eec602b33275409eb5dff5de86d10b3041a0393e60eeed
 Memory=4g
@@ -18,8 +17,9 @@ Volume=/proc:/proc:ro
 Volume=/sys:/sys:ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

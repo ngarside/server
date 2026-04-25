@@ -12,7 +12,6 @@ AddCapability=CAP_FOWNER
 AddCapability=CAP_SETGID
 AddCapability=CAP_SETUID
 ContainerName=authentik_worker
-CPUQuota=100%
 DropCapability=all
 Environment=AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true
 Environment=AUTHENTIK_DISABLE_UPDATE_CHECK=true
@@ -49,8 +48,9 @@ UserNS=auto
 Volume=/etc/authentik/blueprints:/blueprints/custom:ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

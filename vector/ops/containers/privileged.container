@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=vector_privileged
-CPUQuota=100%
 DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/vector-privileged:0.55.0.399@sha256:a9bf3aba70379ac94ff6dccce689abb62436c09815fa7662b4db4460cf7d6baf
@@ -17,8 +16,9 @@ Volume=/var/log/journal:/var/log/journal:ro
 Volume=/var/data/vector/privileged/data:/var/lib/vector:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/vector/privileged/data
 
 [Install]

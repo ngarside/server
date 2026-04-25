@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=victoria_logs
-CPUQuota=100%
 DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/victoria-logs:1.50.0.393@sha256:243f5bd2def477c6bb376a4f34ebb2cb022858deb45b56069e200dff7d69eae4
@@ -14,8 +13,9 @@ UserNS=auto
 Volume=/var/data/victoria/logs:/var/lib/victorialogs:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/victoria/logs
 
 [Install]

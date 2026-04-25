@@ -10,7 +10,6 @@ Requires=penpot_valkey.container
 
 [Container]
 ContainerName=penpot_backend
-CPUQuota=100%
 DropCapability=all
 Environment="PENPOT_FLAGS=disable-registration disable-secure-session-cookies enable-login-with-oidc enable-oidc-registration"
 Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
@@ -35,8 +34,9 @@ UserNS=auto
 Volume=/var/data/penpot/assets:/opt/data/assets:z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/penpot/assets
 ExecStartPre=podman unshare chown --recursive 1001:1001 /var/data/penpot/assets
 

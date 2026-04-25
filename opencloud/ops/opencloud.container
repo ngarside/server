@@ -3,7 +3,6 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=opencloud
-CPUQuota=100%
 DropCapability=all
 Environment=PROXY_HTTP_ADDR=0.0.0.0:80
 Environment=PROXY_TLS=false
@@ -19,8 +18,9 @@ Volume=/var/data/opencloud/config:/etc/opencloud:U,Z
 Volume=/var/data/opencloud/data:/var/lib/opencloud:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/opencloud/config
 ExecStartPre=mkdir --parents /var/data/opencloud/data
 

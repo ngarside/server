@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=outline_valkey
-CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/valkey:9.0.3.388@sha256:325ff3b8f87e34866bba12e98efdec7a367e2f57eb3d4b618d9af3ebf0e08c40
 Memory=4g
@@ -12,8 +11,9 @@ ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

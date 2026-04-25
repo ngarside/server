@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=victoria_metrics
-CPUQuota=100%
 DropCapability=all
 GroupAdd=keep-groups
 Image=ghcr.io/ngarside/victoria-metrics:1.140.0.393@sha256:55135389fa7348da13e5822772db8a5b577f954c2589979919556e24edda2bdc
@@ -14,8 +13,9 @@ UserNS=auto
 Volume=/var/data/victoria/metrics:/var/lib/victoriametrics:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/victoria/metrics
 
 [Install]

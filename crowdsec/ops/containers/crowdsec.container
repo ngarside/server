@@ -3,7 +3,6 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=crowdsec
-CPUQuota=100%
 DropCapability=all
 Environment=COLLECTIONS=crowdsecurity/caddy
 GIDMap=0:8759
@@ -21,8 +20,9 @@ Volume=/var/data/caddy/logs:/var/log/caddy:ro,z
 Volume=/var/data/crowdsec/data:/var/lib/crowdsec/data:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/caddy/logs
 ExecStartPre=mkdir --parents /var/data/crowdsec/data
 ExecStartPre=bash -c "tr --complement --delete A-Za-z0-9 < /dev/urandom | head --bytes 32 | podman secret create --ignore crowdsec_bouncer_secret -"

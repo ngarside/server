@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=cloudflared
-CPUQuota=100%
 DropCapability=all
 Exec=tunnel run --token-file /run/secrets/cloudflare_tunnel_token
 Image=ghcr.io/ngarside/cloudflared:2026.3.0.371@sha256:0d07ba484fce39b0c54a25a5659059f16a4daa9b059a9966bcaec0c89ff678e6
@@ -15,8 +14,9 @@ UserNS=auto:size=8
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

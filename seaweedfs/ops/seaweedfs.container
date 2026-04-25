@@ -2,7 +2,6 @@
 
 [Container]
 ContainerName=seaweedfs
-CPUQuota=100%
 DropCapability=all
 Exec=server -dir=/var/lib/seaweedfs -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
 Image=ghcr.io/ngarside/seaweedfs:4.21.797@sha256:dc635d048c66c58d56af29f981a28c190493779e718b69d5adcf968e24b547b9
@@ -15,8 +14,9 @@ Volume=/etc/seaweedfs:/etc/seaweedfs:ro
 Volume=/var/data/seaweedfs/data:/var/lib/seaweedfs:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/seaweedfs/data
 
 [Install]

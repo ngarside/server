@@ -3,7 +3,6 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=memos
-CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/memos:0.27.1.619@sha256:6381b4fc809fc28d020b83870fc3976a4726d0372df69698a73a7699a7b5484e
 Memory=4g
@@ -15,8 +14,9 @@ Volume=/var/data/memos/opt:/var/lib/memos:U,Z
 Volume=/etc/pki/ca-trust/extracted/pem:/etc/pki/ca-trust/extracted/pem:ro
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/memos/opt
 
 [Install]

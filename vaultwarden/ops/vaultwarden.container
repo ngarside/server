@@ -3,7 +3,6 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=vaultwarden
-CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/vaultwarden:1.35.7.408@sha256:5d1bb77a7470fc2091213023e1b669e28e6f045ec6b0439ccb5fd9ed84836270
 Memory=4g
@@ -14,8 +13,9 @@ UserNS=auto:size=8
 Volume=/var/data/vaultwarden/data:/data:U,Z
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/vaultwarden/data
 
 [Install]

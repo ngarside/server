@@ -3,7 +3,6 @@
 [Container]
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=excalidraw
-CPUQuota=100%
 DropCapability=all
 Image=ghcr.io/ngarside/excalidraw:0.0.0.428@sha256:45a0736a65a2cf6d5ba0258427c836e2646932588dd65c735906a9c8d3e35a42
 Memory=512m
@@ -13,8 +12,9 @@ ReadOnly=true
 UserNS=auto:size=8
 
 [Service]
+CPUQuota=100%
 Restart=always
-TimeoutStartSec=9000
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target
