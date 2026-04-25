@@ -4,7 +4,7 @@ FROM docker.io/vaultwarden/server:1.35.7-alpine@sha256:9a54dad95452412afb959664d
 RUN chmod ugo=rx /vaultwarden
 
 FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
-RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/2.1.0/linux-x64.zip
+RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/3.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 
 FROM scratch
