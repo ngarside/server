@@ -22,6 +22,7 @@ Environment=FILE_STORAGE=local
 Environment=FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
 Environment=OIDC_CLIENT_ID=outline
 Environment=OIDC_DISPLAY_NAME=Authentik
+Environment=OIDC_SCOPES="openid profile email offline_access"
 Environment=SMTP_SERVICE=Mailjet
 Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=silly
