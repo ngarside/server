@@ -8,7 +8,6 @@ Requires=crowdsec.container
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=caddy
 DropCapability=all
-Environment=HOME=/var/lib/caddy
 GIDMap=0:8759
 Image=ghcr.io/ngarside/caddy:2.11.2.421@sha256:b7f28c3a6b4d66f82c2e624884a963d152b62e60631d000fd69fc4d86fcc463f
 Memory=4g
