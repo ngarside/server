@@ -32,6 +32,8 @@ Network=victoria_logs.network:ip=10.24.0.5
 Network=victoria_metrics.network:ip=10.25.0.5
 Network=crowdsec.network:ip=10.26.0.3
 NoNewPrivileges=true
+PublishPort=80:80
+PublishPort=443:443
 ReadOnly=true
 Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
 Secret=cloudflare_api_token
