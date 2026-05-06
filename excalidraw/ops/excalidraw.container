@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=excalidraw
 DropCapability=all
-Image=ghcr.io/ngarside/excalidraw:0.0.0.445@sha256:67dc2c31cd276870ef24e3e0a7a11851ccb2db5153ca674130cab6a39e5137c4
+Image=ghcr.io/ngarside/excalidraw:0.0.0.450@sha256:5e5f86d2a753563d66ff086759c6f69ddc32480b44fdd6f8fc258b43f5d9410d
 Memory=512m
 Network=excalidraw.network:ip=10.18.0.2
 NoNewPrivileges=true
