@@ -12,7 +12,7 @@ FROM docker.io/gitea/gitea:1.26.1@sha256:d8667667b4ccbd1f67b86a376bffcc0a17b16cf
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
 
-FROM golang:1.26.2-alpine@sha256:f85330846cde1e57ca9ec309382da3b8e6ae3ab943d2739500e08c86393a21b1 as gitea-build
+FROM golang:1.26.3-alpine@sha256:2fc3989c4cb754d78787eb466716d44d4e88650ac9281da70267b55df9b25b9d as gitea-build
 COPY --from=gitea /version /version
 RUN apk --no-cache add build-base git pnpm
 RUN git clone https://github.com/go-gitea/gitea --branch "v$(cat /version)" --depth 1
