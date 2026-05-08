@@ -17,7 +17,6 @@ Documenting the rationale for which dependencies are automatically merged.
 		"**/*.container",
 		"!authentik/**/server.container",
 		"!authentik/**/worker.container",
-		"!**/cloudflared.container",
 		"!**/youtrack.container"
 	],
 	"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
@@ -62,7 +61,6 @@ versions `< 1.0.0`.
 	"matchFileNames": [
 		"authentik/**/server.container",
 		"authentik/**/worker.container",
-		"**/cloudflared.container",
 		"**/youtrack.container"
 	],
 	"matchUpdateTypes": ["patch", "pin", "digest"]

@@ -18,7 +18,6 @@
 				"**/*.container",
 				"!authentik/**/server.container",
 				"!authentik/**/worker.container",
-				"!**/cloudflared.container",
 				"!**/youtrack.container"
 			],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
@@ -36,7 +35,6 @@
 			"matchFileNames": [
 				"authentik/**/server.container",
 				"authentik/**/worker.container",
-				"**/cloudflared.container",
 				"**/youtrack.container"
 			],
 			"matchUpdateTypes": ["patch", "pin", "digest"]
