@@ -12,7 +12,6 @@ cp /git/bootc/ops/sshd/authorizedkeys.conf /etc/ssh/sshd_config.d/20-authorizedk
 cp /git/bootc/ops/sshd/hardening.conf /etc/ssh/sshd_config.d/10-hardening.conf
 cp /git/bootc/ops/sshd/authorizedkeys.pub /etc/ssh/authorized_keys/nathan
 
-# ln --symbolic /var/ssh/ssh_host_ecdsa_key /etc/ssh/test
 ln --symbolic /var/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
 ln --symbolic /var/ssh/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
 ln --symbolic /var/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
@@ -20,7 +19,6 @@ ln --symbolic /var/ssh/ssh_host_ed25519_key.pub /etc/ssh/ssh_host_ed25519_key.pu
 ln --symbolic /var/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
 ln --symbolic /var/ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
 
-# chcon --no-dereference --reference /var/ssh/ssh_host_ecdsa_key /etc/ssh/test
 chcon --no-dereference --reference /var/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
 chcon --no-dereference --reference /var/ssh/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
 chcon --no-dereference --reference /var/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
