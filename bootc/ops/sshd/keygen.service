@@ -7,7 +7,7 @@ Before=sshd.service
 Wants=local-fs.target
 
 [Service]
-ExecStart=/usr/bin/keygen
+ExecStart=/usr/bin/keygen /var/ssh
 Type=oneshot
 
 [Install]
