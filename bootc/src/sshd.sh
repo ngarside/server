@@ -14,17 +14,17 @@ cp /git/bootc/ops/sshd/authorizedkeys.pub /etc/ssh/authorized_keys/nathan
 
 ln --symbolic /var/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
 ln --symbolic /var/ssh/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
-ln --symbolic /var/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
-ln --symbolic /var/ssh/ssh_host_ed25519_key.pub /etc/ssh/ssh_host_ed25519_key.pub
-ln --symbolic /var/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
-ln --symbolic /var/ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
+# ln --symbolic /var/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
+# ln --symbolic /var/ssh/ssh_host_ed25519_key.pub /etc/ssh/ssh_host_ed25519_key.pub
+# ln --symbolic /var/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
+# ln --symbolic /var/ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
 
 chcon --no-dereference --reference /var/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
 chcon --no-dereference --reference /var/ssh/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
-chcon --no-dereference --reference /var/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
-chcon --no-dereference --reference /var/ssh/ssh_host_ed25519_key.pub /etc/ssh/ssh_host_ed25519_key.pub
-chcon --no-dereference --reference /var/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
-chcon --no-dereference --reference /var/ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
+# chcon --no-dereference --reference /var/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
+# chcon --no-dereference --reference /var/ssh/ssh_host_ed25519_key.pub /etc/ssh/ssh_host_ed25519_key.pub
+# chcon --no-dereference --reference /var/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
+# chcon --no-dereference --reference /var/ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
 
 chmod u=rwx,go=rx /usr/bin/keygen
 
