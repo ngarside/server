@@ -1,0 +1,15 @@
+# This is free and unencumbered software released into the public domain.
+# yaml-language-server: $schema=https://goauthentik.io/blueprints/schema.json
+
+version: 1
+metadata:
+  name: Custom - Login
+entries:
+
+  # Stage
+  - id: custom-login-stage
+    model: authentik_stages_user_login.userloginstage
+    identifiers:
+      name: default-authentication-login
+    attrs:
+      remember_me_offset: days=30
