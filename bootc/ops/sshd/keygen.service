@@ -2,8 +2,9 @@
 
 [Unit]
 Description=Generates SSH host keys in a persistent location
+After=local-fs.target
 Before=sshd.service
-DefaultDependencies=no
+Wants=local-fs.target
 
 [Service]
 ExecStart=/usr/bin/keygen
