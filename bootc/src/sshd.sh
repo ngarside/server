@@ -13,3 +13,5 @@ cp /git/bootc/ops/sshd/hardening.conf /etc/ssh/sshd_config.d/10-hardening.conf
 cp /git/bootc/ops/sshd/authorizedkeys.pub /etc/ssh/authorized_keys/nathan
 
 chmod u=rwx,go=rx /usr/bin/keygen
+
+systemctl enable keygen.service
