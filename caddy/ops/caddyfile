@@ -132,6 +132,10 @@ memos.{$MACHINE_DOMAIN_ROOT} {
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
+	@private client_ip private_ranges
+	handle @private {
+		reverse_proxy 10.17.0.2
+	}
 	route {
 		crowdsec
 		reverse_proxy /.well-known/* 10.17.0.2
