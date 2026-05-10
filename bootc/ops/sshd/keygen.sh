@@ -16,3 +16,5 @@ fi
 if [ ! -f /var/ssh/ssh_host_rsa_key ]; then
 	ssh-keygen -b 4096 -C '' -f /var/ssh/ssh_host_rsa_key -P '' -t rsa
 fi
+
+chcon --type sshd_key_t /var/ssh/*
