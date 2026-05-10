@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-mkdir --parents ./var/ssh
+mkdir --parents /var/ssh
 
 if [ ! -f /var/ssh/ssh_host_ecdsa_key ]; then
 	ssh-keygen -C '' -f /var/ssh/ssh_host_ecdsa_key -P '' -t ecdsa
