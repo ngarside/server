@@ -11,7 +11,9 @@ ReadOnly=true
 UserNS=auto
 Volume=/var/data/jellyfin/cache:/cache:U,Z
 Volume=/var/data/jellyfin/config:/config:U,Z
-Volume=/var/data/jellyfin/media:/media:U,Z,ro
+Volume=/var/data/jellyfin/movies:/movies:U,Z,ro
+Volume=/var/data/jellyfin/music:/music:U,Z,ro
+Volume=/var/data/jellyfin/shows:/shows:U,Z,ro
 
 [Service]
 CPUQuota=100%
@@ -19,7 +21,9 @@ Restart=always
 TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/jellyfin/cache
 ExecStartPre=mkdir --parents /var/data/jellyfin/config
-ExecStartPre=mkdir --parents /var/data/jellyfin/media
+ExecStartPre=mkdir --parents /var/data/jellyfin/movies
+ExecStartPre=mkdir --parents /var/data/jellyfin/music
+ExecStartPre=mkdir --parents /var/data/jellyfin/shows
 
 [Install]
 WantedBy=default.target
