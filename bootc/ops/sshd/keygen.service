@@ -2,13 +2,12 @@
 
 [Unit]
 Description=Generates SSH host keys in a persistent location
-DefaultDependencies=no
 Before=sshd.service
-Before=ssh.service
+DefaultDependencies=no
 
 [Service]
+ExecStart=/usr/bin/keygen
 Type=oneshot
-ExecStart=/usr/bin/bash /etc/keygen/keygen.sh
 
 [Install]
 WantedBy=default.target
