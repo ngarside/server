@@ -1,0 +1,11 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+Description=Generates SSH host keys in a persistent location
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /etc/keygen/keygen.sh
+
+[Install]
+WantedBy=default.target
