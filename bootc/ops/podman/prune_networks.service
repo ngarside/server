@@ -1,0 +1,12 @@
+# This is free and unencumbered software released into the public domain.
+
+# Makes userspace networks ephemeral.
+
+[Unit]
+
+[Service]
+ExecStart=/usr/bin/rm --recursive /var/home/containers/.local/share/containers/storage/networks
+Type=oneshot
+
+[Install]
+WantedBy=default.target
