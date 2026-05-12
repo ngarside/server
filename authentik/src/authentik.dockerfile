@@ -1,3 +1,3 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM ghcr.io/goauthentik/server:2026.2.2@sha256:40f0df709957c11324420fa387f1135c427f16086f12ca266b2d883d39c71fe3
+FROM ghcr.io/goauthentik/server:2026.2.3@sha256:067dea66245b2a378e866c897ce52f71896a24933db4ad39ed8e2ea957d6d4cd
