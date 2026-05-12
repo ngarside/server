@@ -14,7 +14,7 @@ Environment=PENPOT_EXPORTER_URI=http://10.3.0.7:6061
 Environment="PENPOT_FLAGS=disable-registration disable-secure-session-cookies enable-login-with-oidc enable-oidc-registration"
 Environment=PENPOT_HTTP_SERVER_MAX_BODY_SIZE=31457280
 Environment=PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE=367001600
-Image=ghcr.io/ngarside/penpot-frontend:2.14.5.434@sha256:9659991b9b240da645283d63b144768e23feed670377fc8fc650ad2bd90dced6
+Image=ghcr.io/ngarside/penpot-frontend:2.15.0.441@sha256:9659991b9b240da645283d63b144768e23feed670377fc8fc650ad2bd90dced6
 Memory=4g
 Network=penpot_external.network:ip=10.3.0.9
 NoNewPrivileges=true
