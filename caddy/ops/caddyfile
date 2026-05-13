@@ -16,10 +16,6 @@
 	request_body {
 		max_size 100mb
 	}
-	tls {
-		dns cloudflare {file./run/secrets/cloudflare_api_token}
-		resolvers 1.1.1.1
-	}
 }
 
 (authentik_forward_auth) {

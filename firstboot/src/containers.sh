@@ -6,10 +6,6 @@
 
 set -euo pipefail
 
-# Cloudflare.
-echo -n 'SECRETDATA' | podman secret create cloudflare_api_token -
-echo -n 'SECRETDATA' | podman secret create cloudflare_tunnel_token -
-
 # Open Cloud.
 echo -n 'SECRETDATA' | podman secret create opencloud_public_uri -
 

@@ -2,9 +2,7 @@
 
 # Build customised caddy install.
 FROM docker.io/caddy:2.11.3-builder-alpine@sha256:7d2315853f99b425d0daa6bcad826e8b0d65b4af1f70fcaeb6b152157d81771d AS caddy
-RUN xcaddy build \
-	--with github.com/caddy-dns/cloudflare \
-	--with github.com/hslatman/caddy-crowdsec-bouncer/http
+RUN xcaddy build --with github.com/hslatman/caddy-crowdsec-bouncer/http
 
 # Install dependencies.
 FROM quay.io/fedora/fedora:44@sha256:dee6da0ef53e92b8119634681d62f9083352bcfe7911b8a294c05bda7df2c194
