@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:2.11.3-builder-alpine@sha256:7d2315853f99b425d0daa6bcad826e8b0d65b4af1f70fcaeb6b152157d81771d AS caddy
+FROM docker.io/caddy:2.11.3-builder-alpine@sha256:52575959b1eeee9900869325a953d71e4c521ab9102dd5cce07d429ea8246b85 AS caddy
 RUN xcaddy build \
 	--with github.com/caddy-dns/cloudflare \
 	--with github.com/hslatman/caddy-crowdsec-bouncer/http
