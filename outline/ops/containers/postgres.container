@@ -11,7 +11,7 @@ DropCapability=all
 Environment=POSTGRES_DB=outline
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/outline_postgres_password
 Environment=POSTGRES_USER=outline
-Image=ghcr.io/ngarside/postgres:18.4.442@sha256:66e0edf4106239c6cf37347fc1e6151ba4d6e69e8624edb312fc3505cf8fc6bf
+Image=ghcr.io/ngarside/postgres:18.4.445@sha256:d1518d0fdcb4bde4ad2872fdd0298220280b2345ae708de017e7daf8ec932e07
 Memory=4g
 Network=outline_internal.network:ip=10.19.0.3
 NoNewPrivileges=true
