@@ -5,7 +5,7 @@
 # image is still referenced to support automated dependency updates.
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
-FROM docker.io/opencloudeu/opencloud-rolling:6.2.0@sha256:77bd4ebc5c5d27bd6da8a5b077e3b3b18f07dc538a25597b6ed0bcc76198ecbe AS opencloud
+FROM docker.io/opencloudeu/opencloud-rolling:7.0.0@sha256:ecc240e0df7802e6e6517762009890a3aa36e566d9e6309b80ee2f3dd040e235 AS opencloud
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 WORKDIR /
