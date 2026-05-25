@@ -4,7 +4,7 @@
 ContainerName=victoria_metrics
 DropCapability=all
 GroupAdd=keep-groups
-Image=ghcr.io/ngarside/victoria-metrics:1.143.0.420@sha256:7124be35d178db084047f72197e398c6fe2ce3bf5b3a213b55dade0745f05f93
+Image=ghcr.io/ngarside/victoria-metrics:1.144.0.442@sha256:38a561acbda0789ff2949a8494deb324f5db29fb5112aa0476121bd081ea5d17
 Memory=4g
 Network=victoria_metrics.network:ip=10.25.0.3
 NoNewPrivileges=true
