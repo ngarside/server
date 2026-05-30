@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=memos
 DropCapability=all
-Image=ghcr.io/ngarside/memos:0.28.0.627@sha256:310cff0e3eaa3bc3412d76c3a69ce4b8a23a496dc5b5620d7a98717dcd418190
+Image=ghcr.io/ngarside/memos:0.29.0.664@sha256:bb38dcb7e2c0e9e1147406b7164d95c1fe0d420b3f44bc57713921377072a9ef
 Memory=4g
 Network=memos.network:ip=10.6.0.2
 NoNewPrivileges=true
