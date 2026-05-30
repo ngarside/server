@@ -4,7 +4,7 @@
 ContainerName=seaweedfs
 DropCapability=all
 Exec=server -dir=/var/lib/seaweedfs -s3 -s3.config=/etc/seaweedfs/seaweedfs.json -s3.port=80
-Image=ghcr.io/ngarside/seaweedfs:4.29.873@sha256:bdf0661ba92868548e4f8c92005c3a095b48ad2e4bfbd549c3de3ea2d51359a6
+Image=ghcr.io/ngarside/seaweedfs:4.30.885@sha256:85396ec43b1c00be4ae918ac5463ecb1075e0cedca76d8eccceb0292e5ca227c
 Memory=4g
 Network=seaweedfs.network:ip=10.21.0.2
 NoNewPrivileges=true
