@@ -42,6 +42,7 @@ Secret=penpot_oidc_secret
 Secret=vaultwarden_oidc_secret
 StopSignal=SIGINT
 Tmpfs=/certs:mode=1777
+Tmpfs=/data:mode=1777
 User=root
 UserNS=auto
 Volume=/etc/authentik/media:/media/public
