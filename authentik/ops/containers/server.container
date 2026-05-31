@@ -19,7 +19,6 @@ Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
 Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
 Environment=AUTHENTIK_EMAIL__USERNAME=file:///run/secrets/mailjet_smtp_username
 Environment=AUTHENTIK_ERROR_REPORTING__ENABLED=false
-Environment=AUTHENTIK_LISTEN__HTTP=0.0.0.0:80
 Environment=AUTHENTIK_LOG_LEVEL=trace
 Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
