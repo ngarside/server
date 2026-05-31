@@ -44,7 +44,7 @@ StopSignal=SIGINT
 Tmpfs=/certs:mode=1777
 User=root
 UserNS=auto
-Volume=/etc/authentik/media:/media/public:ro
+Volume=/etc/authentik/media:/media/public
 
 [Service]
 CPUQuota=100%
