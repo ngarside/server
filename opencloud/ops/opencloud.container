@@ -6,7 +6,7 @@ ContainerName=opencloud
 DropCapability=all
 Environment=PROXY_HTTP_ADDR=0.0.0.0:80
 Environment=PROXY_TLS=false
-Image=ghcr.io/ngarside/opencloud:7.0.0.548@sha256:4db75f10e8416b1d9713ee161363febe1a8195155b5b1b60a238a30ca565fe99
+Image=ghcr.io/ngarside/opencloud:7.1.0.568@sha256:a05d53584f6b4901b1fa6c933cfe853e908e1a0ca26eb8c77df9f8655729a951
 Memory=4g
 Network=opencloud.network:ip=10.17.0.2
 NoNewPrivileges=true
