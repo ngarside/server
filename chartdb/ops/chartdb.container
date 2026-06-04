@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=chartdb
 DropCapability=all
-Image=ghcr.io/ngarside/chartdb:1.20.1.447@sha256:a593509a4fcf77f7a4eff8c0805b7f23b4cfd9a8cbd95ec9eeb1b08f129d7ad2
+Image=ghcr.io/ngarside/chartdb:1.20.1.494@sha256:84fd7694f8f879b08a34f115516e443a3370711a99201ca556560da428d7e174
 Memory=512m
 Network=chartdb.network:ip=10.16.0.2
 NoNewPrivileges=true
