@@ -39,7 +39,7 @@ RUN mkdir /tmp/cp
 RUN cp /busybox/busybox /usr/bin/busybox
 RUN /usr/bin/busybox --install -s /tmp/cp
 
-FROM docker.io/alpine/git:2.52.0@sha256:8786a6a02273827d0aa039d174aacd5e017fcce9aba0af62596d991970cab01a AS git
+FROM docker.io/alpine/git:2.52.0@sha256:4a0e72d49596a1f5d3701aeedafdadc5c0da4062be4657c7bdc4017387f591cc AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" > /version
 
