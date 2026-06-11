@@ -9,7 +9,7 @@ SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
 
-FROM golang:1.26.4-alpine@sha256:a6a091eac01ceac4b97496fe2957a49b6cdd83365337d5f46f6f73710424e805 as build
+FROM golang:1.26.4-alpine@sha256:7a3e50096189ad57c9f9f865e7e4aa8585ed1585248513dc5cda498e2f41812c as build
 COPY --from=seaweedfs /version /version
 RUN apk --no-cache add build-base git
 RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
