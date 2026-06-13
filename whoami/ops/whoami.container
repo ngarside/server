@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=whoami
 DropCapability=all
-Image=ghcr.io/ngarside/whoami:1.11.0.395@sha256:bd3b38615857d7694df3115de6b18a8f5f373fc6c4636ad01be2330b56add638
+Image=ghcr.io/ngarside/whoami:1.11.0.514@sha256:55d40d823f8aa4e3fbe3184be9977e0e065e2b92885708e505c52c7c54bba13a
 Memory=512m
 Network=whoami.network:ip=10.20.0.2
 NoNewPrivileges=true

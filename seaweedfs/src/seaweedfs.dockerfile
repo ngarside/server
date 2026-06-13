@@ -4,12 +4,12 @@
 # - https://github.com/moparisthebest/static-curl/blob/master/build.sh
 # - https://github.com/moparisthebest/static-curl/blob/master/LICENSE.txt
 
-FROM docker.io/chrislusf/seaweedfs:4.32@sha256:bcfb7aac11928f314e0032d68275b7166222987f72b60dafeac71ede5d2a38a4 AS seaweedfs
+FROM docker.io/chrislusf/seaweedfs:4.33@sha256:f0b358973e81f884304737645dd3b278c590c2c9d47d60089729d46324f70495 AS seaweedfs
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
 
-FROM golang:1.26.4-alpine@sha256:a6a091eac01ceac4b97496fe2957a49b6cdd83365337d5f46f6f73710424e805 as build
+FROM golang:1.26.4-alpine@sha256:7a3e50096189ad57c9f9f865e7e4aa8585ed1585248513dc5cda498e2f41812c as build
 COPY --from=seaweedfs /version /version
 RUN apk --no-cache add build-base git
 RUN git clone https://github.com/seaweedfs/seaweedfs --branch "$(cat /version)" --depth 1
