@@ -4,7 +4,7 @@
 # - https://github.com/moparisthebest/static-curl/blob/master/build.sh
 # - https://github.com/moparisthebest/static-curl/blob/master/LICENSE.txt
 
-FROM docker.io/chrislusf/seaweedfs:4.33@sha256:f0b358973e81f884304737645dd3b278c590c2c9d47d60089729d46324f70495 AS seaweedfs
+FROM docker.io/chrislusf/seaweedfs:4.34@sha256:6620371e8af8282056685c652d4637265698c9e2c2d59f9594e6ac333ad6c634 AS seaweedfs
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 RUN weed version 2>&1 | awk 'NR==1{print $3}' > /version
