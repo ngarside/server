@@ -2,7 +2,7 @@
 
 FROM docker.io/timberio/vector:0.56.0-distroless-static@sha256:7f8f65ca96601dddb1b33a60bbc9756401f89e2c94e5516011518f7b7c90f2aa AS vector
 
-FROM docker.io/alpine:3.24.0@sha256:a2d49ea686c2adfe3c992e47dc3b5e7fa6e6b5055609400dc2acaeb241c829f4 AS headcheck
+FROM docker.io/alpine:3.24.1@sha256:bec4ccd3817e7c824eb0388971a0b83fab111d586285511ba0266b77e8dc65a9 AS headcheck
 RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/3.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 
