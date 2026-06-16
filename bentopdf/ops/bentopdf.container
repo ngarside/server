@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=bentopdf
 DropCapability=all
-Image=ghcr.io/ngarside/bentopdf:2.8.5.640@sha256:52091ae0186e72ea97bcbd968e7be13d27c29b42ff252601fc7533a57214c827
+Image=ghcr.io/ngarside/bentopdf:2.8.5.657@sha256:b63aeb64595493cbbc2ac80edc83283f9488315e71acae46b488c1813ba56fcc
 Memory=512m
 Network=bentopdf.network:ip=10.23.0.2
 NoNewPrivileges=true
