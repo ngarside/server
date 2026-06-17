@@ -4,7 +4,7 @@
 ContainerName=vector_privileged
 DropCapability=all
 GroupAdd=keep-groups
-Image=ghcr.io/ngarside/vector-privileged:0.56.0.526@sha256:33aa58c28b369e83f05c343835ed5e3353764c6e323b16a90fd42f7c897ea093
+Image=ghcr.io/ngarside/vector-privileged:0.56.0.543@sha256:4c50b85ad95572217578023ca9d96154b751a563396a47a2d19d5d0efe041374
 Memory=4g
 Network=vector.network:ip=10.15.0.3
 NoNewPrivileges=true
