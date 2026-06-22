@@ -2,7 +2,7 @@
 
 FROM docker.io/stnsmith/fossflow:latest@sha256:c28915b0cafba1d57daf483f93a9f725afad79eda5ded9bf91197960b7b50b5a AS fossflow
 
-FROM docker.io/caddy:2.11.4@sha256:cfeb0b281bc44a5a51fecde39e9e577c60d863c0b6196e6bbdf58fd00960887f AS caddy
+FROM docker.io/caddy:2.11.4@sha256:597f813aa60873d4c8148c816fbc4507d496ab160d620460279557f58ee3d0b9 AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
 FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS headcheck
