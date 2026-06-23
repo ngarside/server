@@ -1,7 +1,7 @@
 # This is free and unencumbered software released into the public domain.
 
 # Build customised caddy install.
-FROM docker.io/caddy:2.11.4-builder-alpine@sha256:0ff10d4b83af453e5526b1c3cd7ae43396832aa8a2a55311d624f6812b33767d AS caddy
+FROM docker.io/caddy:2.11.4-builder-alpine@sha256:8e8c654d5c05f664aa393a4cef6e840fcaea9d19c50f40d6a356c3d2616e7c50 AS caddy
 RUN xcaddy build \
 	--with github.com/caddy-dns/cloudflare \
 	--with github.com/hslatman/caddy-crowdsec-bouncer/http
