@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM ghcr.io/alam00000/bentopdf-simple:2.8.5@sha256:268f3e4a1aeed5d7035b58ab1d679da85b7c559ac3d3c08eb2177520c3647e1f AS bentopdf
+FROM ghcr.io/alam00000/bentopdf-simple:2.8.6@sha256:1a947a9d4ae515be27b381a2a1f8565d5fa33087c32abc2bb7a6754f83e95f4c AS bentopdf
 
 FROM docker.io/caddy:2.11.4@sha256:af5fdcd76f2db5e4e974ee92f96ee8c0fc3edb55bd4ba5032547cbf3f65e486d AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
