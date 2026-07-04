@@ -7,8 +7,8 @@ echo "[SSHD Keygen] Script initialising"
 
 # Find the root directory ------------------------------------------------------
 echo "[SSHD Keygen] Checking for provided root path"
-if [ -n "${1}" ]; then
-	ROOT="$(realpath "${1}")"
+if [ -n "${1:-}" ]; then
+	ROOT="$(realpath "$1")"
 	echo "[SSHD Keygen]   Root path provided - using [$ROOT]"
 else
 	ROOT="$(pwd)"
