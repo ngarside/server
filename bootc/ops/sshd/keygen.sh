@@ -4,19 +4,24 @@
 set -euo pipefail
 
 # Find the root directory ------------------------------------------------------
-echo "[SSHD Keygen] Finding root directory"
+echo "[SSHD Keygen] Checking for provided root path"
 if [ -n "${1}" ]; then
-	ROOT="${1}"
-	echo "[SSHD Keygen] Using alternative root directory [$ROOT]"
+	ROOT="$(realpath "${1}")"
+	echo "[SSHD Keygen] Root path provided - using [$ROOT]"
 else
 	ROOT = "$(pwd)"
-	echo "[SSHD Keygen] Using current root directory [$ROOT]"
+	echo "[SSHD Keygen] Root path not provided - using [$ROOT]"
 fi
 
 # Create the root directory ----------------------------------------------------
-echo "[SSHD Keygen] Creating root directory [$ROOT]"
-mkdir --parents "$ROOT"
-echo "[SSHD Keygen] Root directory created"
+echo "[SSHD Keygen] Checking for existing root directory"
+if [ -d "$ROOT" ]; then
+	echo "[SSHD Keygen] Root directory already exists - skipping"
+else
+	echo "[SSHD Keygen] Root directory not found - creating"
+	mkdir --parents "$ROOT"
+	echo "[SSHD Keygen] Root directory created"
+fi
 
 # Generate ECDSA key if it doesn't already exist -------------------------------
 echo "[SSHD Keygen] Checking for existing ECDSA key"
@@ -49,4 +54,5 @@ else
 fi
 
 # Ensure all generated keys are labelled correctly -----------------------------
+echo "[SSHD Keygen] RSA key not found - generating"
 chcon --type sshd_key_t "$ROOT/*"
