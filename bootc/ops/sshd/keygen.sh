@@ -11,7 +11,7 @@ if [ -n "${1}" ]; then
 	ROOT="$(realpath "${1}")"
 	echo "[SSHD Keygen]   Root path provided - using [$ROOT]"
 else
-	ROOT = "$(pwd)"
+	ROOT="$(pwd)"
 	echo "[SSHD Keygen]   Root path not provided - using [$ROOT]"
 fi
 
