@@ -1,4 +1,4 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/postgres:18.3-alpine@sha256:54451ecb8ab38c24c3ec123f2fd501303a3a1856a5c66e98cecf2460d5e1e9d7
+FROM docker.io/postgres:18.4-alpine@sha256:1b1689b20d16a014a3d195653381cf2caa75a41a92d93b255a9d6ea29fd353aa
 HEALTHCHECK CMD ["pg_isready"]

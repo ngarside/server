@@ -1,12 +1,12 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/caddy:2.11.2-builder-alpine@sha256:ced7ea0d093d2ce6d3e28869640f0513afb96e42675f399de062a17bab54b434 AS caddy
+FROM docker.io/caddy:2.11.4-builder-alpine@sha256:b6a94e74b72261bd536b35acdd22f3577d4e466a9550f2c8d6c8ed6413085d72 AS caddy
 RUN xcaddy build \
 	--with github.com/caddy-dns/cloudflare \
 	--with github.com/hslatman/caddy-crowdsec-bouncer/http
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS headcheck
 RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/3.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 

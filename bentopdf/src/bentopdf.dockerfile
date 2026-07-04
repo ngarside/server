@@ -1,11 +1,11 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM ghcr.io/alam00000/bentopdf-simple:2.8.4@sha256:2bae644d27351a4d01bbbbcce7a9948fcc66da053ec7a37fff168c3788de9096 AS bentopdf
+FROM ghcr.io/alam00000/bentopdf-simple:2.8.6@sha256:1a947a9d4ae515be27b381a2a1f8565d5fa33087c32abc2bb7a6754f83e95f4c AS bentopdf
 
-FROM docker.io/caddy:2.11.2@sha256:25cdc846626b62d05f6b633b9b40c2c9f6ef89b515dc76133cefd920f7dbe562 AS caddy
+FROM docker.io/caddy:2.11.4@sha256:af5fdcd76f2db5e4e974ee92f96ee8c0fc3edb55bd4ba5032547cbf3f65e486d AS caddy
 RUN chmod ugo=rx /usr/bin/caddy
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS headcheck
 RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/3.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 

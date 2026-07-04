@@ -9,7 +9,7 @@
 
 [Timer]
 OnBootSec=5m
-OnUnitActiveSec=1h
+OnUnitActiveSec=24h
 Persistent=true
 Unit=restic.service
 

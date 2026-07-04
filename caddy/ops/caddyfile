@@ -23,8 +23,8 @@
 }
 
 (authentik_forward_auth) {
-	reverse_proxy /outpost.goauthentik.io/* 10.8.0.3
-	forward_auth 10.8.0.3 {
+	reverse_proxy /outpost.goauthentik.io/* 10.8.0.3:9000
+	forward_auth 10.8.0.3:9000 {
 		uri /outpost.goauthentik.io/auth/caddy
 		copy_headers {
 			X-Authentik-Email
@@ -51,7 +51,7 @@
 	import common
 	route {
 		crowdsec
-		reverse_proxy 10.8.0.3
+		reverse_proxy 10.8.0.3:9000
 	}
 }
 
@@ -132,9 +132,14 @@ memos.{$MACHINE_DOMAIN_ROOT} {
 }
 
 opencloud.{$MACHINE_DOMAIN_ROOT} {
+	@private client_ip private_ranges
+	handle @private {
+		reverse_proxy 10.17.0.2
+	}
 	route {
 		crowdsec
 		reverse_proxy /.well-known/* 10.17.0.2
+		reverse_proxy /konnect/* 10.17.0.2
 		import authentik_forward_auth
 		reverse_proxy 10.17.0.2
 	}

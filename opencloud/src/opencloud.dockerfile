@@ -5,7 +5,7 @@
 # image is still referenced to support automated dependency updates.
 # https://github.com/opencloud-eu/opencloud/tree/main/services/thumbnails
 
-FROM docker.io/opencloudeu/opencloud-rolling:6.1.0@sha256:235b5d988729aa821bd068bbdc60175270b05bd5fefa77b6d0e2ec5aeadccd0b AS opencloud
+FROM docker.io/opencloudeu/opencloud-rolling:7.2.0@sha256:324c2e6d5e97f0d8bd2e4f716c491cc32f1054b3f527dbc4290ce4de113333ab AS opencloud
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 USER root
 WORKDIR /
@@ -16,7 +16,7 @@ RUN wget "https://github.com/opencloud-eu/opencloud/releases/download/$(cat /rel
 RUN mv "/opencloud-$(cat /version)-linux-amd64" /opencloud
 RUN chmod ugo=rx /opencloud
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS headcheck
 RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/3.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 

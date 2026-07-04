@@ -3,7 +3,7 @@
 [Container]
 ContainerName=youtrack
 DropCapability=all
-Image=docker.io/jetbrains/youtrack:2026.1.13456@sha256:e4b8508b99541dd9f8268f9b2cc94cd5b4806c9f6cc6899c9582ee38c2d4f8e8
+Image=docker.io/jetbrains/youtrack:2026.2.17012@sha256:fa50e2e07435dc91461c00ef05ee064ff76748d4d8feaf8aeaa9f9e4a9bf6606
 Memory=4g
 Network=youtrack.network:ip=10.9.0.2
 NoNewPrivileges=true

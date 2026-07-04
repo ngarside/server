@@ -8,11 +8,11 @@
 # when copying between stages.
 # https://stackoverflow.com/a/66823636
 
-FROM docker.io/gitea/gitea:1.26.1@sha256:d8667667b4ccbd1f67b86a376bffcc0a17b16cf71309ed04e3918231776d47dd AS gitea
+FROM docker.io/gitea/gitea:1.26.4@sha256:8e25c717b8f748445e15ec46e0390f577cb628101184cb0a150d1dae126c1f39 AS gitea
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN gitea --version | grep -o "[0-9.]*" | { head -n 1; cat >/dev/null; } > /version
 
-FROM golang:1.26.3-alpine@sha256:91eda9776261207ea25fd06b5b7fed8d397dd2c0a283e77f2ab6e91bfa71079d as gitea-build
+FROM golang:1.26.4-alpine@sha256:3ad57304ad93bbec8548a0437ad9e06a455660655d9af011d58b993f6f615648 as gitea-build
 COPY --from=gitea /version /version
 RUN apk --no-cache add build-base git pnpm
 RUN git clone https://github.com/go-gitea/gitea --branch "v$(cat /version)" --depth 1
@@ -22,7 +22,7 @@ RUN patch modules/setting/server.go < /tmp/server.patch
 RUN LDFLAGS='-extldflags -static' TAGS='bindata sqlite sqlite_unlock_notify' make build -j "$(nproc)"
 RUN strip /go/gitea/gitea
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS busybox
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS busybox
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN apk --no-cache add alpine-sdk grep linux-headers
 RUN busybox | { head -n 1; cat >/dev/null; } | grep -oP '(?<=v)[\d\.]+' | sed 's/\./_/g' > /version
@@ -39,20 +39,20 @@ RUN mkdir /tmp/cp
 RUN cp /busybox/busybox /usr/bin/busybox
 RUN /usr/bin/busybox --install -s /tmp/cp
 
-FROM docker.io/alpine/git:2.52.0@sha256:d453f54c83320412aa89c391b076930bd8569bc1012285e8c68ce2d4435826a3 AS git
+FROM docker.io/alpine/git:v2.54.0@sha256:e043be20669db13cbcfb6190192babee4cf2dca98709bb0c2d08ca2d35a0a06a AS git
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 RUN git version | grep -o "[0-9.]*" > /version
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS headcheck
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS headcheck
 RUN wget https://github.com/pixelatedlabs/headcheck/releases/download/3.0.0/linux-x64.zip
 RUN unzip /linux-x64.zip
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS local
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS local
 COPY gitea/src/server.sh /usr/bin/entrypoint
 COPY gitea/src/server.ini /etc/gitea/gitea.ini
 RUN chmod +x /usr/bin/entrypoint
 
-FROM docker.io/alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11 AS git-build
+FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS git-build
 COPY --from=git /version /version
 RUN apk --no-cache add alpine-sdk autoconf tcl-dev zlib-dev zlib-static
 RUN git clone https://github.com/git/git --branch "v$(cat /version)" --depth 1

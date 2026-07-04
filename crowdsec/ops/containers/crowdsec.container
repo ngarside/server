@@ -6,7 +6,7 @@ ContainerName=crowdsec
 DropCapability=all
 Environment=COLLECTIONS=crowdsecurity/caddy
 GIDMap=0:8759
-Image=ghcr.io/ngarside/crowdsec:1.7.7.357@sha256:69e9d4bcd99d623cbb7a71c123faf6a3930477137c5d4a1c37e20f55a0b126a3
+Image=ghcr.io/ngarside/crowdsec:1.7.8.401@sha256:cf5538245abbb18f14d6393d437fb0d7a570106ac0225e7788aecf9bd5b931d4
 Memory=4g
 Network=crowdsec.network:ip=10.26.0.2
 NoNewPrivileges=true

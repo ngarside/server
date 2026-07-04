@@ -3,7 +3,7 @@
 [Container]
 ContainerName=jellyfin
 DropCapability=all
-Image=ghcr.io/ngarside/jellyfin:10.11.8.377@sha256:f7bc894a79ced16297ca6fb310e363f1e3695c8eaaf8bd879f2de579d67f5c23
+Image=ghcr.io/ngarside/jellyfin:10.11.11.462@sha256:d5107f82953a75c29d3c5685daac1104cc52fc74caaa088fdac3916d0389f1f2
 Memory=4g
 Network=jellyfin.network:ip=10.11.0.2
 NoNewPrivileges=true
@@ -11,7 +11,9 @@ ReadOnly=true
 UserNS=auto
 Volume=/var/data/jellyfin/cache:/cache:U,Z
 Volume=/var/data/jellyfin/config:/config:U,Z
-Volume=/var/data/jellyfin/media:/media:U,Z,ro
+Volume=/var/data/jellyfin/movies:/movies:U,Z,ro
+Volume=/var/data/jellyfin/music:/music:U,Z,ro
+Volume=/var/data/jellyfin/shows:/shows:U,Z,ro
 
 [Service]
 CPUQuota=100%
@@ -19,7 +21,9 @@ Restart=always
 TimeoutStartSec=900
 ExecStartPre=mkdir --parents /var/data/jellyfin/cache
 ExecStartPre=mkdir --parents /var/data/jellyfin/config
-ExecStartPre=mkdir --parents /var/data/jellyfin/media
+ExecStartPre=mkdir --parents /var/data/jellyfin/movies
+ExecStartPre=mkdir --parents /var/data/jellyfin/music
+ExecStartPre=mkdir --parents /var/data/jellyfin/shows
 
 [Install]
 WantedBy=default.target
