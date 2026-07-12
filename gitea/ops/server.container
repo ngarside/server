@@ -9,7 +9,7 @@ AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=gitea_server
 DropCapability=all
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
-Image=ghcr.io/ngarside/gitea-server:1.26.4.821@sha256:8d4e4e11c4279ff9b888edd961fa65640d1b7b4336f641eb775be5e227025a38
+Image=ghcr.io/ngarside/gitea-server:1.26.4.829@sha256:5db62426b1058bf88e54331ac7d1292f987ddff2a7bbf7ee003915011b8fc417
 Memory=4g
 Network=gitea_server.network:ip=10.14.0.2
 NoNewPrivileges=true
