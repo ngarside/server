@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM quay.io/fedora/fedora-bootc:44@sha256:4f826a95586ae24a4a8c7ab2bb34c8bb045dcb04d26fbff71d9da57a3c4fe25e
+FROM quay.io/fedora/fedora-bootc:44@sha256:c6ff7d2041293cc4b94506940aec8f640a2bf15d780a0faad8b74ba1a1bfa294
 SHELL ["/bin/bash", "-c"]
 HEALTHCHECK CMD ["/bin/true"]
 RUN --mount=target=/git set -euo pipefail && \
