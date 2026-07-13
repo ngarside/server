@@ -27,7 +27,7 @@ Environment=SMTP_SERVICE=Mailjet
 Environment=COLLABORATION_URL=
 Environment=LOG_LEVEL=silly
 Environment=DEFAULT_LANGUAGE=en_GB
-Image=ghcr.io/ngarside/outline:1.9.0.555@sha256:beb804daec735b549c3b24381d2ef1e29fa26cd606757cdc737ea0cf3eb2a061
+Image=ghcr.io/ngarside/outline:1.9.1.562@sha256:cff98ef9023a52e5ed15394463e7979d9b7f34a33eb3c612c6c75a3e08c85cbc
 Memory=4g
 Network=outline_external.network:ip=10.10.0.2
 Network=outline_internal.network:ip=10.19.0.2
