@@ -3,7 +3,7 @@
 [Container]
 ContainerName=penpot_valkey
 DropCapability=all
-Image=ghcr.io/ngarside/valkey:9.0.4.1010@sha256:fc5ef5d3c89c11c821f250f6384e411990be0d40b4ccd70d72b597443b461dfe
+Image=ghcr.io/ngarside/valkey:9.1.0.1052@sha256:b211959060729984a6d8f3008e3d733e404a4c34d2eb577442110d00b26c51c8
 Memory=4g
 Network=penpot_internal.network:ip=10.4.0.2
 NoNewPrivileges=true
