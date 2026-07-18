@@ -14,7 +14,7 @@ RUN git clone https://github.com/valkey-io/valkey
 WORKDIR /valkey
 COPY --from=valkey /version /version
 RUN git checkout "$(cat /version)"
-RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no BUILD_TLS=no
+RUN make -j "$(nproc)" LDFLAGS="-s -w -static" CFLAGS="-static" USE_SYSTEMD=no BUILD_TLS=no BUILD_LUA=no
 RUN chmod ugo=rx /valkey/src/valkey-cli
 RUN chmod ugo=rx /valkey/src/valkey-server
 
