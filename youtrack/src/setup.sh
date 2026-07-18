@@ -19,7 +19,7 @@ fi
 # Find the latest YouTrack image.
 IMAGE=$(podman image list --format json |
 	jq '.[] | select(.Dangling!=true) | .Names | first' |
-	jq 'select(. | startswith("docker.io/jetbrains/youtrack:"))' |
+	jq 'select(. | startswith("docker.io/jetbrains/youtrack@sha256:"))' |
 	jq --null-input --raw-output '[inputs] | sort_by(.) | last')
 
 # Configure YouTrack to use the public base URL.
