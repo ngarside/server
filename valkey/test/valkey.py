@@ -24,10 +24,16 @@ def fixture():
 
 def test_bytes():
 	session = redis.Redis(port=port)
-	session.set('foo', 'bar')
-	actual = session.get('foo')
+	session.set('bytes', 'bar')
+	actual = session.get('bytes')
 	assert actual == b'bar'
 
 def test_healthcheck():
 	status = subprocess.run(['podman', 'healthcheck', 'run', name])
 	assert status.returncode == 0
+
+def test_lua():
+	session = redis.Redis(port=port)
+	session.set('lua', 'bar')
+	actual = session.eval("return redis.call('GET', KEYS[1])", 1, 'lua')
+	assert actual == b'bar'
