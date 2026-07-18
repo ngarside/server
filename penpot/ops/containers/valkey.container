@@ -2,6 +2,8 @@
 
 [Container]
 AddCapability=CAP_CHOWN
+AddCapability=CAP_SETGID
+AddCapability=CAP_SETUID
 ContainerName=penpot_valkey
 DropCapability=all
 Image=ghcr.io/ngarside/valkey:9.1.0.1054@sha256:d1b2f104ce6279501aedf54b0d2224fc2d58cc864f3e99f26569799a10ad2cd6
