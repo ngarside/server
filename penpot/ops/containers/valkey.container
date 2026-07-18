@@ -11,7 +11,7 @@ Memory=4g
 Network=penpot_internal.network:ip=10.4.0.2
 NoNewPrivileges=true
 ReadOnly=true
-UserNS=auto:size=8
+UserNS=auto
 
 [Service]
 CPUQuota=100%
