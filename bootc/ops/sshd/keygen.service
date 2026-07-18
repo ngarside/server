@@ -1,0 +1,14 @@
+# This is free and unencumbered software released into the public domain.
+
+[Unit]
+Description=Generates SSH host keys in a persistent location
+After=local-fs.target
+Before=sshd.service
+Wants=local-fs.target
+
+[Service]
+ExecStart=/usr/bin/keygen /var/ssh
+Type=oneshot
+
+[Install]
+WantedBy=default.target
