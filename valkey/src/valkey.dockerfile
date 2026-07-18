@@ -4,7 +4,7 @@
 # https://github.com/ZoeyVid/valkey-static/blob/latest/Dockerfile
 # https://github.com/ZoeyVid/valkey-static/blob/latest/COPYING
 
-FROM docker.io/valkey/valkey:9.0.4@sha256:080455d715687e61cff6a3110e9fb8957775f15057bc70ccea5ba56e5f3d7975 AS valkey
+FROM docker.io/valkey/valkey:9.0.4@sha256:bdf93f670fdb026eba9e2cf852c3fa8062f92e850fa181626c3b056e83ef04cf AS valkey
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 RUN valkey-server --version | grep --only-matching --perl-regexp '(?<=v=)\S*' > /version
 
