@@ -5,7 +5,11 @@ After=authentik_postgres.container
 Requires=authentik_postgres.container
 
 [Container]
+AddCapability=CAP_CHOWN
+AddCapability=CAP_FOWNER
 AddCapability=CAP_NET_BIND_SERVICE
+AddCapability=CAP_SETGID
+AddCapability=CAP_SETUID
 ContainerName=authentik_server
 DropCapability=all
 Environment=AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true
@@ -15,7 +19,6 @@ Environment=AUTHENTIK_EMAIL__HOST=in-v3.mailjet.com
 Environment=AUTHENTIK_EMAIL__PASSWORD=file:///run/secrets/mailjet_smtp_password
 Environment=AUTHENTIK_EMAIL__USERNAME=file:///run/secrets/mailjet_smtp_username
 Environment=AUTHENTIK_ERROR_REPORTING__ENABLED=false
-Environment=AUTHENTIK_LISTEN__HTTP=0.0.0.0:80
 Environment=AUTHENTIK_LOG_LEVEL=trace
 Environment=AUTHENTIK_POSTGRESQL__HOST=10.7.0.3
 Environment=AUTHENTIK_POSTGRESQL__NAME=authentik
@@ -23,7 +26,7 @@ Environment=AUTHENTIK_POSTGRESQL__PASSWORD=file:///run/secrets/authentik_postgre
 Environment=AUTHENTIK_POSTGRESQL__USER=authentik
 Environment=AUTHENTIK_SECRET_KEY=file:///run/secrets/authentik_internal_secret
 Exec=server
-Image=ghcr.io/ngarside/authentik:2026.2.3.419@sha256:274c8beddc1df1b03ac8566e64563820a8ac634f30c1340baeb704c2d85a9b7d
+Image=ghcr.io/ngarside/authentik:2026.5.5.565@sha256:d1215683a683771f827926639b7d88607546891f53e3918198ca34a4e0418c4d
 Memory=4g
 Network=authentik_external.network:ip=10.8.0.3
 Network=authentik_internal.network:ip=10.7.0.4
@@ -41,9 +44,10 @@ Secret=outline_oidc_secret
 Secret=penpot_oidc_secret
 Secret=vaultwarden_oidc_secret
 StopSignal=SIGINT
-User=root
+Tmpfs=/certs:mode=1777
+Tmpfs=/data:mode=1777
 UserNS=auto
-Volume=/etc/authentik/media:/media/public:ro
+Volume=/etc/authentik/media:/media/public
 
 [Service]
 CPUQuota=100%

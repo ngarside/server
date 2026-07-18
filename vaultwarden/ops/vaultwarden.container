@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=vaultwarden
 DropCapability=all
-Image=ghcr.io/ngarside/vaultwarden:1.36.0.425@sha256:fa97d1ef305fb7ff6a0f925c7889da30ae68c090bbf4c3619a330e62dd073200
+Image=ghcr.io/ngarside/vaultwarden:1.36.0.554@sha256:2e080f5a513dba92a9507743bb10805cdd74f8be4a55f184880df334f63193ae
 Memory=4g
 Network=vaultwarden.network:ip=10.12.0.2
 NoNewPrivileges=true
