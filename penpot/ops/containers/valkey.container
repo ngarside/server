@@ -6,7 +6,7 @@ AddCapability=CAP_SETGID
 AddCapability=CAP_SETUID
 ContainerName=penpot_valkey
 DropCapability=all
-Image=ghcr.io/ngarside/valkey:9.1.0.1054@sha256:d1b2f104ce6279501aedf54b0d2224fc2d58cc864f3e99f26569799a10ad2cd6
+Image=ghcr.io/ngarside/valkey:9.1.1.1059@sha256:499cb3c6ae10f1da59fa0f9d1e8280a9d567d765f8f0baad423dd01a28f6b842
 Memory=4g
 Network=penpot_internal.network:ip=10.4.0.2
 NoNewPrivileges=true
