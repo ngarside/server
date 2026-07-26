@@ -1,6 +1,6 @@
 # This is free and unencumbered software released into the public domain.
 
-FROM docker.io/neosmemo/memos:0.29.1@sha256:3e1253477066eb2aefa91145f7f9038bb931ed88c8a3ee05310a933594cdba7d AS memos
+FROM docker.io/neosmemo/memos:0.30.0@sha256:71a5b4738d1bed96e92112004054f0888e92791b64eb78afd79077c96e6f9327 AS memos
 RUN chmod ugo=rx /usr/local/memos/memos
 
 FROM docker.io/alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS headcheck
