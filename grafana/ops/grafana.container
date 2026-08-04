@@ -8,7 +8,7 @@ Requires=authentik_server.container
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=grafana
 DropCapability=all
-Image=ghcr.io/ngarside/grafana:13.1.1.633@sha256:664eb35ec6dfab45686848e01fece1f9fdba81cd61fb3bac26a40896a7572f3e
+Image=ghcr.io/ngarside/grafana:13.1.2.711@sha256:5a31cff06c32daa42523e9c1747cc9cf7a2fe1a0b52468288ac68919845e71a7
 Memory=4g
 Network=grafana.network:ip=10.22.0.2
 Network=victoria_logs.network:ip=10.24.0.2
