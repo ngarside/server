@@ -7,7 +7,7 @@ RUN xcaddy build \
 	--with github.com/hslatman/caddy-crowdsec-bouncer/http
 
 # Install dependencies.
-FROM quay.io/fedora/fedora:44@sha256:7cbdc865d55e6b19a2861e8b58f989421281b5ea2273c50c61c0fa8b5075afbd
+FROM quay.io/fedora/fedora:44@sha256:596e173c662f5d1dae74873392e886b1d57952618702a3d0f285627e74b45521
 HEALTHCHECK CMD ["/bin/true"]
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 RUN <<EOF
