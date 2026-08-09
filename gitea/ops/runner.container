@@ -8,7 +8,7 @@ Requires=gitea_server.container
 ContainerName=gitea_runner
 DropCapability=all
 Environment=GITEA_RUNNER_REGISTRATION_TOKEN_FILE=/run/secrets/gitea_runner_token
-Image=ghcr.io/ngarside/gitea-runner:0.6.1.956@sha256:d96026b03025348e3e65b2da1d6a723c0827a44dabea169661dc6e4e28ffe436
+Image=ghcr.io/ngarside/gitea-runner:0.6.1.1003@sha256:10c63a8b1f37e9fd16fd24ce68dc81f3fda1fdf17371f71f38998d3015992d58
 Memory=4g
 Network=gitea_server.network:ip=10.14.0.4
 NoNewPrivileges=true
