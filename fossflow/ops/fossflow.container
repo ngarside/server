@@ -4,7 +4,7 @@
 AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=fossflow
 DropCapability=all
-Image=ghcr.io/ngarside/fossflow:0.0.0.801@sha256:15d33d618cc9836ae3f07fc59ffb27b8dbaf165abba8191f321efacc3255338f
+Image=ghcr.io/ngarside/fossflow:0.0.0.918@sha256:63d684e9b999410ed9c0f6df2879389e494a416f04ff2d792478337224069174
 Memory=512m
 Network=fossflow.network:ip=10.1.0.2
 NoNewPrivileges=true
