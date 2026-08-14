@@ -12,7 +12,7 @@ Environment=POSTGRES_DB=authentik
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/authentik_postgres_password
 Environment=POSTGRES_USER=authentik
-Image=ghcr.io/ngarside/postgres:18.4.563@sha256:8ac3106574a8d54d54a6cf26d958027b1f3968ebf5d52ae04f05dcb12ea026f2
+Image=ghcr.io/ngarside/postgres:18.6.740@sha256:226d3634bbb5c4621cff36b92743396fe21d18238be16e54fe70a307ce838dfd
 Memory=4g
 Network=authentik_internal.network:ip=10.7.0.3
 NoNewPrivileges=true
