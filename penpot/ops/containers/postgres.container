@@ -12,7 +12,7 @@ Environment=POSTGRES_DB=penpot
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_PASSWORD_FILE=/run/secrets/penpot_postgres_password
 Environment=POSTGRES_USER=penpot
-Image=ghcr.io/ngarside/postgres:18.6.740@sha256:226d3634bbb5c4621cff36b92743396fe21d18238be16e54fe70a307ce838dfd
+Image=ghcr.io/ngarside/postgres:18.6.757@sha256:8145f773610efb759fe3f7a14dedfd5061202b422440480b0112ece68ccc5dd6
 Memory=4g
 Network=penpot_internal.network:ip=10.4.0.3
 NoNewPrivileges=true
