@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Run checks
-        uses: hadolint/hadolint-action@v3.3.0
+        uses: hadolint/hadolint-action@v3.4.0
         with:
           config: .hadolint
           dockerfile: '*.dockerfile'
