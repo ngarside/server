@@ -9,7 +9,7 @@ AddCapability=CAP_NET_BIND_SERVICE
 ContainerName=caddy
 DropCapability=all
 GIDMap=0:8759
-Image=ghcr.io/ngarside/caddy:2.11.4.845@sha256:ab6bad0c45c928beca9fe4f2ee327a337ebfae13b25ed5ebf380f6ce8ca87c0d
+Image=ghcr.io/ngarside/caddy:2.11.4.884@sha256:225807feda24f8a6fa33e256a022bea67fde1ad496b7efe4a99cd09c216cbefb
 Memory=4g
 Network=adguardhome.network:ip=10.2.0.3
 Network=fossflow.network:ip=10.1.0.3
