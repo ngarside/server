@@ -6,7 +6,7 @@ AddCapability=CAP_SETGID
 AddCapability=CAP_SETUID
 ContainerName=outline_valkey
 DropCapability=all
-Image=ghcr.io/ngarside/valkey:9.1.1.1059@sha256:499cb3c6ae10f1da59fa0f9d1e8280a9d567d765f8f0baad423dd01a28f6b842
+Image=ghcr.io/ngarside/valkey:9.1.1.1300@sha256:b08cf7d57514c1e6c5b2e609c5c468da55035eba4b52e0fd2b05c38541a89933
 Memory=4g
 Network=outline_internal.network:ip=10.19.0.4
 NoNewPrivileges=true
