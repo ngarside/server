@@ -35,7 +35,6 @@ PublishPort=80:80
 PublishPort=443:443
 ReadOnly=true
 Secret=machine_domain_root,type=env,target=MACHINE_DOMAIN_ROOT
-Secret=cloudflare_api_token
 Secret=crowdsec_bouncer_secret
 UIDMap=0:8759
 Volume=/etc/caddy:/etc/caddy:ro
